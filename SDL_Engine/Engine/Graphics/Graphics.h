@@ -4,7 +4,7 @@
 #define Graphics_H
 
 #include <SDL.h>
-#include "Logger.h"
+#include "../Logger/Logger.h"
 
 class Graphics {
 public:

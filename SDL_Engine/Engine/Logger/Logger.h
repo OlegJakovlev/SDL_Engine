@@ -21,7 +21,7 @@ protected:
     Logger(const Logger&) = delete;
 
     void WriteToFile(std::string logMessage);
-    std::string outputFile = "something.log";
+    std::string outputFile = "general.log";
 };
 
 #endif

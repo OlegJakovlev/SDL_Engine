@@ -3,7 +3,7 @@
 #ifndef GameManager_H
 #define GameManager_H
 
-#include "Graphics.h"
+#include "./Graphics/Graphics.h"
 #include <SDL.h>
 
 class GameManager {
