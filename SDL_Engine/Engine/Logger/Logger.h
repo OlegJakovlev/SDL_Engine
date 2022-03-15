@@ -3,6 +3,8 @@
 #ifndef Logger_H
 #define Logger_H
 
+#include <string>
+#include <fstream>
 #include <ctime>
 #include <iomanip>
 #include "../FileWriter/FileWriter.h"
