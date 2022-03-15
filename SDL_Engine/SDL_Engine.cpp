@@ -2,6 +2,8 @@
 
 int main(int argc, char* args[])
 {
+	// Create configurators and load configs
+
 	// Create game resources
 	GameManager* game = GameManager::Instance();
 
