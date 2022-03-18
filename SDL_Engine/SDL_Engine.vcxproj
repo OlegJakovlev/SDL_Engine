@@ -164,6 +164,7 @@
     <ClCompile Include="Engine\Logger\SceneLogger\SceneLogger.cpp" />
     <ClCompile Include="Engine\Input\PlayerController\PlayerController.cpp" />
     <ClCompile Include="Engine\Audio\NullAudio\NullAudio.cpp" />
+    <ClCompile Include="Engine\GameLoop\GameLoop.cpp" />
     <ClCompile Include="SDL_Engine.cpp" />
     <ClCompile Include="Engine\Physics\Vector2.cpp" />
   </ItemGroup>
@@ -188,13 +189,17 @@
     <ClInclude Include="Engine\Logger\SceneLogger\SceneLogger.h" />
     <ClInclude Include="Engine\Input\PlayerController\PlayerController.h" />
     <ClInclude Include="Engine\Audio\NullAudio\NullAudio.h" />
+    <ClInclude Include="Engine\GameLoop\GameLoop.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Engine\Configurator\InputConfigurator\example.json" />
+    <None Include="Engine\Configurator\SceneConfigurator\example.json" />
     <None Include="packages.config" />
     <None Include="Resources\Audio\Music\.gitkeep" />
     <None Include="Resources\Audio\Sounds\.gitkeep" />
     <None Include="Resources\Images\Sprite\.gitkeep" />
     <None Include="Resources\Images\Textures\.gitkeep" />
+    <None Include="Resources\Scenes\.gitkeep" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

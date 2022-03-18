@@ -6,6 +6,7 @@ int main(int argc, char* args[])
 
 	// Create game resources
 	GameManager* game = GameManager::Instance();
+	game->Init();
 
 	// Start the game
 	game->Run();

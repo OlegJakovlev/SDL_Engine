@@ -7,19 +7,21 @@ GameManager* GameManager::Instance() {
     return sInstance;
 }
 
-GameManager::GameManager() {
+void GameManager::Init() {
     quit = false;
     graphics = Graphics::Instance();
     eventQueue = {};
-    timer = new Timer();
+
+    // Create game managers
+    sceneManager = new SceneManager();
 }
 
 GameManager::~GameManager() {
     Graphics::Release();
     graphics = nullptr;
 
-    delete timer;
-    timer = nullptr;
+    delete sceneManager;
+    sceneManager = nullptr;
 }
 
 void GameManager::Release() {
@@ -28,35 +30,21 @@ void GameManager::Release() {
 }
 
 void GameManager::Run() {
+
+    Scene* currentScene;
+
     while (!quit) {
-        double currentTime = timer->GetCurrentTime();
-        double frameTime = currentTime - previousTime;
-        int physicsUpdates = 0;
+        currentScene = sceneManager->GetCurrentScene();
 
-        // Update previous time
-        previousTime = currentTime;
-
-        // Accumulate time difference
-        timeLag += frameTime;
-
-        // Event Queue
-        while (SDL_PollEvent(&eventQueue) != 0) {
-            if (eventQueue.type == SDL_QUIT) {
-                quit = true;
-            }
-
-            // Process Input
-        }
-
-        // Update
-        while (timeLag >= FIXED_DELTA_TIME && physicsUpdates < MAX_PHYSICS_UPDATES) {
-            physicsUpdates++;
-            //update();
-            timeLag -= FIXED_DELTA_TIME;
-            currentTime += FIXED_DELTA_TIME;
-        }
-
-        // Render
-        //graphics->Render(timeLag / FIXED_DELTA_TIME);
+        // Run game loop on active scene
+        currentScene->GetGameLoop()->Run(
+            graphics,
+            currentScene->GetInputController(),
+            currentScene->GetSceneObjectList()
+        );
     }
+}
+
+void GameManager::QuitTheGame() {
+    quit = true;
 }

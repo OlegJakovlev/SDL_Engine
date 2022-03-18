@@ -1,10 +1,21 @@
 #include "Timer.h"
 
-float Timer::GetCurrentTime() const {
-    //currentTime = std::chrono::system_clock::now();
-    return currentTime;
+Timer::Timer() {
+    Reset();
+}
+
+double Timer::GetCurrentTime() const {
+    return std::chrono::duration<double>(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now().time_since_epoch())).count();
+}
+
+double Timer::GetElapsedTime() const {
+    return std::chrono::duration<double>(std::chrono::duration_cast<std::chrono::seconds>(stopTime - startTime)).count();
 }
 
 void Timer::Reset() {
-    currentTime = 0;
+    startTime = std::chrono::high_resolution_clock::now();
+}
+
+void Timer::Stop() {
+    stopTime = std::chrono::high_resolution_clock::now();
 }

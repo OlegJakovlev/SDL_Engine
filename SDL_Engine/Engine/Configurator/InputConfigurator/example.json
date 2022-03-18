@@ -1,0 +1,25 @@
+{
+    "menu": {
+        "select": [
+            "SDLK_KP_ENTER",
+            "SDLK_SPACE"
+        ],
+
+        "navigate_down": [
+            "SDLK_s",
+            "SDLK_DOWN"
+        ]
+    },
+
+    "game": {
+        "pause": [
+            "SDLK_p",
+            "SDLK_ESCAPE"
+        ],
+
+        "move_up": [
+            "SDLK_w",
+            "SDLK_UP"
+        ]
+    }
+}

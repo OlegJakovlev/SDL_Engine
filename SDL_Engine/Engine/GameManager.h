@@ -6,16 +6,18 @@
 #include <SDL.h>
 #include "Graphics/Graphics.h"
 #include "Input/InputController.h"
-#include "Timer/Timer.h"
+#include "SceneManagment/SceneManager.h"
 
 class GameManager {
 public:
     static GameManager* Instance();
+    void Init();
     void Run();
     static void Release();
+    void QuitTheGame();
 
 private:
-    GameManager();
+    GameManager() = default;
     GameManager& operator=(const GameManager&) = delete;
     GameManager(const GameManager&) = delete;
     ~GameManager();
@@ -27,12 +29,8 @@ private:
     Graphics* graphics;
     SDL_Event eventQueue;
 
-    // Game loop
-    Timer* timer;
-    const float FIXED_DELTA_TIME = 0.01;
-    const int MAX_PHYSICS_UPDATES = 5;
-    double previousTime;
-    double timeLag; // how far games' clock is behind real world
+    // Game managers
+    SceneManager* sceneManager;
 };
 
 #endif

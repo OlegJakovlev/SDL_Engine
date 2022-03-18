@@ -7,16 +7,19 @@
 
 class Timer {
 public:
-    Timer() = default;
+    Timer();
     Timer& operator=(const Timer&) = default;
     Timer(const Timer&) = default;
     ~Timer() = default;
 
-    float GetCurrentTime() const;
+    double GetCurrentTime() const;
+    double GetElapsedTime() const;
+    void Stop();
     void Reset();
 
 private:
-    float currentTime;
+    std::chrono::time_point<std::chrono::high_resolution_clock> startTime;
+    std::chrono::time_point<std::chrono::high_resolution_clock> stopTime;
 };
 
 #endif

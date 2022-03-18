@@ -3,8 +3,10 @@
 #ifndef Vector2_H
 #define Vector2_H
 
+template <class T>
 class Vector2 {
-    double x, y;
+    T x;
+    T y;
 };
 
 #endif
