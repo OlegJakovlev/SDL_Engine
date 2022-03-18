@@ -167,6 +167,7 @@
     <ClCompile Include="Engine\GameLoop\GameLoop.cpp" />
     <ClCompile Include="SDL_Engine.cpp" />
     <ClCompile Include="Engine\Physics\Vector2.cpp" />
+    <ClCompile Include="TestRectangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\AudioLogger\AudioLogger.h" />
@@ -190,6 +191,7 @@
     <ClInclude Include="Engine\Input\PlayerController\PlayerController.h" />
     <ClInclude Include="Engine\Audio\NullAudio\NullAudio.h" />
     <ClInclude Include="Engine\GameLoop\GameLoop.h" />
+    <ClInclude Include="TestRectangle.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Configurator\InputConfigurator\example.json" />

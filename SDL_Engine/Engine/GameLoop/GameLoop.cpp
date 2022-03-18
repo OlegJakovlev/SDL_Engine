@@ -10,11 +10,11 @@ GameLoop::~GameLoop() {
 }
 
 void GameLoop::Run(Graphics* graphics, InputController* input, std::vector<GameObject*>& sceneObjects) {
+    // Clear previous frame
+    graphics->Clear();
+
     double currentTime = timer->GetCurrentTime();
     double frameTime = currentTime - previousTime;
-    std::printf("Frame Time: %f\n", frameTime);
-
-    int physicsUpdates = 0;
 
     // Update previous time
     previousTime = currentTime;
@@ -26,6 +26,8 @@ void GameLoop::Run(Graphics* graphics, InputController* input, std::vector<GameO
     Input(input);
 
     // Physics Update
+    int physicsUpdates = 0;
+
     while (timeLag >= FIXED_DELTA_TIME && physicsUpdates < MAX_PHYSICS_UPDATES) {
         physicsUpdates++;
         Update(sceneObjects);
@@ -33,8 +35,8 @@ void GameLoop::Run(Graphics* graphics, InputController* input, std::vector<GameO
         currentTime += FIXED_DELTA_TIME;
     }
 
-    // Render
-    Render(graphics);
+    // Render all objects from current scene
+    Render(graphics, sceneObjects);
 }
 
 void GameLoop::Input(const InputController* input) const {
@@ -53,14 +55,21 @@ void GameLoop::Update(std::vector<GameObject*>& sceneObjects) const {
 
     // Check if object should be deleted
     for (auto it = sceneObjects.begin(); it != sceneObjects.end(); it++) {
-        if ((*it)->ShouldBeDeleted()) (*it)->Destroy();
+        if ((*it)->ShouldBeDeleted()) {
+            (*it)->Destroy();
 
-        // Pointers should be updated after deleting an object
-        it = sceneObjects.erase(it);
+            // Pointers should be updated after deleting an object
+            it = sceneObjects.erase(it);
+        }
     }
 }
 
-void GameLoop::Render(Graphics* graphics) const {
+void GameLoop::Render(Graphics* graphics, std::vector<GameObject*>& sceneObjects) const {
+    for (int index = 0; index < sceneObjects.size(); index++) {
+        sceneObjects[index]->Render(graphics);
+    }
+
     graphics->Render();
+
     //graphics->Render(timeLag / FIXED_DELTA_TIME);
 }

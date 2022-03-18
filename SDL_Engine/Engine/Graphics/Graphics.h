@@ -3,6 +3,7 @@
 #ifndef Graphics_H
 #define Graphics_H
 
+#include <vector>
 #include <SDL.h>
 #include "../Logger/GraphicsLogger/GraphicsLogger.h"
 
@@ -12,7 +13,10 @@ public:
     static const int SCREEN_HEIGHT = 600;
 
     static Graphics* Instance();
+    void Clear();
     void Render();
+
+    SDL_Renderer* GetRenderer();
     static void Release();
 
 private:

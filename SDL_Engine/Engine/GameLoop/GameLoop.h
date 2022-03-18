@@ -17,7 +17,7 @@ public:
     void Run(Graphics* graphics, InputController* input, std::vector<GameObject*>& sceneObjects);
 
 private:
-    const double FIXED_DELTA_TIME = 0.01;
+    const double FIXED_DELTA_TIME = 0.0166;
     const int MAX_PHYSICS_UPDATES = 5;
     
     Timer* timer;
@@ -26,7 +26,7 @@ private:
 
     void Input(const InputController* input) const;
     void Update(std::vector<GameObject*>& sceneObjects) const;
-    void Render(Graphics* graphics) const;
+    void Render(Graphics* graphics, std::vector<GameObject*>& sceneObjects) const;
 };
 
 #endif

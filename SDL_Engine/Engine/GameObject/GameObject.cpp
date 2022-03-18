@@ -4,15 +4,15 @@ GameObject::~GameObject() {
     childObjects.clear();
 }
 
-Vector2<int> GameObject::getTransform() const {
-    return transform;
+Vector2<int> GameObject::GetPosition() const {
+    return position;
 }
 
-Vector2<float> GameObject::getRotation() const {
+Vector2<float> GameObject::GetRotation() const {
     return rotation;
 }
 
-Vector2<float> GameObject::getScale() const {
+Vector2<float> GameObject::GetScale() const {
     return scale;
 }
 
@@ -20,7 +20,7 @@ void GameObject::Update() {
     //
 }
 
-void GameObject::Render() {
+void GameObject::Render(Graphics* graphics) {
     //
 }
 

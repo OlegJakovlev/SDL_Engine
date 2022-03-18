@@ -1,8 +1,12 @@
 #include "Scene.h"
+#include "../../TestRectangle.h"
 
 Scene::Scene() {
     gameLoop = new GameLoop();
     inputController = new InputController();
+
+    TestRectangle* a = new TestRectangle();
+    sceneObjects.push_back(a);
 }
 
 Scene::~Scene() {

@@ -7,6 +7,7 @@
 #include <string>
 #include <algorithm>
 #include "../Physics/Vector2.h"
+#include "../Graphics/Graphics.h"
 
 class GameObject {
 public:
@@ -14,22 +15,22 @@ public:
     ~GameObject();
 
     // Setters / Getters
-    Vector2<int> getTransform() const;
-    Vector2<float> getRotation() const;
-    Vector2<float> getScale() const;
+    Vector2<int> GetPosition() const;
+    Vector2<float> GetRotation() const;
+    Vector2<float> GetScale() const;
     bool ShouldBeDeleted() const;
 
     // Game Loop
-    void Update();
-    void Render();
+    virtual void Update();
+    virtual void Render(Graphics* graphics);
 
     // Delete object
     void Destroy();
 
-private:
+protected:
     int ID;
     std::string name;
-    Vector2<int> transform;
+    Vector2<int> position;
     Vector2<float> rotation;
     Vector2<float> scale;
 

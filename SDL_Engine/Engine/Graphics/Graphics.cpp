@@ -7,6 +7,11 @@ Graphics* Graphics::Instance() {
     return sInstance;
 }
 
+void Graphics::Clear() {
+    // Clear the current rendering buffer
+    SDL_RenderClear(renderer);
+}
+
 Graphics::Graphics() {
     window = nullptr;
 
@@ -25,6 +30,10 @@ Graphics::Graphics() {
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 }
 
+SDL_Renderer* Graphics::GetRenderer() {
+    return renderer;
+}
+
 Graphics::~Graphics() {
     SDL_DestroyWindow(window);
     window = nullptr;
@@ -33,9 +42,6 @@ Graphics::~Graphics() {
 }
 
 void Graphics::Render() {
-    // Clear the current rendering buffer
-    SDL_RenderClear(renderer);
-
     // Display everything rendered using SDL_RenderCopy, from last SDL_RenderClear call and switch buffer
     SDL_RenderPresent(renderer);
 }
