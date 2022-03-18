@@ -1,0 +1,13 @@
+{
+    "master": {
+        "childConfigurators": {
+            "SceneConfigurator": {
+                "configPath": "./configs/scene_configs/"
+            },
+
+            "InputConfiguration": {
+                "configPath": "./configs/input_configs/"
+            }
+        }
+    }
+}

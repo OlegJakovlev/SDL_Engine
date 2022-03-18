@@ -1,0 +1,11 @@
+{
+	"configurators": {
+		"SceneConfigurator": {
+			"configPath": "./configs/scene_configs/"
+		},
+
+		"InputConfigurator": {
+			"configPath": "./configs/input_configs/"
+		}
+	}
+}

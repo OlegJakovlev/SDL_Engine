@@ -87,6 +87,12 @@
     <ClCompile Include="Engine\GameLoop\GameLoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\ObserverPattern\Observer\IObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\ObserverPattern\Subject\ISubject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -161,6 +167,12 @@
     <ClInclude Include="Engine\GameLoop\GameLoop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\ObserverPattern\Observer\IObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\ObserverPattern\Subject\ISubject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -168,8 +180,10 @@
     <None Include="Resources\Audio\Music\.gitkeep" />
     <None Include="Resources\Audio\Sounds\.gitkeep" />
     <None Include="Resources\Images\Textures\.gitkeep" />
-    <None Include="Engine\Configurator\SceneConfigurator\example.json" />
     <None Include="Resources\Scenes\.gitkeep" />
     <None Include="Engine\Configurator\InputConfigurator\example.json" />
+    <None Include="Engine\Configurator\example.json" />
+    <None Include="Resources\Configurations\master_config.json" />
+    <None Include="Resources\Configurations\SceneConfiguration\example.json" />
   </ItemGroup>
 </Project>

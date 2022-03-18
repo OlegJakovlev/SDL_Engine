@@ -6,6 +6,9 @@
 #include "../Configurator.h"
 
 class SceneConfigurator : public Configurator {
+public:
+    explicit SceneConfigurator(const std::string& newConfigPath);
+    void LoadConfiguration() override;
 };
 
 #endif

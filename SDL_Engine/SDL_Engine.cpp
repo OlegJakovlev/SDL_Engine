@@ -1,8 +1,11 @@
+#include "Engine/Configurator/SceneConfigurator/SceneConfigurator.h"
 #include "Engine/GameManager.h"
 
 int main(int argc, char* args[])
 {
-	// Create configurators and load configs
+	// Load scenes data
+	SceneConfigurator* sceneConfig = new SceneConfigurator("./Resources/Configurations/SceneConfiguration/example.json");
+	sceneConfig->LoadConfiguration();
 
 	// Create game resources
 	GameManager* game = GameManager::Instance();

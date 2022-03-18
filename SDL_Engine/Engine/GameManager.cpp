@@ -30,7 +30,6 @@ void GameManager::Release() {
 }
 
 void GameManager::Run() {
-
     Scene* currentScene;
 
     while (!quit) {

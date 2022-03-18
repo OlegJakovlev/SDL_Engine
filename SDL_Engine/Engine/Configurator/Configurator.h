@@ -4,21 +4,21 @@
 #define Configurator_H
 
 #include <string>
-#include <vector>
+#include <fstream>
 #include <nlohmann/json.hpp>
+#include "../FileWriter/FileWriter.h"
 
-class Configurator {
+class Configurator : public FileWriter {
 public:
     explicit Configurator(const std::string& newConfigPath);
-    virtual ~Configurator();
+    virtual ~Configurator() = default;
 
-    void SaveConfiguration();
-    void LoadConfiguration();
+    virtual void SaveConfiguration();
+    virtual void LoadConfiguration();
 
 protected:
     const std::string configPath;
     nlohmann::json configuration;
-    std::vector<Configurator*> childConfigurators;
 };
 
 #endif

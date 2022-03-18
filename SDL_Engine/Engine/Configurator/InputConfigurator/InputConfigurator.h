@@ -6,6 +6,8 @@
 #include "../Configurator.h"
 
 class InputConfigurator : public Configurator {
+public:
+    explicit InputConfigurator(const std::string& configPath);
 };
 
 #endif
