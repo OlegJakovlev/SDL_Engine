@@ -1,35 +1,99 @@
 {
-    "world": {
-        "ID": 1,
-        "name": "Root Object",
-        "transform": {
-            "x": 2,
-            "y": 4
+    "root": {
+        "world": {
+            "ID": 0,
+            "name": "world",
+            "gameObjects": {
+                "ID": 1,
+                "name": "Root Object",
+                "transform": {
+                    "x": 0,
+                    "y": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0
+                },
+                "scale": {
+                    "x": 1,
+                    "y": 1
+                },
+                "childObjects": [
+                    {
+                        "ID": 2,
+                        "name": "Child Object",
+                        "transform": {
+                            "x": 10,
+                            "y": -100
+                        },
+                        "rotation": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "scale": {
+                            "x": 1,
+                            "y": 1
+                        },
+                        "childObjects": []
+                    },
+                    {
+                        "ID": 3,
+                        "name": "Child Object 2",
+                        "transform": {
+                            "x": 100,
+                            "y": -1
+                        },
+                        "rotation": {
+                            "x": 23,
+                            "y": 183
+                        },
+                        "scale": {
+                            "x": 1,
+                            "y": 1
+                        },
+                        "childObjects": [
+                            {
+                                "ID": 4,
+                                "name": "Child Child Object",
+                                "transform": {
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "rotation": {
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "scale": {
+                                    "x": 1,
+                                    "y": 1
+                                },
+                                "childObjects": []
+                            }
+                        ]
+                    }
+                ]
+            }
         },
-        "rotation": {
-            "x": 0,
-            "y": 0
-        },
-        "scale": {
-            "x": 1,
-            "y": 1
-        },
-        "childObjects": {
-            "ID": 2,
-            "name": "Child Object",
-            "transform": {
-                "x": 10,
-                "y": -100
-            },
-            "rotation": {
-                "x": 0,
-                "y": 0
-            },
-            "scale": {
-                "x": 1,
-                "y": 1
-            },
-            "childObjects": {}
+        "world2": {
+            "ID": 1,
+            "name": "world2",
+            "gameObjects": {
+                "ID": 1,
+                "name": "Root Object",
+                "transform": {
+                    "x": 0,
+                    "y": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0
+                },
+                "scale": {
+                    "x": 1,
+                    "y": 1
+                },
+                "childObjects": {}
+            }
         }
     }
 }

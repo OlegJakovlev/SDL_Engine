@@ -30,18 +30,22 @@ void GameManager::Release() {
 }
 
 void GameManager::Run() {
-    Scene* currentScene;
+    Scene* currentScene = nullptr;
 
     while (!quit) {
         currentScene = sceneManager->GetCurrentScene();
 
-        // Run game loop on active scene
-        currentScene->GetGameLoop()->Run(
-            graphics,
-            currentScene->GetInputController(),
-            currentScene->GetSceneObjectList()
-        );
+        if (currentScene != nullptr) {
+            // Run game loop on active scene
+            currentScene->GetGameLoop()->Run(
+                graphics,
+                currentScene->GetInputController(),
+                currentScene->GetSceneObjectList()
+            );
+        }
     }
+
+    delete currentScene;
 }
 
 void GameManager::QuitTheGame() {

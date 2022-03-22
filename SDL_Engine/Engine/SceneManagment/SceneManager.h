@@ -14,6 +14,9 @@ public:
 
     Scene* GetCurrentScene();
 
+    void AddScene(Scene* newScene);
+    int GetCurrentSceneIndex();
+
     // Observer pattern for scene change event
     void Subscribe(IObserver* newSubscriber) override;
     void Unsubscribe(IObserver* subscriber) override;

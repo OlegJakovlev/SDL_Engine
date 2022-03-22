@@ -167,6 +167,7 @@
     <ClCompile Include="Engine\GameLoop\GameLoop.cpp" />
     <ClCompile Include="Engine\ObserverPattern\Observer\IObserver.cpp" />
     <ClCompile Include="Engine\ObserverPattern\Subject\ISubject.cpp" />
+    <ClCompile Include="Engine\Component\IComponent.cpp" />
     <ClCompile Include="SDL_Engine.cpp" />
     <ClCompile Include="Engine\Physics\Vector2.cpp" />
   </ItemGroup>
@@ -194,14 +195,14 @@
     <ClInclude Include="Engine\GameLoop\GameLoop.h" />
     <ClInclude Include="Engine\ObserverPattern\Observer\IObserver.h" />
     <ClInclude Include="Engine\ObserverPattern\Subject\ISubject.h" />
+    <ClInclude Include="Engine\Component\IComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Configurator\example.json" />
-    <None Include="Engine\Configurator\InputConfigurator\example.json" />
     <None Include="packages.config" />
     <None Include="Resources\Audio\Music\.gitkeep" />
     <None Include="Resources\Audio\Sounds\.gitkeep" />
-    <None Include="Resources\Configurations\master_config.json" />
+    <None Include="Resources\Configurations\InputConfiguration\example.json" />
     <None Include="Resources\Configurations\SceneConfiguration\example.json" />
     <None Include="Resources\Images\Sprite\.gitkeep" />
     <None Include="Resources\Images\Textures\.gitkeep" />

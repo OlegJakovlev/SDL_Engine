@@ -18,7 +18,7 @@ void Logger::Write(const std::string& logMessage) {
 
     // Write to file
     std::string fullMessage = "[" + std::string(buffer) + "]" + "\t" + logMessage + "\n";
-    FileWriter::WriteToFile(fullMessage, logMessage, FileWriter::Mode::APPEND);
+    FileWriter::WriteToFile(fullMessage, outputFile, FileWriter::Mode::APPEND);
 }
 
 void Logger::LogMessage(const std::string& msg) {

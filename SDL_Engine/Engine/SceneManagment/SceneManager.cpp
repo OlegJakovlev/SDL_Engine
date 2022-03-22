@@ -1,15 +1,24 @@
 #include "SceneManager.h"
 
 SceneManager::SceneManager() {
-#if _DEBUG
-    currentScene = new Scene();
-    scenesToBuild.push_back(currentScene);
-#endif
 }
 
 SceneManager::~SceneManager() {
     currentScene = nullptr;
+
+    for (int sceneIndex = 0; sceneIndex < scenesToBuild.size(); sceneIndex++) {
+        delete scenesToBuild[sceneIndex];
+    }
+
     scenesToBuild.clear();
+}
+
+void SceneManager::AddScene(Scene* newScene) {
+    scenesToBuild.push_back(newScene);
+}
+
+int SceneManager::GetCurrentSceneIndex() {
+    return currentScene->GetID();
 }
 
 Scene* SceneManager::GetCurrentScene() {

@@ -1,0 +1,37 @@
+{
+    "windowControl": {
+        "toggleFullScreenMode": "SDLK_U"
+    },
+
+    "gameLoopControl": {
+        "toggleInput": "SDLK_J",
+        "toggleUpdate": "SDLK_K",
+        "toggleRender": "SDLK_L"
+    },
+
+    "audioControl": {
+        "toggleSoundEffects": "SDLK_N",
+        "toggleMusicEffects": "SDLK_M"
+    },
+
+    "gameControl": {
+        "players": [
+            {
+                "name": "player 1",
+                "goUp": "SDLK_w",
+                "goDown": "SDLK_s",
+                "goLeft": "SDLK_a",
+                "goRight": "SDLK_d",
+                "plantBomb": "SDLK_e"
+            },
+            {
+                "name": "player 2",
+                "goUp": "SDLK_UP",
+                "goDown": "SDLK_DOWN",
+                "goLeft": "SDLK_LEFT",
+                "goRight": "SDLK_RIGHT",
+                "plantBomb": "SDLK_KP_0"
+            }
+        ]
+    }
+}

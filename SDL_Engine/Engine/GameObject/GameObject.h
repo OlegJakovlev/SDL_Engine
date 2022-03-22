@@ -6,37 +6,64 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <nlohmann/json.hpp>
+#include <iostream>
 #include "../Physics/Vector2.h"
+#include "../Component/IComponent.h"
 
-class GameObject {
-public:
-    GameObject() = default;
-    ~GameObject();
+namespace GameObject {
+    class GameObject {
+    public:
+        GameObject(nlohmann::json& json);
+        GameObject(int newID, const std::string& newName);
+        ~GameObject();
 
-    // Setters / Getters
-    Vector2<int> getTransform() const;
-    Vector2<float> getRotation() const;
-    Vector2<float> getScale() const;
-    bool ShouldBeDeleted() const;
+        // Setters / Getters
+        void SetID(const int newID);
+        void SetName(const std::string& newName);
+        void SetTransform(const Vector2::Vector2<int>& newTransform);
+        void SetRotation(const Vector2::Vector2<float>& newRotation);
+        void SetScale(const Vector2::Vector2<float>& newScale);
 
-    // Game Loop
-    void Update();
-    void Render();
+        const int GetID() const;
+        const std::string& GetName() const;
+        const Vector2::Vector2<int>* GetTransform() const;
+        const Vector2::Vector2<float>* GetRotation() const;
+        const Vector2::Vector2<float>* GetScale() const;
+        const std::vector<GameObject*>& GetChildObjects() const;
 
-    // Delete object
-    void Destroy();
+        // General object functions
+        void AddChildObject(GameObject* newChildObject);
+        const bool ShouldBeDeleted() const;
 
-private:
-    int ID;
-    std::string name;
-    Vector2<int> transform;
-    Vector2<float> rotation;
-    Vector2<float> scale;
+        // Debug functions
+        void Print(int tabLevel = 0);
 
-    std::vector<GameObject*> childObjects;
-    bool dirtyFlag = true; // flag specifying if local position should be recalculated
+        // Game Loop
+        void Update();
+        void Render();
 
-    bool toBeDeleted;
-};
+        // Delete object
+        void Destroy();
+
+    private:
+        int ID;
+        std::string name;
+
+        Vector2::Vector2<int>* transform; // relative to its parent / world root object
+        Vector2::Vector2<float>* rotation;
+        Vector2::Vector2<float>* scale;
+
+        std::vector<IComponent*> components;
+        std::vector<GameObject*> childObjects;
+        
+        bool dirtyFlag = true; // flag specifying if local position should be recalculated
+        bool toBeDeleted;
+    };
+
+    void to_json(nlohmann::json& json, const GameObject* objectToConvert);
+    void to_json(nlohmann::json& json, const GameObject& objectToConvert);
+    void from_json(const nlohmann::json& json, GameObject& objectToConvert);
+}
 
 #endif

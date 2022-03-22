@@ -40,6 +40,9 @@ void Graphics::Render() {
     SDL_RenderPresent(renderer);
 }
 
+void Graphics::Render(double normalizedStepBetweenUpdates){
+}
+
 void Graphics::Release() {
     delete sInstance;
     sInstance = nullptr;

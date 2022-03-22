@@ -9,10 +9,11 @@ GameLoop::~GameLoop() {
     timer = nullptr;
 }
 
-void GameLoop::Run(Graphics* graphics, InputController* input, std::vector<GameObject*>& sceneObjects) {
+void GameLoop::Run(Graphics* graphics, InputController* input, std::vector<GameObject::GameObject*>& sceneObjects) {
     double currentTime = timer->GetCurrentTime();
     double frameTime = currentTime - previousTime;
-    std::printf("Frame Time: %f\n", frameTime);
+
+    if (frameTime > 1) frameTime = 1;
 
     int physicsUpdates = 0;
 
@@ -26,15 +27,18 @@ void GameLoop::Run(Graphics* graphics, InputController* input, std::vector<GameO
     Input(input);
 
     // Physics Update
-    while (timeLag >= FIXED_DELTA_TIME && physicsUpdates < MAX_PHYSICS_UPDATES) {
+    while (timeLag >= SECONDS_PER_UPDATE && physicsUpdates < MAX_PHYSICS_UPDATES) {
         physicsUpdates++;
         Update(sceneObjects);
-        timeLag -= FIXED_DELTA_TIME;
-        currentTime += FIXED_DELTA_TIME;
+#if _DEBUG
+        printf("Update %d\n", physicsUpdates);
+#endif
+        timeLag -= SECONDS_PER_UPDATE;
+        currentTime += SECONDS_PER_UPDATE;
     }
 
     // Render
-    Render(graphics);
+    Render(graphics, timeLag / SECONDS_PER_UPDATE);
 }
 
 void GameLoop::Input(const InputController* input) const {
@@ -45,7 +49,7 @@ void GameLoop::Input(const InputController* input) const {
     }
 }
 
-void GameLoop::Update(std::vector<GameObject*>& sceneObjects) const {
+void GameLoop::Update(std::vector<GameObject::GameObject*>& sceneObjects) const {
     // Component and physics update
     for (int index = 0; index < sceneObjects.size(); index++) {
         sceneObjects[index]->Update();
@@ -60,7 +64,8 @@ void GameLoop::Update(std::vector<GameObject*>& sceneObjects) const {
     }
 }
 
-void GameLoop::Render(Graphics* graphics) const {
-    graphics->Render();
-    //graphics->Render(timeLag / FIXED_DELTA_TIME);
+void GameLoop::Render(Graphics* graphics, double normalizedStepBetweenUpdates) const {
+    graphics->Render(normalizedStepBetweenUpdates);
+    printf("1\n");
+    //graphics->Render(timeLag / SECONDS_PER_UPDATE);
 }

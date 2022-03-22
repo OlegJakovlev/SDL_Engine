@@ -13,6 +13,7 @@ public:
 
     static Graphics* Instance();
     void Render();
+    void Render(double normalizedStepBetweenUpdates);
     static void Release();
 
 private:

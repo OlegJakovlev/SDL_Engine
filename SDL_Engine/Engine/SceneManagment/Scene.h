@@ -10,17 +10,24 @@
 class Scene {
 
 public:
-    Scene();
+    Scene(int newID, const std::string& newName);
     ~Scene();
+
+    void AddSceneObject(GameObject::GameObject* newObject);
+
+    const int GetID();
 
     GameLoop* GetGameLoop();
     InputController* GetInputController();
-    std::vector<GameObject*>& GetSceneObjectList();
+    std::vector<GameObject::GameObject*>& GetSceneObjectList();
 
 private:
+    const int ID;
+    const std::string name;
+
     GameLoop* gameLoop;
     InputController* inputController;
-    std::vector<GameObject*> sceneObjects;
+    std::vector<GameObject::GameObject*> sceneObjects;
 };
 
 #endif
