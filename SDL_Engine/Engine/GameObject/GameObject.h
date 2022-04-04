@@ -33,6 +33,8 @@ namespace GameObject {
         const std::vector<GameObject*>& GetChildObjects() const;
 
         // General object functions
+        void SetParentObject(GameObject* newParent);
+        const GameObject* GetParentObject();
         void AddChildObject(GameObject* newChildObject);
         const bool ShouldBeDeleted() const;
 
@@ -55,6 +57,8 @@ namespace GameObject {
         Vector2::Vector2<float>* scale;
 
         std::vector<IComponent*> components;
+        
+        GameObject* parentObject;
         std::vector<GameObject*> childObjects;
         
         bool dirtyFlag = true; // flag specifying if local position should be recalculated

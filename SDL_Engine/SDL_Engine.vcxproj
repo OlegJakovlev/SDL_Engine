@@ -42,13 +42,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -162,12 +162,12 @@
     <ClCompile Include="Engine\Logger\GraphicsLogger\GraphicsLogger.cpp" />
     <ClCompile Include="Engine\Logger\InputLogger\InputLogger.cpp" />
     <ClCompile Include="Engine\Logger\SceneLogger\SceneLogger.cpp" />
-    <ClCompile Include="Engine\Input\PlayerController\PlayerController.cpp" />
     <ClCompile Include="Engine\Audio\NullAudio\NullAudio.cpp" />
     <ClCompile Include="Engine\GameLoop\GameLoop.cpp" />
     <ClCompile Include="Engine\ObserverPattern\Observer\IObserver.cpp" />
     <ClCompile Include="Engine\ObserverPattern\Subject\ISubject.cpp" />
     <ClCompile Include="Engine\Component\IComponent.cpp" />
+    <ClCompile Include="Engine\Component\ImageComponent\ImageComponent.cpp" />
     <ClCompile Include="SDL_Engine.cpp" />
     <ClCompile Include="Engine\Physics\Vector2.cpp" />
   </ItemGroup>
@@ -190,12 +190,12 @@
     <ClInclude Include="Engine\Logger\GraphicsLogger\GraphicsLogger.h" />
     <ClInclude Include="Engine\Logger\InputLogger\InputLogger.h" />
     <ClInclude Include="Engine\Logger\SceneLogger\SceneLogger.h" />
-    <ClInclude Include="Engine\Input\PlayerController\PlayerController.h" />
     <ClInclude Include="Engine\Audio\NullAudio\NullAudio.h" />
     <ClInclude Include="Engine\GameLoop\GameLoop.h" />
     <ClInclude Include="Engine\ObserverPattern\Observer\IObserver.h" />
     <ClInclude Include="Engine\ObserverPattern\Subject\ISubject.h" />
     <ClInclude Include="Engine\Component\IComponent.h" />
+    <ClInclude Include="Engine\Component\ImageComponent\ImageComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Configurator\example.json" />

@@ -10,9 +10,6 @@ int main(int argc, char* args[])
 	SceneConfigurator* sceneConfig = new SceneConfigurator("./Resources/Configurations/SceneConfiguration/example.json");
 	sceneConfig->LoadConfiguration();
 
-	Logger::Instance().LogError("1");
-
-	/*
 	// Create game resources
 	GameManager* game = GameManager::Instance();
 	game->Init();
@@ -23,7 +20,6 @@ int main(int argc, char* args[])
 	// Release resources
 	GameManager::Release();
 	game = nullptr;
-	*/
 
 	// Release configurators
 	delete sceneConfig;

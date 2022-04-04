@@ -14,8 +14,7 @@ class GameManager;
 
 class InputController {
 private:
-    std::unordered_map<int, std::string> keyBindsToEventName;
-    std::set<std::string> activeEvents;
+    std::unordered_map<int, bool> keyBinds;
 
 public:
     InputController();

@@ -72,9 +72,6 @@
     <ClCompile Include="Engine\Logger\SceneLogger\SceneLogger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Input\PlayerController\PlayerController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Engine\Audio\NullAudio\NullAudio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -94,6 +91,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Component\IComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Component\ImageComponent\ImageComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -152,9 +152,6 @@
     <ClInclude Include="Engine\Logger\SceneLogger\SceneLogger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Input\PlayerController\PlayerController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Audio\NullAudio\NullAudio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -177,6 +174,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Component\IComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component\ImageComponent\ImageComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

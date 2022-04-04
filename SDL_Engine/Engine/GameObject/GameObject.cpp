@@ -12,7 +12,9 @@ namespace GameObject {
 
         // Construct child objects
         for (auto it : json.at("childObjects")) {
-            AddChildObject(new GameObject(it));
+            GameObject* childObject = new GameObject(it);
+            AddChildObject(childObject);
+            childObject->SetParentObject(this);
         }
     }
 
@@ -118,6 +120,14 @@ namespace GameObject {
         std::for_each(childObjects.begin(), childObjects.end(), [](GameObject* childObject) {
             childObject->Destroy();
         });
+    }
+
+    void GameObject::SetParentObject(GameObject* newParent) {
+        parentObject = newParent;
+    }
+
+    const GameObject* GameObject::GetParentObject() {
+        return parentObject;
     }
 
     void GameObject::AddChildObject(GameObject* newChildObject) {

@@ -2,6 +2,8 @@
 #include "../GameManager.h"
 
 InputController::InputController() {
+    // Initialize dictionary with all input buttons
+
 }
 
 InputController::~InputController() {
@@ -10,12 +12,16 @@ InputController::~InputController() {
 void InputController::ProcessInput(const SDL_Event& inputEvent) const {
     switch (inputEvent.type) {
     case SDL_KEYDOWN:
+        std::printf("ASCII Key %d was pressed!", inputEvent.key.keysym);
         break;
     case SDL_KEYUP:
+        std::printf("ASCII Key %d was released!", inputEvent.key.keysym);
         break;
     case SDL_MOUSEBUTTONDOWN:
+        std::printf("Mouse hold!");
         break;
     case SDL_MOUSEBUTTONUP:
+        std::printf("Mouse release!");
         break;
     case SDL_QUIT:
         GameManager::Instance()->QuitTheGame();

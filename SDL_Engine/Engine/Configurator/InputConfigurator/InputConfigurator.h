@@ -8,6 +8,7 @@
 class InputConfigurator : public Configurator {
 public:
     explicit InputConfigurator(const std::string& configPath);
+    void LoadConfiguration() override;
 };
 
 #endif

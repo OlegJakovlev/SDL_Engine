@@ -31,10 +31,17 @@
                             "y": 0
                         },
                         "scale": {
-                            "x": 1,
-                            "y": 1
+                          "x": 1,
+                          "y": 1
                         },
-                        "childObjects": []
+                      "components": [
+                        {
+                          "ImageComponent": {
+                            "imagePath": "Resources/Images/test.png"
+                          }
+                        }
+                      ],
+                      "childObjects": []
                     },
                     {
                         "ID": 3,
