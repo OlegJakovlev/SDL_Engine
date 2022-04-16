@@ -16,6 +16,7 @@ public:
     void AddSceneObject(GameObject::GameObject* newObject);
 
     const int GetID();
+    const std::string& GetName();
 
     GameLoop* GetGameLoop();
     InputController* GetInputController();

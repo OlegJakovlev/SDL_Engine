@@ -7,15 +7,6 @@ namespace GameObject {
         SetTransform(json.at("transform").get<Vector2::Vector2<int>>());
         SetRotation(json.at("rotation").get<Vector2::Vector2<float>>());
         SetScale(json.at("scale").get<Vector2::Vector2<float>>());
-
-        if (json.at("childObjects").empty()) return;
-
-        // Construct child objects
-        for (auto it : json.at("childObjects")) {
-            GameObject* childObject = new GameObject(it);
-            AddChildObject(childObject);
-            childObject->SetParentObject(this);
-        }
     }
 
     GameObject::GameObject(int newID, const std::string& newName) {
@@ -64,6 +55,10 @@ namespace GameObject {
         scale = new Vector2::Vector2<float>(newScale);
     }
 
+    void GameObject::SetActive(bool newStatus) {
+        active = newStatus;
+    }
+
     const int GameObject::GetID() const {
         return ID;
     }
@@ -88,28 +83,45 @@ namespace GameObject {
         return childObjects;
     }
 
+    const bool GameObject::IsActive() const {
+        return active;
+    }
+
+    void GameObject::AddComponent(const std::string& componentName) {
+        // Create and save component
+        components.insert(std::pair<std::string, IComponent*>(componentName, ComponentFactory::Instance()->CreateComponent(componentName)));
+    }
+
+    IComponent* GameObject::GetComponent(const std::string& componentName) const {
+        return components.at(componentName);
+    }
+
     void GameObject::Update() {
+        if (!active) return;
+
         // Update current object
-        std::for_each(components.begin(), components.end(), [](IComponent* component) {
-            component->Update();
-        });
+        for (auto& component : components) {
+            component.second->Update();
+        }
 
         // Update child objects
-        std::for_each(childObjects.begin(), childObjects.end(), [](GameObject* child) {
+        for (auto& child : childObjects) {
             child->Update();
-        });
+        }
     }
 
     void GameObject::Render() {
-        // Render current object
-        std::for_each(components.begin(), components.end(), [](IComponent* component) {
-            component->Render();
-        });
+        if (!active) return;
 
-        // Render child objects
-        std::for_each(childObjects.begin(), childObjects.end(), [](GameObject* child) {
+        // Update current object
+        for (auto& component : components) {
+            component.second->Render();
+        }
+
+        // Update child objects
+        for (auto& child : childObjects) {
             child->Render();
-        });
+        }
     }
 
     void GameObject::Destroy() {

@@ -4,6 +4,8 @@
 #define Graphics_H
 
 #include <SDL.h>
+#include <vector>
+#include "../GameObject/GameObject.h"
 #include "../Logger/GraphicsLogger/GraphicsLogger.h"
 
 class Graphics {
@@ -12,9 +14,14 @@ public:
     static const int SCREEN_HEIGHT = 600;
 
     static Graphics* Instance();
-    void Render();
-    void Render(double normalizedStepBetweenUpdates);
     static void Release();
+
+    void RenderClear();
+    void Render(GameObject::GameObject* gameObject);
+    void Render(std::vector<GameObject::GameObject*>& gameObjects, double normalizedStepBetweenUpdates);
+    void RenderPresent();
+
+    SDL_Texture* GetTextureFromSurface(SDL_Surface* surface);
 
 private:
     Graphics();

@@ -5,6 +5,7 @@
 
 #include <vector>
 #include "Scene.h"
+#include "../Logger/SceneLogger/SceneLogger.h"
 #include "../ObserverPattern/Subject/ISubject.h"
 
 class SceneManager : public ISubject {
@@ -16,6 +17,8 @@ public:
 
     void AddScene(Scene* newScene);
     int GetCurrentSceneIndex();
+    void SetCurrentSceneByID(int targetSceneID);
+    void SetCurrentSceneByName(std::string targetSceneName);
 
     // Observer pattern for scene change event
     void Subscribe(IObserver* newSubscriber) override;

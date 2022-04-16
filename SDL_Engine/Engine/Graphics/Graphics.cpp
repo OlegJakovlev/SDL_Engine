@@ -32,15 +32,28 @@ Graphics::~Graphics() {
     SDL_Quit();
 }
 
-void Graphics::Render() {
+void Graphics::RenderClear() {
     // Clear the current rendering buffer
     SDL_RenderClear(renderer);
+}
 
+void Graphics::Render(GameObject::GameObject* gameObject) {
+    gameObject->Render();
+}
+
+void Graphics::Render(std::vector<GameObject::GameObject*>& sceneObjects, double normalizedStepBetweenUpdates){
+    std::for_each(sceneObjects.begin(), sceneObjects.end(), [](GameObject::GameObject* sceneObject) {
+        sceneObject->Render();
+    });
+}
+
+void Graphics::RenderPresent() {
     // Display everything rendered using SDL_RenderCopy, from last SDL_RenderClear call and switch buffer
     SDL_RenderPresent(renderer);
 }
 
-void Graphics::Render(double normalizedStepBetweenUpdates){
+SDL_Texture* Graphics::GetTextureFromSurface(SDL_Surface* surface) {
+    return SDL_CreateTextureFromSurface(renderer, surface);
 }
 
 void Graphics::Release() {

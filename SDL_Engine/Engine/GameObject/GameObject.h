@@ -9,7 +9,7 @@
 #include <nlohmann/json.hpp>
 #include <iostream>
 #include "../Physics/Vector2.h"
-#include "../Component/IComponent.h"
+#include "../Factories/ComponentFactory/ComponentFactory.h"
 
 namespace GameObject {
     class GameObject {
@@ -24,6 +24,7 @@ namespace GameObject {
         void SetTransform(const Vector2::Vector2<int>& newTransform);
         void SetRotation(const Vector2::Vector2<float>& newRotation);
         void SetScale(const Vector2::Vector2<float>& newScale);
+        void SetActive(bool newStatus);
 
         const int GetID() const;
         const std::string& GetName() const;
@@ -31,12 +32,16 @@ namespace GameObject {
         const Vector2::Vector2<float>* GetRotation() const;
         const Vector2::Vector2<float>* GetScale() const;
         const std::vector<GameObject*>& GetChildObjects() const;
+        const bool IsActive() const;
 
         // General object functions
         void SetParentObject(GameObject* newParent);
         const GameObject* GetParentObject();
         void AddChildObject(GameObject* newChildObject);
         const bool ShouldBeDeleted() const;
+        
+        void AddComponent(const std::string& componentName);
+        IComponent* GetComponent(const std::string& componentName) const;
 
         // Debug functions
         void Print(int tabLevel = 0);
@@ -56,13 +61,14 @@ namespace GameObject {
         Vector2::Vector2<float>* rotation;
         Vector2::Vector2<float>* scale;
 
-        std::vector<IComponent*> components;
+        std::unordered_map<std::string, IComponent*> components;
         
         GameObject* parentObject;
         std::vector<GameObject*> childObjects;
         
+        bool active = true;
         bool dirtyFlag = true; // flag specifying if local position should be recalculated
-        bool toBeDeleted;
+        bool toBeDeleted = false;
     };
 
     void to_json(nlohmann::json& json, const GameObject* objectToConvert);

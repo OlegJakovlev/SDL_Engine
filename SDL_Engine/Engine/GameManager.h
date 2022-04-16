@@ -11,7 +11,7 @@
 class GameManager {
 public:
     static GameManager* Instance();
-    void Init();
+    void Init(SceneManager* newSceneManager);
     void Run();
     static void Release();
     void QuitTheGame();

@@ -11,7 +11,7 @@ int main(int argc, char* args[])
 
 	// Create game resources
 	GameManager* game = GameManager::Instance();
-	game->Init();
+	game->Init(sceneConfig->GetSceneManager());
 
 	// Start the game
 	game->Run();

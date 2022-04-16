@@ -1,0 +1,74 @@
+{
+    "gameObjects": {
+        "ID": 1,
+        "name": "GameLoopStatsView",
+        "transform": {
+            "x": 0,
+            "y": 0
+        },
+        "rotation": {
+            "x": 0,
+            "y": 0
+        },
+        "scale": {
+            "x": 1,
+            "y": 1
+        },
+        "childObjects": [
+            {
+                "ID": 2,
+                "name": "Child Object",
+                "transform": {
+                    "x": 0,
+                    "y": 0
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0
+                },
+                "scale": {
+                    "x": 1,
+                    "y": 1
+                },
+                "components": [ "Text" ],
+                "childObjects": []
+            },
+            {
+                "ID": 3,
+                "name": "Child Object 2",
+                "transform": {
+                    "x": 0,
+                    "y": 100
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0
+                },
+                "scale": {
+                    "x": 1,
+                    "y": 1
+                },
+                "components": [ "Text" ],
+                "childObjects": []
+            },
+            {
+                "ID": 4,
+                "name": "Child Object",
+                "transform": {
+                    "x": 0,
+                    "y": 200
+                },
+                "rotation": {
+                    "x": 0,
+                    "y": 0
+                },
+                "scale": {
+                    "x": 1,
+                    "y": 1
+                },
+                "components": [ "Text" ],
+                "childObjects": []
+            }
+        ]
+    }
+}

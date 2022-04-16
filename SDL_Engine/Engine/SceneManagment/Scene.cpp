@@ -12,8 +12,8 @@ Scene::~Scene() {
     delete inputController;
     inputController = nullptr;
 
-    for (int gameObjectIndex = 0; gameObjectIndex < sceneObjects.size(); gameObjectIndex++) {
-        delete sceneObjects[gameObjectIndex];
+    for (GameObject::GameObject* gameobject : sceneObjects) {
+        delete gameobject;
     }
 
     sceneObjects.clear();
@@ -25,6 +25,10 @@ void Scene::AddSceneObject(GameObject::GameObject* newObject) {
 
 const int Scene::GetID() {
     return ID;
+}
+
+const std::string& Scene::GetName() {
+    return name;
 }
 
 GameLoop* Scene::GetGameLoop() {

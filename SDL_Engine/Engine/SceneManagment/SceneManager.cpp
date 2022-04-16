@@ -6,14 +6,15 @@ SceneManager::SceneManager() {
 SceneManager::~SceneManager() {
     currentScene = nullptr;
 
-    for (int sceneIndex = 0; sceneIndex < scenesToBuild.size(); sceneIndex++) {
-        delete scenesToBuild[sceneIndex];
+    for (Scene* scene : scenesToBuild) {
+        delete scene;
     }
 
     scenesToBuild.clear();
 }
 
 void SceneManager::AddScene(Scene* newScene) {
+    if (currentScene == nullptr) currentScene = newScene;
     scenesToBuild.push_back(newScene);
 }
 
@@ -23,6 +24,19 @@ int SceneManager::GetCurrentSceneIndex() {
 
 Scene* SceneManager::GetCurrentScene() {
     return currentScene;
+}
+
+void SceneManager::SetCurrentSceneByID(int targetSceneID) {
+    currentScene = scenesToBuild[targetSceneID];
+}
+
+void SceneManager::SetCurrentSceneByName(std::string targetSceneName) {
+    for (auto& scene : scenesToBuild) {
+        if (scene->GetName() == targetSceneName) {
+            currentScene = scene;
+            return;
+        }
+    }
 }
 
 void SceneManager::Subscribe(IObserver* newSubscriber) {
@@ -36,6 +50,6 @@ void SceneManager::Unsubscribe(IObserver* subscriber) {
 
 void SceneManager::Notify() {
     for (int index = 0; index < subscribers.size(); index++) {
-        subscribers[index]->UpdateSceneEvent();
+        subscribers[index]->UpdateEvent();
     }
 }

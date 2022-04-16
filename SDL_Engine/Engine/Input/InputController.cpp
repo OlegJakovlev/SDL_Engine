@@ -12,10 +12,10 @@ InputController::~InputController() {
 void InputController::ProcessInput(const SDL_Event& inputEvent) const {
     switch (inputEvent.type) {
     case SDL_KEYDOWN:
-        std::printf("ASCII Key %d was pressed!", inputEvent.key.keysym);
+        std::printf("ASCII Key %i was pressed!", inputEvent.key.keysym.sym);
         break;
     case SDL_KEYUP:
-        std::printf("ASCII Key %d was released!", inputEvent.key.keysym);
+        std::printf("ASCII Key %i was released!", inputEvent.key.keysym.sym);
         break;
     case SDL_MOUSEBUTTONDOWN:
         std::printf("Mouse hold!");

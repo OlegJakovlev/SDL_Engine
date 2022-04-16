@@ -1,5 +1,4 @@
 #include "IObserver.h"
 
-void IObserver::UpdateSceneEvent() {
-    //
+void IObserver::UpdateEvent() {
 }
