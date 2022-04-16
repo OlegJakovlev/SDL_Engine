@@ -4,7 +4,7 @@ Logger::Logger(const std::string& newOutputFile) : outputFile(newOutputFile) {
 }
 
 Logger& Logger::Instance() {
-    static Logger* instance = new Logger();
+    Logger* instance = new Logger();
     return *instance;
 }
 
@@ -18,7 +18,7 @@ void Logger::Write(const std::string& logMessage) {
 
     // Write to file
     std::string fullMessage = "[" + std::string(buffer) + "]" + "\t" + logMessage + "\n";
-    FileWriter::WriteToFile(fullMessage, outputFile, FileWriter::Mode::APPEND);
+    FileWriter::WriteToFile(outputFile, fullMessage, FileWriter::Mode::APPEND);
 }
 
 void Logger::LogMessage(const std::string& msg) {

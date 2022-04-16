@@ -17,7 +17,7 @@ public:
     void LogError(const std::string& msg);
 
 protected:
-    explicit Logger(const std::string& newOutputFile = "something.log");
+    explicit Logger(const std::string& newOutputFile = "game.log");
     Logger& operator=(const Logger&) = delete;
     Logger(const Logger&) = delete;
     virtual ~Logger() = default;

@@ -27,5 +27,7 @@ int main(int argc, char* args[])
 	std::cout << "Thanks for using our software...\n";
 	std::this_thread::sleep_for(std::chrono::seconds(1));
 
+	Logger::Instance().LogMessage("Application closed!");
+
 	return 0;
 }

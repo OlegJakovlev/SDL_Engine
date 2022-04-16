@@ -30,7 +30,10 @@ void FileWriter::WriteToFile(const std::string& fileName, const std::string& tex
         return;
     }
 
-    if (!fileToWrite.is_open()) return;
+    if (!fileToWrite.is_open()) {
+        std::printf("%s has fail to open\n", fileName);
+        return;
+    }
 
     fileToWrite << textToWrite << "\n";
 
