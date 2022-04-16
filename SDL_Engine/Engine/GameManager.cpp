@@ -7,20 +7,20 @@ GameManager* GameManager::Instance() {
     return sInstance;
 }
 
-void GameManager::Init() {
+void GameManager::Init(SceneManager* newSceneManager) {
     quit = false;
     graphics = Graphics::Instance();
     eventQueue = {};
 
-    // Create game managers
-    sceneManager = new SceneManager();
+    // Link game managers
+    sceneManager = newSceneManager;
+
+    Logger::Instance().LogMessage("Game Manager succesfully initialized!");
 }
 
 GameManager::~GameManager() {
     Graphics::Release();
     graphics = nullptr;
-
-    delete sceneManager;
     sceneManager = nullptr;
 }
 
@@ -38,14 +38,11 @@ void GameManager::Run() {
         if (currentScene != nullptr) {
             // Run game loop on active scene
             currentScene->GetGameLoop()->Run(
-                graphics,
                 currentScene->GetInputController(),
                 currentScene->GetSceneObjectList()
             );
         }
     }
-
-    delete currentScene;
 }
 
 void GameManager::QuitTheGame() {

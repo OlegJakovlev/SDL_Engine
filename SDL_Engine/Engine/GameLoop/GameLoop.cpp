@@ -2,6 +2,7 @@
 
 GameLoop::GameLoop() {
     timer = new Timer();
+    statsView = GameObjectFactory::Instance()->CreateGameObjectFromFile(statsViewConfigPath);
 }
 
 GameLoop::~GameLoop() {
@@ -9,12 +10,12 @@ GameLoop::~GameLoop() {
     timer = nullptr;
 }
 
-void GameLoop::Run(Graphics* graphics, InputController* input, std::vector<GameObject::GameObject*>& sceneObjects) {
+void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>& sceneObjects) {
     double currentTime = timer->GetCurrentTime();
     double frameTime = currentTime - previousTime;
 
     if (frameTime > 1) frameTime = 1;
-
+    
     int physicsUpdates = 0;
 
     // Update previous time
@@ -26,19 +27,30 @@ void GameLoop::Run(Graphics* graphics, InputController* input, std::vector<GameO
     // Input
     Input(input);
 
+    // Measure input performance
+    double inputTime = timer->GetCurrentTime() - previousTime;
+
     // Physics Update
     while (timeLag >= SECONDS_PER_UPDATE && physicsUpdates < MAX_PHYSICS_UPDATES) {
         physicsUpdates++;
         Update(sceneObjects);
-#if _DEBUG
-        printf("Update %d\n", physicsUpdates);
-#endif
+
         timeLag -= SECONDS_PER_UPDATE;
         currentTime += SECONDS_PER_UPDATE;
     }
 
+    // Measure update performance
+    double updateTime = timer->GetCurrentTime() - inputTime - previousTime;
+
     // Render
-    Render(graphics, timeLag / SECONDS_PER_UPDATE);
+    Graphics::Instance()->RenderClear();
+    Graphics::Instance()->Render(sceneObjects, timeLag / SECONDS_PER_UPDATE);
+
+    // Measure render performance
+    double renderTime = timer->GetCurrentTime() - updateTime - previousTime;
+
+    //Graphics::Instance()->Render(view);
+    Graphics::Instance()->RenderPresent();
 }
 
 void GameLoop::Input(const InputController* input) const {
@@ -57,15 +69,11 @@ void GameLoop::Update(std::vector<GameObject::GameObject*>& sceneObjects) const 
 
     // Check if object should be deleted
     for (auto it = sceneObjects.begin(); it != sceneObjects.end(); it++) {
-        if ((*it)->ShouldBeDeleted()) (*it)->Destroy();
+        if ((*it)->ShouldBeDeleted()) {
+            (*it)->Destroy();
 
-        // Pointers should be updated after deleting an object
-        it = sceneObjects.erase(it);
+            // Pointers should be updated after deleting an object
+            it = sceneObjects.erase(it);
+        }
     }
-}
-
-void GameLoop::Render(Graphics* graphics, double normalizedStepBetweenUpdates) const {
-    graphics->Render(normalizedStepBetweenUpdates);
-    printf("1\n");
-    //graphics->Render(timeLag / SECONDS_PER_UPDATE);
 }

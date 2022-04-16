@@ -2,7 +2,6 @@
 #include <thread>
 #include "Engine/Configurator/SceneConfigurator/SceneConfigurator.h"
 #include "Engine/GameManager.h"
-#include "Engine/Logger/SceneLogger/SceneLogger.h"
 
 int main(int argc, char* args[])
 {

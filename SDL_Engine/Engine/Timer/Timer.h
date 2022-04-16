@@ -7,10 +7,10 @@
 
 class Timer {
 public:
-    Timer();
+    Timer() = default;
     Timer& operator=(const Timer&) = default;
     Timer(const Timer&) = default;
-    ~Timer() = default;
+    virtual ~Timer() = default;
 
     double GetCurrentTime() const;
     double GetElapsedTime() const;
