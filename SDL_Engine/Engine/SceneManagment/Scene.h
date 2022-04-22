@@ -14,6 +14,8 @@ public:
     ~Scene();
 
     void AddSceneObject(GameObject::GameObject* newObject);
+    GameObject::GameObject* GetSceneObjectByID(int objectID);
+    GameObject::GameObject* GetSceneObjectByName(std::string objectName);
 
     const int GetID();
     const std::string& GetName();

@@ -1,7 +1,7 @@
 #include "Scene.h"
 
 Scene::Scene(int newID, const std::string& newName) : ID(newID), name(newName) {
-    gameLoop = new GameLoop();
+    gameLoop = new GameLoop(this);
     inputController = new InputController();
 }
 
@@ -21,6 +21,31 @@ Scene::~Scene() {
 
 void Scene::AddSceneObject(GameObject::GameObject* newObject) {
     sceneObjects.push_back(newObject);
+}
+
+GameObject::GameObject* Scene::GetSceneObjectByID(int objectID) {
+    for (GameObject::GameObject* sceneObject : sceneObjects) {
+        if (sceneObject->GetID() == objectID) return sceneObject;
+
+        // Replace this with binary search
+        for (GameObject::GameObject* childSceneObject : sceneObject->GetChildObjects()) {
+            if (childSceneObject->GetID() == objectID) return childSceneObject;
+        }
+    }
+
+    return nullptr;
+}
+
+GameObject::GameObject* Scene::GetSceneObjectByName(std::string objectName) {
+    for (GameObject::GameObject* sceneObject : sceneObjects) {
+        if (sceneObject->GetName() == objectName) return sceneObject;
+
+        for (GameObject::GameObject* childSceneObject : sceneObject->GetChildObjects()) {
+            if (childSceneObject->GetName() == objectName) return childSceneObject;
+        }
+    }
+    
+    return nullptr;
 }
 
 const int Scene::GetID() {

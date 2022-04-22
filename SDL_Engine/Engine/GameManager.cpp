@@ -48,3 +48,7 @@ void GameManager::Run() {
 void GameManager::QuitTheGame() {
     quit = true;
 }
+
+SceneManager* GameManager::GetSceneManager() {
+    return sceneManager;
+}

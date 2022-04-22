@@ -105,6 +105,9 @@
     <ClCompile Include="Engine\Factories\GameObjectFactory\GameObjectFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CustomScripts\GameLoopView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -197,6 +200,9 @@
     <ClInclude Include="Engine\Factories\GameObjectFactory\GameObjectFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CustomScripts\GameLoopView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -208,6 +214,5 @@
     <None Include="Engine\Configurator\example.json" />
     <None Include="Resources\Configurations\SceneConfiguration\example.json" />
     <None Include="Resources\Configurations\InputConfiguration\example.json" />
-    <None Include="Resources\Configurations\GameLoop\example.json" />
   </ItemGroup>
 </Project>

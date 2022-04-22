@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -170,6 +170,7 @@
     <ClCompile Include="Engine\ObserverPattern\Subject\ISubject.cpp" />
     <ClCompile Include="Engine\Component\IComponent.cpp" />
     <ClCompile Include="Engine\Component\ImageComponent\ImageComponent.cpp" />
+    <ClCompile Include="CustomScripts\GameLoopView.cpp" />
     <ClCompile Include="SDL_Engine.cpp" />
     <ClCompile Include="Engine\Physics\Vector2.cpp" />
     <ClCompile Include="Engine\Component\TextComponent\TextComponent.cpp" />
@@ -202,13 +203,13 @@
     <ClInclude Include="Engine\Component\IComponent.h" />
     <ClInclude Include="Engine\Component\ImageComponent\ImageComponent.h" />
     <ClInclude Include="Engine\Component\TextComponent\TextComponent.h" />
+    <ClInclude Include="CustomScripts\GameLoopView.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Engine\Configurator\example.json" />
     <None Include="packages.config" />
     <None Include="Resources\Audio\Music\.gitkeep" />
     <None Include="Resources\Audio\Sounds\.gitkeep" />
-    <None Include="Resources\Configurations\GameLoop\example.json" />
     <None Include="Resources\Configurations\InputConfiguration\example.json" />
     <None Include="Resources\Configurations\SceneConfiguration\example.json" />
     <None Include="Resources\Images\Sprite\.gitkeep" />

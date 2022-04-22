@@ -16,6 +16,8 @@ public:
     static void Release();
     void QuitTheGame();
 
+    SceneManager* GetSceneManager();
+
 private:
     GameManager() = default;
     GameManager& operator=(const GameManager&) = delete;

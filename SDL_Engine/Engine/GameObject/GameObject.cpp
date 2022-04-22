@@ -93,7 +93,12 @@ namespace GameObject {
     }
 
     IComponent* GameObject::GetComponent(const std::string& componentName) const {
-        return components.at(componentName);
+        try {
+            return components.at(componentName);
+        }
+        catch (std::out_of_range& oor) {
+            return nullptr;
+        }
     }
 
     void GameObject::Update() {

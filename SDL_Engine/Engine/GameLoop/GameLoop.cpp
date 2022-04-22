@@ -1,16 +1,25 @@
 #include "GameLoop.h"
+#include "../SceneManagment/Scene.h"
 
-GameLoop::GameLoop() {
+GameLoop::GameLoop(Scene* linkTo) {
     timer = new Timer();
-    statsView = GameObjectFactory::Instance()->CreateGameObjectFromFile(statsViewConfigPath);
+    linkedTo = linkTo;
+}
+
+void GameLoop::Initialize() {
+    GameObject::GameObject* tmp = linkedTo->GetSceneObjectByName("GameLoopStats");
+    gameStatsView = static_cast<GameLoopView*>(tmp->GetComponent("GameLoopView"));
 }
 
 GameLoop::~GameLoop() {
     delete timer;
     timer = nullptr;
+    linkedTo = nullptr;
 }
 
 void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>& sceneObjects) {
+    if (gameStatsView == nullptr) Initialize();
+
     double currentTime = timer->GetCurrentTime();
     double frameTime = currentTime - previousTime;
 
@@ -28,7 +37,8 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
     Input(input);
 
     // Measure input performance
-    double inputTime = timer->GetCurrentTime() - previousTime;
+    inputTime = timer->GetCurrentTime() - previousTime;
+    gameStatsView->SetUpdatePerformaceText(std::to_string(inputTime));
 
     // Physics Update
     while (timeLag >= SECONDS_PER_UPDATE && physicsUpdates < MAX_PHYSICS_UPDATES) {
@@ -40,17 +50,20 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
     }
 
     // Measure update performance
-    double updateTime = timer->GetCurrentTime() - inputTime - previousTime;
+    updateTime = timer->GetCurrentTime() - inputTime - previousTime;
+    gameStatsView->SetUpdatePerformaceText(std::to_string(updateTime));
 
     // Render
     Graphics::Instance()->RenderClear();
     Graphics::Instance()->Render(sceneObjects, timeLag / SECONDS_PER_UPDATE);
 
     // Measure render performance
-    double renderTime = timer->GetCurrentTime() - updateTime - previousTime;
+    renderTime = timer->GetCurrentTime() - updateTime - previousTime;
+    gameStatsView->SetUpdatePerformaceText(std::to_string(renderTime));
 
-    //Graphics::Instance()->Render(view);
     Graphics::Instance()->RenderPresent();
+
+    //gameStatsView
 }
 
 void GameLoop::Input(const InputController* input) const {
