@@ -8,6 +8,9 @@
 class GraphicsLogger : public Logger {
 public:
     static GraphicsLogger& Instance();
+    void LogMessage(const std::string& msg) override;
+    void LogWarning(const std::string& msg) override;
+    void LogError(const std::string& msg) override;
 
 private:
     explicit GraphicsLogger(const std::string& newOutputFile = "graphics.log");

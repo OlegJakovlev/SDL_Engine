@@ -17,18 +17,21 @@ void Logger::Write(const std::string& logMessage) {
     strftime(buffer, sizeof buffer, "%Y-%m-%d %H:%M:%S", &newtime);
 
     // Write to file
-    std::string fullMessage = "[" + std::string(buffer) + "]" + "\t" + logMessage + "\n";
+    std::string fullMessage = "[" + std::string(buffer) + "]" + logMessage;
     FileWriter::WriteToFile(outputFile, fullMessage, FileWriter::Mode::APPEND);
+
+    // Log to console
+    std::printf("%s\n", fullMessage.c_str());
 }
 
 void Logger::LogMessage(const std::string& msg) {
-    Write("[MESSAGE]\t" + msg);
+    Write("[GENERAL][MESSAGE] " + msg);
 }
 
 void Logger::LogWarning(const std::string& msg) {
-    Write("[WARNING]\t" + msg);
+    Write("[GENERAL][WARNING] " + msg);
 }
 
 void Logger::LogError(const std::string& msg) {
-    Write("[*ERROR*]\t" + msg);
+    Write("[GENERAL][*ERROR*] " + msg);
 }

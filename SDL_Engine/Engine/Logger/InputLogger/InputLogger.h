@@ -8,6 +8,9 @@
 class InputLogger : public Logger {
 public:
     static InputLogger& Instance();
+    void LogMessage(const std::string& msg) override;
+    void LogWarning(const std::string& msg) override;
+    void LogError(const std::string& msg) override;
 
 private:
     explicit InputLogger(const std::string& newOutputFile = "input.log");

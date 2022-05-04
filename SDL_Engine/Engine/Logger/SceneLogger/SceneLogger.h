@@ -8,6 +8,9 @@
 class SceneLogger : public Logger {
 public:
     static SceneLogger& Instance();
+    void LogMessage(const std::string& msg) override;
+    void LogWarning(const std::string& msg) override;
+    void LogError(const std::string& msg) override;
 
 private:
     explicit SceneLogger(const std::string& newOutputFile = "scene.log");

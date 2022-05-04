@@ -12,9 +12,9 @@
 class Logger : public FileWriter {
 public:
     static Logger& Instance();
-    void LogMessage(const std::string& msg);
-    void LogWarning(const std::string& msg);
-    void LogError(const std::string& msg);
+    virtual void LogMessage(const std::string& msg);
+    virtual void LogWarning(const std::string& msg);
+    virtual void LogError(const std::string& msg);
 
 protected:
     explicit Logger(const std::string& newOutputFile = "game.log");

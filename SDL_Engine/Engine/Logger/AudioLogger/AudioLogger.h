@@ -8,6 +8,9 @@
 class AudioLogger : public Logger {
 public:
     static AudioLogger& Instance();
+    void LogMessage(const std::string& msg) override;
+    void LogWarning(const std::string& msg) override;
+    void LogError(const std::string& msg) override;
 
 private:
     explicit AudioLogger(const std::string& newOutputFile = "audio.log");
