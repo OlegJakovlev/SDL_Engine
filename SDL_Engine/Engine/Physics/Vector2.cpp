@@ -45,6 +45,42 @@ namespace Vector2 {
         y = newY;
     }
 
+    // Original Quake3 algorithm
+    template<class T>
+    float Vector2<T>::FastSquareRoot(float magnitude) {
+        long i;
+        float x2, y;
+        const float threehalfs = 1.5F;
+
+        x2 = magnitude * 0.5F;
+        y = magnitude;
+        i = *(long*)&y; // evil floating point bit level hacking
+        i = 0x5f3759df - (i >> 1);
+        y = *(float*)&i;
+        y = y * (threehalfs - (x2 * y * y)); // 1st iteration
+
+        return y;
+    }
+
+    template<class T>
+    float Vector2<T>::GetMagnitude() {
+        return x * x + y * y;
+    }
+
+    template<class T>
+    Vector2<float> Vector2<T>::Normalize() {
+        Vector2 result;
+        float inverseSquareRoot = FastSquareRoot(GetMagnitude());
+        result.x = x * inverseSquareRoot;
+        result.y = y * inverseSquareRoot;
+        return result;
+    }
+
+    template<class T>
+    float Vector2<T>::DotProduct(const Vector2<T>& lhs, const Vector2<T>& rhs) {
+        return lhs.x * rhs.x + lhs.y * rhs.y;
+    }
+
     template <>
     void to_json(nlohmann::json& json, const Vector2<int>& objectToConvert) {
         json = nlohmann::json{

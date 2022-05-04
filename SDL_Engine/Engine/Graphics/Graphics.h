@@ -16,6 +16,19 @@ public:
     static Graphics* Instance();
     static void Release();
 
+    SDL_Renderer* GetRenderer();
+
+    void RenderRectangle(const SDL_Rect* rect);
+
+    void RenderCopyAdvanced(
+        SDL_Texture* texture = nullptr,
+        const SDL_Rect* srcRect = nullptr,
+        const SDL_Rect* destRect = nullptr,
+        const double angle = 0,
+        const SDL_Point* rotationCenter = nullptr,
+        const SDL_RendererFlip flip = SDL_FLIP_NONE
+    );
+
     void RenderClear();
     void Render(GameObject::GameObject* gameObject);
     void Render(std::vector<GameObject::GameObject*>& gameObjects, double normalizedStepBetweenUpdates);

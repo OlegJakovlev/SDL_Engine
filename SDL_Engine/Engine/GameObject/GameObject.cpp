@@ -4,23 +4,27 @@ namespace GameObject {
     GameObject::GameObject(nlohmann::json& json) {
         SetID(json.at("ID").get<int>());
         SetName(json.at("name").get<std::string>());
-        SetTransform(json.at("transform").get<Vector2::Vector2<int>>());
+        SetLocalPosition(json.at("position").get<Vector2::Vector2<int>>());
         SetRotation(json.at("rotation").get<Vector2::Vector2<float>>());
-        SetScale(json.at("scale").get<Vector2::Vector2<float>>());
+        SetScale(json.at("scale").get<Vector2::Vector2<int>>());
         SetComponents(json.at("components"));
     }
 
     GameObject::GameObject(int newID, const std::string& newName) {
         ID = newID;
         name = newName;
-        transform = nullptr;
+        localPosition = nullptr;
+        globalPosition = nullptr;
         rotation = nullptr;
         scale = nullptr;
     }
 
     GameObject::~GameObject() {
-        delete transform;
-        transform = nullptr;
+        delete localPosition;
+        localPosition = nullptr;
+
+        delete globalPosition;
+        globalPosition = nullptr;
 
         delete rotation;
         rotation = nullptr;
@@ -44,16 +48,24 @@ namespace GameObject {
         name = newName;
     }
 
-    void GameObject::SetTransform(const Vector2::Vector2<int>& newTransform) {
-        transform = new Vector2::Vector2<int>(newTransform);
+    void GameObject::SetLocalPosition(const Vector2::Vector2<int>& newTransform) {
+        localPosition = new Vector2::Vector2<int>(newTransform);
+    }
+
+    void GameObject::SetGlobalPosition(const Vector2::Vector2<int>& newTransform) {
+        globalPosition = new Vector2::Vector2<int>(newTransform);
     }
 
     void GameObject::SetRotation(const Vector2::Vector2<float>& newRotation) {
         rotation = new Vector2::Vector2<float>(newRotation);
     }
 
-    void GameObject::SetScale(const Vector2::Vector2<float>& newScale) {
-        scale = new Vector2::Vector2<float>(newScale);
+    void GameObject::SetScale(const Vector2::Vector2<int>& newScale) {
+        scale = new Vector2::Vector2<int>(newScale);
+    }
+
+    void GameObject::SetLayer(const int newLayer) {
+        layer = std::bitset<4>(newLayer);
     }
 
     void GameObject::SetComponents(nlohmann::json& json) {
@@ -74,20 +86,28 @@ namespace GameObject {
         return name;
     }
 
-    const Vector2::Vector2<int>* GameObject::GetTransform() const {
-        return transform;
+    const Vector2::Vector2<int>* GameObject::GetLocalPosition() const {
+        return localPosition;
+    }
+
+    const Vector2::Vector2<int>* GameObject::GetGlobalPosition() const {
+        return globalPosition;
     }
 
     const Vector2::Vector2<float>* GameObject::GetRotation() const {
         return rotation;
     }
 
-    const Vector2::Vector2<float>* GameObject::GetScale() const {
+    const Vector2::Vector2<int>* GameObject::GetScale() const {
         return scale;
     }
 
     const std::vector<GameObject*>& GameObject::GetChildObjects() const {
         return childObjects;
+    }
+
+    const std::bitset<4> GameObject::GetLayer() const {
+        return layer;
     }
 
     const bool GameObject::IsActive() const {
@@ -142,12 +162,12 @@ namespace GameObject {
     void GameObject::Render() {
         if (!active) return;
 
-        // Update current object
+        // Render current object
         for (auto& component : components) {
             component.second->Render();
         }
 
-        // Update child objects
+        // Render child objects
         for (auto& child : childObjects) {
             child->Render();
         }
@@ -225,7 +245,7 @@ namespace GameObject {
 
         printf("%sID:%d\n", tabs.c_str(), ID);
         printf("%sName: % s\n", tabs.c_str(), name.c_str());
-        printf("%sTransform: %d, %d\n", tabs.c_str(), transform->GetX(), transform->GetY());
+        printf("%sTransform: %d, %d\n", tabs.c_str(), localPosition->GetX(), localPosition->GetY());
         printf("%sRotation: %f, %f\n", tabs.c_str(), rotation->GetX(), rotation->GetY());
         printf("%sScale: %f, %f\n", tabs.c_str(), scale->GetX(), scale->GetY());
 
@@ -238,11 +258,26 @@ namespace GameObject {
         }
     }
 
+    void GameObject::UpdateGlobalTransform() {
+        delete globalPosition;
+
+        // Check if parent object exists
+        Vector2::Vector2<int> parentPosition = (parentObject == nullptr) ? Vector2::Vector2<int>(0, 0) : *(parentObject->localPosition);
+        globalPosition = new Vector2::Vector2<int>(*localPosition + parentPosition);
+
+        for (auto& child : childObjects) {
+            child->UpdateGlobalTransform();
+        }
+
+        // Object should be rerendered
+        dirtyFlag = true;
+    }
+
     void to_json(nlohmann::json& json, const GameObject& objectToConvert) {
         json = nlohmann::json {
             {"ID", objectToConvert.GetID()},
             {"name", objectToConvert.GetName()},
-            {"transform", *objectToConvert.GetTransform()},
+            {"transform", *objectToConvert.GetLocalPosition()},
             {"rotation", *objectToConvert.GetRotation()},
             {"scale", *objectToConvert.GetScale()},
             {"childObjects", objectToConvert.GetChildObjects()}
@@ -253,7 +288,7 @@ namespace GameObject {
         json = nlohmann::json {
             {"ID", objectToConvert->GetID()},
             {"name", objectToConvert->GetName()},
-            {"transform", *objectToConvert->GetTransform()},
+            {"transform", *objectToConvert->GetLocalPosition()},
             {"rotation", *objectToConvert->GetRotation()},
             {"scale", *objectToConvert->GetScale()},
             {"childObjects", objectToConvert->GetChildObjects()}

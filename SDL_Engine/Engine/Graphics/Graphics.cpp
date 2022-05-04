@@ -42,9 +42,14 @@ void Graphics::Render(GameObject::GameObject* gameObject) {
 }
 
 void Graphics::Render(std::vector<GameObject::GameObject*>& sceneObjects, double normalizedStepBetweenUpdates){
-    std::for_each(sceneObjects.begin(), sceneObjects.end(), [](GameObject::GameObject* sceneObject) {
-        sceneObject->Render();
-    });
+    // Layer rendering
+    for (int i = 16; i >= 0; i--) {
+        std::for_each(sceneObjects.begin(), sceneObjects.end(), [&i](GameObject::GameObject* sceneObject) {
+            if (sceneObject->GetLayer() == i) {
+                sceneObject->Render();
+            }
+        });
+    }
 }
 
 void Graphics::RenderPresent() {
@@ -53,10 +58,25 @@ void Graphics::RenderPresent() {
 }
 
 SDL_Texture* Graphics::GetTextureFromSurface(SDL_Surface* surface) {
-    return SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    SDL_FreeSurface(surface);
+    
+    return texture;
 }
 
 void Graphics::Release() {
     delete sInstance;
     sInstance = nullptr;
+}
+
+SDL_Renderer* Graphics::GetRenderer() {
+    return renderer;
+}
+
+void Graphics::RenderRectangle(const SDL_Rect* rect) {
+    SDL_RenderDrawRect(renderer, rect);
+}
+
+void Graphics::RenderCopyAdvanced(SDL_Texture* texture, const SDL_Rect* srcRect, const SDL_Rect* destRect, const double angle, const SDL_Point* rotationCenter, const SDL_RendererFlip flip) {
+    SDL_RenderCopyEx(renderer, texture, srcRect, destRect, angle, rotationCenter, flip);
 }

@@ -5,6 +5,7 @@
 
 #include <vector>
 #include <string>
+#include <bitset>
 #include <algorithm>
 #include <nlohmann/json.hpp>
 #include <iostream>
@@ -21,18 +22,22 @@ namespace GameObject {
         // Setters / Getters
         void SetID(const int newID);
         void SetName(const std::string& newName);
-        void SetTransform(const Vector2::Vector2<int>& newTransform);
+        void SetLocalPosition(const Vector2::Vector2<int>& newTransform);
+        void SetGlobalPosition(const Vector2::Vector2<int>& newTransform);
         void SetRotation(const Vector2::Vector2<float>& newRotation);
-        void SetScale(const Vector2::Vector2<float>& newScale);
+        void SetScale(const Vector2::Vector2<int>& newScale);
+        void SetLayer(const int newLayer);
         void SetComponents(nlohmann::json& json);
         void SetActive(bool newStatus);
 
         const int GetID() const;
         const std::string& GetName() const;
-        const Vector2::Vector2<int>* GetTransform() const;
+        const Vector2::Vector2<int>* GetLocalPosition() const;
+        const Vector2::Vector2<int>* GetGlobalPosition() const;
         const Vector2::Vector2<float>* GetRotation() const;
-        const Vector2::Vector2<float>* GetScale() const;
+        const Vector2::Vector2<int>* GetScale() const;
         const std::vector<GameObject*>& GetChildObjects() const;
+        const std::bitset<4> GetLayer() const;
         const bool IsActive() const;
 
         // General object functions
@@ -44,6 +49,7 @@ namespace GameObject {
         GameObject* FindChildGameObjectByID(int searchableID);
         GameObject* FindChildGameObjectByName(const std::string& searchableName);
         
+        void UpdateGlobalTransform();
 
         void AddComponent(const std::string& componentName, const nlohmann::json& componentConfig);
         AbstractComponent* GetComponent(const std::string& componentName) const;
@@ -64,10 +70,12 @@ namespace GameObject {
         int ID;
         std::string name;
 
-        Vector2::Vector2<int>* transform; // relative to its parent / world root object
+        Vector2::Vector2<int>* localPosition; // relative to its parent / world root object
+        Vector2::Vector2<int>* globalPosition;
         Vector2::Vector2<float>* rotation;
-        Vector2::Vector2<float>* scale;
+        Vector2::Vector2<int>* scale;
 
+        std::bitset<4> layer;
 
         std::unordered_map<std::string, AbstractComponent*> components;
         
@@ -75,7 +83,7 @@ namespace GameObject {
         std::vector<GameObject*> childObjects;
 
         bool active = true;
-        bool dirtyFlag = true; // flag specifying if local position should be recalculated
+        bool dirtyFlag = true; // flag specifying if rerender should happen because of object position update
         bool toBeDeleted = false;
     };
 
