@@ -6,7 +6,7 @@
 int main(int argc, char* args[])
 {
 	// Load configurators
-	SceneConfigurator* sceneConfig = new SceneConfigurator("./Resources/Configurations/SceneConfiguration/example.json");
+	SceneConfigurator* sceneConfig = new SceneConfigurator("Resources/Configurations/SceneConfiguration/example.json");
 	sceneConfig->LoadConfiguration();
 
 	// Create game resources
@@ -23,9 +23,7 @@ int main(int argc, char* args[])
 	// Release configurators
 	delete sceneConfig;
 	
-	std::cout << "Thanks for using our software...\n";
 	std::this_thread::sleep_for(std::chrono::seconds(1));
-
 	Logger::Instance().LogMessage("Application closed!");
 
 	return 0;

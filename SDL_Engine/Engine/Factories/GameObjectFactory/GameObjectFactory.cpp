@@ -16,7 +16,7 @@ GameObject::GameObject* GameObjectFactory::CreateGameObject(const std::string& n
     return new GameObject::GameObject(nextID++, name);
 }
 
-GameObject::GameObject* GameObjectFactory::CreateGameObject(nlohmann::json config) {
+GameObject::GameObject* GameObjectFactory::CreateGameObject(nlohmann::json& config) {
     GameObject::GameObject* newGameObject = new GameObject::GameObject(config);
 
     for (nlohmann::json& childConfig : config.at("childObjects")) {

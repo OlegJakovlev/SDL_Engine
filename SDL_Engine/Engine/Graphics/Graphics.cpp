@@ -15,14 +15,23 @@ Graphics::Graphics() {
         return;
     }
 
-    window = SDL_CreateWindow("4 Bombers - Olegs Jakovlevs (25187386) - CGP2015M Game Programming", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("4 Bombers - Olegs Jakovlevs (25187386) - CGP2015M Game Programming",
+        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+        SCREEN_WIDTH, SCREEN_HEIGHT,
+        SDL_WINDOW_RESIZABLE | SDL_WINDOW_SHOWN );
 
     if (window == nullptr) {
         GraphicsLogger::Instance().LogError("SDL Window ERROR" + std::string(SDL_GetError()));
         return;
     }
 
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
+
+    // Ensure the aspect ratio of the original window is sustained
+    SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+
+    // Make logical resolution as factor of the actual window resolution
+    SDL_RenderSetIntegerScale(renderer, SDL_bool::SDL_TRUE);
 }
 
 Graphics::~Graphics() {

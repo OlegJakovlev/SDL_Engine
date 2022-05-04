@@ -90,7 +90,7 @@
     <ClCompile Include="Engine\ObserverPattern\Subject\ISubject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Component\IComponent.cpp">
+    <ClCompile Include="Engine\Component\AbstractComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Component\ImageComponent\ImageComponent.cpp">
@@ -106,6 +106,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CustomScripts\GameLoopView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL_Font_Cache\SDL_FontCache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Component\IComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -185,7 +191,7 @@
     <ClInclude Include="Engine\ObserverPattern\Subject\ISubject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Component\IComponent.h">
+    <ClInclude Include="Engine\Component\AbstractComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Component\ImageComponent\ImageComponent.h">
@@ -201,6 +207,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CustomScripts\GameLoopView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SDL_Font_Cache\SDL_FontCache.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component\IComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

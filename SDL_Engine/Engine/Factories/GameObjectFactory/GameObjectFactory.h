@@ -12,7 +12,7 @@ public:
 
     GameObject::GameObject* CreateGameObject();
     GameObject::GameObject* CreateGameObject(const std::string& name);
-    GameObject::GameObject* CreateGameObject(nlohmann::json config);
+    GameObject::GameObject* CreateGameObject(nlohmann::json& config);
 
     GameObject::GameObject* CreateGameObjectFromFile(const std::string& filename);
 
