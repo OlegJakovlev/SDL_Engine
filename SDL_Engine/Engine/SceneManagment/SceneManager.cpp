@@ -27,12 +27,22 @@ Scene* SceneManager::GetCurrentScene() {
 }
 
 void SceneManager::SetCurrentSceneByID(int targetSceneID) {
-    currentScene = scenesToBuild[targetSceneID];
+    if (targetSceneID < 0 || targetSceneID > scenesToBuild.size()) return;
+
+    // Deallocate resources
+    delete currentScene;
+
+    // Set new scene
+    currentScene = scenesToBuild.at(targetSceneID);
 }
 
 void SceneManager::SetCurrentSceneByName(std::string targetSceneName) {
     for (auto& scene : scenesToBuild) {
         if (scene->GetName() == targetSceneName) {
+            // Deallocate resources
+            delete currentScene;
+
+            // Set new scene
             currentScene = scene;
             return;
         }

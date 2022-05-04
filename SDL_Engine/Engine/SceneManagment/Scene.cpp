@@ -1,8 +1,8 @@
 #include "Scene.h"
 
 Scene::Scene(int newID, const std::string& newName) : ID(newID), name(newName) {
-    gameLoop = new GameLoop(this);
     inputController = new InputController();
+    gameLoop = new GameLoop();
 }
 
 Scene::~Scene() {
@@ -66,4 +66,9 @@ InputController* Scene::GetInputController() {
 
 std::vector<GameObject::GameObject*>& Scene::GetSceneObjectList() {
     return sceneObjects;
+}
+
+void Scene::Initialize() {
+    // Initialize game loop
+    gameLoop->Initialize(this);
 }

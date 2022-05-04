@@ -13,6 +13,7 @@ public:
     Scene(int newID, const std::string& newName);
     ~Scene();
 
+    void Initialize();
     void AddSceneObject(GameObject::GameObject* newObject);
     GameObject::GameObject* GetSceneObjectByID(int objectID);
     GameObject::GameObject* GetSceneObjectByName(std::string objectName);

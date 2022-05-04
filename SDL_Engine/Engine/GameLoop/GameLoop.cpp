@@ -1,25 +1,21 @@
 #include "GameLoop.h"
 #include "../SceneManagment/Scene.h"
 
-GameLoop::GameLoop(Scene* linkTo) {
+GameLoop::GameLoop() {
     timer = new Timer();
-    linkedTo = linkTo;
 }
 
-void GameLoop::Initialize() {
-    GameObject::GameObject* tmp = linkedTo->GetSceneObjectByName("GameLoopStats");
-    gameStatsView = static_cast<GameLoopView*>(tmp->GetComponent("GameLoopView"));
+void GameLoop::Initialize(Scene* masterScene) {
+    GameObject::GameObject* gameLoopStats = masterScene->GetSceneObjectByName("GameLoopStats");
+    gameStatsView = static_cast<GameLoopView*>(gameLoopStats->GetComponent("GameLoopView"));
 }
 
 GameLoop::~GameLoop() {
     delete timer;
     timer = nullptr;
-    linkedTo = nullptr;
 }
 
 void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>& sceneObjects) {
-    if (gameStatsView == nullptr) Initialize();
-
     double currentTime = timer->GetCurrentTime();
     double frameTime = currentTime - previousTime;
 
@@ -38,19 +34,20 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
     // Measure input performance
     inputTime = timer->GetCurrentTime() - previousTime;
-    gameStatsView->SetUpdatePerformaceText(std::to_string(inputTime));
+    //std::printf("Input Loop Performance (s): %f\n", inputTime);
+    gameStatsView->SetInputPerformaceText(std::to_string(inputTime));
 
     // Physics Update
     while (timeLag >= SECONDS_PER_UPDATE && physicsUpdates < MAX_PHYSICS_UPDATES) {
         physicsUpdates++;
         Update(sceneObjects);
-
         timeLag -= SECONDS_PER_UPDATE;
         currentTime += SECONDS_PER_UPDATE;
     }
 
     // Measure update performance
     updateTime = timer->GetCurrentTime() - inputTime - previousTime;
+    //std::printf("Update Loop Performance (s): %f\n", updateTime);
     gameStatsView->SetUpdatePerformaceText(std::to_string(updateTime));
 
     // Render
@@ -59,11 +56,10 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
     // Measure render performance
     renderTime = timer->GetCurrentTime() - updateTime - previousTime;
-    gameStatsView->SetUpdatePerformaceText(std::to_string(renderTime));
+    //std::printf("Render Loop Performance (s): %f\n", renderTime);
+    gameStatsView->SetRenderPerformaceText(std::to_string(renderTime));
 
     Graphics::Instance()->RenderPresent();
-
-    //gameStatsView
 }
 
 void GameLoop::Input(const InputController* input) const {
@@ -75,7 +71,7 @@ void GameLoop::Input(const InputController* input) const {
 }
 
 void GameLoop::Update(std::vector<GameObject::GameObject*>& sceneObjects) const {
-    // Component and physics update
+    // Components update
     for (int index = 0; index < sceneObjects.size(); index++) {
         sceneObjects[index]->Update();
     }

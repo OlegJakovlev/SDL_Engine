@@ -15,22 +15,21 @@ class Scene;
 
 class GameLoop {
 public:
-    GameLoop(Scene* linkTo);
+    GameLoop();
     ~GameLoop();
 
-    void Initialize();
+    void Initialize(Scene* masterScene);
     void Run(InputController* input, std::vector<GameObject::GameObject*>& sceneObjects);
 
 private:
     const double SECONDS_PER_UPDATE = 0.016666; // 60 FPS
     const int MAX_PHYSICS_UPDATES = 120; // FPS * 2
-    
-    Scene* linkedTo;
 
     Timer* timer;
     double previousTime = 0;
     double timeLag = 0; // how far games' clock is behind real world
 
+    // Performance
     double inputTime;
     double updateTime;
     double renderTime;
