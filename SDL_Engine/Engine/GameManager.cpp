@@ -14,7 +14,6 @@ void GameManager::Init(SceneManager* newSceneManager) {
 
     // Link game managers
     sceneManager = newSceneManager;
-
     Logger::Instance().LogMessage("Game Manager succesfully initialized!");
 }
 
@@ -35,10 +34,13 @@ void GameManager::Run() {
     while (!quit) {
         currentScene = sceneManager->GetCurrentScene();
 
+        // Initialize all the gameObjects with all the components
+        if (!currentScene->IsInitialized()) currentScene->Initialize();
+
+        // Run game loop on active scene
         if (currentScene != nullptr) {
-            // Run game loop on active scene
             currentScene->GetGameLoop()->Run(
-                currentScene->GetInputController(),
+                currentScene->GetInputConfigurator()->GetInputController(),
                 currentScene->GetSceneObjectList()
             );
         }

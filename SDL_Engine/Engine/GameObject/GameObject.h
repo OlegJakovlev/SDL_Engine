@@ -40,6 +40,9 @@ namespace GameObject {
         const GameObject* GetParentObject();
         void AddChildObject(GameObject* newChildObject);
         const bool ShouldBeDeleted() const;
+
+        GameObject* FindChildGameObjectByID(int searchableID);
+        GameObject* FindChildGameObjectByName(const std::string& searchableName);
         
 
         void AddComponent(const std::string& componentName, const nlohmann::json& componentConfig);
@@ -49,13 +52,15 @@ namespace GameObject {
         void Print(int tabLevel = 0);
 
         // Game Loop
+        void Initialize();
         void Update();
         void Render();
-
-        // Delete object
         void Destroy();
 
     private:
+        GameObject* RecursiveSearchByID(GameObject* searchRoot, int searchableID);
+        GameObject* RecursiveSearchByName(GameObject* searchRoot, const std::string& searchableName);
+
         int ID;
         std::string name;
 

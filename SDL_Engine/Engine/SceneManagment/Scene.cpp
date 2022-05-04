@@ -1,16 +1,17 @@
 #include "Scene.h"
 
 Scene::Scene(int newID, const std::string& newName) : ID(newID), name(newName) {
-    inputController = new InputController();
     gameLoop = new GameLoop();
+    inputConfigurator = new InputConfigurator("Resources/Configurations/InputConfiguration/example.json");
+    //inputConfigurator = new InputConfigurator("Resources/Configurations/InputConfiguration/" + newName + ".json");
 }
 
 Scene::~Scene() {
     delete gameLoop;
     gameLoop = nullptr;
 
-    delete inputController;
-    inputController = nullptr;
+    delete inputConfigurator;
+    inputConfigurator = nullptr;
 
     for (GameObject::GameObject* gameobject : sceneObjects) {
         delete gameobject;
@@ -24,25 +25,30 @@ void Scene::AddSceneObject(GameObject::GameObject* newObject) {
 }
 
 GameObject::GameObject* Scene::GetSceneObjectByID(int objectID) {
+    GameObject::GameObject* result;
+
     for (GameObject::GameObject* sceneObject : sceneObjects) {
         if (sceneObject->GetID() == objectID) return sceneObject;
 
-        // Replace this with binary search
-        for (GameObject::GameObject* childSceneObject : sceneObject->GetChildObjects()) {
-            if (childSceneObject->GetID() == objectID) return childSceneObject;
-        }
+        // TODO: Replace this with binary search
+
+        // Check recursively child objects
+        result = sceneObject->FindChildGameObjectByID(objectID);
+        if (result != nullptr) return result;
     }
 
     return nullptr;
 }
 
 GameObject::GameObject* Scene::GetSceneObjectByName(std::string objectName) {
+    GameObject::GameObject* result;
+
     for (GameObject::GameObject* sceneObject : sceneObjects) {
         if (sceneObject->GetName() == objectName) return sceneObject;
 
-        for (GameObject::GameObject* childSceneObject : sceneObject->GetChildObjects()) {
-            if (childSceneObject->GetName() == objectName) return childSceneObject;
-        }
+        // Check recursively child objects
+        result = sceneObject->FindChildGameObjectByName(objectName);
+        if (result != nullptr) return result;
     }
     
     return nullptr;
@@ -60,15 +66,36 @@ GameLoop* Scene::GetGameLoop() {
     return gameLoop;
 }
 
-InputController* Scene::GetInputController() {
-    return inputController;
+InputConfigurator* Scene::GetInputConfigurator() {
+    return inputConfigurator;
 }
 
 std::vector<GameObject::GameObject*>& Scene::GetSceneObjectList() {
     return sceneObjects;
 }
 
+bool Scene::IsInitialized() {
+    return initialized;
+}
+
 void Scene::Initialize() {
+    // Load input configuration
+    inputConfigurator->LoadConfiguration();
+
+    // Initialize scene objects with components
+    for (GameObject::GameObject* sceneObject : sceneObjects) {
+        InitializeRecursively(sceneObject);
+    }
+
     // Initialize game loop
     gameLoop->Initialize(this);
+    initialized = true;
+}
+
+void Scene::InitializeRecursively(GameObject::GameObject* rootObject) {
+    rootObject->Initialize();
+
+    for (auto& childObject : rootObject->GetChildObjects()) {
+        InitializeRecursively(childObject);
+    }
 }

@@ -117,6 +117,14 @@ namespace GameObject {
         }
     }
 
+    void GameObject::Initialize() {
+        UpdateGlobalTransform();
+        
+        for (auto& it : components) {
+            it.second->Init();
+        }
+    }
+
     void GameObject::Update() {
         if (!active) return;
 
@@ -165,6 +173,46 @@ namespace GameObject {
 
     void GameObject::AddChildObject(GameObject* newChildObject) {
         childObjects.push_back(newChildObject);
+    }
+
+    GameObject* GameObject::FindChildGameObjectByID(int searchableID) {
+        GameObject* result = nullptr;
+        result = RecursiveSearchByID(this, searchableID);
+        return result;
+    }
+
+    GameObject* GameObject::FindChildGameObjectByName(const std::string& searchableName) {
+        GameObject* result = nullptr;
+        result = RecursiveSearchByName(this, searchableName);
+        return result;
+    }
+
+    GameObject* GameObject::RecursiveSearchByID(GameObject* searchRoot, int searchableID) {
+        GameObject* result = nullptr;
+
+        if (searchRoot->ID == searchableID) return searchRoot;
+
+        for (auto& childObject : searchRoot->childObjects) {
+            result = RecursiveSearchByID(childObject, searchableID);
+
+            if (result != nullptr) return result;
+        }
+
+        return nullptr;
+    }
+
+    GameObject* GameObject::RecursiveSearchByName(GameObject* searchRoot, const std::string& searchableName) {
+        GameObject* result = nullptr;
+
+        if (searchRoot->name == searchableName) return searchRoot;
+
+        for (auto& childObject : searchRoot->childObjects) {
+            result = RecursiveSearchByName(childObject, searchableName);
+
+            if (result != nullptr) return result;
+        }
+
+        return nullptr;
     }
 
     const bool GameObject::ShouldBeDeleted() const {

@@ -5,10 +5,9 @@
 
 #include <utility>
 #include <unordered_map>
-#include <set>
 #include <string>
-#include <iostream>
 #include <SDL.h>
+#include "../Logger/InputLogger/InputLogger.h"
 
 class GameManager;
 
@@ -18,6 +17,7 @@ private:
 
 public:
     InputController();
+    InputController(const std::string& sceneName);
     virtual ~InputController();
 
     bool IsActionActive(const std::string& actionName) const;

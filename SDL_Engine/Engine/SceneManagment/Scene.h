@@ -6,6 +6,7 @@
 #include <vector>
 #include "../GameObject/GameObject.h"
 #include "../GameLoop/GameLoop.h"
+#include "../Configurator/InputConfigurator/InputConfigurator.h"
 
 class Scene {
 
@@ -22,16 +23,21 @@ public:
     const std::string& GetName();
 
     GameLoop* GetGameLoop();
-    InputController* GetInputController();
+    InputConfigurator* GetInputConfigurator();
     std::vector<GameObject::GameObject*>& GetSceneObjectList();
+    bool IsInitialized();
 
 private:
+    void InitializeRecursively(GameObject::GameObject* rootObject);
+
     const int ID;
     const std::string name;
 
     GameLoop* gameLoop;
-    InputController* inputController;
+    InputConfigurator* inputConfigurator;
     std::vector<GameObject::GameObject*> sceneObjects;
+
+    bool initialized = false;
 };
 
 #endif
