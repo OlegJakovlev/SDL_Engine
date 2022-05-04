@@ -7,6 +7,7 @@ namespace GameObject {
         SetTransform(json.at("transform").get<Vector2::Vector2<int>>());
         SetRotation(json.at("rotation").get<Vector2::Vector2<float>>());
         SetScale(json.at("scale").get<Vector2::Vector2<float>>());
+        SetComponents(json.at("components"));
     }
 
     GameObject::GameObject(int newID, const std::string& newName) {
@@ -55,6 +56,12 @@ namespace GameObject {
         scale = new Vector2::Vector2<float>(newScale);
     }
 
+    void GameObject::SetComponents(nlohmann::json& json) {
+        for (auto& component : json) {
+            AddComponent(component.at("name"), component.at("config"));
+        }
+    }
+
     void GameObject::SetActive(bool newStatus) {
         active = newStatus;
     }
@@ -87,12 +94,21 @@ namespace GameObject {
         return active;
     }
 
-    void GameObject::AddComponent(const std::string& componentName) {
-        // Create and save component
-        components.insert(std::pair<std::string, IComponent*>(componentName, ComponentFactory::Instance()->CreateComponent(componentName)));
+    void GameObject::AddComponent(const std::string& componentName, const nlohmann::json& componentConfig) {
+        // Create the component
+        AbstractComponent* newComponent = ComponentFactory::Instance()->CreateComponent(componentName);
+        
+        // Link the component with gameobject
+        newComponent->LinkWithObject(this);
+
+        // Load component config
+        newComponent->LoadConfig(componentConfig);
+
+        // Save the component
+        components.insert(std::pair<std::string, AbstractComponent*>(componentName, newComponent));
     }
 
-    IComponent* GameObject::GetComponent(const std::string& componentName) const {
+    AbstractComponent* GameObject::GetComponent(const std::string& componentName) const {
         try {
             return components.at(componentName);
         }

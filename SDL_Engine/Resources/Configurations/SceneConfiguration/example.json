@@ -6,7 +6,7 @@
             "gameObjects": {
                 "ID": 1,
                 "name": "Root Object",
-                "transform": {
+                "position": {
                     "x": 0,
                     "y": 0
                 },
@@ -18,138 +18,190 @@
                     "x": 1,
                     "y": 1
                 },
+                "components": [],
                 "childObjects": [
                     {
                         "ID": 2,
                         "name": "Child Object",
-                        "transform": {
-                            "x": 10,
-                            "y": -100
+                        "position": {
+                            "x": 400,
+                            "y": 300
                         },
                         "rotation": {
                             "x": 0,
                             "y": 0
                         },
                         "scale": {
-                          "x": 1,
-                          "y": 1
+                            "x": 32,
+                            "y": 32
                         },
                         "components": [
                             {
-                                "ImageComponent": {
-                                    "imagePath": "Resources/Images/test.png"
+                                "name": "Image",
+                                "config": {
+                                    "imagePath": "Resources/Images/Sprite/bomb.png"
                                 }
                             }
                         ],
-                      "childObjects": []
-                    },
-                  {
-                    "ID": 3,
-                    "name": "Child Object 2",
-                    "transform": {
-                      "x": 100,
-                      "y": -1
-                    },
-                    "rotation": {
-                      "x": 23,
-                      "y": 183
-                    },
-                    "scale": {
-                      "x": 1,
-                      "y": 1
-                    },
-                    "childObjects": [
-                      {
-                        "ID": 4,
-                        "name": "Child Child Object",
-                        "transform": {
-                          "x": 0,
-                          "y": 0
-                        },
-                        "rotation": {
-                          "x": 0,
-                          "y": 0
-                        },
-                        "scale": {
-                          "x": 1,
-                          "y": 1
-                        },
                         "childObjects": []
-                      }
-                    ]
-                  },
-                  {
-                    "ID": 5,
-                    "name": "GameLoopStats",
-                    "transform": {
-                      "x": 0,
-                      "y": 0
                     },
-                    "rotation": {
-                      "x": 0,
-                      "y": 0
-                    },
-                    "scale": {
-                      "x": 1,
-                      "y": 1
-                    },
-                    "childObjects": [
-                      {
-                        "ID": 6,
-                        "name": "Child Object",
-                        "transform": {
-                          "x": 0,
-                          "y": 0
-                        },
-                        "rotation": {
-                          "x": 0,
-                          "y": 0
-                        },
-                        "scale": {
-                          "x": 1,
-                          "y": 1
-                        },
-                        "components": [ "Text" ],
-                        "childObjects": []
-                      },
-                      {
-                        "ID": 7,
+                    {
+                        "ID": 3,
                         "name": "Child Object 2",
-                        "transform": {
-                          "x": 0,
-                          "y": 100
+                        "position": {
+                            "x": 100,
+                            "y": -1
                         },
                         "rotation": {
-                          "x": 0,
-                          "y": 0
+                            "x": 23,
+                            "y": 183
                         },
                         "scale": {
-                          "x": 1,
-                          "y": 1
+                            "x": 1,
+                            "y": 1
                         },
-                        "components": [ "Text" ],
-                        "childObjects": []
-                      },
-                      {
-                        "ID": 8,
-                        "name": "Child Object",
-                        "transform": {
-                          "x": 0,
-                          "y": 200
+                        "components": [],
+                        "childObjects": [
+                            {
+                                "ID": 4,
+                                "name": "Child Child Object",
+                                "position": {
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "rotation": {
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "scale": {
+                                    "x": 1,
+                                    "y": 1
+                                },
+                                "components": [],
+                                "childObjects": []
+                            }
+                        ]
+                    },
+                    {
+                        "ID": 5,
+                        "name": "GameLoopStats",
+                        "position": {
+                            "x": 0,
+                            "y": 0
                         },
                         "rotation": {
-                          "x": 0,
-                          "y": 0
+                            "x": 0,
+                            "y": 0
                         },
                         "scale": {
-                          "x": 1,
-                          "y": 1
+                            "x": 1,
+                            "y": 1
                         },
-                        "components": [ "Text" ],
-                        "childObjects": []
-                      }
-                    ]
-                  }
+                        "components": [
+                            {
+                                "name": "GameLoopView",
+                                "config": {}
+                            }
+                        ],
+                        "childObjects": [
+                            {
+                                "ID": 6,
+                                "name": "Child Object",
+                                "position": {
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "rotation": {
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "scale": {
+                                    "x": 1,
+                                    "y": 1
+                                },
+                                "components": [
+                                    {
+                                        "name": "Text",
+                                        "config": {
+                                            "fontPath": "Resources/Fonts/sans.ttf",
+                                            "fontSize": 10,
+                                            "color": {
+                                                "r": 255,
+                                                "g": 255,
+                                                "b": 255,
+                                                "a": 255
+                                            }
+                                        }
+                                    }
+                                ],
+                                "childObjects": []
+                            },
+                            {
+                                "ID": 7,
+                                "name": "Child Object 2",
+                                "position": {
+                                    "x": 0,
+                                    "y": 15
+                                },
+                                "rotation": {
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "scale": {
+                                    "x": 1,
+                                    "y": 1
+                                },
+                                "components": [
+                                    {
+                                        "name": "Text",
+                                        "config": {
+                                            "fontPath": "Resources/Fonts/sans.ttf",
+                                            "fontSize": 10,
+                                            "color": {
+                                                "r": 255,
+                                                "g": 255,
+                                                "b": 255,
+                                                "a": 255
+                                            }
+                                        }
+                                    }
+                                ],
+                                "childObjects": []
+                            },
+                            {
+                                "ID": 8,
+                                "name": "Child Object",
+                                "position": {
+                                    "x": 0,
+                                    "y": 30
+                                },
+                                "rotation": {
+                                    "x": 0,
+                                    "y": 0
+                                },
+                                "scale": {
+                                    "x": 1,
+                                    "y": 1
+                                },
+                                "components": [
+                                    {
+                                        "name": "Text",
+                                        "config": {
+                                            "fontPath": "Resources/Fonts/sans.ttf",
+                                            "fontSize": 10,
+                                            "color": {
+                                                "r": 255,
+                                                "g": 255,
+                                                "b": 255,
+                                                "a": 255
+                                            }
+                                        }
+                                    }
+                                ],
+                                "childObjects": []
+                            }
+                        ]
+                    }
                 ]
             }
         },
@@ -159,7 +211,7 @@
             "gameObjects": {
                 "ID": 1,
                 "name": "Root Object",
-                "transform": {
+                "position": {
                     "x": 0,
                     "y": 0
                 },
@@ -171,6 +223,7 @@
                     "x": 1,
                     "y": 1
                 },
+                "components": [],
                 "childObjects": {}
             }
         }

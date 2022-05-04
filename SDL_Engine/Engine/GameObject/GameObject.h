@@ -24,6 +24,7 @@ namespace GameObject {
         void SetTransform(const Vector2::Vector2<int>& newTransform);
         void SetRotation(const Vector2::Vector2<float>& newRotation);
         void SetScale(const Vector2::Vector2<float>& newScale);
+        void SetComponents(nlohmann::json& json);
         void SetActive(bool newStatus);
 
         const int GetID() const;
@@ -40,8 +41,9 @@ namespace GameObject {
         void AddChildObject(GameObject* newChildObject);
         const bool ShouldBeDeleted() const;
         
-        void AddComponent(const std::string& componentName);
-        IComponent* GetComponent(const std::string& componentName) const;
+
+        void AddComponent(const std::string& componentName, const nlohmann::json& componentConfig);
+        AbstractComponent* GetComponent(const std::string& componentName) const;
 
         // Debug functions
         void Print(int tabLevel = 0);
@@ -61,11 +63,12 @@ namespace GameObject {
         Vector2::Vector2<float>* rotation;
         Vector2::Vector2<float>* scale;
 
-        std::unordered_map<std::string, IComponent*> components;
+
+        std::unordered_map<std::string, AbstractComponent*> components;
         
         GameObject* parentObject;
         std::vector<GameObject*> childObjects;
-        
+
         bool active = true;
         bool dirtyFlag = true; // flag specifying if local position should be recalculated
         bool toBeDeleted = false;

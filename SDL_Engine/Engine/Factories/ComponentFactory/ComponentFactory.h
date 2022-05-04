@@ -4,13 +4,19 @@
 #define ComponentFactory_H
 
 #include <string>
-#include "../../Component/IComponent.h"
+#include "../../Component/AbstractComponent.h"
+
+// Base
 #include "../../Component/TextComponent/TextComponent.h"
+#include "../../Component/ImageComponent/ImageComponent.h"
+
+// Composite
+#include "../../../CustomScripts/GameLoopView.h"
 
 class ComponentFactory {
 public:
     static ComponentFactory* Instance();
-    IComponent* CreateComponent(const std::string& componentName);
+    AbstractComponent* CreateComponent(const std::string& componentName);
 
 private:
     ComponentFactory() = default;

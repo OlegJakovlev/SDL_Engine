@@ -1,16 +1,24 @@
 #pragma once
 
-#include <SDL_ttf.h>
 #include <string>
-#include "../IComponent.h"
+#include "../../SDL_Font_Cache/SDL_FontCache.h"
+#include "../AbstractComponent.h"
 
-class TextComponent : public IComponent
+class TextComponent : public AbstractComponent
 {
 public:
-    void SetText(std::string newText);
+    ~TextComponent();
+
+    void Init() override;
+    void LoadConfig(const nlohmann::json& config) override;
+    void Render() override;
+
+    void SetText(const std::string& newText);
 
 private:
-    TTF_Font* font;
+    FC_Font *font;
+    std::string fontPath;
+    int fontSize;
     SDL_Color textColor;
     std::string text;
 };

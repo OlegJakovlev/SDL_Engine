@@ -7,12 +7,19 @@ ComponentFactory* ComponentFactory::Instance() {
     return sInstance;
 }
 
-IComponent* ComponentFactory::CreateComponent(const std::string& componentName) {
+AbstractComponent* ComponentFactory::CreateComponent(const std::string& componentName) {
+    // Base components
     if (componentName == "Text") {
         return new TextComponent();
     }
-    else if (componentName == "") {
+    
+    if (componentName == "Image") {
+        return new ImageComponent();
+    }
 
+    // Composite components
+    if (componentName == "GameLoopView") {
+        return new GameLoopView();
     }
 
     return nullptr;
