@@ -13,8 +13,20 @@ void InputConfigurator::LoadConfiguration() {
 
 	inputController = new InputController();
 
-	// Do we load only buttons? If not, how do we store binded actions?
-	// Pointer to function?
+	for (auto bind : configuration) {
+		/*
+		std::string actionName;
+
+		SDL_Scancode bindKey = SDL_GetScancodeFromName();
+
+		if (bindKey == SDL_SCANCODE_UNKNOWN) {
+			InputLogger::Instance().LogError("");
+			continue;
+		}
+
+		//inputController->AddAction(actionName, bindKey, &test);
+		*/
+	}
 }
 
 InputController* InputConfigurator::GetInputController() {

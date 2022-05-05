@@ -1,36 +1,42 @@
 {
-    "windowControl": {
-        "toggleFullScreenMode": "SDLK_U"
+    "windowControls": {
+        "toggleFullScreenMode": "SDL_SCANCODE_U"
     },
 
-    "gameLoopControl": {
-        "toggleInput": "SDLK_J",
-        "toggleUpdate": "SDLK_K",
-        "toggleRender": "SDLK_L"
+    "gameLoopControls": {
+        "toggleInput": "SDL_SCANCODE_J",
+        "toggleUpdate": "SDL_SCANCODE_K",
+        "toggleRender": "SDL_SCANCODE_L"
     },
 
-    "audioControl": {
-        "toggleSoundEffects": "SDLK_N",
-        "toggleMusicEffects": "SDLK_M"
+    "audioControls": {
+        "toggleSoundEffects": "SDL_SCANCODE_N",
+        "toggleMusicEffects": "SDL_SCANCODE_M",
+        "increaseSoundLevel": "SDL_SCANCODE_T",
+        "decreaseSoundLevel": "SDL_SCANCODE_Y",
+        "increaseMusicLevel": "SDL_SCANCODE_O",
+        "decreaseMusicLevel": "SDL_SCANCODE_P"
     },
 
     "gameControl": {
+        "exitToMenu": "SDL_SCANCODE_ESCAPE",
+        "pause": "SDL_SCANCODE_P",
         "players": [
             {
                 "name": "player 1",
-                "goUp": "SDLK_w",
-                "goDown": "SDLK_s",
-                "goLeft": "SDLK_a",
-                "goRight": "SDLK_d",
-                "plantBomb": "SDLK_e"
+                "goUp": "SDL_SCANCODE_W",
+                "goDown": "SDL_SCANCODE_S",
+                "goLeft": "SDL_SCANCODE_A",
+                "goRight": "SDL_SCANCODE_D",
+                "plantBomb": "SDL_SCANCODE_E"
             },
             {
                 "name": "player 2",
-                "goUp": "SDLK_UP",
-                "goDown": "SDLK_DOWN",
-                "goLeft": "SDLK_LEFT",
-                "goRight": "SDLK_RIGHT",
-                "plantBomb": "SDLK_KP_0"
+                "goUp": "SDL_SCANCODE_UP",
+                "goDown": "SDL_SCANCODE_DOWN",
+                "goLeft": "SDL_SCANCODE_LEFT",
+                "goRight": "SDL_SCANCODE_RIGHT",
+                "plantBomb": "SDL_SCANCODE_KP_0"
             }
         ]
     }
