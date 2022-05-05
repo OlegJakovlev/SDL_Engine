@@ -24,8 +24,18 @@ void InputConfigurator::LoadConfiguration() {
 			continue;
 		}
 
-		//inputController->AddAction(actionName, bindKey, &test);
+		//inputController->CreateAction(actionName, bindKey);
+
+
+		switch (actionName == ""){
+		case "awd":
+			inputController->LinkAction(actionName, &test);
+			break;
+		default:
+			break;
+		}
 		*/
+
 	}
 }
 
