@@ -9,11 +9,12 @@ ImageComponent::~ImageComponent() {
 void ImageComponent::Init() {
     AbstractComponent::Init();
 
-    SDL_Surface* surface = IMG_Load(pathToImage.c_str());
-    if (surface == nullptr) GraphicsLogger::Instance().LogError("Can not access image by path: " + pathToImage);
-
+    // Destroy existing texture
     if (texture != nullptr) SDL_DestroyTexture(texture);
-    texture = Graphics::Instance()->GetTextureFromSurface(surface);
+
+    // Load new texture
+    texture = Graphics::Instance()->LoadTexture(pathToImage.c_str());
+    if (texture == nullptr) GraphicsLogger::Instance().LogError("Can not access image by path: " + pathToImage);
 }
 
 void ImageComponent::LoadConfig(const nlohmann::json& config) {
@@ -21,5 +22,5 @@ void ImageComponent::LoadConfig(const nlohmann::json& config) {
 }
 
 void ImageComponent::Render() {
-    Graphics::Instance()->RenderCopyAdvanced(texture, nullptr, &renderHolder);
+    Graphics::Instance()->RenderCopyAdvanced(texture, nullptr, &renderHolder, objectLinkedTo->GetRotation());
 }

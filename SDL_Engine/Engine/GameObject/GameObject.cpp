@@ -5,7 +5,7 @@ namespace GameObject {
         SetID(json.at("ID").get<int>());
         SetName(json.at("name").get<std::string>());
         SetLocalPosition(json.at("position").get<Vector2::Vector2<int>>());
-        SetRotation(json.at("rotation").get<Vector2::Vector2<float>>());
+        SetRotation(json.at("rotation").get<float>());
         SetScale(json.at("scale").get<Vector2::Vector2<int>>());
         SetComponents(json.at("components"));
     }
@@ -15,7 +15,7 @@ namespace GameObject {
         name = newName;
         localPosition = nullptr;
         globalPosition = nullptr;
-        rotation = nullptr;
+        rotation = 0;
         scale = nullptr;
     }
 
@@ -25,9 +25,6 @@ namespace GameObject {
 
         delete globalPosition;
         globalPosition = nullptr;
-
-        delete rotation;
-        rotation = nullptr;
 
         delete scale;
         scale = nullptr;
@@ -56,8 +53,8 @@ namespace GameObject {
         globalPosition = new Vector2::Vector2<int>(newTransform);
     }
 
-    void GameObject::SetRotation(const Vector2::Vector2<float>& newRotation) {
-        rotation = new Vector2::Vector2<float>(newRotation);
+    void GameObject::SetRotation(const float newRotation) {
+        rotation = newRotation;
     }
 
     void GameObject::SetScale(const Vector2::Vector2<int>& newScale) {
@@ -94,7 +91,7 @@ namespace GameObject {
         return globalPosition;
     }
 
-    const Vector2::Vector2<float>* GameObject::GetRotation() const {
+    const float GameObject::GetRotation() const {
         return rotation;
     }
 
@@ -246,8 +243,8 @@ namespace GameObject {
         printf("%sID:%d\n", tabs.c_str(), ID);
         printf("%sName: % s\n", tabs.c_str(), name.c_str());
         printf("%sTransform: %d, %d\n", tabs.c_str(), localPosition->GetX(), localPosition->GetY());
-        printf("%sRotation: %f, %f\n", tabs.c_str(), rotation->GetX(), rotation->GetY());
-        printf("%sScale: %f, %f\n", tabs.c_str(), scale->GetX(), scale->GetY());
+        printf("%sRotation: %f\n", tabs.c_str(), rotation);
+        printf("%sScale: %d, %d\n", tabs.c_str(), scale->GetX(), scale->GetY());
 
         if (childObjects.empty()) return;
         printf("%sChild Game Objects:\n", tabs.c_str());
@@ -278,7 +275,7 @@ namespace GameObject {
             {"ID", objectToConvert.GetID()},
             {"name", objectToConvert.GetName()},
             {"transform", *objectToConvert.GetLocalPosition()},
-            {"rotation", *objectToConvert.GetRotation()},
+            {"rotation", objectToConvert.GetRotation()},
             {"scale", *objectToConvert.GetScale()},
             {"childObjects", objectToConvert.GetChildObjects()}
         };
@@ -289,7 +286,7 @@ namespace GameObject {
             {"ID", objectToConvert->GetID()},
             {"name", objectToConvert->GetName()},
             {"transform", *objectToConvert->GetLocalPosition()},
-            {"rotation", *objectToConvert->GetRotation()},
+            {"rotation", objectToConvert->GetRotation()},
             {"scale", *objectToConvert->GetScale()},
             {"childObjects", objectToConvert->GetChildObjects()}
         };

@@ -210,7 +210,6 @@
     <ClInclude Include="Engine\Component\IComponent.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Engine\Configurator\example.json" />
     <None Include="packages.config" />
     <None Include="Resources\Audio\Music\.gitkeep" />
     <None Include="Resources\Audio\Sounds\.gitkeep" />

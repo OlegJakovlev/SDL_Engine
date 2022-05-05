@@ -24,7 +24,7 @@ namespace GameObject {
         void SetName(const std::string& newName);
         void SetLocalPosition(const Vector2::Vector2<int>& newTransform);
         void SetGlobalPosition(const Vector2::Vector2<int>& newTransform);
-        void SetRotation(const Vector2::Vector2<float>& newRotation);
+        void SetRotation(const float newRotation);
         void SetScale(const Vector2::Vector2<int>& newScale);
         void SetLayer(const int newLayer);
         void SetComponents(nlohmann::json& json);
@@ -34,7 +34,7 @@ namespace GameObject {
         const std::string& GetName() const;
         const Vector2::Vector2<int>* GetLocalPosition() const;
         const Vector2::Vector2<int>* GetGlobalPosition() const;
-        const Vector2::Vector2<float>* GetRotation() const;
+        const float GetRotation() const;
         const Vector2::Vector2<int>* GetScale() const;
         const std::vector<GameObject*>& GetChildObjects() const;
         const std::bitset<4> GetLayer() const;
@@ -72,7 +72,7 @@ namespace GameObject {
 
         Vector2::Vector2<int>* localPosition; // relative to its parent / world root object
         Vector2::Vector2<int>* globalPosition;
-        Vector2::Vector2<float>* rotation;
+        float rotation;
         Vector2::Vector2<int>* scale;
 
         std::bitset<4> layer;

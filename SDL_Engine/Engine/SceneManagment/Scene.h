@@ -11,7 +11,7 @@
 class Scene {
 
 public:
-    Scene(int newID, const std::string& newName);
+    Scene(int newID, const std::string& newName, const std::string& inputConfigFile);
     ~Scene();
 
     void Initialize();

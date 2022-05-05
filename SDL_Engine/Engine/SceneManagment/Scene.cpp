@@ -1,9 +1,8 @@
 #include "Scene.h"
 
-Scene::Scene(int newID, const std::string& newName) : ID(newID), name(newName) {
+Scene::Scene(int newID, const std::string& newName, const std::string& inputConfigFile) : ID(newID), name(newName) {
     gameLoop = new GameLoop();
-    inputConfigurator = new InputConfigurator("Resources/Configurations/InputConfiguration/example.json");
-    //inputConfigurator = new InputConfigurator("Resources/Configurations/InputConfiguration/" + newName + ".json");
+    inputConfigurator = new InputConfigurator(inputConfigFile);
 }
 
 Scene::~Scene() {

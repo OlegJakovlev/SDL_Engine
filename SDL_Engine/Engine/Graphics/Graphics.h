@@ -34,6 +34,7 @@ public:
     void Render(std::vector<GameObject::GameObject*>& gameObjects, double normalizedStepBetweenUpdates);
     void RenderPresent();
 
+    SDL_Texture* LoadTexture(const std::string& pathToFile);
     SDL_Texture* GetTextureFromSurface(SDL_Surface* surface);
 
 private:

@@ -66,6 +66,10 @@ void Graphics::RenderPresent() {
     SDL_RenderPresent(renderer);
 }
 
+SDL_Texture* Graphics::LoadTexture(const std::string& pathToFile) {
+    return IMG_LoadTexture(renderer, pathToFile.c_str());
+}
+
 SDL_Texture* Graphics::GetTextureFromSurface(SDL_Surface* surface) {
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
     SDL_FreeSurface(surface);

@@ -223,7 +223,6 @@
     <None Include="Resources\Audio\Sounds\.gitkeep" />
     <None Include="Resources\Images\Textures\.gitkeep" />
     <None Include="Resources\Scenes\.gitkeep" />
-    <None Include="Engine\Configurator\example.json" />
     <None Include="Resources\Configurations\SceneConfiguration\example.json" />
     <None Include="Resources\Configurations\InputConfiguration\example.json" />
   </ItemGroup>

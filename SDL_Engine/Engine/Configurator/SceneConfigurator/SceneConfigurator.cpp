@@ -15,7 +15,12 @@ void SceneConfigurator::LoadConfiguration() {
 
     for (auto& sceneToConfigure : configuration.at("root")) {
         // Create scene and add to scene manager
-        Scene* newCreatedScene = new Scene(sceneToConfigure.at("ID").get<int>(), sceneToConfigure.at("name").get<std::string>());
+        Scene* newCreatedScene = new Scene(
+            sceneToConfigure.at("ID").get<int>(),
+            sceneToConfigure.at("name").get<std::string>(),
+            sceneToConfigure.at("inputConfigurationFilePath").get<std::string>()
+        );
+
         sceneManager->AddScene(newCreatedScene);
 
         // Create root element and all it child
