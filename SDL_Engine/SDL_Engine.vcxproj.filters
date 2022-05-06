@@ -33,7 +33,7 @@
     <ClCompile Include="Engine\Input\InputController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Audio\Audio.cpp">
+    <ClCompile Include="Engine\Service\Audio\Audio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Configurator\Configurator.cpp">
@@ -72,7 +72,7 @@
     <ClCompile Include="Engine\Logger\SceneLogger\SceneLogger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Audio\NullAudio\NullAudio.cpp">
+    <ClCompile Include="Engine\Service\Audio\NullAudio\NullAudio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine\Logger\Logger.cpp">
@@ -114,6 +114,15 @@
     <ClCompile Include="Engine\Component\IComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Configurator\AudioConfigurator\AudioConfigurator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Service\Audio\PCAudio\PCAudio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Locator\AudioLocator\AudioLocator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -131,7 +140,7 @@
     <ClInclude Include="Engine\Input\InputController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Audio\Audio.h">
+    <ClInclude Include="Engine\Service\Audio\Audio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Configurator\Configurator.h">
@@ -170,7 +179,7 @@
     <ClInclude Include="Engine\Logger\SceneLogger\SceneLogger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Audio\NullAudio\NullAudio.h">
+    <ClInclude Include="Engine\Service\Audio\NullAudio\NullAudio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Graphics\Graphics.h">
@@ -215,6 +224,15 @@
     <ClInclude Include="Engine\Component\IComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Configurator\AudioConfigurator\AudioConfigurator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Service\Audio\PCAudio\PCAudio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Locator\AudioLocator\AudioLocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -225,5 +243,6 @@
     <None Include="Resources\Scenes\.gitkeep" />
     <None Include="Resources\Configurations\SceneConfiguration\example.json" />
     <None Include="Resources\Configurations\InputConfiguration\example.json" />
+    <None Include="Resources\Configurations\AudioConfiguration\example.json" />
   </ItemGroup>
 </Project>

@@ -145,10 +145,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Locator\AudioLocator\AudioLocator.cpp" />
+    <ClCompile Include="Engine\Configurator\AudioConfigurator\AudioConfigurator.cpp" />
     <ClCompile Include="Engine\Factories\ComponentFactory\ComponentFactory.cpp" />
     <ClCompile Include="Engine\Factories\GameObjectFactory\GameObjectFactory.cpp" />
     <ClCompile Include="Engine\Logger\AudioLogger\AudioLogger.cpp" />
-    <ClCompile Include="Engine\Audio\Audio.cpp" />
+    <ClCompile Include="Engine\Service\Audio\Audio.cpp" />
     <ClCompile Include="Engine\Configurator\Configurator.cpp" />
     <ClCompile Include="Engine\Logger\Logger.cpp" />
     <ClCompile Include="Engine\GameManager.cpp" />
@@ -164,7 +166,7 @@
     <ClCompile Include="Engine\Logger\GraphicsLogger\GraphicsLogger.cpp" />
     <ClCompile Include="Engine\Logger\InputLogger\InputLogger.cpp" />
     <ClCompile Include="Engine\Logger\SceneLogger\SceneLogger.cpp" />
-    <ClCompile Include="Engine\Audio\NullAudio\NullAudio.cpp" />
+    <ClCompile Include="Engine\Service\Audio\NullAudio\NullAudio.cpp" />
     <ClCompile Include="Engine\GameLoop\GameLoop.cpp" />
     <ClCompile Include="Engine\ObserverPattern\Observer\IObserver.cpp" />
     <ClCompile Include="Engine\ObserverPattern\Subject\ISubject.cpp" />
@@ -172,16 +174,19 @@
     <ClCompile Include="Engine\Component\ImageComponent\ImageComponent.cpp" />
     <ClCompile Include="CustomScripts\GameLoopView.cpp" />
     <ClCompile Include="Engine\Component\IComponent.cpp" />
+    <ClCompile Include="Engine\Service\Audio\PCAudio\PCAudio.cpp" />
     <ClCompile Include="SDL_Engine.cpp" />
     <ClCompile Include="Engine\Physics\Vector2.cpp" />
     <ClCompile Include="Engine\Component\TextComponent\TextComponent.cpp" />
     <ClCompile Include="Engine\SDL_Font_Cache\SDL_FontCache.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Locator\AudioLocator\AudioLocator.h" />
+    <ClInclude Include="Engine\Configurator\AudioConfigurator\AudioConfigurator.h" />
     <ClInclude Include="Engine\Factories\ComponentFactory\ComponentFactory.h" />
     <ClInclude Include="Engine\Factories\GameObjectFactory\GameObjectFactory.h" />
     <ClInclude Include="Engine\Logger\AudioLogger\AudioLogger.h" />
-    <ClInclude Include="Engine\Audio\Audio.h" />
+    <ClInclude Include="Engine\Service\Audio\Audio.h" />
     <ClInclude Include="Engine\Configurator\Configurator.h" />
     <ClInclude Include="Engine\Logger\Logger.h" />
     <ClInclude Include="Engine\GameManager.h" />
@@ -198,7 +203,7 @@
     <ClInclude Include="Engine\Logger\GraphicsLogger\GraphicsLogger.h" />
     <ClInclude Include="Engine\Logger\InputLogger\InputLogger.h" />
     <ClInclude Include="Engine\Logger\SceneLogger\SceneLogger.h" />
-    <ClInclude Include="Engine\Audio\NullAudio\NullAudio.h" />
+    <ClInclude Include="Engine\Service\Audio\NullAudio\NullAudio.h" />
     <ClInclude Include="Engine\GameLoop\GameLoop.h" />
     <ClInclude Include="Engine\ObserverPattern\Observer\IObserver.h" />
     <ClInclude Include="Engine\ObserverPattern\Subject\ISubject.h" />
@@ -208,11 +213,13 @@
     <ClInclude Include="CustomScripts\GameLoopView.h" />
     <ClInclude Include="Engine\SDL_Font_Cache\SDL_FontCache.h" />
     <ClInclude Include="Engine\Component\IComponent.h" />
+    <ClInclude Include="Engine\Service\Audio\PCAudio\PCAudio.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Resources\Audio\Music\.gitkeep" />
     <None Include="Resources\Audio\Sounds\.gitkeep" />
+    <None Include="Resources\Configurations\AudioConfiguration\example.json" />
     <None Include="Resources\Configurations\InputConfiguration\example.json" />
     <None Include="Resources\Configurations\SceneConfiguration\example.json" />
     <None Include="Resources\Images\Sprite\.gitkeep" />

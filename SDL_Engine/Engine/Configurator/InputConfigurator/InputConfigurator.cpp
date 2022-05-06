@@ -31,7 +31,6 @@ void InputConfigurator::LoadConfiguration() {
 	}
 }
 
-// https://stackoverflow.com/questions/35189326/c-call-function-pointer-from-multiple-different-classes
 void InputConfigurator::Initialize() {
 	inputController->LinkAction("toggleFullScreenMode", std::bind(&Graphics::ToggleFullScreen, Graphics::Instance()));
 	

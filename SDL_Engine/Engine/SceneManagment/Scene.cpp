@@ -1,8 +1,9 @@
 #include "Scene.h"
 
-Scene::Scene(int newID, const std::string& newName, const std::string& inputConfigFile) : ID(newID), name(newName) {
+Scene::Scene(int newID, const std::string& newName, const std::string& inputConfigFile, const std::string& audioConfigFile) : ID(newID), name(newName) {
     gameLoop = new GameLoop();
     inputConfigurator = new InputConfigurator(inputConfigFile);
+    audioConfigurator = new AudioConfigurator(audioConfigFile);
 }
 
 Scene::~Scene() {
@@ -11,6 +12,9 @@ Scene::~Scene() {
 
     delete inputConfigurator;
     inputConfigurator = nullptr;
+
+    delete audioConfigurator;
+    audioConfigurator = nullptr;
 
     for (GameObject::GameObject* gameobject : sceneObjects) {
         delete gameobject;

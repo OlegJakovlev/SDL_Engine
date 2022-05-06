@@ -1,0 +1,9 @@
+{
+  "sounds": {
+    "explosion": "Resources/Audio/Sounds/"
+  },
+
+  "music": {
+    "background": "Resouces/Audio/Music/"
+  }
+}

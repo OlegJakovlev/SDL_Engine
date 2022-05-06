@@ -1,207 +1,208 @@
 {
-    "root": {
-        "world": {
-            "ID": 0,
-            "name": "world",
-            "inputConfigurationFilePath": "Resources/Configurations/InputConfiguration/example.json",
-            "gameObjects": {
-                "ID": 1,
-                "name": "Root Object",
-                "position": {
-                    "x": 0,
-                    "y": 0
-                },
-                "rotation": 0,
-                "scale": {
-                    "x": 1,
-                    "y": 1
-                },
-                "components": [],
-                "childObjects": [
-                    {
-                        "ID": 2,
-                        "name": "Child Object",
-                        "position": {
-                            "x": 400,
-                            "y": 300
-                        },
-                        "rotation": 0,
-                        "scale": {
-                            "x": 32,
-                            "y": 32
-                        },
-                        "components": [
-                            {
-                                "name": "Image",
-                                "config": {
-                                    "imagePath": "Resources/Images/Sprite/bomb.png"
-                                }
-                            }
-                        ],
-                        "childObjects": []
-                    },
-                    {
-                        "ID": 3,
-                        "name": "Child Object 2",
-                        "position": {
-                            "x": 100,
-                            "y": -1
-                        },
-                        "rotation": 0,
-                        "scale": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "components": [],
-                        "childObjects": [
-                            {
-                                "ID": 4,
-                                "name": "Child Child Object",
-                                "position": {
-                                    "x": 0,
-                                    "y": 0
-                                },
-                                "rotation": 0,
-                                "scale": {
-                                    "x": 1,
-                                    "y": 1
-                                },
-                                "components": [],
-                                "childObjects": []
-                            }
-                        ]
-                    },
-                    {
-                        "ID": 5,
-                        "name": "GameLoopStats",
-                        "position": {
-                            "x": 0,
-                            "y": 0
-                        },
-                        "rotation": 0,
-                        "scale": {
-                            "x": 1,
-                            "y": 1
-                        },
-                        "components": [
-                            {
-                                "name": "GameLoopView",
-                                "config": {}
-                            }
-                        ],
-                        "childObjects": [
-                            {
-                                "ID": 6,
-                                "name": "Child Object",
-                                "position": {
-                                    "x": 0,
-                                    "y": 0
-                                },
-                                "rotation": 0,
-                                "scale": {
-                                    "x": 1,
-                                    "y": 1
-                                },
-                                "components": [
-                                    {
-                                        "name": "Text",
-                                        "config": {
-                                            "fontPath": "Resources/Fonts/sans.ttf",
-                                            "fontSize": 10,
-                                            "color": {
-                                                "r": 255,
-                                                "g": 255,
-                                                "b": 255,
-                                                "a": 255
-                                            }
-                                        }
-                                    }
-                                ],
-                                "childObjects": []
-                            },
-                            {
-                                "ID": 7,
-                                "name": "Child Object 2",
-                                "position": {
-                                    "x": 0,
-                                    "y": 15
-                                },
-                                "rotation": 0,
-                                "scale": {
-                                    "x": 1,
-                                    "y": 1
-                                },
-                                "components": [
-                                    {
-                                        "name": "Text",
-                                        "config": {
-                                            "fontPath": "Resources/Fonts/sans.ttf",
-                                            "fontSize": 10,
-                                            "color": {
-                                                "r": 255,
-                                                "g": 255,
-                                                "b": 255,
-                                                "a": 255
-                                            }
-                                        }
-                                    }
-                                ],
-                                "childObjects": []
-                            },
-                            {
-                                "ID": 8,
-                                "name": "Child Object",
-                                "position": {
-                                    "x": 0,
-                                    "y": 30
-                                },
-                                "rotation": 0,
-                                "scale": {
-                                    "x": 1,
-                                    "y": 1
-                                },
-                                "components": [
-                                    {
-                                        "name": "Text",
-                                        "config": {
-                                            "fontPath": "Resources/Fonts/sans.ttf",
-                                            "fontSize": 10,
-                                            "color": {
-                                                "r": 255,
-                                                "g": 255,
-                                                "b": 255,
-                                                "a": 255
-                                            }
-                                        }
-                                    }
-                                ],
-                                "childObjects": []
-                            }
-                        ]
-                    }
-                ]
-            }
-        },
-
-        "world2": {
-            "ID": 1,
-            "name": "world2",
-            "inputConfigurationFilePath": "",
-            "gameObjects": {
-                "ID": 1,
-                "name": "Root Object",
-                "position": {
-                    "x": 0,
-                    "y": 0
-                },
-                "rotation": 0,
-                "scale": {
-                    "x": 1,
-                    "y": 1
-                },
-                "components": [],
-                "childObjects": {}
-            }
-        }
-    }
+		"root": {
+			"world": {
+				"ID": 0,
+				"name": "world",
+				"inputConfigurationFilePath": "Resources/Configurations/InputConfiguration/example.json",
+				"audioConfigurationFilePath": "Resources/Configurations/AudioConfiguration/example.json",
+				"gameObjects": {
+					"ID": 1,
+					"name": "Root Object",
+					"position": {
+						"x": 0,
+						"y": 0
+					},
+					"rotation": 0,
+					"scale": {
+						"x": 1,
+						"y": 1
+					},
+					"components": [],
+					"childObjects": [
+						{
+							"ID": 2,
+							"name": "Child Object",
+							"position": {
+								"x": 400,
+								"y": 300
+							},
+							"rotation": 0,
+							"scale": {
+								"x": 32,
+								"y": 32
+							},
+							"components": [
+								{
+									"name": "Image",
+									"config": {
+										"imagePath": "Resources/Images/Sprite/bomb.png"
+									}
+								}
+							],
+							"childObjects": []
+						},
+						{
+							"ID": 3,
+							"name": "Child Object 2",
+							"position": {
+								"x": 100,
+								"y": -1
+							},
+							"rotation": 0,
+							"scale": {
+								"x": 1,
+								"y": 1
+							},
+							"components": [],
+							"childObjects": [
+								{
+									"ID": 4,
+									"name": "Child Child Object",
+									"position": {
+										"x": 0,
+										"y": 0
+									},
+									"rotation": 0,
+									"scale": {
+										"x": 1,
+										"y": 1
+									},
+									"components": [],
+									"childObjects": []
+								}
+							]
+						},
+						{
+							"ID": 5,
+							"name": "GameLoopStats",
+							"position": {
+								"x": 0,
+								"y": 0
+							},
+							"rotation": 0,
+							"scale": {
+								"x": 1,
+								"y": 1
+							},
+							"components": [
+								{
+									"name": "GameLoopView",
+									"config": {}
+								}
+							],
+							"childObjects": [
+								{
+									"ID": 6,
+									"name": "Child Object",
+									"position": {
+										"x": 0,
+										"y": 0
+									},
+									"rotation": 0,
+									"scale": {
+										"x": 1,
+										"y": 1
+									},
+									"components": [
+										{
+											"name": "Text",
+											"config": {
+												"fontPath": "Resources/Fonts/sans.ttf",
+												"fontSize": 10,
+												"color": {
+													"r": 255,
+													"g": 255,
+													"b": 255,
+													"a": 255
+												}
+											}
+										}
+									],
+									"childObjects": []
+								},
+								{
+									"ID": 7,
+									"name": "Child Object 2",
+									"position": {
+										"x": 0,
+										"y": 15
+									},
+									"rotation": 0,
+									"scale": {
+										"x": 1,
+										"y": 1
+									},
+									"components": [
+										{
+											"name": "Text",
+											"config": {
+												"fontPath": "Resources/Fonts/sans.ttf",
+												"fontSize": 10,
+												"color": {
+													"r": 255,
+													"g": 255,
+													"b": 255,
+													"a": 255
+												}
+											}
+										}
+									],
+									"childObjects": []
+								},
+								{
+									"ID": 8,
+									"name": "Child Object",
+									"position": {
+										"x": 0,
+										"y": 30
+									},
+									"rotation": 0,
+									"scale": {
+										"x": 1,
+										"y": 1
+									},
+									"components": [
+										{
+											"name": "Text",
+											"config": {
+												"fontPath": "Resources/Fonts/sans.ttf",
+												"fontSize": 10,
+												"color": {
+													"r": 255,
+													"g": 255,
+													"b": 255,
+													"a": 255
+												}
+											}
+										}
+									],
+									"childObjects": []
+								}
+							]
+						}
+					]
+				}
+			},
+			"world2": {
+				"ID": 1,
+				"name": "world2",
+				"inputConfigurationFilePath": "",
+				"audioConfigurationFilePath": "",
+				"gameObjects": {
+					"ID": 1,
+					"name": "Root Object",
+					"position": {
+						"x": 0,
+						"y": 0
+					},
+					"rotation": 0,
+					"scale": {
+						"x": 1,
+						"y": 1
+					},
+					"components": [],
+					"childObjects": {}
+				}
+			}
+		}
 }

@@ -7,11 +7,12 @@
 #include "../GameObject/GameObject.h"
 #include "../GameLoop/GameLoop.h"
 #include "../Configurator/InputConfigurator/InputConfigurator.h"
+#include "../Configurator/AudioConfigurator/AudioConfigurator.h"
 
 class Scene {
 
 public:
-    Scene(int newID, const std::string& newName, const std::string& inputConfigFile);
+    Scene(int newID, const std::string& newName, const std::string& inputConfigFile, const std::string& audioConfigFile);
     ~Scene();
 
     void Initialize();
@@ -34,7 +35,10 @@ private:
     const std::string name;
 
     GameLoop* gameLoop;
+    
     InputConfigurator* inputConfigurator;
+    AudioConfigurator* audioConfigurator;
+
     std::vector<GameObject::GameObject*> sceneObjects;
 
     bool initialized = false;
