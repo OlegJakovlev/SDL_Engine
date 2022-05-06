@@ -8,6 +8,7 @@
 #include <typeindex>
 #include <string>
 #include <SDL.h>
+#include <functional>
 #include "../Logger/InputLogger/InputLogger.h"
 
 class GameManager;
@@ -19,8 +20,8 @@ public:
 
     void CreateAction(const std::string& actionName, int actionKey);
 
-    void LinkAction(const std::string& actionName, void* function);
-    void LinkAction(int actionKey, void* function);
+    void LinkAction(const std::string& actionName, std::function<void()> function);
+    void LinkAction(int actionKey, std::function<void()> function);
 
     void CallAction(const std::string& actionName);
     void CallAction(int actionKey);
@@ -32,7 +33,7 @@ private:
 
     std::unordered_map<int, std::string> namedActions; // Bind key with event name
     std::unordered_map<std::string, bool> activeEvents; // Check if particular event is activated
-    //std::unordered_map<std::string, KeyAction> keyActions; // Bind event name to function
+    std::unordered_map<std::string, std::function<void()>> keyActions; // Bind event name to function
 };
 
 #endif

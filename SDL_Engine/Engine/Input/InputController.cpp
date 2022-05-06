@@ -14,23 +14,21 @@ void InputController::CreateAction(const std::string& actionName, int actionKey)
     activeEvents.emplace(std::make_pair(actionName, false));
 }
 
-void InputController::LinkAction(const std::string& actionName, void* function) {
-    //keyActions.emplace(std::make_pair(actionName, function));
+void InputController::LinkAction(const std::string& actionName, std::function<void()> function) {
+    keyActions.emplace(std::make_pair(actionName, function));
 }
 
-void InputController::LinkAction(const int actionKey, void* function) {
+void InputController::LinkAction(const int actionKey, std::function<void()> function) {
     auto it = namedActions.find(actionKey);
     if (it != namedActions.end()) LinkAction((*it).second, function);
 }
 
 void InputController::CallAction(const std::string& actionName) {
-    /*
     auto it = keyActions.find(actionName);
     if (it == keyActions.end()) return;
 
     // Execute linked function
     ((*it).second)();
-    */
 }
 
 void InputController::CallAction(int key) {

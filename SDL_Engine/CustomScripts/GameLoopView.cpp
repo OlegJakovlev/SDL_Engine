@@ -17,12 +17,6 @@ void GameLoopView::Init() {
 	);
 }
 
-void GameLoopView::LoadConfig(const nlohmann::json& config) {
-}
-
-void GameLoopView::Update() {
-}
-
 void GameLoopView::Render() {
 	inputPerformanceText->Render();
 	updatePerformanceText->Render();

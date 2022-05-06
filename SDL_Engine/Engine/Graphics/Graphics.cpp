@@ -68,7 +68,7 @@ void Graphics::RenderPresent() {
 
 void Graphics::ToggleFullScreen() {
     isFullScreen = !isFullScreen;
-    std::cout << "It works!\n";
+    SDL_SetWindowFullscreen(window, (isFullScreen) ? SDL_WINDOW_FULLSCREEN_DESKTOP : isFullScreen);
 }
 
 SDL_Texture* Graphics::LoadTexture(const std::string& pathToFile) {

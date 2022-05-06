@@ -9,8 +9,6 @@
 class GameLoopView : public AbstractComponent {
 public:
 	void Init() override;
-	void LoadConfig(const nlohmann::json& config) override;
-	void Update() override;
 	void Render() override;
 
 	void SetInputTextPointer(TextComponent* source);

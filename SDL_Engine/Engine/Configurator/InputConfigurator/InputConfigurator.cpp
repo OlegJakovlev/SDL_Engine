@@ -1,5 +1,5 @@
 #include "InputConfigurator.h"
-#include <iostream>
+#include "../../GameManager.h"
 
 InputConfigurator::InputConfigurator(const std::string& configPath) : Configurator(configPath) {
 }
@@ -33,13 +33,13 @@ void InputConfigurator::LoadConfiguration() {
 
 // https://stackoverflow.com/questions/35189326/c-call-function-pointer-from-multiple-different-classes
 void InputConfigurator::Initialize() {
-	//inputController->LinkAction("toggleFullScreenMode", &ptfptr);
+	inputController->LinkAction("toggleFullScreenMode", std::bind(&Graphics::ToggleFullScreen, Graphics::Instance()));
+	
+	inputController->LinkAction("toggleInput", std::bind(&GameLoop::ToggleInput, GameManager::Instance()->GetSceneManager()->GetCurrentScene()->GetGameLoop()));
+	inputController->LinkAction("toggleUpdate", std::bind(&GameLoop::ToggleUpdate, GameManager::Instance()->GetSceneManager()->GetCurrentScene()->GetGameLoop()));
+	inputController->LinkAction("toggleRender", std::bind(&GameLoop::ToggleRender, GameManager::Instance()->GetSceneManager()->GetCurrentScene()->GetGameLoop()));
 }
 
 InputController* InputConfigurator::GetInputController() {
 	return inputController;
-}
-
-void InputConfigurator::test() {
-	std::cout << 1111111111111111 << "\n";
 }

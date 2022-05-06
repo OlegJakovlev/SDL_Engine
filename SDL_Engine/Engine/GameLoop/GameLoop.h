@@ -21,6 +21,10 @@ public:
     void Initialize(Scene* masterScene);
     void Run(InputController* input, std::vector<GameObject::GameObject*>& sceneObjects);
 
+    void ToggleInput();
+    void ToggleUpdate();
+    void ToggleRender();
+
 private:
     const double SECONDS_PER_UPDATE = 0.016666; // 60 FPS
     const int MAX_PHYSICS_UPDATES = 120; // FPS * 2
@@ -35,6 +39,10 @@ private:
     double renderTime;
 
     GameLoopView* gameStatsView;
+
+    bool inputActive = true;
+    bool updateActive = true;
+    bool renderActive = true;
 
     void Input(InputController* input);
     void Update(std::vector<GameObject::GameObject*>& sceneObjects);

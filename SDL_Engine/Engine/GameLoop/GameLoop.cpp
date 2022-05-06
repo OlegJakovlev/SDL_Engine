@@ -30,33 +30,60 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
     timeLag += frameTime;
 
     // Input
-    Input(input);
+    if (inputActive) {
+        Input(input);
 
-    // Measure input performance
-    inputTime = timer->GetCurrentTime() - previousTime;
-    gameStatsView->SetInputPerformaceText(std::to_string(inputTime));
-
-    // Physics Update
-    while (timeLag >= SECONDS_PER_UPDATE && physicsUpdates < MAX_PHYSICS_UPDATES) {
-        physicsUpdates++;
-        Update(sceneObjects);
-        timeLag -= SECONDS_PER_UPDATE;
-        currentTime += SECONDS_PER_UPDATE;
+        // Measure input performance
+        inputTime = timer->GetCurrentTime() - previousTime;
+        gameStatsView->SetInputPerformaceText(std::to_string(inputTime));
+    }
+    else {
+        gameStatsView->SetInputPerformaceText("Disabled");
     }
 
-    // Measure update performance
-    updateTime = timer->GetCurrentTime() - inputTime - previousTime;
-    gameStatsView->SetUpdatePerformaceText(std::to_string(updateTime));
+    // Physics Update
+    if (updateActive) {
+        while (timeLag >= SECONDS_PER_UPDATE && physicsUpdates < MAX_PHYSICS_UPDATES) {
+            physicsUpdates++;
+            Update(sceneObjects);
+            timeLag -= SECONDS_PER_UPDATE;
+            currentTime += SECONDS_PER_UPDATE;
+        }
+
+        // Measure update performance
+        updateTime = timer->GetCurrentTime() - inputTime - previousTime;
+        gameStatsView->SetUpdatePerformaceText(std::to_string(updateTime));
+    }
+    else {
+        gameStatsView->SetUpdatePerformaceText("Disabled");
+    }
 
     // Render
-    Graphics::Instance()->RenderClear();
-    Graphics::Instance()->Render(sceneObjects, timeLag / SECONDS_PER_UPDATE);
+    if (renderActive) {
+        Graphics::Instance()->RenderClear();
+        Graphics::Instance()->Render(sceneObjects, timeLag / SECONDS_PER_UPDATE);
 
-    // Measure render performance
-    renderTime = timer->GetCurrentTime() - updateTime - previousTime;
-    gameStatsView->SetRenderPerformaceText(std::to_string(renderTime));
+        // Measure render performance
+        renderTime = timer->GetCurrentTime() - updateTime - previousTime;
+        gameStatsView->SetRenderPerformaceText(std::to_string(renderTime));
 
-    Graphics::Instance()->RenderPresent();
+        Graphics::Instance()->RenderPresent();
+    }
+    else {
+        gameStatsView->SetRenderPerformaceText("Disabled");
+    }
+}
+
+void GameLoop::ToggleInput() {
+    inputActive = !inputActive;
+}
+
+void GameLoop::ToggleUpdate() {
+    updateActive = !updateActive;
+}
+
+void GameLoop::ToggleRender() {
+    renderActive = !renderActive;
 }
 
 void GameLoop::Input(InputController* input) {
