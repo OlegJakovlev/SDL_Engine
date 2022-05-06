@@ -1,5 +1,8 @@
 #include "NullAudio.h"
 
+NullAudio::NullAudio() : Audio::Audio() {
+}
+
 void NullAudio::PlaySound(const std::string& soundName) {
 }
 
@@ -9,13 +12,13 @@ void NullAudio::PlayMusic(const std::string& musicName) {
 void NullAudio::PauseSound(const std::string& soundName) {
 }
 
-void NullAudio::PauseMusic(const std::string& musicName) {
+void NullAudio::PauseMusic() {
 }
 
 void NullAudio::ResumeSound(const std::string& soundName) {
 }
 
-void NullAudio::ResumeMusic(const std::string& musicName) {
+void NullAudio::ResumeMusic() {
 }
 
 void NullAudio::StopAllSound() {

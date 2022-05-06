@@ -1,6 +1,6 @@
 {
   "sounds": {
-    "explosion": "Resources/Audio/Sounds/"
+    "explosion": "Resources/Audio/Sounds/explosion.wav"
   },
 
   "music": {

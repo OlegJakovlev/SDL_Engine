@@ -82,8 +82,11 @@ bool Scene::IsInitialized() {
 }
 
 void Scene::Initialize() {
-    // Load input configuration and initialize main binds
+    // Load configurations
     inputConfigurator->LoadConfiguration();
+    audioConfigurator->LoadConfiguration();
+
+    // Initialize main binds
     inputConfigurator->Initialize();
 
     // Initialize scene objects with components

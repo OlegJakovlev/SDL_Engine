@@ -76,14 +76,23 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
 void GameLoop::ToggleInput() {
     inputActive = !inputActive;
+
+    std::string textStatus = (inputActive) ? "ON" : "OFF";
+    Logger::Instance().LogWarning("GameLoop Input Component: " + textStatus);
 }
 
 void GameLoop::ToggleUpdate() {
     updateActive = !updateActive;
+
+    std::string textStatus = (updateActive) ? "ON" : "OFF";
+    Logger::Instance().LogWarning("GameLoop Update Component: " + textStatus);
 }
 
 void GameLoop::ToggleRender() {
     renderActive = !renderActive;
+
+    std::string textStatus = (renderActive) ? "ON" : "OFF";
+    Logger::Instance().LogWarning("GameLoop Render Component: " + textStatus);
 }
 
 void GameLoop::Input(InputController* input) {

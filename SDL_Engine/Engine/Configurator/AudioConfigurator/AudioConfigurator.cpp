@@ -1,4 +1,5 @@
 #include "AudioConfigurator.h"
+#include <iostream>
 
 AudioConfigurator::AudioConfigurator(const std::string& configPath) : Configurator(configPath) {
 }
@@ -13,11 +14,11 @@ void AudioConfigurator::LoadConfiguration() {
 	Audio* audioService = new PCAudio();
 	AudioLocator::LinkAudio(audioService);
 
-	for (auto& soundEntry : configuration.at("sounds")) {
-		//std::printf("%s\n", soundEntry);
+	for (auto& soundEntry : configuration.at("sounds").items()) {
+		audioService->AddSound(soundEntry.key(), soundEntry.value());
 	}
 
-	for (auto& musicEntry : configuration.at("music")) {
-		//std::printf("%s\n", musicEntry);
+	for (auto& musicEntry : configuration.at("music").items()) {
+		audioService->AddMusic(musicEntry.key(), musicEntry.value());
 	}
 }
