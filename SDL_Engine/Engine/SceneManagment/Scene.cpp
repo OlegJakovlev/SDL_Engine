@@ -78,13 +78,14 @@ bool Scene::IsInitialized() {
 }
 
 void Scene::Initialize() {
+    // Load input configuration and initialize main binds
+    inputConfigurator->LoadConfiguration();
+    inputConfigurator->Initialize();
+
     // Initialize scene objects with components
     for (GameObject::GameObject* sceneObject : sceneObjects) {
         InitializeRecursively(sceneObject);
     }
-
-    // Load input configuration
-    inputConfigurator->LoadConfiguration();
 
     // Initialize game loop
     gameLoop->Initialize(this);

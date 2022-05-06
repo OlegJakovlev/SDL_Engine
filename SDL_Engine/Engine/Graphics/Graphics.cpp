@@ -66,6 +66,11 @@ void Graphics::RenderPresent() {
     SDL_RenderPresent(renderer);
 }
 
+void Graphics::ToggleFullScreen() {
+    isFullScreen = !isFullScreen;
+    std::cout << "It works!\n";
+}
+
 SDL_Texture* Graphics::LoadTexture(const std::string& pathToFile) {
     return IMG_LoadTexture(renderer, pathToFile.c_str());
 }

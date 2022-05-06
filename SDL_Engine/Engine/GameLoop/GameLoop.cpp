@@ -34,7 +34,6 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
     // Measure input performance
     inputTime = timer->GetCurrentTime() - previousTime;
-    //std::printf("Input Loop Performance (s): %f\n", inputTime);
     gameStatsView->SetInputPerformaceText(std::to_string(inputTime));
 
     // Physics Update
@@ -47,7 +46,6 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
     // Measure update performance
     updateTime = timer->GetCurrentTime() - inputTime - previousTime;
-    //std::printf("Update Loop Performance (s): %f\n", updateTime);
     gameStatsView->SetUpdatePerformaceText(std::to_string(updateTime));
 
     // Render
@@ -56,13 +54,12 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
     // Measure render performance
     renderTime = timer->GetCurrentTime() - updateTime - previousTime;
-    //std::printf("Render Loop Performance (s): %f\n", renderTime);
     gameStatsView->SetRenderPerformaceText(std::to_string(renderTime));
 
     Graphics::Instance()->RenderPresent();
 }
 
-void GameLoop::Input(const InputController* input) const {
+void GameLoop::Input(InputController* input) {
     SDL_Event currentEvent;
 
     while (SDL_PollEvent(&currentEvent) != 0) {
@@ -70,7 +67,7 @@ void GameLoop::Input(const InputController* input) const {
     }
 }
 
-void GameLoop::Update(std::vector<GameObject::GameObject*>& sceneObjects) const {
+void GameLoop::Update(std::vector<GameObject::GameObject*>& sceneObjects) {
     // Components update
     for (int index = 0; index < sceneObjects.size(); index++) {
         sceneObjects[index]->Update();

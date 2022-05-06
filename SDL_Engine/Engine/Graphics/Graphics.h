@@ -18,6 +18,9 @@ public:
 
     SDL_Renderer* GetRenderer();
 
+    SDL_Texture* LoadTexture(const std::string& pathToFile);
+    SDL_Texture* GetTextureFromSurface(SDL_Surface* surface);
+
     void RenderRectangle(const SDL_Rect* rect);
 
     void RenderCopyAdvanced(
@@ -34,8 +37,7 @@ public:
     void Render(std::vector<GameObject::GameObject*>& gameObjects, double normalizedStepBetweenUpdates);
     void RenderPresent();
 
-    SDL_Texture* LoadTexture(const std::string& pathToFile);
-    SDL_Texture* GetTextureFromSurface(SDL_Surface* surface);
+    void ToggleFullScreen();
 
 private:
     Graphics();
@@ -47,6 +49,8 @@ private:
 
     SDL_Window* window;
     SDL_Renderer* renderer;
+
+    bool isFullScreen = false;
 };
 
 #endif

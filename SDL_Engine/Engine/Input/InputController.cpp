@@ -14,47 +14,46 @@ void InputController::CreateAction(const std::string& actionName, int actionKey)
     activeEvents.emplace(std::make_pair(actionName, false));
 }
 
-// Adopted from here: https://stackoverflow.com/questions/2136998/using-a-stl-map-of-function-pointers
-template<typename T>
-void InputController::LinkAction(const std::string& actionName, const T& function) {
-    // Create bind from key to function
-    auto arguments = std::type_index(typeid(function));
-    keyActions.emplace(std::make_pair(actionName, std::make_pair((KeyAction)function, arguments)));
+void InputController::LinkAction(const std::string& actionName, void* function) {
+    //keyActions.emplace(std::make_pair(actionName, function));
 }
 
-template<typename T>
-void InputController::LinkAction(const int actionKey, const T& function) {
+void InputController::LinkAction(const int actionKey, void* function) {
     auto it = namedActions.find(actionKey);
     if (it != namedActions.end()) LinkAction((*it).second, function);
 }
 
-template<typename T, typename... Args>
-void InputController::CallAction(const int key, Args&&... args) {
-    auto it = keyActions.find(key);
+void InputController::CallAction(const std::string& actionName) {
+    /*
+    auto it = keyActions.find(actionName);
     if (it == keyActions.end()) return;
 
-    auto functionWithArgumentsPair = it->second;
-    auto typeCastedFunction = reinterpret_cast<T(*)(Args ...)>(functionWithArgumentsPair.first);
-
-    // compare the types are equal or not
-    assert(functionWithArgumentsPair.second == std::type_index(typeid(typeCastedFunction)));
-
-    return typeCastedFunction(std::forward<Args>(args)...);
+    // Execute linked function
+    ((*it).second)();
+    */
 }
 
-void InputController::SetKeyActive(const int key, const bool newStatus) {
-    auto it = activeKeys.find(key);
-    if (it != activeKeys.end()) activeKeys.at(key) = newStatus;
+void InputController::CallAction(int key) {
+    auto it = namedActions.find(key);
+    if (it == namedActions.end()) return;
+
+    CallAction((*it).second);
 }
 
-void InputController::ProcessInput(const SDL_Event& inputEvent) const {
+void InputController::SetEventActive(const std::string& eventName, const bool newStatus) {
+    auto it = activeEvents.find(eventName);
+    if (it != activeEvents.end()) activeEvents.at(eventName) = newStatus;
+}
+
+void InputController::ProcessInput(const SDL_Event& inputEvent) {
     switch (inputEvent.type) {
     case SDL_KEYDOWN:
-        InputLogger::Instance().LogMessage("ASCII Key " + std::to_string(inputEvent.key.keysym.sym) + " was pressed!");
+        InputLogger::Instance().LogMessage("ASCII Key " + std::to_string(inputEvent.key.keysym.scancode) + " was pressed!");
+        CallAction(inputEvent.key.keysym.scancode);
         break;
 
     case SDL_KEYUP:
-        InputLogger::Instance().LogMessage("ASCII Key " + std::to_string(inputEvent.key.keysym.sym) + " was released!");
+        InputLogger::Instance().LogMessage("ASCII Key " + std::to_string(inputEvent.key.keysym.scancode) + " was released!");
         break;
 
     case SDL_MOUSEBUTTONDOWN:

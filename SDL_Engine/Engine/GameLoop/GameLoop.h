@@ -36,8 +36,8 @@ private:
 
     GameLoopView* gameStatsView;
 
-    void Input(const InputController* input) const;
-    void Update(std::vector<GameObject::GameObject*>& sceneObjects) const;
+    void Input(InputController* input);
+    void Update(std::vector<GameObject::GameObject*>& sceneObjects);
 };
 
 #endif

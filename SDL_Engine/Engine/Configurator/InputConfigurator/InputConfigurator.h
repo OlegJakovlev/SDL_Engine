@@ -5,12 +5,17 @@
 
 #include "../Configurator.h"
 #include "../../Input/InputController.h"
+#include "../../Graphics/Graphics.h"
 
 class InputConfigurator : public Configurator {
 public:
     explicit InputConfigurator(const std::string& configPath);
     ~InputConfigurator();
+    
     void LoadConfiguration() override;
+    void Initialize();
+
+    void test();
 
     InputController* GetInputController();
 
