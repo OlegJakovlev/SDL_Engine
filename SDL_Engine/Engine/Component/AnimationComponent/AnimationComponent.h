@@ -14,22 +14,25 @@ public:
     ~AnimationComponent();
 
     void Init() override;
-    void LoadConfig(const nlohmann::json& config) override;
     void Update() override;
 
     void PlayAnimation(const std::string& animationName);
     void PauseAnimation();
 
 private:
+    std::vector<SDL_Texture*> animation;
     std::vector<SDL_Texture*>::const_iterator currentFrame;
+
     ImageComponent* imageComponent;
+    SDL_Texture* beforeAnimationTexture;
 
     Timer timer;
 
     double frameSwitchTime;
     double previosFrameTime;
 
-    bool isPlaying = false;
+    bool isPaused = false;
+    bool isFinished;
 };
 
 #endif

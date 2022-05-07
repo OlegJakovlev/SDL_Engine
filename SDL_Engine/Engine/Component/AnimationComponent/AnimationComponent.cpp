@@ -14,29 +14,50 @@ void AnimationComponent::Init() {
     timer = GameManager::Instance()->GetSceneManager()->GetCurrentScene()->GetGameLoop()->GetTimer();
 }
 
-void AnimationComponent::LoadConfig(const nlohmann::json& config) {
-}
-
 void AnimationComponent::Update() {
-    auto previousFrame = currentFrame;
     double currentTime = timer.GetCurrentTime();
 
-    if (isPlaying) {
-        // If time passed, save the new time and increment the frame
-        if (currentTime - previosFrameTime > frameSwitchTime) {
-            previosFrameTime = currentTime;
-            std::next(currentFrame);
-        }
+    if (isFinished && beforeAnimationTexture != nullptr) {
+        imageComponent->SetTexture(beforeAnimationTexture);
+        beforeAnimationTexture = nullptr;
+        return;
     }
 
-    if (previousFrame != currentFrame) imageComponent->SetTexture(*currentFrame);
+    if (!isPaused) {
+        // If time passed, save the new time
+        if (currentTime - previosFrameTime > frameSwitchTime) {
+            previosFrameTime = currentTime;
+
+            // Increment frame if not last
+            if (currentFrame != animation.end()) {
+                currentFrame = std::next(currentFrame);
+
+                // Set new frame
+                imageComponent->SetTexture(*currentFrame);
+            }
+            else {
+                isFinished = true;
+            }
+        }
+    }
 }
 
 void AnimationComponent::PlayAnimation(const std::string& animationName) {
-    currentFrame = AnimatorLocator::GetAnimator()->GetAnimation(animationName).begin();
+    // Get texture before animation
+    beforeAnimationTexture = imageComponent->GetTexture();
+    
+    // Get animation with first frame
+    animation = AnimatorLocator::GetAnimator()->GetAnimation(animationName);
+    currentFrame = animation.begin();
+
+    // Reset flags
+    isFinished = false;
+    isPaused = false;
+
+    // Start the timer
     previosFrameTime = timer.GetCurrentTime();
 }
 
 void AnimationComponent::PauseAnimation() {
-    isPlaying = false;
+    isPaused = true;
 }

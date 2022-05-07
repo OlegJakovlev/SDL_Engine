@@ -16,6 +16,7 @@ public:
     void LoadConfig(const nlohmann::json& config) override;
     void Render() override;
 
+    SDL_Texture* GetTexture() const;
     void SetTexture(SDL_Texture* newTexture);
 
 private:

@@ -20,6 +20,10 @@ void ImageComponent::Render() {
     Graphics::Instance()->RenderCopyAdvanced(texture, nullptr, &renderHolder, objectLinkedTo->GetRotation());
 }
 
+SDL_Texture* ImageComponent::GetTexture() const {
+    return texture;
+}
+
 void ImageComponent::SetTexture(SDL_Texture* newTexture) {
     texture = newTexture;
 }
