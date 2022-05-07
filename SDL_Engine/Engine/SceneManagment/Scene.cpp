@@ -1,9 +1,15 @@
 #include "Scene.h"
 
-Scene::Scene(int newID, const std::string& newName, const std::string& inputConfigFile, const std::string& audioConfigFile) : ID(newID), name(newName) {
+Scene::Scene(int newID, const std::string& newName,
+    const std::string& inputConfigFile,
+    const std::string& audioConfigFile,
+    const std::string& texturesPath) : ID(newID), name(newName) {
+
     gameLoop = new GameLoop();
     inputConfigurator = new InputConfigurator(inputConfigFile);
     audioConfigurator = new AudioConfigurator(audioConfigFile);
+    textureConfigurator = new TextureConfigurator(texturesPath);
+    animatorConfigurator = new AnimatorConfigurator("");
 }
 
 Scene::~Scene() {
@@ -15,6 +21,12 @@ Scene::~Scene() {
 
     delete audioConfigurator;
     audioConfigurator = nullptr;
+
+    delete textureConfigurator;
+    textureConfigurator = nullptr;
+
+    delete animatorConfigurator;
+    animatorConfigurator = nullptr;
 
     for (GameObject::GameObject* gameobject : sceneObjects) {
         delete gameobject;
@@ -85,6 +97,8 @@ void Scene::Initialize() {
     // Load configurations
     inputConfigurator->LoadConfiguration();
     audioConfigurator->LoadConfiguration();
+    textureConfigurator->LoadConfiguration();
+    animatorConfigurator->LoadConfiguration();
 
     // Initialize main binds
     inputConfigurator->Initialize();

@@ -129,7 +129,7 @@ namespace GameObject {
         try {
             return components.at(componentName);
         }
-        catch (std::out_of_range& oor) {
+        catch (std::out_of_range&) {
             return nullptr;
         }
     }

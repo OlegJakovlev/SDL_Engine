@@ -6,6 +6,7 @@
 #include <SDL_image.h>
 #include "../AbstractComponent.h"
 #include "../../Logger/GraphicsLogger/GraphicsLogger.h"
+#include "../../Locator/TextureLocator/TextureLocator.h"
 
 class ImageComponent : public AbstractComponent {
 public:
@@ -14,6 +15,8 @@ public:
     void Init() override;
     void LoadConfig(const nlohmann::json& config) override;
     void Render() override;
+
+    void SetTexture(SDL_Texture* newTexture);
 
 private:
     std::string pathToImage;

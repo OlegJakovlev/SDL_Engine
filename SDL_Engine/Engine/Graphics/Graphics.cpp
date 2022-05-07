@@ -46,10 +46,6 @@ void Graphics::RenderClear() {
     SDL_RenderClear(renderer);
 }
 
-void Graphics::Render(GameObject::GameObject* gameObject) {
-    gameObject->Render();
-}
-
 void Graphics::Render(std::vector<GameObject::GameObject*>& sceneObjects, double normalizedStepBetweenUpdates){
     // Layer rendering
     for (int i = 16; i >= 0; i--) {
@@ -69,17 +65,6 @@ void Graphics::RenderPresent() {
 void Graphics::ToggleFullScreen() {
     isFullScreen = !isFullScreen;
     SDL_SetWindowFullscreen(window, (isFullScreen) ? SDL_WINDOW_FULLSCREEN_DESKTOP : isFullScreen);
-}
-
-SDL_Texture* Graphics::LoadTexture(const std::string& pathToFile) {
-    return IMG_LoadTexture(renderer, pathToFile.c_str());
-}
-
-SDL_Texture* Graphics::GetTextureFromSurface(SDL_Surface* surface) {
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-    SDL_FreeSurface(surface);
-    
-    return texture;
 }
 
 void Graphics::Release() {

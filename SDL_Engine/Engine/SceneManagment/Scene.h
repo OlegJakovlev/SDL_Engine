@@ -8,11 +8,18 @@
 #include "../GameLoop/GameLoop.h"
 #include "../Configurator/InputConfigurator/InputConfigurator.h"
 #include "../Configurator/AudioConfigurator/AudioConfigurator.h"
+#include "../Configurator/TextureConfigurator/TextureConfigurator.h"
+#include "../Configurator/AnimatorConfigurator/AnimatorConfigurator.h"
 
 class Scene {
 
 public:
-    Scene(int newID, const std::string& newName, const std::string& inputConfigFile, const std::string& audioConfigFile);
+    Scene(int newID,
+        const std::string& newName,
+        const std::string& inputConfigFile,
+        const std::string& audioConfigFile,
+        const std::string& texturesPath
+    );
     ~Scene();
 
     void Initialize();
@@ -38,6 +45,8 @@ private:
     
     InputConfigurator* inputConfigurator;
     AudioConfigurator* audioConfigurator;
+    TextureConfigurator* textureConfigurator;
+    AnimatorConfigurator* animatorConfigurator;
 
     std::vector<GameObject::GameObject*> sceneObjects;
 

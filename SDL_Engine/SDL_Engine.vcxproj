@@ -120,6 +120,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,10 +146,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\Component\AnimationComponent\AnimationComponent.cpp" />
+    <ClCompile Include="Engine\Configurator\AnimatorConfigurator\AnimatorConfigurator.cpp" />
+    <ClCompile Include="Engine\Locator\AnimatorLocator\AnimatorLocator.cpp" />
+    <ClCompile Include="Engine\Service\AnimationManager\AbstractAnimator.cpp" />
+    <ClCompile Include="Engine\Service\AnimationManager\NullAnimator\NullAnimator.cpp" />
+    <ClCompile Include="Engine\Service\AnimationManager\RegularAnimator\RegularAnimator.cpp" />
+    <ClCompile Include="Engine\Service\TextureManager\AbstractTextureManager.cpp" />
     <ClCompile Include="Engine\Locator\AudioLocator\AudioLocator.cpp" />
     <ClCompile Include="Engine\Configurator\AudioConfigurator\AudioConfigurator.cpp" />
     <ClCompile Include="Engine\Factories\ComponentFactory\ComponentFactory.cpp" />
     <ClCompile Include="Engine\Factories\GameObjectFactory\GameObjectFactory.cpp" />
+    <ClCompile Include="Engine\Locator\TextureLocator\TextureLocator.cpp" />
     <ClCompile Include="Engine\Logger\AudioLogger\AudioLogger.cpp" />
     <ClCompile Include="Engine\Service\Audio\Audio.cpp" />
     <ClCompile Include="Engine\Configurator\Configurator.cpp" />
@@ -175,16 +184,27 @@
     <ClCompile Include="CustomScripts\GameLoopView.cpp" />
     <ClCompile Include="Engine\Component\IComponent.cpp" />
     <ClCompile Include="Engine\Service\Audio\PCAudio\PCAudio.cpp" />
+    <ClCompile Include="Engine\Service\TextureManager\NullTexture\NullTextureManager.cpp" />
     <ClCompile Include="SDL_Engine.cpp" />
     <ClCompile Include="Engine\Physics\Vector2.cpp" />
     <ClCompile Include="Engine\Component\TextComponent\TextComponent.cpp" />
     <ClCompile Include="Engine\SDL_Font_Cache\SDL_FontCache.cpp" />
+    <ClCompile Include="Engine\Service\TextureManager\RegularTextureManager\TextureManager.cpp" />
+    <ClCompile Include="Engine\Configurator\TextureConfigurator\TextureConfigurator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\Component\AnimationComponent\AnimationComponent.h" />
+    <ClInclude Include="Engine\Configurator\AnimatorConfigurator\AnimatorConfigurator.h" />
+    <ClInclude Include="Engine\Locator\AnimatorLocator\AnimatorLocator.h" />
+    <ClInclude Include="Engine\Service\AnimationManager\AbstractAnimator.h" />
+    <ClInclude Include="Engine\Service\AnimationManager\NullAnimator\NullAnimator.h" />
+    <ClInclude Include="Engine\Service\AnimationManager\RegularAnimator\RegularAnimator.h" />
+    <ClInclude Include="Engine\Service\TextureManager\AbstractTextureManager.h" />
     <ClInclude Include="Engine\Locator\AudioLocator\AudioLocator.h" />
     <ClInclude Include="Engine\Configurator\AudioConfigurator\AudioConfigurator.h" />
     <ClInclude Include="Engine\Factories\ComponentFactory\ComponentFactory.h" />
     <ClInclude Include="Engine\Factories\GameObjectFactory\GameObjectFactory.h" />
+    <ClInclude Include="Engine\Locator\TextureLocator\TextureLocator.h" />
     <ClInclude Include="Engine\Logger\AudioLogger\AudioLogger.h" />
     <ClInclude Include="Engine\Service\Audio\Audio.h" />
     <ClInclude Include="Engine\Configurator\Configurator.h" />
@@ -214,6 +234,9 @@
     <ClInclude Include="Engine\SDL_Font_Cache\SDL_FontCache.h" />
     <ClInclude Include="Engine\Component\IComponent.h" />
     <ClInclude Include="Engine\Service\Audio\PCAudio\PCAudio.h" />
+    <ClInclude Include="Engine\Service\TextureManager\RegularTextureManager\TextureManager.h" />
+    <ClInclude Include="Engine\Configurator\TextureConfigurator\TextureConfigurator.h" />
+    <ClInclude Include="Engine\Service\TextureManager\NullTexture\NullTextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -222,8 +245,7 @@
     <None Include="Resources\Configurations\AudioConfiguration\example.json" />
     <None Include="Resources\Configurations\InputConfiguration\example.json" />
     <None Include="Resources\Configurations\SceneConfiguration\example.json" />
-    <None Include="Resources\Images\Sprite\.gitkeep" />
-    <None Include="Resources\Images\Textures\.gitkeep" />
+    <None Include="Resources\Images\WorldScene\Sprite\.gitkeep" />
     <None Include="Resources\Scenes\.gitkeep" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

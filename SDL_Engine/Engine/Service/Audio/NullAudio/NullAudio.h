@@ -9,17 +9,17 @@ class NullAudio : public Audio {
 public:
 	NullAudio();
 
-	virtual void PlaySound(const std::string& soundName) override;
-	virtual void PlayMusic(const std::string& musicName) override;
+	void PlaySound(const std::string& soundName) override;
+	void PlayMusic(const std::string& musicName) override;
 
-	virtual void PauseSound(const std::string& soundName) override;
-	virtual void PauseMusic() override;
+	void PauseSound(const std::string& soundName) override;
+	void PauseMusic() override;
 
-	virtual void ResumeSound(const std::string& soundName) override;
-	virtual void ResumeMusic() override;
+	void ResumeSound(const std::string& soundName) override;
+	void ResumeMusic() override;
 
-	virtual void StopAllSound() override;
-	virtual void StopAllMusic() override;
+	void StopAllSound() override;
+	void StopAllMusic() override;
 };
 
 #endif

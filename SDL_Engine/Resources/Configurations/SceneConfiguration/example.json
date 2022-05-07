@@ -5,6 +5,7 @@
 				"name": "world",
 				"inputConfigurationFilePath": "Resources/Configurations/InputConfiguration/example.json",
 				"audioConfigurationFilePath": "Resources/Configurations/AudioConfiguration/example.json",
+				"texturesFolder": "Resources/Images/WorldScene/Sprite/",
 				"gameObjects": {
 					"ID": 1,
 					"name": "Root Object",
@@ -35,7 +36,7 @@
 								{
 									"name": "Image",
 									"config": {
-										"imagePath": "Resources/Images/Sprite/bomb.png"
+										"imagePath": "Resources/Images/Sprite/WorldScene/bomb.png"
 									}
 								}
 							],
@@ -188,6 +189,7 @@
 				"name": "world2",
 				"inputConfigurationFilePath": "",
 				"audioConfigurationFilePath": "",
+				"texturesFolder": "World2Scene",
 				"gameObjects": {
 					"ID": 1,
 					"name": "Root Object",

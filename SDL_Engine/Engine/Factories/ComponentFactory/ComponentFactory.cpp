@@ -17,6 +17,10 @@ AbstractComponent* ComponentFactory::CreateComponent(const std::string& componen
         return new ImageComponent();
     }
 
+    if (componentName == "Animation") {
+        return new AnimationComponent();
+    }
+
     // Composite components
     if (componentName == "GameLoopView") {
         return new GameLoopView();

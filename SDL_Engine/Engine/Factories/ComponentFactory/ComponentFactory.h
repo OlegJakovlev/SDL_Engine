@@ -9,6 +9,7 @@
 // Base
 #include "../../Component/TextComponent/TextComponent.h"
 #include "../../Component/ImageComponent/ImageComponent.h"
+#include "../../Component/AnimationComponent/AnimationComponent.h"
 
 // Composite
 #include "../../../CustomScripts/GameLoopView.h"

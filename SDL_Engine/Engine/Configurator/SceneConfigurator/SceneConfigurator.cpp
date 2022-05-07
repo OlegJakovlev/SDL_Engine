@@ -19,7 +19,8 @@ void SceneConfigurator::LoadConfiguration() {
             sceneToConfigure.at("ID").get<int>(),
             sceneToConfigure.at("name").get<std::string>(),
             sceneToConfigure.at("inputConfigurationFilePath").get<std::string>(),
-            sceneToConfigure.at("audioConfigurationFilePath").get<std::string>()
+            sceneToConfigure.at("audioConfigurationFilePath").get<std::string>(),
+            sceneToConfigure.at("texturesFolder").get<std::string>()
         );
 
         sceneManager->AddScene(newCreatedScene);

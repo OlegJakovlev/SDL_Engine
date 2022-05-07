@@ -2,19 +2,14 @@
 #include "../../Graphics/Graphics.h"
 
 ImageComponent::~ImageComponent() {
-    SDL_DestroyTexture(texture);
     texture = nullptr;
 }
 
 void ImageComponent::Init() {
     AbstractComponent::Init();
 
-    // Destroy existing texture
-    if (texture != nullptr) SDL_DestroyTexture(texture);
-
-    // Load new texture
-    texture = Graphics::Instance()->LoadTexture(pathToImage.c_str());
-    if (texture == nullptr) GraphicsLogger::Instance().LogError("Can not access image by path: " + pathToImage);
+    // Load texture
+    SetTexture(TextureLocator::GetTextureManager()->GetTexture(pathToImage.c_str()));
 }
 
 void ImageComponent::LoadConfig(const nlohmann::json& config) {
@@ -23,4 +18,8 @@ void ImageComponent::LoadConfig(const nlohmann::json& config) {
 
 void ImageComponent::Render() {
     Graphics::Instance()->RenderCopyAdvanced(texture, nullptr, &renderHolder, objectLinkedTo->GetRotation());
+}
+
+void ImageComponent::SetTexture(SDL_Texture* newTexture) {
+    texture = newTexture;
 }

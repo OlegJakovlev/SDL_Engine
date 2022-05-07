@@ -18,9 +18,6 @@ public:
 
     SDL_Renderer* GetRenderer();
 
-    SDL_Texture* LoadTexture(const std::string& pathToFile);
-    SDL_Texture* GetTextureFromSurface(SDL_Surface* surface);
-
     void RenderRectangle(const SDL_Rect* rect);
 
     void RenderCopyAdvanced(
@@ -33,7 +30,6 @@ public:
     );
 
     void RenderClear();
-    void Render(GameObject::GameObject* gameObject);
     void Render(std::vector<GameObject::GameObject*>& gameObjects, double normalizedStepBetweenUpdates);
     void RenderPresent();
 

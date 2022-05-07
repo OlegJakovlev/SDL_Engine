@@ -21,6 +21,8 @@ public:
     void Initialize(Scene* masterScene);
     void Run(InputController* input, std::vector<GameObject::GameObject*>& sceneObjects);
 
+    const Timer& GetTimer();
+
     void ToggleInput();
     void ToggleUpdate();
     void ToggleRender();

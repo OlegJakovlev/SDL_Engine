@@ -74,6 +74,10 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
     }
 }
 
+const Timer& GameLoop::GetTimer() {
+    return *timer;
+}
+
 void GameLoop::ToggleInput() {
     inputActive = !inputActive;
 

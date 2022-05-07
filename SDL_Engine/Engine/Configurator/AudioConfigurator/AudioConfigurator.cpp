@@ -1,5 +1,4 @@
 #include "AudioConfigurator.h"
-#include <iostream>
 
 AudioConfigurator::AudioConfigurator(const std::string& configPath) : Configurator(configPath) {
 }
