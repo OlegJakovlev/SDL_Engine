@@ -15,6 +15,12 @@ namespace Vector2 {
         y = newY;
     }
 
+    template<class T>
+    Vector2<T>::Vector2(const Vector2& other){
+        x = other.x;
+        y = other.y;
+    }
+
     template<>
     const int Vector2<int>::GetX() const {
         return x;
@@ -76,8 +82,69 @@ namespace Vector2 {
         return result;
     }
 
-    template<class T>
-    float Vector2<T>::DotProduct(const Vector2<T>& lhs, const Vector2<T>& rhs) {
+    template<>
+    float Vector2<int>::DotProduct(const Vector2<int>& lhs, const Vector2<int>& rhs) {
+        return lhs.x * rhs.x + lhs.y * rhs.y;
+    }
+
+    template<>
+    Vector2<int>& Vector2<int>::operator+=(const Vector2<int>& rhs) {
+        x += rhs.x;
+        y += rhs.y;
+        return *this;
+    }
+
+    template<>
+    Vector2<float>& Vector2<float>::operator+=(const Vector2<float>& rhs) {
+        x += rhs.x;
+        y += rhs.y;
+        return *this;
+    }
+
+    template<>
+    Vector2<int>& Vector2<int>::operator-=(const Vector2<int>& rhs) {
+        x -= rhs.x;
+        y -= rhs.y;
+        return *this;
+    }
+
+    template<>
+    Vector2<float>& Vector2<float>::operator-=(const Vector2<float>& rhs) {
+        x -= rhs.x;
+        y -= rhs.y;
+        return *this;
+    }
+
+    template<>
+    Vector2<int> Vector2<int>::operator+(const Vector2<int>& rhs) {
+        Vector2<int> result(*this);
+        result += rhs;
+        return result;
+    }
+
+    template<>
+    Vector2<float> Vector2<float>::operator+(const Vector2<float>& rhs) {
+        Vector2<float> result(*this);
+        result += rhs;
+        return result;
+    }
+
+    template<>
+    Vector2<int> Vector2<int>::operator-(const Vector2<int>& rhs) {
+        Vector2<int> result(*this);
+        result -= rhs;
+        return result;
+    }
+
+    template<>
+    Vector2<float> Vector2<float>::operator-(const Vector2<float>& rhs) {
+        Vector2<float> result(*this);
+        result -= rhs;
+        return result;
+    }
+
+    template<>
+    float Vector2<float>::DotProduct(const Vector2<float>& lhs, const Vector2<float>& rhs) {
         return lhs.x * rhs.x + lhs.y * rhs.y;
     }
 

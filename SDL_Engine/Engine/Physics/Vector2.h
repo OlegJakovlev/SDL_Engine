@@ -11,6 +11,7 @@ namespace Vector2 {
     public:
         Vector2();
         Vector2(T newX, T newY);
+        Vector2(const Vector2& other);
         ~Vector2() = default;
 
         const T GetX() const;
@@ -20,33 +21,16 @@ namespace Vector2 {
 
         float FastSquareRoot(float magnitude);
         float GetMagnitude();
-        Vector2<T> CrossProduct();
         Vector2<float> Normalize();
-        float DotProduct(const Vector2<T>& lhs, const Vector2<T>& rhs);
+        static float DotProduct(const Vector2<T>& lhs, const Vector2<T>& rhs);
 
-        Vector2<T>& operator+=(const Vector2<T>& rhs) {
-            x += rhs.x;
-            y += rhs.y;
-            return *this;
-        }
+        Vector2<T>& operator+=(const Vector2<T>& rhs);
 
-        Vector2<T>& operator-=(const Vector2<T>& rhs) {
-            x -= rhs.x;
-            y -= rhs.y;
-            return *this;
-        }
+        Vector2<T>& operator-=(const Vector2<T>& rhs);
 
-        Vector2<T> operator+(const Vector2<T>& rhs) {
-            Vector2<T> result(*this);
-            result += rhs;
-            return result;
-        }
+        Vector2<T> operator+(const Vector2<T>& rhs);
 
-        Vector2<T> operator-(const Vector2<T>& rhs) {
-            Vector2<T> result(*this);
-            result -= rhs;
-            return result;
-        }
+        Vector2<T> operator-(const Vector2<T>& rhs);
 
     private:
         T x;

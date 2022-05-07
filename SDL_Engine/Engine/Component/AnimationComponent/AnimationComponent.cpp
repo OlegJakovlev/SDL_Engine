@@ -3,6 +3,7 @@
 
 AnimationComponent::~AnimationComponent() {
     imageComponent = nullptr;
+    beforeAnimationTexture = nullptr;
 }
 
 void AnimationComponent::Init() {

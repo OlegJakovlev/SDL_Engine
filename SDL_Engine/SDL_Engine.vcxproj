@@ -147,8 +147,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Engine\Component\AnimationComponent\AnimationComponent.cpp" />
+    <ClCompile Include="Engine\Component\PhysicsComponent\PhysicsComponent.cpp" />
     <ClCompile Include="Engine\Configurator\AnimatorConfigurator\AnimatorConfigurator.cpp" />
     <ClCompile Include="Engine\Locator\AnimatorLocator\AnimatorLocator.cpp" />
+    <ClCompile Include="Engine\Logger\PhysicsLogger\PhysicsLogger.cpp" />
     <ClCompile Include="Engine\Service\AnimationManager\AbstractAnimator.cpp" />
     <ClCompile Include="Engine\Service\AnimationManager\NullAnimator\NullAnimator.cpp" />
     <ClCompile Include="Engine\Service\AnimationManager\RegularAnimator\RegularAnimator.cpp" />
@@ -177,8 +179,6 @@
     <ClCompile Include="Engine\Logger\SceneLogger\SceneLogger.cpp" />
     <ClCompile Include="Engine\Service\Audio\NullAudio\NullAudio.cpp" />
     <ClCompile Include="Engine\GameLoop\GameLoop.cpp" />
-    <ClCompile Include="Engine\ObserverPattern\Observer\IObserver.cpp" />
-    <ClCompile Include="Engine\ObserverPattern\Subject\ISubject.cpp" />
     <ClCompile Include="Engine\Component\AbstractComponent.cpp" />
     <ClCompile Include="Engine\Component\ImageComponent\ImageComponent.cpp" />
     <ClCompile Include="CustomScripts\GameLoopView.cpp" />
@@ -194,8 +194,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Component\AnimationComponent\AnimationComponent.h" />
+    <ClInclude Include="Engine\Component\PhysicsComponent\PhysicsComponent.h" />
     <ClInclude Include="Engine\Configurator\AnimatorConfigurator\AnimatorConfigurator.h" />
     <ClInclude Include="Engine\Locator\AnimatorLocator\AnimatorLocator.h" />
+    <ClInclude Include="Engine\Logger\PhysicsLogger\PhysicsLogger.h" />
     <ClInclude Include="Engine\Service\AnimationManager\AbstractAnimator.h" />
     <ClInclude Include="Engine\Service\AnimationManager\NullAnimator\NullAnimator.h" />
     <ClInclude Include="Engine\Service\AnimationManager\RegularAnimator\RegularAnimator.h" />
@@ -225,8 +227,6 @@
     <ClInclude Include="Engine\Logger\SceneLogger\SceneLogger.h" />
     <ClInclude Include="Engine\Service\Audio\NullAudio\NullAudio.h" />
     <ClInclude Include="Engine\GameLoop\GameLoop.h" />
-    <ClInclude Include="Engine\ObserverPattern\Observer\IObserver.h" />
-    <ClInclude Include="Engine\ObserverPattern\Subject\ISubject.h" />
     <ClInclude Include="Engine\Component\AbstractComponent.h" />
     <ClInclude Include="Engine\Component\ImageComponent\ImageComponent.h" />
     <ClInclude Include="Engine\Component\TextComponent\TextComponent.h" />
