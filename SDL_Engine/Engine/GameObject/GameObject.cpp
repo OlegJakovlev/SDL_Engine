@@ -7,6 +7,7 @@ namespace GameObject {
         SetLocalPosition(json.at("position").get<Vector2::Vector2<int>>());
         SetRotation(json.at("rotation").get<float>());
         SetScale(json.at("scale").get<Vector2::Vector2<int>>());
+        SetLayer(json.at("layer"));
         SetComponents(json.at("components"));
     }
 
@@ -17,6 +18,7 @@ namespace GameObject {
         globalPosition = nullptr;
         rotation = 0;
         scale = nullptr;
+        layer = 8;
     }
 
     GameObject::~GameObject() {
