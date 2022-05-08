@@ -43,15 +43,23 @@ void InputController::SetEventActive(const std::string& eventName, const bool ne
     if (it != activeEvents.end()) activeEvents.at(eventName) = newStatus;
 }
 
+void InputController::SetEventActive(const int& eventButton, const bool newStatus) {
+    auto it = namedActions.find(eventButton);
+    if (it == namedActions.end()) return;
+
+    activeEvents.at((*it).second) = newStatus;
+}
+
 void InputController::ProcessInput(const SDL_Event& inputEvent) {
     switch (inputEvent.type) {
     case SDL_KEYDOWN:
         InputLogger::Instance().LogMessage("ASCII Key " + std::to_string(inputEvent.key.keysym.scancode) + " was pressed!");
-        CallAction(inputEvent.key.keysym.scancode);
+        SetEventActive(inputEvent.key.keysym.scancode, true);
         break;
 
     case SDL_KEYUP:
         InputLogger::Instance().LogMessage("ASCII Key " + std::to_string(inputEvent.key.keysym.scancode) + " was released!");
+        SetEventActive(inputEvent.key.keysym.scancode, false);
         break;
 
     case SDL_MOUSEBUTTONDOWN:
@@ -66,4 +74,18 @@ void InputController::ProcessInput(const SDL_Event& inputEvent) {
         GameManager::Instance()->QuitTheGame();
         break;
     }
+
+    if (processed) return;
+
+    for (auto& activeEventEntry : activeEvents) {
+        if (activeEventEntry.second) {
+            CallAction(activeEventEntry.first);
+        }
+    }
+
+    processed = true;
+}
+
+void InputController::ResetProcessedStatus() {
+    processed = false;
 }

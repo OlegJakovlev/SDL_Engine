@@ -23,10 +23,10 @@
 					"childObjects": [
 						{
 							"ID": 2,
-							"name": "Child Object",
+							"name": "Player1",
 							"position": {
-								"x": 400,
-								"y": 300
+								"x": 0,
+								"y": 0
 							},
 							"rotation": 0,
 							"scale": {
@@ -38,7 +38,7 @@
 								{
 									"name": "Image",
 									"config": {
-										"imagePath": "Resources/Images/Sprite/WorldScene/bomb.png"
+										"imagePath": "Resources/Images/WorldScene/Sprite/Player1/Hero.png"
 									}
 								}
 							],
@@ -46,36 +46,26 @@
 						},
 						{
 							"ID": 3,
-							"name": "Child Object 2",
+							"name": "Player2",
 							"position": {
-								"x": 100,
-								"y": -1
+								"x": 768,
+								"y": 568
 							},
 							"rotation": 0,
 							"scale": {
-								"x": 1,
-								"y": 1
+								"x": 32,
+								"y": 32
 							},
 							"layer": 8,
-							"components": [],
-							"childObjects": [
+							"components": [
 								{
-									"ID": 4,
-									"name": "Child Child Object",
-									"position": {
-										"x": 0,
-										"y": 0
-									},
-									"rotation": 0,
-									"scale": {
-										"x": 1,
-										"y": 1
-									},
-									"layer": 8,
-									"components": [],
-									"childObjects": []
+									"name": "Image",
+									"config": {
+										"imagePath": "Resources/Images/WorldScene/Sprite/Player2/Hero.png"
+									}
 								}
-							]
+							],
+							"childObjects": []
 						},
 						{
 							"ID": 5,

@@ -27,13 +27,17 @@ public:
     void CallAction(int actionKey);
 
     void SetEventActive(const std::string& eventName, const bool newStatus);
+    void SetEventActive(const int& eventButton, const bool newStatus);
+
     void ProcessInput(const SDL_Event& inputEvent);
+    void ResetProcessedStatus();
 
 private:
-
     std::unordered_map<int, std::string> namedActions; // Bind key with event name
     std::unordered_map<std::string, bool> activeEvents; // Check if particular event is activated
     std::unordered_map<std::string, std::function<void()>> keyActions; // Bind event name to function
+
+    bool processed;
 };
 
 #endif

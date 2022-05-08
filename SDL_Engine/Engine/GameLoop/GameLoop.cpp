@@ -32,13 +32,10 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
     // Input
     if (inputActive) {
         Input(input);
-
+        
         // Measure input performance
         inputTime = timer->GetCurrentTime() - previousTime;
         gameStatsView->SetInputPerformaceText(std::to_string(inputTime));
-    }
-    else {
-        gameStatsView->SetInputPerformaceText("Disabled");
     }
 
     // Physics Update
@@ -54,9 +51,6 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
         updateTime = timer->GetCurrentTime() - inputTime - previousTime;
         gameStatsView->SetUpdatePerformaceText(std::to_string(updateTime));
     }
-    else {
-        gameStatsView->SetUpdatePerformaceText("Disabled");
-    }
 
     // Render
     if (renderActive) {
@@ -69,9 +63,6 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
         Graphics::Instance()->RenderPresent();
     }
-    else {
-        gameStatsView->SetRenderPerformaceText("Disabled");
-    }
 }
 
 const Timer& GameLoop::GetTimer() {
@@ -83,6 +74,8 @@ void GameLoop::ToggleInput() {
 
     std::string textStatus = (inputActive) ? "ON" : "OFF";
     Logger::Instance().LogWarning("GameLoop Input Component: " + textStatus);
+
+    if (!inputActive) gameStatsView->SetInputPerformaceText("Disabled");
 }
 
 void GameLoop::ToggleUpdate() {
@@ -90,6 +83,8 @@ void GameLoop::ToggleUpdate() {
 
     std::string textStatus = (updateActive) ? "ON" : "OFF";
     Logger::Instance().LogWarning("GameLoop Update Component: " + textStatus);
+
+    if (!updateActive) gameStatsView->SetUpdatePerformaceText("Disabled");
 }
 
 void GameLoop::ToggleRender() {
@@ -97,6 +92,8 @@ void GameLoop::ToggleRender() {
 
     std::string textStatus = (renderActive) ? "ON" : "OFF";
     Logger::Instance().LogWarning("GameLoop Render Component: " + textStatus);
+
+    if (!renderActive) gameStatsView->SetRenderPerformaceText("Disabled");
 }
 
 void GameLoop::Input(InputController* input) {
@@ -105,6 +102,8 @@ void GameLoop::Input(InputController* input) {
     while (SDL_PollEvent(&currentEvent) != 0) {
         input->ProcessInput(currentEvent);
     }
+
+    input->ResetProcessedStatus();
 }
 
 void GameLoop::Update(std::vector<GameObject::GameObject*>& sceneObjects) {
