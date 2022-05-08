@@ -10,6 +10,8 @@
 #include "../../Component/TextComponent/TextComponent.h"
 #include "../../Component/ImageComponent/ImageComponent.h"
 #include "../../Component/AnimationComponent/AnimationComponent.h"
+#include "../../Component/PhysicsComponent/PhysicsComponent.h"
+#include "../../Component/ObjectPoolComponent/ObjectPoolComponent.h"
 
 // Composite
 #include "../../../CustomScripts/GameLoopView.h"

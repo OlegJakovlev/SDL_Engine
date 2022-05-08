@@ -1,9 +1,8 @@
 #pragma once
 
 #include "../AbstractComponent.h"
-#include "../../GameObject/GameObject.h"
 #include "../../Logger/PhysicsLogger/PhysicsLogger.h"
-#include "../../GameManager.h"
+#include "../../Physics/Vector2.h"
 
 class PhysicsComponent : public AbstractComponent
 {

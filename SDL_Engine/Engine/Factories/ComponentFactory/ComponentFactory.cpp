@@ -21,6 +21,14 @@ AbstractComponent* ComponentFactory::CreateComponent(const std::string& componen
         return new AnimationComponent();
     }
 
+    if (componentName == "Physics") {
+        return new PhysicsComponent();
+    }
+
+    if (componentName == "ObjectPool") {
+        return new ObjectPoolComponent();
+    }
+
     // Composite components
     if (componentName == "GameLoopView") {
         return new GameLoopView();

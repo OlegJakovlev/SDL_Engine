@@ -156,6 +156,9 @@
     <ClCompile Include="Engine\Logger\PhysicsLogger\PhysicsLogger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -297,6 +300,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Logger\PhysicsLogger\PhysicsLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

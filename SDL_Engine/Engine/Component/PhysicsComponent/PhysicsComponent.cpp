@@ -1,4 +1,5 @@
 #include "PhysicsComponent.h"
+#include "../../GameManager.h"
 
 PhysicsComponent::~PhysicsComponent() {
 }
