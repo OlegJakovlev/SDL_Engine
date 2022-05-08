@@ -48,3 +48,11 @@ void SceneManager::SetCurrentSceneByName(std::string targetSceneName) {
         }
     }
 }
+
+void SceneManager::LoadNextScene() {
+    SetCurrentSceneByID(currentScene->GetID() + 1);
+}
+
+void SceneManager::LoadPreviousScene() {
+    SetCurrentSceneByID(currentScene->GetID() - 1);
+}

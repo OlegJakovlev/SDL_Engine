@@ -19,6 +19,9 @@ public:
     void SetCurrentSceneByID(int targetSceneID);
     void SetCurrentSceneByName(std::string targetSceneName);
 
+    void LoadNextScene();
+    void LoadPreviousScene();
+
 private:
     Scene* currentScene;
     std::vector<Scene*> scenesToBuild;
