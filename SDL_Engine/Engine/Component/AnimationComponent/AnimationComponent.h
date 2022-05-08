@@ -20,15 +20,15 @@ public:
     void PauseAnimation();
 
 private:
-    std::vector<SDL_Texture*> animation;
-    std::vector<SDL_Texture*>::const_iterator currentFrame;
+    AnimationData animationData;
+    int currentFrameIndex;
+    int step;
 
     ImageComponent* imageComponent;
     SDL_Texture* beforeAnimationTexture;
 
     Timer timer;
 
-    double frameSwitchTime;
     double previosFrameTime;
 
     bool isPaused = false;

@@ -5,17 +5,17 @@
 
 #include <unordered_map>
 #include <string>
-#include <SDL.h>
+#include "../../AnimationData/AnimationData.h"
 
 class AbstractAnimator {
 public:
     virtual ~AbstractAnimator();
 
-    virtual void AddAnimation(const std::string& animationName, std::vector<SDL_Texture*> frames) = 0;
-    virtual const std::vector<SDL_Texture*>& GetAnimation(const std::string& animationName) const = 0;
+    virtual void AddAnimation(const std::string& animationName, AnimationData& animation) = 0;
+    virtual const AnimationData& GetAnimation(const std::string& animationName) const = 0;
 
 protected:
-    std::unordered_map<std::string, std::vector<SDL_Texture*>> animations;
+    std::unordered_map<std::string, AnimationData> animations;
 };
 
 #endif

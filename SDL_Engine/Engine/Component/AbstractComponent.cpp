@@ -20,10 +20,10 @@ void AbstractComponent::LinkWithObject(GameObject::GameObject* componentHolder) 
 
 void AbstractComponent::SyncWithObject() {
     const Vector2::Vector2<int>* renderPosition = objectLinkedTo->GetGlobalPosition();
-    renderHolder.x = renderPosition->GetX();
-    renderHolder.y = renderPosition->GetY();
+    renderHolder.x = renderPosition->x;
+    renderHolder.y = renderPosition->y;
 
     const Vector2::Vector2<int>* renderScale = objectLinkedTo->GetScale();
-    renderHolder.w = renderScale->GetX();
-    renderHolder.h = renderScale->GetY();
+    renderHolder.w = renderScale->x;
+    renderHolder.h = renderScale->y;
 }

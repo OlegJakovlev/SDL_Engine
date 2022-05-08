@@ -244,9 +244,9 @@ namespace GameObject {
 
         printf("%sID:%d\n", tabs.c_str(), ID);
         printf("%sName: % s\n", tabs.c_str(), name.c_str());
-        printf("%sTransform: %d, %d\n", tabs.c_str(), localPosition->GetX(), localPosition->GetY());
+        printf("%sTransform: %d, %d\n", tabs.c_str(), localPosition->x, localPosition->y);
         printf("%sRotation: %f\n", tabs.c_str(), rotation);
-        printf("%sScale: %d, %d\n", tabs.c_str(), scale->GetX(), scale->GetY());
+        printf("%sScale: %d, %d\n", tabs.c_str(), scale->x, scale->y);
 
         if (childObjects.empty()) return;
         printf("%sChild Game Objects:\n", tabs.c_str());

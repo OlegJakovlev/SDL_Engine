@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Engine\AnimationData\AnimationData.cpp" />
     <ClCompile Include="Engine\Component\AnimationComponent\AnimationComponent.cpp" />
     <ClCompile Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.cpp" />
     <ClCompile Include="Engine\Component\PhysicsComponent\PhysicsComponent.cpp" />
@@ -194,6 +195,7 @@
     <ClCompile Include="Engine\Configurator\TextureConfigurator\TextureConfigurator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Engine\AnimationData\AnimationData.h" />
     <ClInclude Include="Engine\Component\AnimationComponent\AnimationComponent.h" />
     <ClInclude Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.h" />
     <ClInclude Include="Engine\Component\PhysicsComponent\PhysicsComponent.h" />

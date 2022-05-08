@@ -12,4 +12,6 @@ void AnimatorConfigurator::LoadConfiguration() {
 
 	AbstractAnimator* animatorService = new RegularAnimator();
 	AnimatorLocator::LinkAnimator(animatorService);
+
+
 }

@@ -1,8 +1,8 @@
 #include "AbstractAnimator.h"
 
 AbstractAnimator::~AbstractAnimator() {
-    for (auto& it : animations) {
-        it.second.clear();
+    for (auto it : animations) {
+        delete &it.second;
     }
 
     animations.clear();

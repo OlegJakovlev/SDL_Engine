@@ -7,17 +7,12 @@
 
 namespace Vector2 {
     template <class T>
-    class Vector2 {
+    struct Vector2 {
     public:
         Vector2();
         Vector2(T newX, T newY);
         Vector2(const Vector2& other);
         ~Vector2() = default;
-
-        const T GetX() const;
-        const T GetY() const;
-        void SetX(T newX);
-        void SetY(T newY);
 
         float FastSquareRoot(float magnitude);
         float GetMagnitude();
@@ -32,7 +27,6 @@ namespace Vector2 {
 
         Vector2<T> operator-(const Vector2<T>& rhs);
 
-    private:
         T x;
         T y;
     };

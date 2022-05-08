@@ -17,18 +17,18 @@ void PhysicsComponent::Update() {
             if (collisionTime != 1.0f) PhysicsLogger::Instance().LogMessage("Collision detected in narrow phase!");
 
             // Calculate and round position difference
-            Vector2::Vector2<float> deltaPosition = Vector2::Vector2<float>(velocity.GetX() * collisionTime, velocity.GetY() * collisionTime);
+            Vector2::Vector2<float> deltaPosition = Vector2::Vector2<float>(velocity.x * collisionTime, velocity.y * collisionTime);
             float remainingtime = 1.0f - collisionTime;
 
             // Slide projection
             float dotProduct = Vector2::Vector2<float>::DotProduct(velocity, normal);
-            velocity = Vector2::Vector2<float>(dotProduct * normal.GetY(), dotProduct * normal.GetX());
+            velocity = Vector2::Vector2<float>(dotProduct * normal.y, dotProduct * normal.x);
         }
     }
 
     // Move object
     Vector2::Vector2<int> currentPosition = Vector2::Vector2<int>(*objectLinkedTo->GetGlobalPosition());
-    objectLinkedTo->SetGlobalPosition(currentPosition + Vector2::Vector2<int>(velocity.GetX(), velocity.GetY()));
+    objectLinkedTo->SetGlobalPosition(currentPosition + Vector2::Vector2<int>(velocity.x, velocity.y));
 }
 
 bool PhysicsComponent::AABBOverlap(GameObject::GameObject* checkOverlapWith) {
@@ -39,16 +39,16 @@ bool PhysicsComponent::AABBOverlap(GameObject::GameObject* checkOverlapWith) {
     const Vector2::Vector2<int>* secondScale = checkOverlapWith->GetScale();
 
     // Calculate corners coordinates for first object
-    int firstMinX = firstPosition->GetX();
-    int firstMaxX = firstMinX + firstScale->GetX();
-    int firstMinY = firstPosition->GetY();
-    int firstMaxY = firstMinY + firstScale->GetY();
+    int firstMinX = firstPosition->x;
+    int firstMaxX = firstMinX + firstScale->x;
+    int firstMinY = firstPosition->y;
+    int firstMaxY = firstMinY + firstScale->y;
 
     // Calculate corners coordinates for second object
-    int secondMinX = secondPosition->GetX();
-    int secondMaxX = secondMinX + secondScale->GetX();
-    int secondMinY = secondPosition->GetY();
-    int secondMaxY = secondMinY + secondScale->GetY();
+    int secondMinX = secondPosition->x;
+    int secondMaxX = secondMinX + secondScale->x;
+    int secondMinY = secondPosition->y;
+    int secondMaxY = secondMinY + secondScale->y;
 
     // Calculate difference
     float d1x = secondMinX - firstMaxX;
@@ -75,31 +75,31 @@ float PhysicsComponent::SweptAABB(GameObject::GameObject* secondBody) {
     int xInvEntry, yInvEntry; // Distance to the closest edge of the object
     int xInvExit, yInvExit; // Distance to the far sides of the object
 
-    xInvEntry = (velocity.GetX() > 0) ? 
-        secondPosition->GetX() - (firstPosition->GetX() + firstScale->GetX()) :
-        (secondPosition->GetX() + secondScale->GetX()) - firstPosition->GetX();
+    xInvEntry = (velocity.x > 0) ? 
+        secondPosition->x - (firstPosition->x + firstScale->x) :
+        (secondPosition->x + secondScale->x) - firstPosition->x;
 
-    xInvExit = (velocity.GetX() > 0) ?
-        (secondPosition->GetX() + secondScale->GetX()) - firstPosition->GetX() :
-        secondPosition->GetX() - (firstPosition->GetX() + firstScale->GetX());
+    xInvExit = (velocity.x > 0) ?
+        (secondPosition->x + secondScale->x) - firstPosition->x :
+        secondPosition->x - (firstPosition->x + firstScale->x);
 
-    yInvEntry = (velocity.GetY() > 0) ?
-        secondPosition->GetY() - (firstPosition->GetY() + firstScale->GetY()) :
-        (secondPosition->GetY() + secondScale->GetY()) - firstPosition->GetY();
+    yInvEntry = (velocity.y > 0) ?
+        secondPosition->y - (firstPosition->y + firstScale->y) :
+        (secondPosition->y + secondScale->y) - firstPosition->y;
 
-    yInvExit = (velocity.GetY() > 0) ?
-        (secondPosition->GetY() + secondScale->GetY()) - firstPosition->GetY() :
-        secondPosition->GetY() - (firstPosition->GetY() + firstScale->GetY());
+    yInvExit = (velocity.y > 0) ?
+        (secondPosition->y + secondScale->y) - firstPosition->y :
+        secondPosition->y - (firstPosition->y + firstScale->y);
 
     // Find collision start and end times for each axis
     float xEntry, yEntry;
     float xExit, yExit;
 
-    xEntry = (velocity.GetX() == 0) ? -std::numeric_limits<int>::infinity() : xInvEntry / velocity.GetX();
-    xExit = (velocity.GetX() == 0) ? std::numeric_limits<int>::infinity() : xInvExit / velocity.GetX();
+    xEntry = (velocity.x == 0) ? -std::numeric_limits<int>::infinity() : xInvEntry / velocity.x;
+    xExit = (velocity.x == 0) ? std::numeric_limits<int>::infinity() : xInvExit / velocity.x;
 
-    yEntry = (velocity.GetY() == 0) ? -std::numeric_limits<int>::infinity() : yInvEntry / velocity.GetY();
-    yExit = (velocity.GetY() == 0) ? std::numeric_limits<int>::infinity() : yInvExit / velocity.GetY();
+    yEntry = (velocity.y == 0) ? -std::numeric_limits<int>::infinity() : yInvEntry / velocity.y;
+    yExit = (velocity.y == 0) ? std::numeric_limits<int>::infinity() : yInvExit / velocity.y;
 
     float entryTime = std::max(xEntry, yEntry);
     float exitTime = std::min(xExit, yExit);
@@ -114,12 +114,12 @@ float PhysicsComponent::SweptAABB(GameObject::GameObject* secondBody) {
     else {
         // Calculate normal of collided surface
         if (xEntry > yEntry) {
-            normal.SetX((xInvEntry) < 0 ? 1 : -1);
-            normal.SetY(0);
+            normal.x = (xInvEntry) < 0 ? 1 : -1;
+            normal.y = 0;
         }
         else {
-            normal.SetX(0);
-            normal.SetY((yInvEntry) < 0 ? 1 : -1);
+            normal.x = 0;
+            normal.y = (yInvEntry) < 0 ? 1 : -1;
         }
     }
 
