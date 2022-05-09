@@ -34,5 +34,9 @@ AbstractComponent* ComponentFactory::CreateComponent(const std::string& componen
         return new GameLoopView();
     }
 
+    if (componentName == "PlayerMovement") {
+        return new PlayerMovement();
+    }
+
     return nullptr;
 }

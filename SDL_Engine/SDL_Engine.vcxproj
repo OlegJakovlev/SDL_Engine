@@ -187,6 +187,7 @@
     <ClCompile Include="Engine\Component\IComponent.cpp" />
     <ClCompile Include="Engine\Service\Audio\PCAudio\PCAudio.cpp" />
     <ClCompile Include="Engine\Service\TextureManager\NullTexture\NullTextureManager.cpp" />
+    <ClCompile Include="CustomScripts\PlayerMovement\PlayerMovement.cpp" />
     <ClCompile Include="SDL_Engine.cpp" />
     <ClCompile Include="Engine\Physics\Vector2.cpp" />
     <ClCompile Include="Engine\Component\TextComponent\TextComponent.cpp" />
@@ -241,6 +242,7 @@
     <ClInclude Include="Engine\Service\TextureManager\RegularTextureManager\TextureManager.h" />
     <ClInclude Include="Engine\Configurator\TextureConfigurator\TextureConfigurator.h" />
     <ClInclude Include="Engine\Service\TextureManager\NullTexture\NullTextureManager.h" />
+    <ClInclude Include="CustomScripts\PlayerMovement\PlayerMovement.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -36,9 +36,23 @@
 							"layer": 8,
 							"components": [
 								{
+									"name": "Physics",
+									"config": {}
+								},
+								{
 									"name": "Image",
 									"config": {
 										"imagePath": "Resources/Images/WorldScene/Sprite/Player1/Hero.png"
+									}
+								},
+								{
+									"name": "Animation",
+									"config": {}
+								},
+								{
+									"name": "PlayerMovement",
+									"config": {
+										"playerName": "Player1"
 									}
 								}
 							],

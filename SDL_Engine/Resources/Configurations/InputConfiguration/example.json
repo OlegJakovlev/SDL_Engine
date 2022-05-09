@@ -24,16 +24,16 @@
         "exitToMenu": "ESCAPE",
         "pause": "P",
         
-        "player1GoUp": "W",
-        "player1GoDown": "S",
-        "player1GoLeft": "A",
-        "player1GoRight": "D",
+        "player1MoveUp": "W",
+        "player1MoveDown": "S",
+        "player1MoveLeft": "A",
+        "player1MoveRight": "D",
         "player1PlantBomb": "E",
 
-        "player2GoUp": "UP",
-        "player2GoDown": "DOWN",
-        "player2GoLeft": "LEFT",
-        "player2GoRight": "RIGHT",
+        "player2MoveUp": "UP",
+        "player2MoveDown": "DOWN",
+        "player2MoveLeft": "LEFT",
+        "player2MoveRight": "RIGHT",
         "player2PlantBomb": "Keypad 0"
     }
 }

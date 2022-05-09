@@ -15,6 +15,7 @@
 
 // Composite
 #include "../../../CustomScripts/GameLoopView.h"
+#include "../../../CustomScripts/PlayerMovement/PlayerMovement.h"
 
 class ComponentFactory {
 public:

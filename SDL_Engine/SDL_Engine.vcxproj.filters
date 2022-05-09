@@ -162,6 +162,9 @@
     <ClCompile Include="Engine\AnimationData\AnimationData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CustomScripts\PlayerMovement\PlayerMovement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -309,6 +312,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Engine\AnimationData\AnimationData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\PlayerMovement\PlayerMovement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

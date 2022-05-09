@@ -46,6 +46,11 @@ void AnimationComponent::Update() {
             }
         }
 
+        if (animationData.loop == AnimationData::AnimationType::PING_PONG && currentFrameIndex == 0 && step == -1) {
+            isFinished = true;
+            return;
+        }
+
         currentFrameIndex += step;
 
         imageComponent->SetTexture(animationData.animation.at(currentFrameIndex));
