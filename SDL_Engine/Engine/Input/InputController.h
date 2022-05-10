@@ -30,7 +30,7 @@ public:
     void SetEventActive(const int& eventButton, const bool newStatus);
 
     void ProcessInput(const SDL_Event& inputEvent);
-    void ResetProcessedStatus();
+    void ProcessActiveEvents();
 
 private:
     std::unordered_map<int, std::string> namedActions; // Bind key with event name

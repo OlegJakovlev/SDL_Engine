@@ -159,7 +159,7 @@
     <ClCompile Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\AnimationData\AnimationData.cpp">
+    <ClCompile Include="Engine\Component\AnimationComponent\AnimationData\AnimationData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CustomScripts\PlayerMovement\PlayerMovement.cpp">
@@ -311,7 +311,7 @@
     <ClInclude Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\AnimationData\AnimationData.h">
+    <ClInclude Include="Engine\Component\AnimationComponent\AnimationData\AnimationData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CustomScripts\PlayerMovement\PlayerMovement.h">
@@ -327,5 +327,6 @@
     <None Include="Resources\Configurations\SceneConfiguration\example.json" />
     <None Include="Resources\Configurations\InputConfiguration\example.json" />
     <None Include="Resources\Configurations\AudioConfiguration\example.json" />
+    <None Include="Resources\Configurations\AnimatorConfiguration\example.json" />
   </ItemGroup>
 </Project>

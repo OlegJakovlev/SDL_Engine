@@ -1,6 +1,12 @@
 #include "GameLoopView.h"
 #include "../Engine/GameManager.h"
 
+GameLoopView::~GameLoopView() {
+	inputPerformanceText = nullptr;
+	updatePerformanceText = nullptr;
+	renderPerformanceText = nullptr;
+}
+
 void GameLoopView::Init() {
 	Scene* currentScene = GameManager::Instance()->GetSceneManager()->GetCurrentScene();
 

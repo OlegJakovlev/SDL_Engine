@@ -103,7 +103,7 @@ void GameLoop::Input(InputController* input) {
         input->ProcessInput(currentEvent);
     }
 
-    input->ResetProcessedStatus();
+    input->ProcessActiveEvents();
 }
 
 void GameLoop::Update(std::vector<GameObject::GameObject*>& sceneObjects) {

@@ -18,7 +18,8 @@ public:
         const std::string& newName,
         const std::string& inputConfigFile,
         const std::string& audioConfigFile,
-        const std::string& texturesPath
+        const std::string& texturesPath,
+        const std::string& animationConfigFile
     );
     ~Scene();
 

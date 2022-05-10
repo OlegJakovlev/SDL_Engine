@@ -9,6 +9,7 @@
 
 class PlayerMovement : public AbstractComponent {
 public:
+	void Init() override;
 	void LoadConfig(const nlohmann::json& config) override;
 
 	void MoveLeft();
@@ -19,6 +20,8 @@ public:
 private:
 	PhysicsComponent* physicsComponent;
 	AnimationComponent* animationComponent;
+
+	std::string controllerAgentName;
 };
 
 #endif

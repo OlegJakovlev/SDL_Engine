@@ -8,6 +8,8 @@
 
 class GameObjectFactory {
 public:
+    ~GameObjectFactory();
+
     static GameObjectFactory* Instance();
 
     GameObject::GameObject* CreateGameObject();

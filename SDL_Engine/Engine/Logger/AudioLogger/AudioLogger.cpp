@@ -4,7 +4,7 @@ AudioLogger::AudioLogger(const std::string& newOutputFile) : Logger(newOutputFil
 }
 
 AudioLogger& AudioLogger::Instance() {
-    AudioLogger* instance = new AudioLogger();
+    static AudioLogger* instance = new AudioLogger();
     return *instance;
 }
 

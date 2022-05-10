@@ -18,10 +18,12 @@ public:
 
     SDL_Texture* GetTexture() const;
     void SetTexture(SDL_Texture* newTexture);
+    void SetTextureFrame(SDL_Rect* newFrame);
 
 private:
     std::string pathToImage;
     SDL_Texture* texture;
+    SDL_Rect* textureFrame;
 };
 
 #endif

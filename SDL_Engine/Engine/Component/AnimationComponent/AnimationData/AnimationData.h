@@ -16,7 +16,8 @@ struct AnimationData {
         PING_PONG
     };
 
-    std::vector<SDL_Texture*> animation;
+    SDL_Texture* fullTexture;
+    std::vector<SDL_Rect> animationFrames;
     std::vector<float> frameDelays;
     AnimationType loop;
 };

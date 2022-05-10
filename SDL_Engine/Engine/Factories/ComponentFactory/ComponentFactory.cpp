@@ -2,6 +2,11 @@
 
 ComponentFactory* ComponentFactory::sInstance = nullptr;
 
+ComponentFactory::~ComponentFactory() {
+    delete sInstance;
+    sInstance = nullptr;
+}
+
 ComponentFactory* ComponentFactory::Instance() {
     if (sInstance == nullptr) sInstance = new ComponentFactory();
     return sInstance;

@@ -43,8 +43,17 @@ namespace Vector2 {
         return x * x + y * y;
     }
 
-    template<class T>
-    Vector2<float> Vector2<T>::Normalize() {
+    template<>
+    Vector2<int> Vector2<int>::Normalize() {
+        Vector2 result;
+        float inverseSquareRoot = FastSquareRoot(GetMagnitude());
+        result.x = x * inverseSquareRoot;
+        result.y = y * inverseSquareRoot;
+        return result;
+    }
+
+    template<>
+    Vector2<float> Vector2<float>::Normalize() {
         Vector2 result;
         float inverseSquareRoot = FastSquareRoot(GetMagnitude());
         result.x = x * inverseSquareRoot;

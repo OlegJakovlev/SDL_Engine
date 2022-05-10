@@ -5,7 +5,7 @@
 
 #include <unordered_map>
 #include <string>
-#include "../../AnimationData/AnimationData.h"
+#include "../../Component/AnimationComponent/AnimationData/AnimationData.h"
 
 class AbstractAnimator {
 public:

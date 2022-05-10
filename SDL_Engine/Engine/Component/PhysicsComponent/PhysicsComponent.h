@@ -11,11 +11,13 @@ public:
 
     void Update() override;
 
+    void Move(const Vector2::Vector2<int>& movementVector);
+
     bool AABBOverlap(GameObject::GameObject* checkOverlapWith);
     float SweptAABB(GameObject::GameObject* secondBody);
 
 private:
-    Vector2::Vector2<float> velocity;
+    Vector2::Vector2<int> velocity;
     Vector2::Vector2<float> normal;
 };
 

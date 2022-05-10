@@ -19,6 +19,8 @@
 
 class ComponentFactory {
 public:
+    ~ComponentFactory();
+
     static ComponentFactory* Instance();
     AbstractComponent* CreateComponent(const std::string& componentName);
 

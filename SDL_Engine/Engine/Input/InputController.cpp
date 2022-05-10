@@ -74,18 +74,12 @@ void InputController::ProcessInput(const SDL_Event& inputEvent) {
         GameManager::Instance()->QuitTheGame();
         break;
     }
+}
 
-    if (processed) return;
-
+void InputController::ProcessActiveEvents() {
     for (auto& activeEventEntry : activeEvents) {
         if (activeEventEntry.second) {
             CallAction(activeEventEntry.first);
         }
     }
-
-    processed = true;
-}
-
-void InputController::ResetProcessedStatus() {
-    processed = false;
 }

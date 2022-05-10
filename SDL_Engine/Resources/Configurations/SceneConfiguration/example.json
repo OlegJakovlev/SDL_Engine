@@ -6,6 +6,7 @@
 				"inputConfigurationFilePath": "Resources/Configurations/InputConfiguration/example.json",
 				"audioConfigurationFilePath": "Resources/Configurations/AudioConfiguration/example.json",
 				"texturesFolder": "Resources/Images/WorldScene/Sprite/",
+				"animatorConfigurationFilePath": "Resources/Configurations/AnimatorConfiguration/example.json",
 				"gameObjects": {
 					"ID": 1,
 					"name": "Root Object",
@@ -73,10 +74,55 @@
 							"layer": 8,
 							"components": [
 								{
+									"name": "Physics",
+									"config": {}
+								},
+								{
 									"name": "Image",
 									"config": {
 										"imagePath": "Resources/Images/WorldScene/Sprite/Player2/Hero.png"
 									}
+								},
+								{
+									"name": "Animation",
+									"config": {}
+								},
+								{
+									"name": "PlayerMovement",
+									"config": {
+										"playerName": "Player2"
+									}
+								}
+							],
+							"childObjects": []
+						},
+						{
+							"ID": 4,
+							"name": "Bomb",
+							"position": {
+								"x": 400,
+								"y": 300
+							},
+							"rotation": 0,
+							"scale": {
+								"x": 32,
+								"y": 32
+							},
+							"layer": 8,
+							"components": [
+								{
+									"name": "Physics",
+									"config": {}
+								},
+								{
+									"name": "Image",
+									"config": {
+										"imagePath": "Resources/Images/WorldScene/Sprite/Bomb/bomb.png"
+									}
+								},
+								{
+									"name": "Animation",
+									"config": {}
 								}
 							],
 							"childObjects": []
@@ -202,6 +248,7 @@
 				"inputConfigurationFilePath": "",
 				"audioConfigurationFilePath": "",
 				"texturesFolder": "World2Scene",
+				"animatorConfigurationFilePath": "",
 				"gameObjects": {
 					"ID": 1,
 					"name": "Root Object",

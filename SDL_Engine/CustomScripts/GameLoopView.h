@@ -8,6 +8,8 @@
 
 class GameLoopView : public AbstractComponent {
 public:
+	~GameLoopView();
+
 	void Init() override;
 	void Render() override;
 

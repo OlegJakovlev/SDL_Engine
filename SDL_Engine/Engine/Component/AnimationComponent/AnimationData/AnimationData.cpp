@@ -1,6 +1,7 @@
 #include "AnimationData.h"
 
 AnimationData::~AnimationData() {
-    animation.clear();
+    fullTexture = nullptr;
+    animationFrames.clear();
     frameDelays.clear();
 }

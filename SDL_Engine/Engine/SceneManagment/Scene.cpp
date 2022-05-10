@@ -3,13 +3,14 @@
 Scene::Scene(int newID, const std::string& newName,
     const std::string& inputConfigFile,
     const std::string& audioConfigFile,
-    const std::string& texturesPath) : ID(newID), name(newName) {
+    const std::string& texturesPath,
+    const std::string& animationConfigFile) : ID(newID), name(newName) {
 
     gameLoop = new GameLoop();
     inputConfigurator = new InputConfigurator(inputConfigFile);
     audioConfigurator = new AudioConfigurator(audioConfigFile);
     textureConfigurator = new TextureConfigurator(texturesPath);
-    animatorConfigurator = new AnimatorConfigurator("");
+    animatorConfigurator = new AnimatorConfigurator(animationConfigFile);
 }
 
 Scene::~Scene() {

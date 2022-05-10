@@ -31,6 +31,13 @@ namespace GameObject {
         delete scale;
         scale = nullptr;
 
+        // Destruct all components
+        for (auto& componentEntry : components) {
+            delete componentEntry.second;
+        }
+
+        components.clear();
+
         // Destruct all child objects
         for (int childIndex = 0; childIndex < childObjects.size(); childIndex++) {
             delete childObjects[childIndex];
@@ -48,10 +55,12 @@ namespace GameObject {
     }
 
     void GameObject::SetLocalPosition(const Vector2::Vector2<int>& newTransform) {
+        delete localPosition;
         localPosition = new Vector2::Vector2<int>(newTransform);
     }
 
     void GameObject::SetGlobalPosition(const Vector2::Vector2<int>& newTransform) {
+        delete globalPosition;
         globalPosition = new Vector2::Vector2<int>(newTransform);
     }
 
@@ -60,6 +69,7 @@ namespace GameObject {
     }
 
     void GameObject::SetScale(const Vector2::Vector2<int>& newScale) {
+        delete scale;
         scale = new Vector2::Vector2<int>(newScale);
     }
 
@@ -128,12 +138,8 @@ namespace GameObject {
     }
 
     AbstractComponent* GameObject::GetComponent(const std::string& componentName) const {
-        try {
-            return components.at(componentName);
-        }
-        catch (std::out_of_range&) {
-            return nullptr;
-        }
+        if (components.find(componentName) == components.end()) return nullptr;
+        return components.at(componentName);
     }
 
     void GameObject::Initialize() {

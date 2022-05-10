@@ -3,6 +3,7 @@
 
 TextComponent::~TextComponent() {
     FC_FreeFont(font);
+    delete font;
     font = nullptr;
 }
 

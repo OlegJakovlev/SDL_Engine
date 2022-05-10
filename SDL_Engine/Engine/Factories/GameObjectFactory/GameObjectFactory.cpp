@@ -3,6 +3,11 @@
 GameObjectFactory* GameObjectFactory::sInstance = nullptr;
 int GameObjectFactory::nextID = 0;
 
+GameObjectFactory::~GameObjectFactory() {
+    delete sInstance;
+    sInstance = nullptr;
+}
+
 GameObjectFactory* GameObjectFactory::Instance() {
     if (sInstance == nullptr) sInstance = new GameObjectFactory();
     return sInstance;

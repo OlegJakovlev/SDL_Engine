@@ -6,6 +6,7 @@ PhysicsComponent::~PhysicsComponent() {
 
 void PhysicsComponent::Update() {
     for (auto& gameobject : GameManager::Instance()->GetSceneManager()->GetCurrentScene()->GetSceneObjectList()) {
+        if (gameobject == objectLinkedTo) continue;
         if (gameobject->GetComponent("Physics") == nullptr) continue;
 
         // CD broad phase
@@ -13,22 +14,25 @@ void PhysicsComponent::Update() {
             PhysicsLogger::Instance().LogMessage("Collision detected in broad phase!");
 
             // CD narrow phase
-            float collisionTime = SweptAABB(nullptr);
+            float collisionTime = SweptAABB(gameobject);
             if (collisionTime != 1.0f) PhysicsLogger::Instance().LogMessage("Collision detected in narrow phase!");
 
             // Calculate and round position difference
-            Vector2::Vector2<float> deltaPosition = Vector2::Vector2<float>(velocity.x * collisionTime, velocity.y * collisionTime);
-            float remainingtime = 1.0f - collisionTime;
-
-            // Slide projection
-            float dotProduct = Vector2::Vector2<float>::DotProduct(velocity, normal);
-            velocity = Vector2::Vector2<float>(dotProduct * normal.y, dotProduct * normal.x);
+            Vector2::Vector2<int> deltaPosition = Vector2::Vector2<int>(velocity.x * collisionTime, velocity.y * collisionTime);
+            //float remainingTime = 1.0f - collisionTime;
         }
     }
 
     // Move object
     Vector2::Vector2<int> currentPosition = Vector2::Vector2<int>(*objectLinkedTo->GetGlobalPosition());
-    objectLinkedTo->SetGlobalPosition(currentPosition + Vector2::Vector2<int>(velocity.x, velocity.y));
+    objectLinkedTo->SetGlobalPosition(currentPosition + Vector2::Vector2<int>(velocity.x * 32, velocity.y * 32));
+
+    // Reset object velocity
+    velocity = Vector2::Vector2(0, 0);
+}
+
+void PhysicsComponent::Move(const Vector2::Vector2<int>& movementVector) {
+    velocity = movementVector;
 }
 
 bool PhysicsComponent::AABBOverlap(GameObject::GameObject* checkOverlapWith) {

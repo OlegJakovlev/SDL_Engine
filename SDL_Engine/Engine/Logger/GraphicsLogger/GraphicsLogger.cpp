@@ -4,7 +4,7 @@ GraphicsLogger::GraphicsLogger(const std::string& newOutputFile) : Logger(newOut
 }
 
 GraphicsLogger& GraphicsLogger::Instance() {
-    GraphicsLogger* instance = new GraphicsLogger();
+    static GraphicsLogger* instance = new GraphicsLogger();
     return *instance;
 }
 

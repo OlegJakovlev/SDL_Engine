@@ -4,7 +4,7 @@ SceneLogger::SceneLogger(const std::string& newOutputFile) : Logger(newOutputFil
 }
 
 SceneLogger& SceneLogger::Instance() {
-    SceneLogger* instance = new SceneLogger();
+    static SceneLogger* instance = new SceneLogger();
     return *instance;
 }
 

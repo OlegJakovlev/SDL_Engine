@@ -4,7 +4,7 @@ InputLogger::InputLogger(const std::string& newOutputFile) : Logger(newOutputFil
 }
 
 InputLogger& InputLogger::Instance() {
-    InputLogger* instance = new InputLogger();
+    static InputLogger* instance = new InputLogger();
     return *instance;
 }
 

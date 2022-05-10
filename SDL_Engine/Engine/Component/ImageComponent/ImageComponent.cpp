@@ -2,6 +2,7 @@
 #include "../../Graphics/Graphics.h"
 
 ImageComponent::~ImageComponent() {
+    delete textureFrame;
     texture = nullptr;
 }
 
@@ -17,7 +18,7 @@ void ImageComponent::LoadConfig(const nlohmann::json& config) {
 }
 
 void ImageComponent::Render() {
-    Graphics::Instance()->RenderCopyAdvanced(texture, nullptr, &renderHolder, objectLinkedTo->GetRotation());
+    Graphics::Instance()->RenderCopyAdvanced(texture, textureFrame, &renderHolder, objectLinkedTo->GetRotation());
 }
 
 SDL_Texture* ImageComponent::GetTexture() const {
@@ -26,4 +27,8 @@ SDL_Texture* ImageComponent::GetTexture() const {
 
 void ImageComponent::SetTexture(SDL_Texture* newTexture) {
     texture = newTexture;
+}
+
+void ImageComponent::SetTextureFrame(SDL_Rect* newFrame) {
+    textureFrame = newFrame;
 }

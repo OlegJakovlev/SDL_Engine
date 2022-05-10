@@ -1,5 +1,5 @@
 #include "AnimationComponent.h"
-#include "../../GameManager.h"  
+#include "../../GameManager.h"
 
 AnimationComponent::~AnimationComponent() {
     imageComponent = nullptr;
@@ -18,20 +18,23 @@ void AnimationComponent::Init() {
 void AnimationComponent::Update() {
     double currentTime = timer.GetCurrentTime();
 
+    // Reset texture with frame on finish
     if (isFinished && beforeAnimationTexture != nullptr) {
         imageComponent->SetTexture(beforeAnimationTexture);
+        imageComponent->SetTextureFrame(nullptr);
         beforeAnimationTexture = nullptr;
         return;
     }
 
     if (isPaused) return;
+    if (animationData.animationFrames.size() <= 0) return;
 
     // If time passed, save the new time
     if (currentTime - previosFrameTime > animationData.frameDelays.at(currentFrameIndex)) {
         previosFrameTime = currentTime;
 
         // If reached end
-        if (currentFrameIndex == animationData.animation.size() - 1) {
+        if (currentFrameIndex == animationData.animationFrames.size() - 1) {
             if (animationData.loop == AnimationData::AnimationType::ONE_OFF) {
                 isFinished = true;
                 return;
@@ -53,7 +56,8 @@ void AnimationComponent::Update() {
 
         currentFrameIndex += step;
 
-        imageComponent->SetTexture(animationData.animation.at(currentFrameIndex));
+        imageComponent->SetTexture(animationData.fullTexture);
+        imageComponent->SetTextureFrame(&animationData.animationFrames.at(currentFrameIndex));
     }
 }
 

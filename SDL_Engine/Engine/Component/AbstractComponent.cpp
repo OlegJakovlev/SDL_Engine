@@ -9,6 +9,7 @@ void AbstractComponent::LoadConfig(const nlohmann::json& config) {
 }
 
 void AbstractComponent::Update() {
+    SyncWithObject();
 }
 
 void AbstractComponent::Render() {

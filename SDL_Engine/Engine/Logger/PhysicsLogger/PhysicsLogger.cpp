@@ -4,7 +4,7 @@ PhysicsLogger::PhysicsLogger(const std::string& newOutputFile) : Logger(newOutpu
 }
 
 PhysicsLogger& PhysicsLogger::Instance() {
-    PhysicsLogger* instance = new PhysicsLogger();
+    static PhysicsLogger* instance = new PhysicsLogger();
     return *instance;
 }
 

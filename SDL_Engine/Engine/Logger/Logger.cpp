@@ -4,7 +4,7 @@ Logger::Logger(const std::string& newOutputFile) : outputFile(newOutputFile) {
 }
 
 Logger& Logger::Instance() {
-    Logger* instance = new Logger();
+    static Logger* instance = new Logger();
     return *instance;
 }
 
