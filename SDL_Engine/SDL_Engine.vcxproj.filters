@@ -183,6 +183,9 @@
     <ClCompile Include="CustomScripts\HealthComponent\HealthComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CustomScripts\BombSpawner\BombSpawnerComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -351,6 +354,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CustomScripts\HealthComponent\HealthComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\BombSpawner\BombSpawnerComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -12,7 +12,7 @@ void ScoreComponent::Init() {
 
 void ScoreComponent::LoadConfig(const nlohmann::json& config) {
     model = new ScoreComponentModel();
-    view = new ScoreComponentView(*model);
+    view = new ScoreComponentView(model);
 
     view->LoadConfig(config.at("view"));
 }

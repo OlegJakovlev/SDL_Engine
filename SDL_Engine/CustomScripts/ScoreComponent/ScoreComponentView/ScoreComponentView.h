@@ -9,7 +9,7 @@
 
 class ScoreComponentView : public AbstractComponent {
 public:
-    ScoreComponentView(const ScoreComponentModel& newModel);
+    ScoreComponentView(const ScoreComponentModel* newModel);
     ~ScoreComponentView();
 
     void Init() override;
@@ -19,7 +19,7 @@ public:
     void UpdateScoreText();
 
 private:
-    const ScoreComponentModel model;
+    const ScoreComponentModel* model;
 
     TextComponent* scoreText;
     GameObject::GameObject* fakeParent;

@@ -97,6 +97,13 @@
 											}
 										}
 									}
+								},
+								{
+									"name": "BombSpawner",
+									"config": {
+										"playerName": "Player1",
+										"objectPoolName": "BombPool"
+									}
 								}
 							],
 							"childObjects": []
@@ -322,6 +329,56 @@
 									"childObjects": []
 								}
 							]
+						},
+						{
+							"ID": 9,
+							"name": "BombPool",
+							"position": {
+								"x": 0,
+								"y": 0
+							},
+							"rotation": 0,
+							"scale": {
+								"x": 0,
+								"y": 0
+							},
+							"layer": 8,
+							"components": [
+								{
+									"name": "ObjectPool",
+									"config": {
+										"size": 20,
+										"object": {
+											"ID": 10,
+											"name": "Bomb",
+											"position": {
+												"x": 0,
+												"y": 0
+											},
+											"rotation": 0,
+											"scale": {
+												"x": 32,
+												"y": 32
+											},
+											"layer": 8,
+											"components": [
+												{
+													"name": "Animation",
+													"config": {}
+												},
+												{
+													"name": "Image",
+													"config": {
+														"imagePath": "Resources/Images/WorldScene/Sprite/Bomb/bomb.png"
+													}
+												}
+											],
+											"childObjects": []
+										}
+									}
+								}
+							],
+							"childObjects": []
 						}
 					]
 				}

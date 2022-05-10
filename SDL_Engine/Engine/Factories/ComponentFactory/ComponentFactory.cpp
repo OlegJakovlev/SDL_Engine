@@ -51,5 +51,9 @@ AbstractComponent* ComponentFactory::CreateComponent(const std::string& componen
         return new HealthComponent();
     }
 
+    if (componentName == "BombSpawner") {
+        return new BombSpawnerComponent();
+    }
+
     return nullptr;
 }

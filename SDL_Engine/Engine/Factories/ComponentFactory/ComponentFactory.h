@@ -18,6 +18,7 @@
 #include "../../../CustomScripts/PlayerMovement/PlayerMovement.h"
 #include "../../../CustomScripts/ScoreComponent/ScoreComponent.h"
 #include "../../../CustomScripts/HealthComponent/HealthComponent.h"
+#include "../../../CustomScripts/BombSpawner/BombSpawnerComponent.h"
 
 class ComponentFactory {
 public:

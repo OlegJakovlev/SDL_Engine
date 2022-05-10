@@ -127,6 +127,11 @@ namespace GameObject {
         // Create the component
         AbstractComponent* newComponent = ComponentFactory::Instance()->CreateComponent(componentName);
         
+        if (newComponent == nullptr) {
+            Logger::Instance().LogError(componentName + " can not be created! Please check if provided configuration is correct!");
+            return;
+        }
+
         // Link the component with gameobject
         newComponent->LinkWithObject(this);
 

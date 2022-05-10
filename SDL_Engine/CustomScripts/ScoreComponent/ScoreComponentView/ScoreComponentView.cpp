@@ -1,6 +1,10 @@
 #include "ScoreComponentView.h"
 #include "../../../Engine/Factories/GameObjectFactory/GameObjectFactory.h"
 
+ScoreComponentView::ScoreComponentView(const ScoreComponentModel* newModel) : model(newModel) {
+    scoreText = new TextComponent();
+}
+
 ScoreComponentView::~ScoreComponentView() {
     delete scoreText;
     scoreText = nullptr;
@@ -28,10 +32,6 @@ void ScoreComponentView::Render() {
     scoreText->Render();
 }
 
-ScoreComponentView::ScoreComponentView(const ScoreComponentModel& newModel) : model(newModel) {
-    scoreText = new TextComponent();
-}
-
 void ScoreComponentView::UpdateScoreText() {
-    scoreText->SetText(std::to_string(model.GetScore()));
+    scoreText->SetText(std::to_string(model->GetScore()));
 }
