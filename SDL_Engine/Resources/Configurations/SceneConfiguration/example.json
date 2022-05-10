@@ -55,6 +55,48 @@
 									"config": {
 										"playerName": "Player1"
 									}
+								},
+								{
+									"name": "PlayerScore",
+									"config": {
+										"view": {
+											"position": {
+												"x": 768,
+												"y": 0
+											},
+											"textConfig": {
+												"fontPath": "Resources/Fonts/sans.ttf",
+												"fontSize": 16,
+												"color": {
+													"r": 255,
+													"g": 255,
+													"b": 255,
+													"a": 255
+												}
+											}
+										}
+									}
+								},
+								{
+									"name": "PlayerHealth",
+									"config": {
+										"view": {
+											"position": {
+												"x": 768,
+												"y": 16
+											},
+											"textConfig": {
+												"fontPath": "Resources/Fonts/sans.ttf",
+												"fontSize": 16,
+												"color": {
+													"r": 255,
+													"g": 0,
+													"b": 0,
+													"a": 255
+												}
+											}
+										}
+									}
 								}
 							],
 							"childObjects": []
@@ -91,6 +133,48 @@
 									"name": "PlayerMovement",
 									"config": {
 										"playerName": "Player2"
+									}
+								},
+								{
+									"name": "PlayerScore",
+									"config": {
+										"view": {
+											"position": {
+												"x": 768,
+												"y": 536
+											},
+											"textConfig": {
+												"fontPath": "Resources/Fonts/sans.ttf",
+												"fontSize": 16,
+												"color": {
+													"r": 255,
+													"g": 255,
+													"b": 255,
+													"a": 255
+												}
+											}
+										}
+									}
+								},
+								{
+									"name": "PlayerHealth",
+									"config": {
+										"view": {
+											"position": {
+												"x": 768,
+												"y": 552
+											},
+											"textConfig": {
+												"fontPath": "Resources/Fonts/sans.ttf",
+												"fontSize": 16,
+												"color": {
+													"r": 255,
+													"g": 0,
+													"b": 0,
+													"a": 255
+												}
+											}
+										}
 									}
 								}
 							],

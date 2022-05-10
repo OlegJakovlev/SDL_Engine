@@ -146,6 +146,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CustomScripts\HealthComponent\HealthComponent.cpp" />
+    <ClCompile Include="CustomScripts\HealthComponent\HealthComponentModel\HealthComponentModel.cpp" />
+    <ClCompile Include="CustomScripts\HealthComponent\HealthComponentView\HealthComponentView.cpp" />
+    <ClCompile Include="CustomScripts\ScoreComponent\ScoreComponent.cpp" />
     <ClCompile Include="Engine\Component\AnimationComponent\AnimationData\AnimationData.cpp" />
     <ClCompile Include="Engine\Component\AnimationComponent\AnimationComponent.cpp" />
     <ClCompile Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.cpp" />
@@ -188,6 +192,8 @@
     <ClCompile Include="Engine\Service\Audio\PCAudio\PCAudio.cpp" />
     <ClCompile Include="Engine\Service\TextureManager\NullTexture\NullTextureManager.cpp" />
     <ClCompile Include="CustomScripts\PlayerMovement\PlayerMovement.cpp" />
+    <ClCompile Include="CustomScripts\ScoreComponent\ScoreComponentModel\ScoreComponentModel.cpp" />
+    <ClCompile Include="CustomScripts\ScoreComponent\ScoreComponentView\ScoreComponentView.cpp" />
     <ClCompile Include="SDL_Engine.cpp" />
     <ClCompile Include="Engine\Physics\Vector2.cpp" />
     <ClCompile Include="Engine\Component\TextComponent\TextComponent.cpp" />
@@ -196,6 +202,10 @@
     <ClCompile Include="Engine\Configurator\TextureConfigurator\TextureConfigurator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CustomScripts\HealthComponent\HealthComponent.h" />
+    <ClInclude Include="CustomScripts\HealthComponent\HealthComponentModel\HealthComponentModel.h" />
+    <ClInclude Include="CustomScripts\HealthComponent\HealthComponentView\HealthComponentView.h" />
+    <ClInclude Include="CustomScripts\ScoreComponent\ScoreComponent.h" />
     <ClInclude Include="Engine\Component\AnimationComponent\AnimationData\AnimationData.h" />
     <ClInclude Include="Engine\Component\AnimationComponent\AnimationComponent.h" />
     <ClInclude Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.h" />
@@ -243,6 +253,8 @@
     <ClInclude Include="Engine\Configurator\TextureConfigurator\TextureConfigurator.h" />
     <ClInclude Include="Engine\Service\TextureManager\NullTexture\NullTextureManager.h" />
     <ClInclude Include="CustomScripts\PlayerMovement\PlayerMovement.h" />
+    <ClInclude Include="CustomScripts\ScoreComponent\ScoreComponentModel\ScoreComponentModel.h" />
+    <ClInclude Include="CustomScripts\ScoreComponent\ScoreComponentView\ScoreComponentView.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

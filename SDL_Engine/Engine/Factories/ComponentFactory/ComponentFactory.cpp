@@ -43,5 +43,13 @@ AbstractComponent* ComponentFactory::CreateComponent(const std::string& componen
         return new PlayerMovement();
     }
 
+    if (componentName == "PlayerScore") {
+        return new ScoreComponent();
+    }
+
+    if (componentName == "PlayerHealth") {
+        return new HealthComponent();
+    }
+
     return nullptr;
 }

@@ -165,6 +165,24 @@
     <ClCompile Include="CustomScripts\PlayerMovement\PlayerMovement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CustomScripts\ScoreComponent\ScoreComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScripts\ScoreComponent\ScoreComponentModel\ScoreComponentModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScripts\ScoreComponent\ScoreComponentView\ScoreComponentView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScripts\HealthComponent\HealthComponentModel\HealthComponentModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScripts\HealthComponent\HealthComponentView\HealthComponentView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScripts\HealthComponent\HealthComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -315,6 +333,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CustomScripts\PlayerMovement\PlayerMovement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\ScoreComponent\ScoreComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\ScoreComponent\ScoreComponentModel\ScoreComponentModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\ScoreComponent\ScoreComponentView\ScoreComponentView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\HealthComponent\HealthComponentModel\HealthComponentModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\HealthComponent\HealthComponentView\HealthComponentView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\HealthComponent\HealthComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -16,6 +16,8 @@
 // Composite
 #include "../../../CustomScripts/GameLoopView.h"
 #include "../../../CustomScripts/PlayerMovement/PlayerMovement.h"
+#include "../../../CustomScripts/ScoreComponent/ScoreComponent.h"
+#include "../../../CustomScripts/HealthComponent/HealthComponent.h"
 
 class ComponentFactory {
 public:

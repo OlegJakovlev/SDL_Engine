@@ -81,3 +81,7 @@ void AnimationComponent::PlayAnimation(const std::string& animationName) {
 void AnimationComponent::PauseAnimation() {
     isPaused = true;
 }
+
+void AnimationComponent::HaltAnimation() {
+    isFinished = true;
+}

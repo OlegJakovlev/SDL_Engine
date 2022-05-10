@@ -14,10 +14,10 @@ namespace GameObject {
     GameObject::GameObject(int newID, const std::string& newName) {
         ID = newID;
         name = newName;
-        localPosition = nullptr;
-        globalPosition = nullptr;
+        localPosition = new Vector2::Vector2<int>(0, 0);
+        globalPosition = new Vector2::Vector2<int>(0, 0);
         rotation = 0;
-        scale = nullptr;
+        scale = new Vector2::Vector2<int>(0 ,0);
         layer = 8;
     }
 

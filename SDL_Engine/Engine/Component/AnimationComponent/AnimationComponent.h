@@ -18,6 +18,7 @@ public:
 
     void PlayAnimation(const std::string& animationName);
     void PauseAnimation();
+    void HaltAnimation();
 
 private:
     AnimationData animationData;
