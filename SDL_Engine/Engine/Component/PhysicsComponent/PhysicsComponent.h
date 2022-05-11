@@ -17,6 +17,8 @@ public:
     float SweptAABB(GameObject::GameObject* secondBody);
 
 private:
+    void CheckCollisionsRecursively(GameObject::GameObject* collisionCheckWith);
+
     Vector2::Vector2<int> velocity;
     Vector2::Vector2<float> normal;
 };

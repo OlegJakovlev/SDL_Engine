@@ -188,37 +188,6 @@
 							"childObjects": []
 						},
 						{
-							"ID": 4,
-							"name": "Bomb",
-							"position": {
-								"x": 400,
-								"y": 300
-							},
-							"rotation": 0,
-							"scale": {
-								"x": 32,
-								"y": 32
-							},
-							"layer": 8,
-							"components": [
-								{
-									"name": "Physics",
-									"config": {}
-								},
-								{
-									"name": "Image",
-									"config": {
-										"imagePath": "Resources/Images/WorldScene/Sprite/Bomb/bomb.png"
-									}
-								},
-								{
-									"name": "Animation",
-									"config": {}
-								}
-							],
-							"childObjects": []
-						},
-						{
 							"ID": 5,
 							"name": "GameLoopStats",
 							"position": {

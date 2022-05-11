@@ -67,6 +67,12 @@ namespace Vector2 {
     }
 
     template<>
+    float Vector2<float>::DotProduct(const Vector2<float>& lhs, const Vector2<float>& rhs) {
+        return lhs.x * rhs.x + lhs.y * rhs.y;
+    }
+
+
+    template<>
     Vector2<int>& Vector2<int>::operator+=(const Vector2<int>& rhs) {
         x += rhs.x;
         y += rhs.y;
@@ -120,11 +126,6 @@ namespace Vector2 {
         Vector2<float> result(*this);
         result -= rhs;
         return result;
-    }
-
-    template<>
-    float Vector2<float>::DotProduct(const Vector2<float>& lhs, const Vector2<float>& rhs) {
-        return lhs.x * rhs.x + lhs.y * rhs.y;
     }
 
     template <>
