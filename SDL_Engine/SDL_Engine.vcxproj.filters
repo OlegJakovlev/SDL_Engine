@@ -186,6 +186,15 @@
     <ClCompile Include="CustomScripts\BombSpawner\BombSpawnerComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CustomScripts\TimerComponent\TimerComponentModel\TimerComponentModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScripts\TimerComponent\TimerComponentView\TimerComponentView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScripts\TimerComponent\TimerComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -357,6 +366,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CustomScripts\BombSpawner\BombSpawnerComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\TimerComponent\TimerComponentModel\TimerComponentModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\TimerComponent\TimerComponentView\TimerComponentView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\TimerComponent\TimerComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

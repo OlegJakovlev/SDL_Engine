@@ -19,6 +19,7 @@
 #include "../../../CustomScripts/ScoreComponent/ScoreComponent.h"
 #include "../../../CustomScripts/HealthComponent/HealthComponent.h"
 #include "../../../CustomScripts/BombSpawner/BombSpawnerComponent.h"
+#include "../../../CustomScripts/TimerComponent/TimerComponent.h"
 
 class ComponentFactory {
 public:

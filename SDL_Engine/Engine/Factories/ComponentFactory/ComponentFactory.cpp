@@ -55,5 +55,9 @@ AbstractComponent* ComponentFactory::CreateComponent(const std::string& componen
         return new BombSpawnerComponent();
     }
 
+    if (componentName == "LevelTimer") {
+        return new TimerComponent();
+    }
+
     return nullptr;
 }
