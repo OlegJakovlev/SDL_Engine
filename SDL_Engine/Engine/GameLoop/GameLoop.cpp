@@ -63,6 +63,8 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
         Graphics::Instance()->RenderPresent();
     }
+
+    DeleteMarkedObjects(sceneObjects);
 }
 
 const Timer& GameLoop::GetTimer() {
@@ -94,6 +96,22 @@ void GameLoop::ToggleRender() {
     Logger::Instance().LogWarning("GameLoop Render Component: " + textStatus);
 
     if (!renderActive) gameStatsView->SetRenderPerformaceText("Disabled");
+}
+
+void GameLoop::DeleteMarkedObjects(std::vector<GameObject::GameObject*>& sceneObjects) {
+    // Delete game objects with allocated data
+    for (auto& gameObject : sceneObjects) {
+        if (gameObject->ShouldBeDeleted()) {
+            delete gameObject;
+            gameObject = nullptr;
+        }
+    }
+
+    // Delete nullptr from scene
+    sceneObjects.erase(
+        std::remove(sceneObjects.begin(), sceneObjects.end(), nullptr),
+        sceneObjects.end()
+    );
 }
 
 void GameLoop::Input(InputController* input) {

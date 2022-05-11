@@ -78,7 +78,7 @@ namespace GameObject {
         std::bitset<4> layer;
 
         std::unordered_map<std::string, AbstractComponent*> components;
-        
+
         GameObject* parentObject;
         std::vector<GameObject*> childObjects;
 

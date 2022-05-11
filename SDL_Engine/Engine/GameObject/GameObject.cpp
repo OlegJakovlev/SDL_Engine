@@ -126,7 +126,7 @@ namespace GameObject {
     void GameObject::AddComponent(const std::string& componentName, const nlohmann::json& componentConfig) {
         // Create the component
         AbstractComponent* newComponent = ComponentFactory::Instance()->CreateComponent(componentName);
-        
+
         if (newComponent == nullptr) {
             Logger::Instance().LogError(componentName + " can not be created! Please check if provided configuration is correct!");
             return;

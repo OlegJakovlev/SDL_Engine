@@ -28,6 +28,8 @@ public:
     void ToggleRender();
 
 private:
+    void DeleteMarkedObjects(std::vector<GameObject::GameObject*>& sceneObjects);
+
     const double SECONDS_PER_UPDATE = 0.016666; // 60 FPS
     const int MAX_PHYSICS_UPDATES = 120; // FPS * 2
 

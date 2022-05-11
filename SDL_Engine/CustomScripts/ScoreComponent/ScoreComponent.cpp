@@ -1,4 +1,5 @@
 #include "ScoreComponent.h"
+#include "../../Engine/GameObject/GameObject.h"
 
 ScoreComponent::~ScoreComponent() {
     delete model;
@@ -29,6 +30,8 @@ void ScoreComponent::AdjustScore(int scoreAdjustment) {
     else {
         model->AddScore(scoreAdjustment);
     }
+
+    Logger::Instance().LogMessage(objectLinkedTo->GetName() + " new score is : " + std::to_string(model->GetScore()));
 
     // Update view
     view->UpdateScoreText();
