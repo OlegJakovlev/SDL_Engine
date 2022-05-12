@@ -5,6 +5,10 @@
 PhysicsComponent::~PhysicsComponent() {
 }
 
+void PhysicsComponent::LoadConfig(const nlohmann::json& config) {
+    isTrigger = config.value("IsTrigger", false);
+}
+
 void PhysicsComponent::Update() {
     for (auto& gameobject : GameManager::Instance()->GetSceneManager()->GetCurrentScene()->GetSceneObjectList()) {
         CheckCollisionsRecursively(gameobject);
@@ -21,6 +25,10 @@ void PhysicsComponent::Update() {
 void PhysicsComponent::Move(const Vector2::Vector2<int>& movementVector) {
     velocity = movementVector;
     normal = Vector2::Vector2<float>(0, 0);
+}
+
+void PhysicsComponent::AddCollisionResponseEvent(const std::function<void()>& function) {
+    collisionResponseEvents.push_back(function);
 }
 
 bool PhysicsComponent::AABBOverlap(GameObject::GameObject* checkOverlapWith) {
@@ -130,18 +138,26 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
             // CD narrow phase
             float collisionTime = SweptAABB(collisionCheckWith);
             if (collisionTime != 1.0f) PhysicsLogger::Instance().LogMessage("Collision detected in narrow phase!");
+            else return;
 
             // Calculate and round position difference
             float remainingTime = 1.0f - collisionTime;
-
             float dotProduct = Vector2::Vector2<float>::DotProduct(Vector2::Vector2<float>(velocity.x, velocity.y), normal) * collisionTime;
 
-            std::printf("%s: Normal X:%f \t NormalY:%f \t VelocityX:%i\t VelocityY:%i \t DotProduct:%f \n", objectLinkedTo->GetName().c_str(), normal.x, normal.y, velocity.x, velocity.y, dotProduct);
+            // Call events on collision
+            for (auto& eventName : collisionResponseEvents) {
+                eventName();
+            }
 
-            velocity.x = dotProduct * normal.x;
-            velocity.y = dotProduct * normal.y;
+            if (!isTrigger) {
+                std::printf("%s: Normal X:%f \t NormalY:%f \t VelocityX:%i\t VelocityY:%i \t DotProduct:%f \n", objectLinkedTo->GetName().c_str(), normal.x, normal.y, velocity.x, velocity.y, dotProduct);
 
-            std::printf("%s: Normal X:%f \t NormalY:%f \t VelocityX:%i\t VelocityY:%i \t DotProduct:%f \n", objectLinkedTo->GetName().c_str(), normal.x, normal.y, velocity.x, velocity.y, dotProduct);
+                velocity.x = dotProduct * normal.x;
+                velocity.y = dotProduct * normal.y;
+
+                std::printf("%s: Normal X:%f \t NormalY:%f \t VelocityX:%i\t VelocityY:%i \t DotProduct:%f \n", objectLinkedTo->GetName().c_str(), normal.x, normal.y, velocity.x, velocity.y, dotProduct);
+            }
+
             return;
         }
     }

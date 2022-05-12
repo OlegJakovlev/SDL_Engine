@@ -22,7 +22,7 @@ void AnimatorConfigurator::LoadConfiguration() {
 
 		newAnimation.fullTexture = textureManager->GetTexture(animationData.at("animationSheet"));
 		newAnimation.frameDelays = animationData.at("frameDelays").get<std::vector<float>>();
-		newAnimation.loop = GetLoopType(animationData.at("loop").get<std::string>());
+		newAnimation.loop = GetLoopType(animationData.value("loop", "ONE_OFF"));
 
 		// Create frames
 		for (int frameIndex = 0; frameIndex < newAnimation.frameDelays.size(); frameIndex++) {

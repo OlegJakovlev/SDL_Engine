@@ -4,10 +4,10 @@ namespace GameObject {
     GameObject::GameObject(nlohmann::json& json) {
         SetID(json.at("ID").get<int>());
         SetName(json.at("name").get<std::string>());
-        SetLocalPosition(json.at("position").get<Vector2::Vector2<int>>());
-        SetRotation(json.at("rotation").get<float>());
-        SetScale(json.at("scale").get<Vector2::Vector2<int>>());
-        SetLayer(json.at("layer"));
+        SetLocalPosition(json.value("position", Vector2::Vector2<int>(0, 0)));
+        SetRotation(json.value("rotation", 0.0f));
+        SetScale(json.value("scale", Vector2::Vector2<int>(0, 0)));
+        SetLayer(json.value("layer", 8));
         SetComponents(json.at("components"));
     }
 
