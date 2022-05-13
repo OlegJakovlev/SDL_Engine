@@ -44,8 +44,8 @@ namespace Vector2 {
     }
 
     template<>
-    Vector2<int> Vector2<int>::Normalize() {
-        Vector2 result;
+    Vector2<float> Vector2<int>::Normalize() {
+        Vector2<float> result;
         float inverseSquareRoot = FastSquareRoot(GetMagnitude());
         result.x = x * inverseSquareRoot;
         result.y = y * inverseSquareRoot;
@@ -54,7 +54,7 @@ namespace Vector2 {
 
     template<>
     Vector2<float> Vector2<float>::Normalize() {
-        Vector2 result;
+        Vector2<float> result;
         float inverseSquareRoot = FastSquareRoot(GetMagnitude());
         result.x = x * inverseSquareRoot;
         result.y = y * inverseSquareRoot;
@@ -101,6 +101,22 @@ namespace Vector2 {
     }
 
     template<>
+    Vector2<int>& Vector2<int>::operator*=(int value) {
+        x *= value;
+        y *= value;
+
+        return *this;
+    }
+
+    template<>
+    Vector2<float>& Vector2<float>::operator*=(float value) {
+        x *= value;
+        y *= value;
+
+        return *this;
+    }
+
+    template<>
     Vector2<int> Vector2<int>::operator+(const Vector2<int>& rhs) {
         Vector2<int> result(*this);
         result += rhs;
@@ -119,6 +135,16 @@ namespace Vector2 {
         Vector2<int> result(*this);
         result -= rhs;
         return result;
+    }
+
+    template<>
+    Vector2<int> Vector2<int>::operator*(int value) {
+        return Vector2<int>(x * value, y * value);
+    }
+
+    template<>
+    Vector2<float> Vector2<float>::operator*(float value) {
+        return Vector2<float>(x * value, y * value);
     }
 
     template<>

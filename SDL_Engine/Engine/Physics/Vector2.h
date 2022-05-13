@@ -17,16 +17,16 @@ namespace Vector2 {
         float FastSquareRoot(float magnitude);
         float GetMagnitude();
 
-        Vector2<T> Normalize();
+        Vector2<float> Normalize();
         static float DotProduct(const Vector2<T>& lhs, const Vector2<T>& rhs);
 
         Vector2<T>& operator+=(const Vector2<T>& rhs);
-
         Vector2<T>& operator-=(const Vector2<T>& rhs);
+        Vector2<T>& operator*=(T value);
 
         Vector2<T> operator+(const Vector2<T>& rhs);
-
         Vector2<T> operator-(const Vector2<T>& rhs);
+        Vector2<T> operator*(T value);
 
         T x;
         T y;

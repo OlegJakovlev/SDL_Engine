@@ -29,7 +29,6 @@ private:
     SDL_Texture* beforeAnimationTexture;
 
     Timer timer;
-
     double previosFrameTime;
 
     bool isPaused = false;

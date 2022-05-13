@@ -279,6 +279,10 @@
 										"object": {
 											"ID": 10,
 											"name": "Bomb",
+											"scale": {
+												"x": 32,
+												"y": 32
+											},
 											"components": [
 												{
 													"name": "Animation",
@@ -289,6 +293,10 @@
 													"config": {
 														"imagePath": "Resources/Images/WorldScene/Sprite/Bomb/bomb.png"
 													}
+												},
+												{
+													"name": "Physics",
+													"config": {}
 												}
 											],
 											"childObjects": []

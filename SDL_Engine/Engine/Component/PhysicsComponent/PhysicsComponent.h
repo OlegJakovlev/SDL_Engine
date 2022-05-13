@@ -12,9 +12,12 @@ public:
     void LoadConfig(const nlohmann::json& config) override;
     void Update() override;
 
-    void Move(const Vector2::Vector2<int>& movementVector);
+    void AdjustVelocityXComponent(int deltaXSpeed);
+    void AdjustVelocityYComponent(int deltaYSpeed);
+
     void AddCollisionResponseEvent(const std::function<void()>& function);
 private:
+    void Move(const Vector2::Vector2<int>& movementVector);
     void CheckCollisionsRecursively(GameObject::GameObject* collisionCheckWith);
     bool AABBOverlap(GameObject::GameObject* checkOverlapWith);
     float SweptAABB(GameObject::GameObject* secondBody);

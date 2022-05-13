@@ -14,21 +14,80 @@ void PhysicsComponent::Update() {
         CheckCollisionsRecursively(gameobject);
     }
 
+    Vector2::Vector2<float> normalizedMovement = velocity.Normalize() * 16.0;
+
     // Move object
-    Vector2::Vector2<int> currentPosition = Vector2::Vector2<int>(*objectLinkedTo->GetGlobalPosition());
-    objectLinkedTo->SetGlobalPosition(currentPosition + Vector2::Vector2<int>(velocity.x * 32, velocity.y * 32));
+    Move(Vector2::Vector2<int>(normalizedMovement.x, normalizedMovement.y));
 
     // Reset object velocity
     velocity = Vector2::Vector2(0, 0);
 }
 
-void PhysicsComponent::Move(const Vector2::Vector2<int>& movementVector) {
-    velocity = movementVector;
-    normal = Vector2::Vector2<float>(0, 0);
+void PhysicsComponent::AdjustVelocityXComponent(int deltaXSpeed) {
+    velocity.x += deltaXSpeed;
+    if (velocity.x > 1) velocity.x = 1;
+    if (velocity.x < -1) velocity.x = -1;
+}
+
+void PhysicsComponent::AdjustVelocityYComponent(int deltaYSpeed) {
+    velocity.y += deltaYSpeed;
+    if (velocity.y > 1) velocity.y = 1;
+    if (velocity.y < -1) velocity.y = -1;
 }
 
 void PhysicsComponent::AddCollisionResponseEvent(const std::function<void()>& function) {
     collisionResponseEvents.push_back(function);
+}
+
+void PhysicsComponent::Move(const Vector2::Vector2<int>& movementVector) {
+    Vector2::Vector2<int> currentPosition = Vector2::Vector2<int>(*objectLinkedTo->GetGlobalPosition());
+    objectLinkedTo->SetGlobalPosition(currentPosition + movementVector);
+}
+
+void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collisionCheckWith) {
+    if (collisionCheckWith == objectLinkedTo) return;
+
+    // Perform collision detection
+    if (collisionCheckWith->GetComponent("Physics") != nullptr) {
+        // CD broad phase
+        if (AABBOverlap(collisionCheckWith)) {
+            PhysicsLogger::Instance().LogMessage("Collision detected in broad phase!");
+
+            // CD narrow phase
+            float collisionTime = SweptAABB(collisionCheckWith);
+            if (collisionTime != 1.0f) PhysicsLogger::Instance().LogMessage("Collision detected in narrow phase!");
+            else return;
+
+            // Calculate and round position difference
+            float remainingTime = 1.0f - collisionTime;
+            float dotProduct = Vector2::Vector2<float>::DotProduct(Vector2::Vector2<float>(velocity.x, velocity.y), normal) * collisionTime;
+
+            // Call events on collision
+            for (auto& eventName : collisionResponseEvents) {
+                eventName();
+            }
+
+            if (!isTrigger) {
+                std::printf("%s: Normal X:%f \t NormalY:%f \t VelocityX:%i\t VelocityY:%i \t DotProduct:%f \n", objectLinkedTo->GetName().c_str(), normal.x, normal.y, velocity.x, velocity.y, dotProduct);
+
+                velocity *= -1;
+
+                //velocity.x *= collisionTime;
+                //velocity.y *= collisionTime;
+
+                //velocity.x = dotProduct * normal.x;
+                //velocity.y = dotProduct * normal.y;
+
+                std::printf("%s: Normal X:%f \t NormalY:%f \t VelocityX:%i\t VelocityY:%i \t DotProduct:%f \n", objectLinkedTo->GetName().c_str(), normal.x, normal.y, velocity.x, velocity.y, dotProduct);
+            }
+
+            return;
+        }
+    }
+
+    for (auto& childObject : collisionCheckWith->GetChildObjects()) {
+        CheckCollisionsRecursively(childObject);
+    }
 }
 
 bool PhysicsComponent::AABBOverlap(GameObject::GameObject* checkOverlapWith) {
@@ -124,45 +183,4 @@ float PhysicsComponent::SweptAABB(GameObject::GameObject* secondBody) {
     }
 
     return entryTime;
-}
-
-void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collisionCheckWith) {
-    if (collisionCheckWith == objectLinkedTo) return;
-
-    // Perform collision detection
-    if (collisionCheckWith->GetComponent("Physics") != nullptr) {
-        // CD broad phase
-        if (AABBOverlap(collisionCheckWith)) {
-            PhysicsLogger::Instance().LogMessage("Collision detected in broad phase!");
-
-            // CD narrow phase
-            float collisionTime = SweptAABB(collisionCheckWith);
-            if (collisionTime != 1.0f) PhysicsLogger::Instance().LogMessage("Collision detected in narrow phase!");
-            else return;
-
-            // Calculate and round position difference
-            float remainingTime = 1.0f - collisionTime;
-            float dotProduct = Vector2::Vector2<float>::DotProduct(Vector2::Vector2<float>(velocity.x, velocity.y), normal) * collisionTime;
-
-            // Call events on collision
-            for (auto& eventName : collisionResponseEvents) {
-                eventName();
-            }
-
-            if (!isTrigger) {
-                std::printf("%s: Normal X:%f \t NormalY:%f \t VelocityX:%i\t VelocityY:%i \t DotProduct:%f \n", objectLinkedTo->GetName().c_str(), normal.x, normal.y, velocity.x, velocity.y, dotProduct);
-
-                velocity.x = dotProduct * normal.x;
-                velocity.y = dotProduct * normal.y;
-
-                std::printf("%s: Normal X:%f \t NormalY:%f \t VelocityX:%i\t VelocityY:%i \t DotProduct:%f \n", objectLinkedTo->GetName().c_str(), normal.x, normal.y, velocity.x, velocity.y, dotProduct);
-            }
-
-            return;
-        }
-    }
-
-    for (auto& childObject : collisionCheckWith->GetChildObjects()) {
-        CheckCollisionsRecursively(childObject);
-    }
 }

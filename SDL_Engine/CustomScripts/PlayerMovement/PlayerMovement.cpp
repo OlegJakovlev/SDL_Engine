@@ -28,17 +28,17 @@ void PlayerMovement::LoadConfig(const nlohmann::json& config) {
 }
 
 void PlayerMovement::MoveLeft() {
-	physicsComponent->Move(Vector2::Vector2(-1, 0));
+	physicsComponent->AdjustVelocityXComponent(-1);
 }
 
 void PlayerMovement::MoveRight() {
-	physicsComponent->Move(Vector2::Vector2(1, 0));
+	physicsComponent->AdjustVelocityXComponent(1);
 }
 
 void PlayerMovement::MoveUp() {
-	physicsComponent->Move(Vector2::Vector2(0, -1));
+	physicsComponent->AdjustVelocityYComponent(-1);
 }
 
 void PlayerMovement::MoveDown() {
-	physicsComponent->Move(Vector2::Vector2(0, 1));
+	physicsComponent->AdjustVelocityYComponent(1);
 }
