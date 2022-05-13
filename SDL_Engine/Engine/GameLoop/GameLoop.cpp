@@ -35,7 +35,7 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
         
         // Measure input performance
         inputTime = timer->GetCurrentTime() - previousTime;
-        gameStatsView->SetInputPerformaceText(std::to_string(inputTime));
+        gameStatsView->SetInputPerformaceText(std::to_string(inputTime * 1000));
     }
 
     // Physics Update
@@ -49,7 +49,7 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
         // Measure update performance
         updateTime = timer->GetCurrentTime() - inputTime - previousTime;
-        gameStatsView->SetUpdatePerformaceText(std::to_string(updateTime));
+        gameStatsView->SetUpdatePerformaceText(std::to_string(updateTime * 1000));
     }
 
     // Render
@@ -59,7 +59,7 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
         // Measure render performance
         renderTime = timer->GetCurrentTime() - updateTime - previousTime;
-        gameStatsView->SetRenderPerformaceText(std::to_string(renderTime));
+        gameStatsView->SetRenderPerformaceText(std::to_string(renderTime * 1000));
 
         Graphics::Instance()->RenderPresent();
     }
