@@ -20,6 +20,8 @@
 #include "../../../CustomScripts/HealthComponent/HealthComponent.h"
 #include "../../../CustomScripts/BombSpawner/BombSpawnerComponent.h"
 #include "../../../CustomScripts/TimerComponent/TimerComponent.h"
+#include "../../../CustomScripts/PickableComponent/PickableComponent.h"
+#include "../../../CustomScripts/TimerPowerUp/TimerPowerUp.h"
 
 class ComponentFactory {
 public:

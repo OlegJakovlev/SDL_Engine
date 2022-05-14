@@ -49,6 +49,8 @@ void InputConfigurator::Initialize() {
 
 	inputController->LinkAction("increaseMusicLevel", std::bind(&Audio::IncreaseMusicVolume, AudioLocator::GetAudio()));
 	inputController->LinkAction("decreaseMusicLevel", std::bind(&Audio::DecreaseMusicVolume, AudioLocator::GetAudio()));
+
+	inputController->LinkAction("loadNextScene", std::bind(&SceneManager::LoadNextScene, GameManager::Instance()->GetSceneManager()));
 }
 
 InputController* InputConfigurator::GetInputController() {

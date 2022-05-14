@@ -52,11 +52,12 @@ void AnimationComponent::Update() {
             imageComponent->SetTextureFrame(nullptr);
             beforeAnimationTexture = nullptr;
 
-            // Call events
             for (auto& endFrameEvent : animationEndFrameEvents) {
                 endFrameEvent();
             }
         }
+
+        // Increment frame
         else {
             currentFrameIndex += step;
 

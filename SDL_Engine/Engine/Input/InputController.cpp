@@ -4,6 +4,9 @@
 InputController::InputController() {}
 
 InputController::~InputController() {
+    namedActions.clear();
+    activeEvents.clear();
+    keyActions.clear();
 }
 
 void InputController::CreateAction(const std::string& actionName, int actionKey) {

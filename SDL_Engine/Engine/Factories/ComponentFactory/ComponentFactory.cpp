@@ -59,5 +59,13 @@ AbstractComponent* ComponentFactory::CreateComponent(const std::string& componen
         return new TimerComponent();
     }
 
+    if (componentName == "Pickable") {
+        return new PickableComponent();
+    }
+
+    if (componentName == "TimerPowerUp") {
+        return new TimerPowerUp();
+    }
+
     return nullptr;
 }

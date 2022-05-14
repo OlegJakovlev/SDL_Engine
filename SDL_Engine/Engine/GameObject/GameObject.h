@@ -64,6 +64,8 @@ namespace GameObject {
         void Render();
         void Destroy();
 
+        void CheckChildsToBeDeleted();
+
     private:
         GameObject* RecursiveSearchByID(GameObject* searchRoot, int searchableID);
         GameObject* RecursiveSearchByName(GameObject* searchRoot, const std::string& searchableName);

@@ -1,0 +1,20 @@
+{
+    "windowControls": {
+        "toggleFullScreenMode": "U"
+    },
+
+    "audioControls": {
+        "toggleSoundEffects": "N",
+        "toggleMusicEffects": "M",
+        
+        "increaseSoundLevel": "T",
+        "decreaseSoundLevel": "Y",
+        
+        "increaseMusicLevel": "O",
+        "decreaseMusicLevel": "P"
+    },
+
+    "gameControl": {
+        "loadNextScene": "Q"
+    }
+}

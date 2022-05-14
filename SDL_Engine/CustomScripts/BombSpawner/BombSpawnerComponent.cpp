@@ -57,7 +57,7 @@ void BombSpawnerComponent::PlaceBomb() {
     animationComponent->PlayAnimation("bombExplosion");
 
     // Last frame events
-    // Decrease amount of currently placed bombs for player
+    // Decrease amount of currently placed bombs for player    
     animationComponent->AddFrameEvent(
         std::bind(&BombSpawnerComponent::DecreaseActiveBombs, this)
     );

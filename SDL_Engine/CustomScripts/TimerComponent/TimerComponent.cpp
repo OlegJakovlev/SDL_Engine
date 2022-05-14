@@ -39,3 +39,7 @@ void TimerComponent::Update() {
 void TimerComponent::Render() {
     view->Render();
 }
+
+void TimerComponent::AddGamePlayTime() {
+    model->AddTime(15);
+}

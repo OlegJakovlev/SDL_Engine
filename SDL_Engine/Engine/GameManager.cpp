@@ -44,6 +44,9 @@ void GameManager::Run() {
                 currentScene->GetSceneObjectList()
             );
         }
+
+        // Delete inactive
+        currentScene->DeleteMarkedObjects();
     }
 }
 

@@ -94,6 +94,21 @@ bool Scene::IsInitialized() {
     return initialized;
 }
 
+void Scene::DeleteMarkedObjects() {
+    std::vector<GameObject::GameObject*>::iterator it = sceneObjects.begin();
+    for (; it != sceneObjects.end();) {
+        if ((*it)->ShouldBeDeleted()) {
+            GameObject::GameObject* tmp = *it;
+            it = sceneObjects.erase(it);
+            delete tmp;
+        }
+        else {
+            (*it)->CheckChildsToBeDeleted();
+            it++;
+        }
+    }
+}
+
 void Scene::Initialize() {
     // Load configurations
     inputConfigurator->LoadConfiguration();

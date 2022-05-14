@@ -3,6 +3,7 @@
 #include "../AbstractComponent.h"
 #include "../../Logger/PhysicsLogger/PhysicsLogger.h"
 #include "../../Physics/Vector2.h"
+#include "../../../CustomScripts/PickableComponent/PickableComponent.h"
 
 class PhysicsComponent : public AbstractComponent
 {
@@ -13,8 +14,6 @@ public:
     void Update() override;
 
     void SetVelocity(Vector2::Vector2<int> newVelocity);
-
-    void AddCollisionResponseEvent(const std::function<void()>& function);
 private:
     void Move(const Vector2::Vector2<int>& movementVector);
     void CheckCollisionsRecursively(GameObject::GameObject* collisionCheckWith);
@@ -24,6 +23,5 @@ private:
     Vector2::Vector2<float> movementDirection;
 
     bool isTrigger;
-    std::vector<std::function<void()>> collisionResponseEvents;
 };
 

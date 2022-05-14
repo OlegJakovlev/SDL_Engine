@@ -7,6 +7,8 @@ GameLoop::GameLoop() {
 
 void GameLoop::Initialize(Scene* masterScene) {
     GameObject::GameObject* gameLoopStats = masterScene->GetSceneObjectByName("GameLoopStats");
+    if (gameLoopStats == nullptr) return;
+
     gameStatsView = static_cast<GameLoopView*>(gameLoopStats->GetComponent("GameLoopView"));
 }
 
@@ -35,7 +37,7 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
         
         // Measure input performance
         inputTime = timer->GetCurrentTime() - previousTime;
-        gameStatsView->SetInputPerformaceText(std::to_string(inputTime * 1000));
+        if (gameStatsView != nullptr) gameStatsView->SetInputPerformaceText(std::to_string(inputTime * 1000));
     }
 
     // Physics Update
@@ -49,7 +51,7 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
         // Measure update performance
         updateTime = timer->GetCurrentTime() - inputTime - previousTime;
-        gameStatsView->SetUpdatePerformaceText(std::to_string(updateTime * 1000));
+        if (gameStatsView != nullptr) gameStatsView->SetUpdatePerformaceText(std::to_string(updateTime * 1000));
     }
 
     // Render
@@ -59,12 +61,10 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
         // Measure render performance
         renderTime = timer->GetCurrentTime() - updateTime - previousTime;
-        gameStatsView->SetRenderPerformaceText(std::to_string(renderTime * 1000));
+        if (gameStatsView != nullptr) gameStatsView->SetRenderPerformaceText(std::to_string(renderTime * 1000));
 
         Graphics::Instance()->RenderPresent();
     }
-
-    DeleteMarkedObjects(sceneObjects);
 }
 
 const Timer& GameLoop::GetTimer() {
@@ -77,7 +77,7 @@ void GameLoop::ToggleInput() {
     std::string textStatus = (inputActive) ? "ON" : "OFF";
     Logger::Instance().LogWarning("GameLoop Input Component: " + textStatus);
 
-    if (!inputActive) gameStatsView->SetInputPerformaceText("Disabled");
+    if (!inputActive && gameStatsView != nullptr) gameStatsView->SetInputPerformaceText("Disabled");
 }
 
 void GameLoop::ToggleUpdate() {
@@ -86,7 +86,7 @@ void GameLoop::ToggleUpdate() {
     std::string textStatus = (updateActive) ? "ON" : "OFF";
     Logger::Instance().LogWarning("GameLoop Update Component: " + textStatus);
 
-    if (!updateActive) gameStatsView->SetUpdatePerformaceText("Disabled");
+    if (!updateActive && gameStatsView != nullptr) gameStatsView->SetUpdatePerformaceText("Disabled");
 }
 
 void GameLoop::ToggleRender() {
@@ -95,23 +95,23 @@ void GameLoop::ToggleRender() {
     std::string textStatus = (renderActive) ? "ON" : "OFF";
     Logger::Instance().LogWarning("GameLoop Render Component: " + textStatus);
 
-    if (!renderActive) gameStatsView->SetRenderPerformaceText("Disabled");
+    if (!renderActive && gameStatsView != nullptr) gameStatsView->SetRenderPerformaceText("Disabled");
 }
 
 void GameLoop::DeleteMarkedObjects(std::vector<GameObject::GameObject*>& sceneObjects) {
+    if (sceneObjects.empty()) return;
+
     // Delete game objects with allocated data
     for (auto& gameObject : sceneObjects) {
         if (gameObject->ShouldBeDeleted()) {
             delete gameObject;
             gameObject = nullptr;
         }
+        else {
+            std::vector<GameObject::GameObject*> tmp = gameObject->GetChildObjects();
+            DeleteMarkedObjects(tmp);
+        }
     }
-
-    // Delete nullptr from scene
-    sceneObjects.erase(
-        std::remove(sceneObjects.begin(), sceneObjects.end(), nullptr),
-        sceneObjects.end()
-    );
 }
 
 void GameLoop::Input(InputController* input) {
@@ -128,15 +128,5 @@ void GameLoop::Update(std::vector<GameObject::GameObject*>& sceneObjects) {
     // Components update
     for (int index = 0; index < sceneObjects.size(); index++) {
         sceneObjects[index]->Update();
-    }
-
-    // Check if object should be deleted
-    for (auto it = sceneObjects.begin(); it != sceneObjects.end(); it++) {
-        if ((*it)->ShouldBeDeleted()) {
-            (*it)->Destroy();
-
-            // Pointers should be updated after deleting an object
-            it = sceneObjects.erase(it);
-        }
     }
 }

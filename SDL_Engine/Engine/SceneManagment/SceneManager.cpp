@@ -29,9 +29,6 @@ Scene* SceneManager::GetCurrentScene() {
 void SceneManager::SetCurrentSceneByID(int targetSceneID) {
     if (targetSceneID < 0 || targetSceneID > scenesToBuild.size()) return;
 
-    // Deallocate resources
-    delete currentScene;
-
     // Set new scene
     currentScene = scenesToBuild.at(targetSceneID);
 }
@@ -39,9 +36,6 @@ void SceneManager::SetCurrentSceneByID(int targetSceneID) {
 void SceneManager::SetCurrentSceneByName(std::string targetSceneName) {
     for (auto& scene : scenesToBuild) {
         if (scene->GetName() == targetSceneName) {
-            // Deallocate resources
-            delete currentScene;
-
             // Set new scene
             currentScene = scene;
             return;
@@ -50,9 +44,11 @@ void SceneManager::SetCurrentSceneByName(std::string targetSceneName) {
 }
 
 void SceneManager::LoadNextScene() {
+    Logger::Instance().LogMessage("Loading next scene...");
     SetCurrentSceneByID(currentScene->GetID() + 1);
 }
 
 void SceneManager::LoadPreviousScene() {
+    Logger::Instance().LogMessage("Loading previous scene...");
     SetCurrentSceneByID(currentScene->GetID() - 1);
 }

@@ -26,10 +26,6 @@ void PhysicsComponent::SetVelocity(Vector2::Vector2<int> newVelocity) {
     velocity = newVelocity * 32;
 }
 
-void PhysicsComponent::AddCollisionResponseEvent(const std::function<void()>& function) {
-    collisionResponseEvents.push_back(function);
-}
-
 void PhysicsComponent::Move(const Vector2::Vector2<int>& movementVector) {
     Vector2::Vector2<int> currentPosition = *objectLinkedTo->GetGlobalPosition();
     currentPosition += movementVector;
@@ -49,8 +45,10 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
     if (!collisionCheckWith->IsActive()) return;
     if (collisionCheckWith == objectLinkedTo) return;
 
+    PhysicsComponent* physics = static_cast<PhysicsComponent*>(collisionCheckWith->GetComponent("Physics"));
+
     // Perform collision detection
-    if (collisionCheckWith->GetComponent("Physics") != nullptr) {
+    if (physics != nullptr) {
 
         // Get objects info
         Vector2::Vector2<int> firstPosition = *objectLinkedTo->GetGlobalPosition();
@@ -80,24 +78,32 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
             // Collision response
             float shortestTime = 0;
 
-            if (velocity.x != 0 && velocity.y == 0)
-            {
-                // Collision on X-axis only
-                shortestTime = xAxisTimeToCollide;
-                movementDirection.x = shortestTime * velocity.x;
-            }
-            else if (velocity.x == 0 && velocity.y != 0)
-            {
-                // Collision on Y-axis only
-                shortestTime = yAxisTimeToCollide;
-                movementDirection.y = shortestTime * velocity.y;
+            if (!physics->isTrigger) {
+                if (velocity.x != 0 && velocity.y == 0)
+                {
+                    // Collision on X-axis only
+                    shortestTime = xAxisTimeToCollide;
+                    movementDirection.x = shortestTime * velocity.x;
+                }
+                else if (velocity.x == 0 && velocity.y != 0)
+                {
+                    // Collision on Y-axis only
+                    shortestTime = yAxisTimeToCollide;
+                    movementDirection.y = shortestTime * velocity.y;
+                }
+                else {
+                    // Collision on X and Y axis (eg. slide up against a wall)
+                    shortestTime = std::min(abs(xAxisTimeToCollide), abs(yAxisTimeToCollide));
+
+                    movementDirection.x = shortestTime * velocity.x;
+                    movementDirection.y = shortestTime * velocity.y;
+                }
             }
             else {
-                // Collision on X and Y axis (eg. slide up against a wall)
-                shortestTime = std::min(abs(xAxisTimeToCollide), abs(yAxisTimeToCollide));
+                PickableComponent* pickable = static_cast<PickableComponent*>(collisionCheckWith->GetComponent("Pickable"));
+                if (pickable == nullptr) return;
 
-                movementDirection.x = shortestTime * velocity.x;
-                movementDirection.y = shortestTime * velocity.y;
+                pickable->PickUp();
             }
         }
 

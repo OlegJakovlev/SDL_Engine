@@ -18,6 +18,7 @@ public:
 	void Update() override;
 	void Render() override;
 
+	void AddGamePlayTime();
 private:
 	TimerComponentModel* model;
 	TimerComponentView* view;

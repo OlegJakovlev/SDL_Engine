@@ -197,6 +197,21 @@ namespace GameObject {
         });
     }
 
+    void GameObject::CheckChildsToBeDeleted() {
+        std::vector<GameObject*>::iterator it = childObjects.begin();
+        for (; it != childObjects.end();) {
+            if ((*it)->ShouldBeDeleted()) {
+                GameObject* tmp = *it;
+                it = childObjects.erase(it);
+                delete tmp;
+            }
+            else {
+                (*it)->CheckChildsToBeDeleted();
+                it++;
+            }
+        }
+    }
+
     void GameObject::SetParentObject(GameObject* newParent) {
         parentObject = newParent;
     }

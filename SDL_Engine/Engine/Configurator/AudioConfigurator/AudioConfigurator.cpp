@@ -13,6 +13,8 @@ void AudioConfigurator::LoadConfiguration() {
 	Audio* audioService = new PCAudio();
 	AudioLocator::LinkAudio(audioService);
 
+	if (configuration.empty()) return;
+
 	for (auto& soundEntry : configuration.at("sounds").items()) {
 		audioService->AddSound(soundEntry.key(), soundEntry.value());
 	}

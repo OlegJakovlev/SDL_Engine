@@ -1,368 +1,447 @@
 {
-		"root": {
-			"world": {
-				"ID": 0,
-				"name": "world",
-				"inputConfigurationFilePath": "Resources/Configurations/InputConfiguration/example.json",
-				"audioConfigurationFilePath": "Resources/Configurations/AudioConfiguration/example.json",
-				"texturesFolder": "Resources/Images/WorldScene/Sprite/",
-				"animatorConfigurationFilePath": "Resources/Configurations/AnimatorConfiguration/example.json",
-				"gameObjects": {
-					"ID": 1,
-					"name": "Root Object",
-					"position": {
-						"x": 0,
-						"y": 0
-					},
-					"rotation": 0,
-					"scale": {
-						"x": 1,
-						"y": 1
-					},
-					"layer": 8,
-					"components": [],
-					"childObjects": [
-						{
-							"ID": 2,
-							"name": "Player1",
-							"position": {
-								"x": 0,
-								"y": 0
-							},
-							"rotation": 0,
-							"scale": {
-								"x": 32,
-								"y": 32
-							},
-							"layer": 8,
-							"components": [
-								{
-									"name": "Physics",
-									"config": {}
-								},
-								{
-									"name": "Image",
-									"config": {
-										"imagePath": "Resources/Images/WorldScene/Sprite/Player1/Hero.png"
-									}
-								},
-								{
-									"name": "Animation",
-									"config": {}
-								},
-								{
-									"name": "PlayerMovement",
-									"config": {
-										"playerName": "Player1"
-									}
-								},
-								{
-									"name": "PlayerScore",
-									"config": {
-										"view": {
-											"position": {
-												"x": 768,
-												"y": 0
-											},
-											"textConfig": {
-											}
-										}
-									}
-								},
-								{
-									"name": "PlayerHealth",
-									"config": {
-										"view": {
-											"position": {
-												"x": 768,
-												"y": 16
-											},
-											"textConfig": {
-												"color": {
-													"r": 255,
-													"g": 0,
-													"b": 0,
-													"a": 255
-												}
-											}
-										}
-									}
-								},
-								{
-									"name": "BombSpawner",
-									"config": {
-										"playerName": "Player1",
-										"objectPoolName": "BombPool"
-									}
-								}
-							],
-							"childObjects": []
-						},
-						{
-							"ID": 3,
-							"name": "Player2",
-							"position": {
-								"x": 768,
-								"y": 568
-							},
-							"rotation": 0,
-							"scale": {
-								"x": 32,
-								"y": 32
-							},
-							"layer": 8,
-							"components": [
-								{
-									"name": "Physics",
-									"config": {}
-								},
-								{
-									"name": "Image",
-									"config": {
-										"imagePath": "Resources/Images/WorldScene/Sprite/Player2/Hero.png"
-									}
-								},
-								{
-									"name": "Animation",
-									"config": {}
-								},
-								{
-									"name": "PlayerMovement",
-									"config": {
-										"playerName": "Player2"
-									}
-								},
-								{
-									"name": "PlayerScore",
-									"config": {
-										"view": {
-											"position": {
-												"x": 768,
-												"y": 536
-											},
-											"textConfig": {
-											}
-										}
-									}
-								},
-								{
-									"name": "PlayerHealth",
-									"config": {
-										"view": {
-											"position": {
-												"x": 768,
-												"y": 552
-											},
-											"textConfig": {
-												"color": {
-													"r": 255,
-													"g": 0,
-													"b": 0,
-													"a": 255
-												}
-											}
-										}
-									}
-								}
-							],
-							"childObjects": []
-						},
-						{
-							"ID": 5,
-							"name": "GameLoopStats",
-							"position": {
-								"x": 0,
-								"y": 0
-							},
-							"rotation": 0,
-							"scale": {
-								"x": 1,
-								"y": 1
-							},
-							"layer": 8,
-							"components": [
-								{
-									"name": "GameLoopView",
-									"config": {}
-								}
-							],
-							"childObjects": [
-								{
-									"ID": 6,
-									"name": "Child Object",
-									"position": {
-										"x": 0,
-										"y": 0
-									},
-									"rotation": 0,
-									"scale": {
-										"x": 1,
-										"y": 1
-									},
-									"layer": 8,
-									"components": [
-										{
-											"name": "Text",
-											"config": {
-												"fontSize": 10
-											}
-										}
-									],
-									"childObjects": []
-								},
-								{
-									"ID": 7,
-									"name": "Child Object 2",
-									"position": {
-										"x": 0,
-										"y": 15
-									},
-									"rotation": 0,
-									"scale": {
-										"x": 1,
-										"y": 1
-									},
-									"layer": 8,
-									"components": [
-										{
-											"name": "Text",
-											"config": {
-												"fontSize": 10
-											}
-										}
-									],
-									"childObjects": []
-								},
-								{
-									"ID": 8,
-									"name": "Child Object",
-									"position": {
-										"x": 0,
-										"y": 30
-									},
-									"rotation": 0,
-									"scale": {
-										"x": 1,
-										"y": 1
-									},
-									"layer": 8,
-									"components": [
-										{
-											"name": "Text",
-											"config": {
-												"fontSize": 10
-											}
-										}
-									],
-									"childObjects": []
-								}
-							]
-						},
-						{
-							"ID": 9,
-							"name": "BombPool",
-							"position": {
-								"x": 0,
-								"y": 0
-							},
-							"scale": {
-								"x": 0,
-								"y": 0
-							},
-							"layer": 8,
-							"components": [
-								{
-									"name": "ObjectPool",
-									"config": {
-										"size": 20,
-										"object": {
-											"ID": 10,
-											"name": "Bomb",
-											"scale": {
-												"x": 32,
-												"y": 32
-											},
-											"components": [
-												{
-													"name": "Animation",
-													"config": {}
-												},
-												{
-													"name": "Image",
-													"config": {
-														"imagePath": "Resources/Images/WorldScene/Sprite/CollisionTest/test.png"
-													}
-												},
-												{
-													"name": "Physics",
-													"config": {}
-												}
-											],
-											"childObjects": []
-										}
-									}
-								}
-							],
-							"childObjects": []
-						},
-						{
-							"ID": 11,
-							"name": "LevelTimer",
-							"position": {
-								"x": 0,
-								"y": 0
-							},
-							"rotation": 0,
-							"scale": {
-								"x": 0,
-								"y": 0
-							},
-							"layer": 8,
-							"components": [
-								{
-									"name": "LevelTimer",
-									"config": {
-										"initialTime": "60.00",
-										"view": {
-											"position": {
-												"x": 400,
-												"y": 0
-											},
-											"textConfig": {
-												"fontSize": 32
-											}
-										}
-									}
-								}
-							],
-							"childObjects": []
-						}
-					]
-						}
-			},
-			"world2": {
+	"root": {
+		"menu": {
+			"ID": 0,
+			"name": "menu",
+			"inputConfigurationFilePath": "Resources/Configurations/InputConfiguration/mainMenu.json",
+			"audioConfigurationFilePath": "Resources/Configurations/AudioConfiguration/example.json",
+			"texturesFolder": "Resources/Images/MainMenuScene/",
+			"gameObjects": {
 				"ID": 1,
-				"name": "world2",
-				"inputConfigurationFilePath": "",
-				"audioConfigurationFilePath": "",
-				"texturesFolder": "World2Scene",
-				"animatorConfigurationFilePath": "",
-				"gameObjects": {
-					"ID": 1,
-					"name": "Root Object",
-					"position": {
-						"x": 0,
-						"y": 0
+				"name": "Root Object",
+				"layer": 8,
+				"components": [],
+				"childObjects": [
+					{
+						"ID": 2,
+						"name": "MainMenu",
+						"position": {
+							"x": 0,
+							"y": 0
+						},
+						"layer": 8,
+						"components": [],
+						"childObjects": [
+							{
+								"ID": 3,
+								"name": "Game Title",
+								"position": {
+									"x": 300,
+									"y": 30
+								},
+								"scale": {
+									"x": 1,
+									"y": 1
+								},
+								"components": [
+									{
+										"name": "Text",
+										"config": {
+											"fontSize": 32
+										}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 4,
+								"name": "Controls Block",
+								"position": {
+									"x": 300,
+									"y": 400
+								},
+								"scale": {
+									"x": 1,
+									"y": 1
+								},
+								"components": [
+									{
+										"name": "Text",
+										"config": {
+											"fontSize": 32
+										}
+									}
+								],
+								"childObjects": []
+							}
+						]
+					}
+				]
+			}
+		},
+		"world": {
+			"ID": 1,
+			"name": "world",
+			"inputConfigurationFilePath": "Resources/Configurations/InputConfiguration/example.json",
+			"audioConfigurationFilePath": "Resources/Configurations/AudioConfiguration/example.json",
+			"texturesFolder": "Resources/Images/WorldScene/Sprite/",
+			"animatorConfigurationFilePath": "Resources/Configurations/AnimatorConfiguration/example.json",
+			"gameObjects": {
+				"ID": 1,
+				"name": "Root Object",
+				"layer": 8,
+				"components": [],
+				"childObjects": [
+					{
+						"ID": 2,
+						"name": "Player1",
+						"position": {
+							"x": 0,
+							"y": 0
+						},
+						"rotation": 0,
+						"scale": {
+							"x": 32,
+							"y": 32
+						},
+						"layer": 8,
+						"components": [
+							{
+								"name": "Physics",
+								"config": {}
+							},
+							{
+								"name": "Image",
+								"config": {
+									"imagePath": "Resources/Images/WorldScene/Sprite/Player1/Hero.png"
+								}
+							},
+							{
+								"name": "Animation",
+								"config": {}
+							},
+							{
+								"name": "PlayerMovement",
+								"config": {
+									"playerName": "Player1"
+								}
+							},
+							{
+								"name": "PlayerScore",
+								"config": {
+									"view": {
+										"position": {
+											"x": 768,
+											"y": 0
+										},
+										"textConfig": {
+										}
+									}
+								}
+							},
+							{
+								"name": "PlayerHealth",
+								"config": {
+									"view": {
+										"position": {
+											"x": 768,
+											"y": 16
+										},
+										"textConfig": {
+											"color": {
+												"r": 255,
+												"g": 0,
+												"b": 0,
+												"a": 255
+											}
+										}
+									}
+								}
+							},
+							{
+								"name": "BombSpawner",
+								"config": {
+									"playerName": "Player1",
+									"objectPoolName": "BombPool"
+								}
+							}
+						],
+						"childObjects": []
 					},
-					"rotation": 0,
-					"scale": {
-						"x": 1,
-						"y": 1
+					{
+						"ID": 3,
+						"name": "Player2",
+						"position": {
+							"x": 768,
+							"y": 568
+						},
+						"rotation": 0,
+						"scale": {
+							"x": 32,
+							"y": 32
+						},
+						"layer": 8,
+						"components": [
+							{
+								"name": "Physics",
+								"config": {}
+							},
+							{
+								"name": "Image",
+								"config": {
+									"imagePath": "Resources/Images/WorldScene/Sprite/Player2/Hero.png"
+								}
+							},
+							{
+								"name": "Animation",
+								"config": {}
+							},
+							{
+								"name": "PlayerMovement",
+								"config": {
+									"playerName": "Player2"
+								}
+							},
+							{
+								"name": "PlayerScore",
+								"config": {
+									"view": {
+										"position": {
+											"x": 768,
+											"y": 536
+										},
+										"textConfig": {
+										}
+									}
+								}
+							},
+							{
+								"name": "PlayerHealth",
+								"config": {
+									"view": {
+										"position": {
+											"x": 768,
+											"y": 552
+										},
+										"textConfig": {
+											"color": {
+												"r": 255,
+												"g": 0,
+												"b": 0,
+												"a": 255
+											}
+										}
+									}
+								}
+							}
+						],
+						"childObjects": []
 					},
-					"layer": 8,
-					"components": [],
-					"childObjects": {}
-				}
+					{
+						"ID": 4,
+						"name": "Timer Perk",
+						"position": {
+							"x": 400,
+							"y": 600
+						},
+						"scale": {
+							"x": 32,
+							"y": 32
+						},
+						"components": [
+							{
+								"name": "Physics",
+								"config": {
+									"IsTrigger": true
+								}
+							},
+							{
+								"name": "Image",
+								"config": {
+									"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin_Animation.png"
+								}
+							},
+							{
+								"name": "Animation",
+								"config": {}
+							},
+							{
+								"name": "Pickable",
+								"config": {
+									"soundName": "explosion",
+									"pickUpAnimation": "bombExplosion",
+									"idleAnimation": "bombExplosion"
+								}
+							},
+							{
+								"name": "TimerPowerUp",
+								"config": {}
+							}
+						],
+						"childObjects": []
+					},
+					{
+						"ID": 5,
+						"name": "GameLoopStats",
+						"position": {
+							"x": 0,
+							"y": 0
+						},
+						"rotation": 0,
+						"scale": {
+							"x": 1,
+							"y": 1
+						},
+						"layer": 8,
+						"components": [
+							{
+								"name": "GameLoopView",
+								"config": {}
+							}
+						],
+						"childObjects": [
+							{
+								"ID": 6,
+								"name": "Child Object",
+								"position": {
+									"x": 0,
+									"y": 0
+								},
+								"rotation": 0,
+								"scale": {
+									"x": 1,
+									"y": 1
+								},
+								"layer": 8,
+								"components": [
+									{
+										"name": "Text",
+										"config": {
+											"fontSize": 10
+										}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 7,
+								"name": "Child Object 2",
+								"position": {
+									"x": 0,
+									"y": 15
+								},
+								"rotation": 0,
+								"scale": {
+									"x": 1,
+									"y": 1
+								},
+								"layer": 8,
+								"components": [
+									{
+										"name": "Text",
+										"config": {
+											"fontSize": 10
+										}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 8,
+								"name": "Child Object",
+								"position": {
+									"x": 0,
+									"y": 30
+								},
+								"rotation": 0,
+								"scale": {
+									"x": 1,
+									"y": 1
+								},
+								"layer": 8,
+								"components": [
+									{
+										"name": "Text",
+										"config": {
+											"fontSize": 10
+										}
+									}
+								],
+								"childObjects": []
+							}
+						]
+					},
+					{
+						"ID": 9,
+						"name": "BombPool",
+						"position": {
+							"x": 0,
+							"y": 0
+						},
+						"scale": {
+							"x": 0,
+							"y": 0
+						},
+						"layer": 8,
+						"components": [
+							{
+								"name": "ObjectPool",
+								"config": {
+									"size": 20,
+									"object": {
+										"ID": 10,
+										"name": "Bomb",
+										"scale": {
+											"x": 32,
+											"y": 32
+										},
+										"components": [
+											{
+												"name": "Animation",
+												"config": {}
+											},
+											{
+												"name": "Image",
+												"config": {
+													"imagePath": "Resources/Images/WorldScene/Sprite/CollisionTest/test.png"
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
+											}
+										],
+										"childObjects": []
+									}
+								}
+							}
+						],
+						"childObjects": []
+					},
+					{
+						"ID": 11,
+						"name": "LevelTimer",
+						"position": {
+							"x": 0,
+							"y": 0
+						},
+						"rotation": 0,
+						"scale": {
+							"x": 0,
+							"y": 0
+						},
+						"layer": 8,
+						"components": [
+							{
+								"name": "LevelTimer",
+								"config": {
+									"initialTime": "60.00",
+									"view": {
+										"position": {
+											"x": 400,
+											"y": 0
+										},
+										"textConfig": {
+											"fontSize": 32
+										}
+									}
+								}
+							}
+						],
+						"childObjects": []
+					}
+				]
 			}
 		}
+	}
 }

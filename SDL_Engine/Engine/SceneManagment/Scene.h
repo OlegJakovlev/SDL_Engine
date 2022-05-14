@@ -36,6 +36,8 @@ public:
     std::vector<GameObject::GameObject*>& GetSceneObjectList();
     bool IsInitialized();
 
+    void DeleteMarkedObjects();
+
 private:
     void InitializeRecursively(GameObject::GameObject* rootObject);
 

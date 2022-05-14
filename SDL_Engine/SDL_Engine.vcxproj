@@ -150,10 +150,12 @@
     <ClCompile Include="CustomScripts\HealthComponent\HealthComponent.cpp" />
     <ClCompile Include="CustomScripts\HealthComponent\HealthComponentModel\HealthComponentModel.cpp" />
     <ClCompile Include="CustomScripts\HealthComponent\HealthComponentView\HealthComponentView.cpp" />
+    <ClCompile Include="CustomScripts\PickableComponent\PickableComponent.cpp" />
     <ClCompile Include="CustomScripts\ScoreComponent\ScoreComponent.cpp" />
     <ClCompile Include="CustomScripts\TimerComponent\TimerComponent.cpp" />
     <ClCompile Include="CustomScripts\TimerComponent\TimerComponentModel\TimerComponentModel.cpp" />
     <ClCompile Include="CustomScripts\TimerComponent\TimerComponentView\TimerComponentView.cpp" />
+    <ClCompile Include="CustomScripts\TimerPowerUp\TimerPowerUp.cpp" />
     <ClCompile Include="Engine\Component\AnimationComponent\AnimationData\AnimationData.cpp" />
     <ClCompile Include="Engine\Component\AnimationComponent\AnimationComponent.cpp" />
     <ClCompile Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.cpp" />
@@ -210,10 +212,12 @@
     <ClInclude Include="CustomScripts\HealthComponent\HealthComponent.h" />
     <ClInclude Include="CustomScripts\HealthComponent\HealthComponentModel\HealthComponentModel.h" />
     <ClInclude Include="CustomScripts\HealthComponent\HealthComponentView\HealthComponentView.h" />
+    <ClInclude Include="CustomScripts\PickableComponent\PickableComponent.h" />
     <ClInclude Include="CustomScripts\ScoreComponent\ScoreComponent.h" />
     <ClInclude Include="CustomScripts\TimerComponent\TimerComponent.h" />
     <ClInclude Include="CustomScripts\TimerComponent\TimerComponentModel\TimerComponentModel.h" />
     <ClInclude Include="CustomScripts\TimerComponent\TimerComponentView\TimerComponentView.h" />
+    <ClInclude Include="CustomScripts\TimerPowerUp\TimerPowerUp.h" />
     <ClInclude Include="Engine\Component\AnimationComponent\AnimationData\AnimationData.h" />
     <ClInclude Include="Engine\Component\AnimationComponent\AnimationComponent.h" />
     <ClInclude Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.h" />
@@ -271,12 +275,9 @@
     <None Include="Resources\Configurations\AnimatorConfiguration\example.json" />
     <None Include="Resources\Configurations\AudioConfiguration\example.json" />
     <None Include="Resources\Configurations\InputConfiguration\example.json" />
+    <None Include="Resources\Configurations\InputConfiguration\mainMenu.json" />
     <None Include="Resources\Configurations\SceneConfiguration\example.json" />
     <None Include="Resources\Images\WorldScene\Sprite\.gitkeep" />
-    <None Include="Resources\Scenes\.gitkeep" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Resources\Images\WorldScene\Sprite\CollisionTest\test.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

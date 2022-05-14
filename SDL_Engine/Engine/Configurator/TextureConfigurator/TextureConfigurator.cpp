@@ -12,7 +12,11 @@ void TextureConfigurator::LoadConfiguration() {
     TextureManager* textureManager = new TextureManager();
     TextureLocator::LinkTextureManager(textureManager);
 
-    if (std::filesystem::is_empty(configPath)) GraphicsLogger::Instance().LogWarning("Texture path folder " + configPath + " is empty");
+    if (!std::filesystem::exists(configPath)) {
+        GraphicsLogger::Instance().LogError("Texture path folder " + configPath + " does not exist");
+        return;
+    }
+    if (std::filesystem::is_empty(configPath)) GraphicsLogger::Instance().LogWarning("Texture path folder `" + configPath + "` is empty");
 
     // Iterate over the directory elements recursively (skip symlinks and insuffiecient permissions directories)
     for (const std::filesystem::directory_entry& entry :

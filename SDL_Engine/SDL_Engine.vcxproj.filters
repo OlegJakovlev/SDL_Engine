@@ -195,6 +195,12 @@
     <ClCompile Include="CustomScripts\TimerComponent\TimerComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CustomScripts\PickableComponent\PickableComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScripts\TimerPowerUp\TimerPowerUp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -377,21 +383,22 @@
     <ClInclude Include="CustomScripts\TimerComponent\TimerComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CustomScripts\PickableComponent\PickableComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\TimerPowerUp\TimerPowerUp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Resources\Images\WorldScene\Sprite\.gitkeep" />
     <None Include="Resources\Audio\Music\.gitkeep" />
     <None Include="Resources\Audio\Sounds\.gitkeep" />
-    <None Include="Resources\Scenes\.gitkeep" />
     <None Include="Resources\Configurations\SceneConfiguration\example.json" />
     <None Include="Resources\Configurations\InputConfiguration\example.json" />
     <None Include="Resources\Configurations\AudioConfiguration\example.json" />
     <None Include="Resources\Configurations\AnimatorConfiguration\example.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Resources\Images\WorldScene\Sprite\CollisionTest\test.png">
-      <Filter>Resource Files</Filter>
-    </Image>
+    <None Include="Resources\Configurations\InputConfiguration\mainMenu.json" />
   </ItemGroup>
 </Project>
