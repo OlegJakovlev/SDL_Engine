@@ -12,8 +12,9 @@ public:
     void LoadConfig(const nlohmann::json& config) override;
     void Update() override;
 
-    void AdjustVelocityXComponent(int deltaXSpeed);
-    void AdjustVelocityYComponent(int deltaYSpeed);
+    void SetVelocity(Vector2::Vector2<int> newVelocity);
+    //void AdjustVelocityXComponent(int deltaXSpeed);
+    //void AdjustVelocityYComponent(int deltaYSpeed);
 
     void AddCollisionResponseEvent(const std::function<void()>& function);
 private:

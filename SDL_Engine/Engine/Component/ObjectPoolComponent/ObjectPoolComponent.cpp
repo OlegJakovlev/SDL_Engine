@@ -1,7 +1,6 @@
 #include "ObjectPoolComponent.h"
 
 ObjectPoolComponent::~ObjectPoolComponent() {
-    for (auto& poolObject : pool) delete poolObject;
     pool.clear();
 }
 
@@ -11,25 +10,17 @@ void ObjectPoolComponent::Init() {
 
         newObject->Initialize();
         newObject->SetActive(false);
+
         pool.push_back(newObject);
+
+        objectLinkedTo->AddChildObject(newObject);
+        newObject->SetParentObject(objectLinkedTo);
     }
 }
 
 void ObjectPoolComponent::LoadConfig(const nlohmann::json& config) {
     poolSize = config.at("size").get<int>();
     objectConfiguration = config.at("object");
-}
-
-void ObjectPoolComponent::Update() {
-    for (auto& gameobject : pool) {
-        gameobject->Update();
-    }
-}
-
-void ObjectPoolComponent::Render() {
-    for (auto& gameobject : pool) {
-        gameobject->Render();
-    }
 }
 
 GameObject::GameObject* ObjectPoolComponent::GetPoolObject() {

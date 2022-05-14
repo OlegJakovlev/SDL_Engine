@@ -1,6 +1,5 @@
 #include "PhysicsComponent.h"
 #include "../../GameManager.h"
-#include "stdio.h"
 
 PhysicsComponent::~PhysicsComponent() {
 }
@@ -10,6 +9,8 @@ void PhysicsComponent::LoadConfig(const nlohmann::json& config) {
 }
 
 void PhysicsComponent::Update() {
+    movementDirection = Vector2::Vector2(velocity.x * 1.0f, velocity.y * 1.0f);
+
     for (auto& gameobject : GameManager::Instance()->GetSceneManager()->GetCurrentScene()->GetSceneObjectList()) {
         CheckCollisionsRecursively(gameobject);
     }
@@ -19,21 +20,10 @@ void PhysicsComponent::Update() {
 
     // Reset object velocity
     velocity = Vector2::Vector2(0, 0);
-    movementDirection = Vector2::Vector2(0.0f, 0.0f);
 }
 
-void PhysicsComponent::AdjustVelocityXComponent(int deltaXSpeed) {
-    velocity.x += deltaXSpeed;
-    if (velocity.x > 1) velocity.x = 1;
-    if (velocity.x < -1) velocity.x = -1;
-    velocity.x *= 32;
-}
-
-void PhysicsComponent::AdjustVelocityYComponent(int deltaYSpeed) {
-    velocity.y += deltaYSpeed;
-    if (velocity.y > 1) velocity.y = 1;
-    if (velocity.y < -1) velocity.y = -1;
-    velocity.y *= 32;
+void PhysicsComponent::SetVelocity(Vector2::Vector2<int> newVelocity) {
+    velocity = newVelocity * 32;
 }
 
 void PhysicsComponent::AddCollisionResponseEvent(const std::function<void()>& function) {
@@ -56,6 +46,7 @@ void PhysicsComponent::Move(const Vector2::Vector2<int>& movementVector) {
 }
 
 void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collisionCheckWith) {
+    if (!collisionCheckWith->IsActive()) return;
     if (collisionCheckWith == objectLinkedTo) return;
 
     // Perform collision detection
@@ -66,7 +57,7 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
         Vector2::Vector2<int> firstScale = *objectLinkedTo->GetScale();
         Vector2::Vector2<int> secondPosition = *collisionCheckWith->GetGlobalPosition();
         Vector2::Vector2<int> secondScale = *collisionCheckWith->GetScale();
-        
+
         // Thanks to nightblade for this article
         // https://www.deengames.com/blog/2020/a-primer-on-aabb-collision-resolution.html
         if (IsAabbCollision(
@@ -104,14 +95,10 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
             else {
                 // Collision on X and Y axis (eg. slide up against a wall)
                 shortestTime = std::min(abs(xAxisTimeToCollide), abs(yAxisTimeToCollide));
+
                 movementDirection.x = shortestTime * velocity.x;
                 movementDirection.y = shortestTime * velocity.y;
-
-                movementDirection.Normalize();
             }
-        }
-        else {
-            movementDirection = velocity.Normalize() * 32;
         }
 
         return;
