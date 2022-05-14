@@ -100,6 +100,11 @@ namespace Vector2 {
         return *this;
     }
 
+    template<class T>
+    bool Vector2<T>::operator==(const Vector2<T> rhs) {
+        return x == rhs.x && y == rhs.y;
+    }
+
     template<>
     Vector2<int>& Vector2<int>::operator*=(int value) {
         x *= value;

@@ -14,25 +14,26 @@ void PhysicsComponent::Update() {
         CheckCollisionsRecursively(gameobject);
     }
 
-    Vector2::Vector2<float> normalizedMovement = velocity.Normalize() * 16.0;
-
     // Move object
-    Move(Vector2::Vector2<int>(normalizedMovement.x, normalizedMovement.y));
+    Move(Vector2::Vector2<int>(movementDirection.x, movementDirection.y));
 
     // Reset object velocity
     velocity = Vector2::Vector2(0, 0);
+    movementDirection = Vector2::Vector2(0.0f, 0.0f);
 }
 
 void PhysicsComponent::AdjustVelocityXComponent(int deltaXSpeed) {
     velocity.x += deltaXSpeed;
     if (velocity.x > 1) velocity.x = 1;
     if (velocity.x < -1) velocity.x = -1;
+    velocity.x *= 32;
 }
 
 void PhysicsComponent::AdjustVelocityYComponent(int deltaYSpeed) {
     velocity.y += deltaYSpeed;
     if (velocity.y > 1) velocity.y = 1;
     if (velocity.y < -1) velocity.y = -1;
+    velocity.y *= 32;
 }
 
 void PhysicsComponent::AddCollisionResponseEvent(const std::function<void()>& function) {
@@ -40,8 +41,18 @@ void PhysicsComponent::AddCollisionResponseEvent(const std::function<void()>& fu
 }
 
 void PhysicsComponent::Move(const Vector2::Vector2<int>& movementVector) {
-    Vector2::Vector2<int> currentPosition = Vector2::Vector2<int>(*objectLinkedTo->GetGlobalPosition());
-    objectLinkedTo->SetGlobalPosition(currentPosition + movementVector);
+    Vector2::Vector2<int> currentPosition = *objectLinkedTo->GetGlobalPosition();
+    currentPosition += movementVector;
+
+    Vector2::Vector2<int> objectDimensions = *objectLinkedTo->GetScale();
+
+    // Check window boundaries
+    if (currentPosition.x < 0) currentPosition.x = 0;
+    if (currentPosition.x + objectDimensions.x > Graphics::SCREEN_WIDTH) currentPosition.x = Graphics::SCREEN_WIDTH - objectDimensions.x;
+    if (currentPosition.y < 0) currentPosition.y = 0;
+    if (currentPosition.y + objectDimensions.y > Graphics::SCREEN_HEIGHT) currentPosition.y = Graphics::SCREEN_HEIGHT - objectDimensions.y;
+
+    objectLinkedTo->SetGlobalPosition(currentPosition);
 }
 
 void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collisionCheckWith) {
@@ -49,40 +60,61 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
 
     // Perform collision detection
     if (collisionCheckWith->GetComponent("Physics") != nullptr) {
-        // CD broad phase
-        if (AABBOverlap(collisionCheckWith)) {
-            PhysicsLogger::Instance().LogMessage("Collision detected in broad phase!");
 
-            // CD narrow phase
-            float collisionTime = SweptAABB(collisionCheckWith);
-            if (collisionTime != 1.0f) PhysicsLogger::Instance().LogMessage("Collision detected in narrow phase!");
-            else return;
+        // Get objects info
+        Vector2::Vector2<int> firstPosition = *objectLinkedTo->GetGlobalPosition();
+        Vector2::Vector2<int> firstScale = *objectLinkedTo->GetScale();
+        Vector2::Vector2<int> secondPosition = *collisionCheckWith->GetGlobalPosition();
+        Vector2::Vector2<int> secondScale = *collisionCheckWith->GetScale();
+        
+        // Thanks to nightblade for this article
+        // https://www.deengames.com/blog/2020/a-primer-on-aabb-collision-resolution.html
+        if (IsAabbCollision(
+            firstPosition.x + velocity.x, firstPosition.y + velocity.y, firstScale.x, firstScale.y,
+            secondPosition.x, secondPosition.y, secondScale.x, secondScale.y)) {
 
-            // Calculate and round position difference
-            float remainingTime = 1.0f - collisionTime;
-            float dotProduct = Vector2::Vector2<float>::DotProduct(Vector2::Vector2<float>(velocity.x, velocity.y), normal) * collisionTime;
+            float dx, dy;
 
-            // Call events on collision
-            for (auto& eventName : collisionResponseEvents) {
-                eventName();
+            dx = (firstPosition.x < secondPosition.x) ?
+                secondPosition.x - (firstPosition.x + firstScale.x) : 
+                firstPosition.x - (secondPosition.x + secondScale.x);
+
+            dy = (firstPosition.y < secondPosition.y) ?
+                secondPosition.y - (firstPosition.y + firstScale.y) :
+                firstPosition.y - (secondPosition.y + secondScale.y);
+
+            float xAxisTimeToCollide = velocity.x != 0 ? abs(dx / velocity.x) : 0;
+            float yAxisTimeToCollide = velocity.y != 0 ? abs(dy / velocity.y) : 0;
+
+            // Collision response
+            float shortestTime = 0;
+
+            if (velocity.x != 0 && velocity.y == 0)
+            {
+                // Collision on X-axis only
+                shortestTime = xAxisTimeToCollide;
+                movementDirection.x = shortestTime * velocity.x;
             }
-
-            if (!isTrigger) {
-                std::printf("%s: Normal X:%f \t NormalY:%f \t VelocityX:%i\t VelocityY:%i \t DotProduct:%f \n", objectLinkedTo->GetName().c_str(), normal.x, normal.y, velocity.x, velocity.y, dotProduct);
-
-                velocity *= -1;
-
-                //velocity.x *= collisionTime;
-                //velocity.y *= collisionTime;
-
-                //velocity.x = dotProduct * normal.x;
-                //velocity.y = dotProduct * normal.y;
-
-                std::printf("%s: Normal X:%f \t NormalY:%f \t VelocityX:%i\t VelocityY:%i \t DotProduct:%f \n", objectLinkedTo->GetName().c_str(), normal.x, normal.y, velocity.x, velocity.y, dotProduct);
+            else if (velocity.x == 0 && velocity.y != 0)
+            {
+                // Collision on Y-axis only
+                shortestTime = yAxisTimeToCollide;
+                movementDirection.y = shortestTime * velocity.y;
             }
+            else {
+                // Collision on X and Y axis (eg. slide up against a wall)
+                shortestTime = std::min(abs(xAxisTimeToCollide), abs(yAxisTimeToCollide));
+                movementDirection.x = shortestTime * velocity.x;
+                movementDirection.y = shortestTime * velocity.y;
 
-            return;
+                movementDirection.Normalize();
+            }
         }
+        else {
+            movementDirection = velocity.Normalize() * 32;
+        }
+
+        return;
     }
 
     for (auto& childObject : collisionCheckWith->GetChildObjects()) {
@@ -90,97 +122,9 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
     }
 }
 
-bool PhysicsComponent::AABBOverlap(GameObject::GameObject* checkOverlapWith) {
-    // Get objects info
-    const Vector2::Vector2<int>* firstPosition = objectLinkedTo->GetGlobalPosition();
-    const Vector2::Vector2<int>* firstScale = objectLinkedTo->GetScale();
-    const Vector2::Vector2<int>* secondPosition = checkOverlapWith->GetGlobalPosition();
-    const Vector2::Vector2<int>* secondScale = checkOverlapWith->GetScale();
-
-    // Calculate corners coordinates for first object
-    int firstMinX = firstPosition->x;
-    int firstMaxX = firstMinX + firstScale->x;
-    int firstMinY = firstPosition->y;
-    int firstMaxY = firstMinY + firstScale->y;
-
-    // Calculate corners coordinates for second object
-    int secondMinX = secondPosition->x;
-    int secondMaxX = secondMinX + secondScale->x;
-    int secondMinY = secondPosition->y;
-    int secondMaxY = secondMinY + secondScale->y;
-
-    // Calculate difference
-    float d1x = secondMinX - firstMaxX;
-    float d1y = secondMinY - firstMaxY;
-
-    float d2x = firstMinX - secondMaxX;
-    float d2y = firstMinY - secondMaxY;
-
-    // Check if collision happened
-    if ((d1x > 0.0f || d1y > 0.0f) || (d2x > 0.0f || d2y > 0.0f)) return false;
-
-    return true;
-}
-
-// Returns the value between 0 and 1 desribing when the collision occurred
-// https://www.gamedev.net/tutorials/programming/general-and-gameplay-programming/swept-aabb-collision-detection-and-response-r3084/
-float PhysicsComponent::SweptAABB(GameObject::GameObject* secondBody) {
-    // Get objects info
-    const Vector2::Vector2<int>* firstPosition = objectLinkedTo->GetGlobalPosition();
-    const Vector2::Vector2<int>* firstScale = objectLinkedTo->GetScale();
-    const Vector2::Vector2<int>* secondPosition = secondBody->GetGlobalPosition();
-    const Vector2::Vector2<int>* secondScale = secondBody->GetScale();
-
-    int xInvEntry, yInvEntry; // Distance to the closest edge of the object
-    int xInvExit, yInvExit; // Distance to the far sides of the object
-
-    xInvEntry = (velocity.x > 0) ? 
-        secondPosition->x - (firstPosition->x + firstScale->x) :
-        (secondPosition->x + secondScale->x) - firstPosition->x;
-
-    xInvExit = (velocity.x > 0) ?
-        (secondPosition->x + secondScale->x) - firstPosition->x :
-        secondPosition->x - (firstPosition->x + firstScale->x);
-
-    yInvEntry = (velocity.y > 0) ?
-        secondPosition->y - (firstPosition->y + firstScale->y) :
-        (secondPosition->y + secondScale->y) - firstPosition->y;
-
-    yInvExit = (velocity.y > 0) ?
-        (secondPosition->y + secondScale->y) - firstPosition->y :
-        secondPosition->y - (firstPosition->y + firstScale->y);
-
-    // Find collision start and end times for each axis
-    float xEntry, yEntry;
-    float xExit, yExit;
-
-    xEntry = (velocity.x == 0) ? -std::numeric_limits<int>::infinity() : xInvEntry / velocity.x;
-    xExit = (velocity.x == 0) ? std::numeric_limits<int>::infinity() : xInvExit / velocity.x;
-
-    yEntry = (velocity.y == 0) ? -std::numeric_limits<int>::infinity() : yInvEntry / velocity.y;
-    yExit = (velocity.y == 0) ? std::numeric_limits<int>::infinity() : yInvExit / velocity.y;
-
-    float entryTime = std::max(xEntry, yEntry);
-    float exitTime = std::min(xExit, yExit);
-
-    // No collision happened
-    if (entryTime > exitTime || xEntry < 0.0f && yEntry < 0.0f || xEntry > 1.0f || yEntry > 1.0f) {
-        normal = Vector2::Vector2<float>(0, 0);
-        return 1.0f;
-    }
-
-    // Collision happened
-    else {
-        // Calculate normal of collided surface
-        if (xEntry > yEntry) {
-            normal.x = (xInvEntry) < 0 ? 1 : -1;
-            normal.y = 0;
-        }
-        else {
-            normal.x = 0;
-            normal.y = (yInvEntry) < 0 ? 1 : -1;
-        }
-    }
-
-    return entryTime;
+bool PhysicsComponent::IsAabbCollision(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) {
+    return x1 < x2 + w2 &&
+        x1 + w1 > x2 &&
+        y1 < y2 + h2 &&
+        y1 + h1 > y2;
 }

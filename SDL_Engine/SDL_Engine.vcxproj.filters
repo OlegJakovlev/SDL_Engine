@@ -389,4 +389,9 @@
     <None Include="Resources\Configurations\AudioConfiguration\example.json" />
     <None Include="Resources\Configurations\AnimatorConfiguration\example.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Images\WorldScene\Sprite\CollisionTest\test.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

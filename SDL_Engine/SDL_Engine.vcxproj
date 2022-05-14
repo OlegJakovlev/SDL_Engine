@@ -275,6 +275,9 @@
     <None Include="Resources\Images\WorldScene\Sprite\.gitkeep" />
     <None Include="Resources\Scenes\.gitkeep" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Images\WorldScene\Sprite\CollisionTest\test.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\packages\sdl2.redist.2.0.5\build\native\sdl2.redist.targets" Condition="Exists('..\packages\sdl2.redist.2.0.5\build\native\sdl2.redist.targets')" />

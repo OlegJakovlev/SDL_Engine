@@ -23,6 +23,7 @@ namespace Vector2 {
         Vector2<T>& operator+=(const Vector2<T>& rhs);
         Vector2<T>& operator-=(const Vector2<T>& rhs);
         Vector2<T>& operator*=(T value);
+        bool operator==(Vector2<T> rhs);
 
         Vector2<T> operator+(const Vector2<T>& rhs);
         Vector2<T> operator-(const Vector2<T>& rhs);

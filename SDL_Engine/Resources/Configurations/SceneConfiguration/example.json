@@ -43,7 +43,7 @@
 								{
 									"name": "Image",
 									"config": {
-										"imagePath": "Resources/Images/WorldScene/Sprite/Player1/Hero.png"
+										"imagePath": "Resources/Images/WorldScene/Sprite/CollisionTest/test.png"
 									}
 								},
 								{
@@ -119,7 +119,7 @@
 								{
 									"name": "Image",
 									"config": {
-										"imagePath": "Resources/Images/WorldScene/Sprite/Player2/Hero.png"
+										"imagePath": "Resources/Images/WorldScene/Sprite/CollisionTest/test.png"
 									}
 								},
 								{
@@ -265,7 +265,6 @@
 								"x": 0,
 								"y": 0
 							},
-							"rotation": 0,
 							"scale": {
 								"x": 0,
 								"y": 0
@@ -291,7 +290,7 @@
 												{
 													"name": "Image",
 													"config": {
-														"imagePath": "Resources/Images/WorldScene/Sprite/Bomb/bomb.png"
+														"imagePath": "Resources/Images/WorldScene/Sprite/CollisionTest/test.png"
 													}
 												},
 												{
@@ -339,7 +338,7 @@
 							"childObjects": []
 						}
 					]
-				}
+						}
 			},
 			"world2": {
 				"ID": 1,

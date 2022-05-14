@@ -19,11 +19,10 @@ public:
 private:
     void Move(const Vector2::Vector2<int>& movementVector);
     void CheckCollisionsRecursively(GameObject::GameObject* collisionCheckWith);
-    bool AABBOverlap(GameObject::GameObject* checkOverlapWith);
-    float SweptAABB(GameObject::GameObject* secondBody);
+    bool IsAabbCollision(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2);
 
     Vector2::Vector2<int> velocity;
-    Vector2::Vector2<float> normal;
+    Vector2::Vector2<float> movementDirection;
 
     bool isTrigger;
     std::vector<std::function<void()>> collisionResponseEvents;
