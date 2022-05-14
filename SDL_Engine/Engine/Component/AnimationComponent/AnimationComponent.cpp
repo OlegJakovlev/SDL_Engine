@@ -4,6 +4,8 @@
 AnimationComponent::~AnimationComponent() {
     imageComponent = nullptr;
     beforeAnimationTexture = nullptr;
+
+    animationEndFrameEvents.clear();
 }
 
 void AnimationComponent::Init() {
@@ -18,15 +20,7 @@ void AnimationComponent::Init() {
 void AnimationComponent::Update() {
     double currentTime = timer.GetCurrentTime();
 
-    // Reset texture with frame on finish
-    if (isFinished && beforeAnimationTexture != nullptr) {
-        imageComponent->SetTexture(beforeAnimationTexture);
-        imageComponent->SetTextureFrame(nullptr);
-        beforeAnimationTexture = nullptr;
-        return;
-    }
-
-    if (isPaused) return;
+    if (isPaused || isFinished) return;
     if (animationData.animationFrames.size() <= 0) return;
 
     // If time passed, save the new time
@@ -37,7 +31,6 @@ void AnimationComponent::Update() {
         if (currentFrameIndex == animationData.animationFrames.size() - 1) {
             if (animationData.loop == AnimationData::AnimationType::ONE_OFF) {
                 isFinished = true;
-                return;
             }
             // Swap direction
             else if (animationData.loop == AnimationData::AnimationType::PING_PONG) {
@@ -51,13 +44,25 @@ void AnimationComponent::Update() {
 
         if (animationData.loop == AnimationData::AnimationType::PING_PONG && currentFrameIndex == 0 && step == -1) {
             isFinished = true;
-            return;
         }
 
-        currentFrameIndex += step;
+        // Reset texture with frame on finish
+        if (isFinished) {
+            imageComponent->SetTexture(beforeAnimationTexture);
+            imageComponent->SetTextureFrame(nullptr);
+            beforeAnimationTexture = nullptr;
 
-        imageComponent->SetTexture(animationData.fullTexture);
-        imageComponent->SetTextureFrame(&animationData.animationFrames.at(currentFrameIndex));
+            // Call events
+            for (auto& endFrameEvent : animationEndFrameEvents) {
+                endFrameEvent();
+            }
+        }
+        else {
+            currentFrameIndex += step;
+
+            imageComponent->SetTexture(animationData.fullTexture);
+            imageComponent->SetTextureFrame(&animationData.animationFrames.at(currentFrameIndex));
+        }
     }
 }
 
@@ -67,6 +72,9 @@ void AnimationComponent::PlayAnimation(const std::string& animationName) {
     
     // Get animation data
     animationData = AnimatorLocator::GetAnimator()->GetAnimation(animationName);
+
+    // Clear events on new animation
+    animationEndFrameEvents.clear();
 
     // Reset flags
     isFinished = false;
@@ -84,4 +92,12 @@ void AnimationComponent::PauseAnimation() {
 
 void AnimationComponent::HaltAnimation() {
     isFinished = true;
+}
+
+void AnimationComponent::AddFrameEvent(std::function<void()> functionEvent) {
+    animationEndFrameEvents.push_back(functionEvent);
+}
+
+int AnimationComponent::GetAnimationFramesAmount() {
+    return animationData.animationFrames.size();
 }

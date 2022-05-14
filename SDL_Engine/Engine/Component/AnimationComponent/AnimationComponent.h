@@ -20,6 +20,9 @@ public:
     void PauseAnimation();
     void HaltAnimation();
 
+    void AddFrameEvent(std::function<void()> functionEvent);
+    int GetAnimationFramesAmount();
+
 private:
     AnimationData animationData;
     int currentFrameIndex;
@@ -30,6 +33,8 @@ private:
 
     Timer timer;
     double previosFrameTime;
+
+    std::vector<std::function<void()>> animationEndFrameEvents;
 
     bool isPaused = false;
     bool isFinished;

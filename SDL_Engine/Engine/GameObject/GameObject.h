@@ -29,6 +29,7 @@ namespace GameObject {
         void SetLayer(const int newLayer);
         void SetComponents(nlohmann::json& json);
         void SetActive(bool newStatus);
+        void Deactivate();
 
         const int GetID() const;
         const std::string& GetName() const;

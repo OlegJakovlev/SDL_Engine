@@ -43,7 +43,7 @@
 								{
 									"name": "Image",
 									"config": {
-										"imagePath": "Resources/Images/WorldScene/Sprite/CollisionTest/test.png"
+										"imagePath": "Resources/Images/WorldScene/Sprite/Player1/Hero.png"
 									}
 								},
 								{
@@ -119,7 +119,7 @@
 								{
 									"name": "Image",
 									"config": {
-										"imagePath": "Resources/Images/WorldScene/Sprite/CollisionTest/test.png"
+										"imagePath": "Resources/Images/WorldScene/Sprite/Player2/Hero.png"
 									}
 								},
 								{

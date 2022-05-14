@@ -17,6 +17,8 @@ public:
     void PlaceBomb();
 
 private:
+    void DecreaseActiveBombs();
+
     ObjectPoolComponent* bombPool;
 
     Timer delayTimer;

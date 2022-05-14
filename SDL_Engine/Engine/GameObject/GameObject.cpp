@@ -87,6 +87,10 @@ namespace GameObject {
         active = newStatus;
     }
 
+    void GameObject::Deactivate() {
+        SetActive(false);
+    }
+
     const int GameObject::GetID() const {
         return ID;
     }

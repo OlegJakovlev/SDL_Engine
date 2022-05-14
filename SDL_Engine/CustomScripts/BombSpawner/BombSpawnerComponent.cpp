@@ -56,7 +56,17 @@ void BombSpawnerComponent::PlaceBomb() {
     AnimationComponent* animationComponent = static_cast<AnimationComponent*>(bombObject->GetComponent("Animation"));
     animationComponent->PlayAnimation("bombExplosion");
 
-    // animationComponent->LinkOnEnd()
+    // Last frame events
     // Decrease amount of currently placed bombs for player
-    // Play Audio
+    animationComponent->AddFrameEvent(
+        std::bind(&BombSpawnerComponent::DecreaseActiveBombs, this)
+    );
+
+    animationComponent->AddFrameEvent(
+        std::bind(&GameObject::GameObject::Deactivate, bombObject)
+    );
+}
+
+void BombSpawnerComponent::DecreaseActiveBombs() {
+    bombPlaced--;
 }
