@@ -31,27 +31,29 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
     // Accumulate time difference
     timeLag += frameTime;
 
-    // Input
-    if (inputActive) {
-        Input(input);
-        
-        // Measure input performance
-        inputTime = timer->GetCurrentTime() - previousTime;
-        if (gameStatsView != nullptr) gameStatsView->SetInputPerformaceText(std::to_string(inputTime * 1000));
-    }
+    if (timeLag >= SECONDS_PER_UPDATE) {
+        // Input
+        if (inputActive) {
+            Input(input);
 
-    // Physics Update
-    if (updateActive) {
-        while (timeLag >= SECONDS_PER_UPDATE && physicsUpdates < MAX_PHYSICS_UPDATES) {
-            physicsUpdates++;
-            Update(sceneObjects);
-            timeLag -= SECONDS_PER_UPDATE;
-            currentTime += SECONDS_PER_UPDATE;
+            // Measure input performance
+            inputTime = timer->GetCurrentTime() - previousTime;
+            if (gameStatsView != nullptr) gameStatsView->SetInputPerformaceText(std::to_string(inputTime * 1000));
         }
 
-        // Measure update performance
-        updateTime = timer->GetCurrentTime() - inputTime - previousTime;
-        if (gameStatsView != nullptr) gameStatsView->SetUpdatePerformaceText(std::to_string(updateTime * 1000));
+        // Physics Update
+        if (updateActive) {
+            while (timeLag >= SECONDS_PER_UPDATE && physicsUpdates < MAX_PHYSICS_UPDATES) {
+                physicsUpdates++;
+                Update(sceneObjects);
+                timeLag -= SECONDS_PER_UPDATE;
+                currentTime += SECONDS_PER_UPDATE;
+            }
+
+            // Measure update performance
+            updateTime = timer->GetCurrentTime() - inputTime - previousTime;
+            if (gameStatsView != nullptr) gameStatsView->SetUpdatePerformaceText(std::to_string(updateTime * 1000));
+        }
     }
 
     // Render
@@ -65,8 +67,6 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
         Graphics::Instance()->RenderPresent();
     }
-
-    SDL_Delay(10);
 }
 
 const Timer& GameLoop::GetTimer() {
