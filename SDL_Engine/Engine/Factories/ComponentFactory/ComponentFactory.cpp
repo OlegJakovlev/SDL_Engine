@@ -67,5 +67,9 @@ AbstractComponent* ComponentFactory::CreateComponent(const std::string& componen
         return new TimerPowerUp();
     }
 
+    if (componentName == "CoinPickUp") {
+        return new CoinPickUp();
+    }
+
     return nullptr;
 }

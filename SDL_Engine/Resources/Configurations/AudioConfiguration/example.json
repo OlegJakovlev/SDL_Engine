@@ -1,9 +1,12 @@
 {
-  "sounds": {
-    "explosion": "Resources/Audio/Sounds/explosion.wav"
-  },
+    "sounds": {
+        "explosion": "Resources/Audio/Sounds/explosion.wav",
+        "coin": "Resources/Audio/Sounds/coin.wav",
+        "select": "Resources/Audio/Sounds/select.wav",
+        "timer": "Resources/Audio/Sounds/timer.wav"
+    },
 
   "music": {
-    "background": "Resouces/Audio/Music/"
+    "background": "Resouces/Audio/Music/background.mp3"
   }
 }

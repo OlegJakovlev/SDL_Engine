@@ -248,7 +248,7 @@
 							{
 								"name": "Image",
 								"config": {
-									"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin_Animation.png"
+									"imagePath": "Resources/Images/WorldScene/Sprite/TimerPowerUp/Timer.png"
 								}
 							},
 							{
@@ -259,8 +259,7 @@
 								"name": "Pickable",
 								"config": {
 									"soundName": "explosion",
-									"pickUpAnimation": "bombExplosion",
-									"idleAnimation": "bombExplosion"
+									"idleAnimation": "timerIdle"
 								}
 							},
 							{
@@ -436,6 +435,48 @@
 										}
 									}
 								}
+							}
+						],
+						"childObjects": []
+					},
+					{
+						"ID": 12,
+						"name": "Pickable Coin",
+						"position": {
+							"x": 300,
+							"y": 400
+						},
+						"scale": {
+							"x": 32,
+							"y": 32
+						},
+						"components": [
+							{
+								"name": "Physics",
+								"config": {
+									"IsTrigger": true
+								}
+							},
+							{
+								"name": "Image",
+								"config": {
+									"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+								}
+							},
+							{
+								"name": "Animation",
+								"config": {}
+							},
+							{
+								"name": "Pickable",
+								"config": {
+									"soundName": "coin",
+									"idleAnimation": "coinIdle"
+								}
+							},
+							{
+								"name": "CoinPickUp",
+								"config": {}
 							}
 						],
 						"childObjects": []

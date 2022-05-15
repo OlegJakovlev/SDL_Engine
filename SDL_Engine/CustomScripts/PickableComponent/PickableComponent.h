@@ -14,11 +14,16 @@ public:
     void LoadConfig(const nlohmann::json& config) override;
 
     void AddPickUpEvent(std::function<void()> newEvent);
+
     virtual void PickUp();
+    virtual void PickUp(GameObject::GameObject* newPickerObject);
+
+    GameObject::GameObject* GetPickerObject();
 
 private:
     AnimationComponent* animationComponent;
 
+    GameObject::GameObject* pickerObject;
     std::vector<std::function<void()>> pickUpEvents;
     
     std::string idleAnimationName;

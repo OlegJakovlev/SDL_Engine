@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CustomScripts\CoinPickUp\CoinPickUp.cpp" />
     <ClCompile Include="CustomScripts\BombSpawner\BombSpawnerComponent.cpp" />
     <ClCompile Include="CustomScripts\HealthComponent\HealthComponent.cpp" />
     <ClCompile Include="CustomScripts\HealthComponent\HealthComponentModel\HealthComponentModel.cpp" />
@@ -208,6 +209,7 @@
     <ClCompile Include="Engine\Configurator\TextureConfigurator\TextureConfigurator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CustomScripts\CoinPickUp\CoinPickUp.h" />
     <ClInclude Include="CustomScripts\BombSpawner\BombSpawnerComponent.h" />
     <ClInclude Include="CustomScripts\HealthComponent\HealthComponent.h" />
     <ClInclude Include="CustomScripts\HealthComponent\HealthComponentModel\HealthComponentModel.h" />

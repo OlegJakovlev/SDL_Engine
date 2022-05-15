@@ -18,7 +18,7 @@ void PickableComponent::AddPickUpEvent(std::function<void()> newEvent) {
 }
 
 void PickableComponent::PickUp() {
-    if (pickUpAnimationName != "" && animationComponent != nullptr) {
+    if (animationComponent != nullptr) {
         animationComponent->PlayAnimation(pickUpAnimationName);
         animationComponent->AddFrameEvent(std::bind(&GameObject::GameObject::Destroy, objectLinkedTo));
     }
@@ -29,4 +29,15 @@ void PickableComponent::PickUp() {
     for (auto& pickUpEvent : pickUpEvents) {
         pickUpEvent();
     }
+
+    if (animationComponent == nullptr || pickUpAnimationName == "") objectLinkedTo->Destroy();
+}
+
+void PickableComponent::PickUp(GameObject::GameObject* newPickerObject) {
+    pickerObject = newPickerObject;
+    PickUp();
+}
+
+GameObject::GameObject* PickableComponent::GetPickerObject() {
+    return pickerObject;
 }

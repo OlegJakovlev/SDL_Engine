@@ -103,7 +103,7 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
                 PickableComponent* pickable = static_cast<PickableComponent*>(collisionCheckWith->GetComponent("Pickable"));
                 if (pickable == nullptr) return;
 
-                pickable->PickUp();
+                pickable->PickUp(objectLinkedTo);
             }
         }
 

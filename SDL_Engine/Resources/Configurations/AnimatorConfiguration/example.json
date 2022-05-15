@@ -3,5 +3,15 @@
         "animationSheet": "Resources/Images/WorldScene/Sprite/Bomb/bomb_animation.png",
         "frameDelays": [ 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25 ],
         "loop": "ONE_OFF"
+    },
+    "coinIdle": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Coin/Coin_Animation.png",
+        "frameDelays": [ 0.25, 0.25, 0.25, 0.25 ],
+        "loop": "LOOP"
+    },
+    "timerIdle": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/TimerPowerUp/Timer_Animation.png",
+        "frameDelays": [ 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25 ],
+        "loop": "LOOP"
     }
 }

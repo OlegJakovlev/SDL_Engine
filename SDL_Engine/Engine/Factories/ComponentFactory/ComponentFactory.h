@@ -22,6 +22,7 @@
 #include "../../../CustomScripts/TimerComponent/TimerComponent.h"
 #include "../../../CustomScripts/PickableComponent/PickableComponent.h"
 #include "../../../CustomScripts/TimerPowerUp/TimerPowerUp.h"
+#include "../../../CustomScripts/CoinPickUp/CoinPickUp.h"
 
 class ComponentFactory {
 public:
