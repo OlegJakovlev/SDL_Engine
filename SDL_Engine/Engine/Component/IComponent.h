@@ -7,6 +7,7 @@
 
 class IComponent {
     virtual void Init() = 0;
+    virtual void Reset() = 0;
     virtual void LoadConfig(const nlohmann::json& config) = 0;
     virtual void Update() = 0;
     virtual void Render() = 0;

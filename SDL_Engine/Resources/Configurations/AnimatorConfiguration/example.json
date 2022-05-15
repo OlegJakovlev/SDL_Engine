@@ -11,7 +11,58 @@
     },
     "timerIdle": {
         "animationSheet": "Resources/Images/WorldScene/Sprite/TimerPowerUp/Timer_Animation.png",
-        "frameDelays": [ 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25 ],
+        "frameDelays": [ 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05 ],
+        "loop": "LOOP"
+    },
+
+    "player1GoUp": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Player1/Hero_GoUp.png",
+        "frameDelays": [ 0.00, 0.05, 0.05 ],
+        "loop": "ONE_OFF"
+    },
+    "player1GoDown": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Player1/Hero_GoDown.png",
+        "frameDelays": [ 0.00, 0.05, 0.05 ],
+        "loop": "ONE_OFF"
+    },
+    "player1GoLeft": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Player1/Hero_GoLeft.png",
+        "frameDelays": [ 0.00, 0.05, 0.05 ],
+        "loop": "ONE_OFF"
+    },
+    "player1GoRight": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Player1/Hero_GoRight.png",
+        "frameDelays": [ 0.00, 0.05, 0.05 ],
+        "loop": "ONE_OFF"
+    },
+    "player1Idle": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Player1/Hero_IdleAnimation.png",
+        "frameDelays": [ 0.1, 0.1, 0.1, 0.1 ],
+        "loop": "LOOP"
+    },
+    "player2GoUp": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Player2/Hero_GoUp.png",
+        "frameDelays": [ 0.00, 0.05, 0.05 ],
+        "loop": "ONE_OFF"
+    },
+    "player2GoDown": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Player2/Hero_GoDown.png",
+        "frameDelays": [ 0.00, 0.05, 0.05 ],
+        "loop": "ONE_OFF"
+    },
+    "player2GoLeft": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Player2/Hero_GoLeft.png",
+        "frameDelays": [ 0.00, 0.05, 0.05 ],
+        "loop": "ONE_OFF"
+    },
+    "player2GoRight": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Player2/Hero_GoRight.png",
+        "frameDelays": [ 0.00, 0.05, 0.05 ],
+        "loop": "ONE_OFF"
+    },
+    "player2Idle": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Player2/Hero_IdleAnimation.png",
+        "frameDelays": [ 0.1, 0.1, 0.1, 0.1 ],
         "loop": "LOOP"
     }
 }

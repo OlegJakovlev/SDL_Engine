@@ -55,11 +55,12 @@ namespace GameObject {
         void AddComponent(const std::string& componentName, const nlohmann::json& componentConfig);
         AbstractComponent* GetComponent(const std::string& componentName) const;
 
-        // Debug functions
         void Print(int tabLevel = 0);
 
-        // Game Loop
         void Initialize();
+        void Reset();
+
+        // Game Loop
         void Update();
         void Render();
         void Destroy();

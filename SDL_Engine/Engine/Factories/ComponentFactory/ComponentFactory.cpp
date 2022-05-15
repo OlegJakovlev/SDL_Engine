@@ -71,5 +71,9 @@ AbstractComponent* ComponentFactory::CreateComponent(const std::string& componen
         return new CoinPickUp();
     }
 
+    if (componentName == "MenuView") {
+        return new MenuView();
+    }
+
     return nullptr;
 }

@@ -11,6 +11,8 @@ class TimerPowerUp : public AbstractComponent {
     void Init() override;
 
 private:
+    void CustomPickUp();
+
     TimerComponent* levelTimer;
     PickableComponent* pickableComponent;
 };

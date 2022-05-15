@@ -13,6 +13,9 @@ void AnimationComponent::Init() {
 
     imageComponent = static_cast<ImageComponent*>(objectLinkedTo->GetComponent("Image"));
 
+    // Get texture before animation
+    beforeAnimationTexture = imageComponent->GetTexture();
+
     // Initialize timer
     timer = GameManager::Instance()->GetSceneManager()->GetCurrentScene()->GetGameLoop()->GetTimer();
 }
@@ -50,7 +53,6 @@ void AnimationComponent::Update() {
         if (isFinished) {
             imageComponent->SetTexture(beforeAnimationTexture);
             imageComponent->SetTextureFrame(nullptr);
-            beforeAnimationTexture = nullptr;
 
             for (auto& endFrameEvent : animationEndFrameEvents) {
                 endFrameEvent();
@@ -68,9 +70,6 @@ void AnimationComponent::Update() {
 }
 
 void AnimationComponent::PlayAnimation(const std::string& animationName) {
-    // Get texture before animation
-    beforeAnimationTexture = imageComponent->GetTexture();
-    
     // Get animation data
     animationData = AnimatorLocator::GetAnimator()->GetAnimation(animationName);
 
@@ -101,4 +100,8 @@ void AnimationComponent::AddFrameEvent(std::function<void()> functionEvent) {
 
 int AnimationComponent::GetAnimationFramesAmount() {
     return animationData.animationFrames.size();
+}
+
+bool AnimationComponent::IsPlaying() {
+    return !(isPaused || isFinished);
 }

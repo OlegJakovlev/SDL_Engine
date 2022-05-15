@@ -23,22 +23,36 @@ void PlayerMovement::Init() {
 	}
 }
 
+void PlayerMovement::Update() {
+	if (!animationComponent->IsPlaying()) {
+		animationComponent->PlayAnimation((controllerAgentName == "Player1") ? "player1Idle" : "player2Idle");
+	}
+}
+
 void PlayerMovement::LoadConfig(const nlohmann::json& config) {
 	controllerAgentName = config.at("playerName");
 }
 
 void PlayerMovement::MoveLeft() {
-	physicsComponent->SetVelocity(Vector2::Vector2(-1, 0));
+	movementDirection = Vector2::Vector2(-1, 0);
+	physicsComponent->SetVelocity(movementDirection);
+	animationComponent->PlayAnimation((controllerAgentName == "Player1") ? "player1GoLeft" : "player2GoLeft");
 }
 
 void PlayerMovement::MoveRight() {
-	physicsComponent->SetVelocity(Vector2::Vector2(1, 0));
+	movementDirection = Vector2::Vector2(1, 0);
+	physicsComponent->SetVelocity(movementDirection);
+	animationComponent->PlayAnimation((controllerAgentName == "Player1") ? "player1GoRight" : "player2GoLeft");
 }
 
 void PlayerMovement::MoveUp() {
-	physicsComponent->SetVelocity(Vector2::Vector2(0, -1));
+	movementDirection = Vector2::Vector2(0, -1);
+	physicsComponent->SetVelocity(movementDirection);
+	animationComponent->PlayAnimation((controllerAgentName == "Player1") ? "player1GoUp" : "player2GoLeft");
 }
 
 void PlayerMovement::MoveDown() {
-	physicsComponent->SetVelocity(Vector2::Vector2(0, 1));
+	movementDirection = Vector2::Vector2(0, 1);
+	physicsComponent->SetVelocity(movementDirection);
+	animationComponent->PlayAnimation((controllerAgentName == "Player1") ? "player1GoDown" : "player2GoLeft");
 }

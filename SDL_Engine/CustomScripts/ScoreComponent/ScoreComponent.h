@@ -7,6 +7,7 @@
 #include "ScoreComponentModel/ScoreComponentModel.h"
 #include "ScoreComponentView/ScoreComponentView.h"
 #include "../../Engine/Logger/Logger.h"
+#include "../../Engine/GameData/GameData.h"
 
 class ScoreComponent : public AbstractComponent {
 public:

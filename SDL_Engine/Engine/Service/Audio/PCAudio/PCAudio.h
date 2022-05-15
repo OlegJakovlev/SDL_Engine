@@ -20,6 +20,15 @@ public:
 
 	virtual void StopAllSound() override;
 	virtual void StopAllMusic() override;
+
+	virtual void IncreaseSoundVolume() override;
+	virtual void IncreaseMusicVolume() override;
+
+	virtual void DecreaseSoundVolume() override;
+	virtual void DecreaseMusicVolume() override;
+
+	virtual void ToggleSoundEffects() override;
+	virtual void ToggleMusicEffects() override;
 };
 
 #endif

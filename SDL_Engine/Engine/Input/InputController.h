@@ -32,6 +32,10 @@ public:
     void ProcessInput(const SDL_Event& inputEvent);
     void ProcessActiveEvents();
 
+    std::string GetEventBindedKeyName(const std::string& eventName);
+
+    void Reset();
+
 private:
     std::unordered_map<int, std::string> namedActions; // Bind key with event name
     std::unordered_map<std::string, bool> activeEvents; // Check if particular event is activated

@@ -204,6 +204,12 @@
     <ClCompile Include="CustomScripts\CoinPickUp\CoinPickUp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Engine\GameData\GameData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScripts\MenuView\MenuView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -395,6 +401,12 @@
     <ClInclude Include="CustomScripts\CoinPickUp\CoinPickUp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\GameData\GameData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\MenuView\MenuView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -406,5 +418,6 @@
     <None Include="Resources\Configurations\AudioConfiguration\example.json" />
     <None Include="Resources\Configurations\AnimatorConfiguration\example.json" />
     <None Include="Resources\Configurations\InputConfiguration\mainMenu.json" />
+    <None Include="Resources\Configurations\InputConfiguration\game.json" />
   </ItemGroup>
 </Project>

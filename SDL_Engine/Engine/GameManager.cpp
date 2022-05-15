@@ -26,6 +26,8 @@ GameManager::~GameManager() {
 void GameManager::Release() {
     delete sInstance;
     sInstance = nullptr;
+
+    GameData::Release();
 }
 
 void GameManager::Run() {

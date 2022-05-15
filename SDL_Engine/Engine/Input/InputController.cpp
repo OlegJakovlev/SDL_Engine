@@ -86,3 +86,19 @@ void InputController::ProcessActiveEvents() {
         }
     }
 }
+
+std::string InputController::GetEventBindedKeyName(const std::string& eventName) {
+    for (auto& entry : namedActions) {
+        if (entry.second == eventName) {
+            return SDL_GetKeyName(SDL_GetKeyFromScancode((SDL_Scancode) entry.first));
+        }
+    }
+
+    return "";
+}
+
+void InputController::Reset() {
+    for (auto& activeEventEntry : activeEvents) {
+        activeEventEntry.second = false;
+    }
+}

@@ -18,12 +18,14 @@ public:
 	void Update() override;
 	void Render() override;
 
-	void AddGamePlayTime();
+	void AddGamePlayTime(int amountOfTime);
 private:
 	TimerComponentModel* model;
 	TimerComponentView* view;
 
-	Timer* levelTimer;
+	double initialTime;
+
+	Timer levelTimer;
 	double startTime;
 };
 

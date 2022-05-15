@@ -16,6 +16,11 @@ SceneManager::~SceneManager() {
 void SceneManager::AddScene(Scene* newScene) {
     if (currentScene == nullptr) currentScene = newScene;
     scenesToBuild.push_back(newScene);
+
+    // Sort scenes by ID
+    std::sort(scenesToBuild.begin(), scenesToBuild.end(), [](const Scene* first, const Scene* second) -> bool {
+        return first->GetID() < second->GetID();
+    });
 }
 
 int SceneManager::GetCurrentSceneIndex() {
@@ -27,7 +32,9 @@ Scene* SceneManager::GetCurrentScene() {
 }
 
 void SceneManager::SetCurrentSceneByID(int targetSceneID) {
-    if (targetSceneID < 0 || targetSceneID > scenesToBuild.size()) return;
+    if (targetSceneID < 0 || targetSceneID >= scenesToBuild.size()) return;
+
+    currentScene->Reset();
 
     // Set new scene
     currentScene = scenesToBuild.at(targetSceneID);
@@ -36,6 +43,8 @@ void SceneManager::SetCurrentSceneByID(int targetSceneID) {
 void SceneManager::SetCurrentSceneByName(std::string targetSceneName) {
     for (auto& scene : scenesToBuild) {
         if (scene->GetName() == targetSceneName) {
+            currentScene->Reset();
+
             // Set new scene
             currentScene = scene;
             return;

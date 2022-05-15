@@ -1,4 +1,5 @@
 #include "TimerComponent.h"
+#include "../../Engine/GameManager.h"
 
 TimerComponent::~TimerComponent() {
     delete model;
@@ -6,40 +7,44 @@ TimerComponent::~TimerComponent() {
 
     delete view;
     view = nullptr;
-
-    delete levelTimer;
-    levelTimer = nullptr;
 }
 
 void TimerComponent::Init() {
     AbstractComponent::Init();
     view->Init();
 
-    levelTimer = new Timer();
-    levelTimer->Reset();
+    model->AddTime(initialTime);
+
+    levelTimer = GameManager::Instance()->GetSceneManager()->GetCurrentScene()->GetGameLoop()->GetTimer();
+    levelTimer.Reset();
 }
 
 void TimerComponent::LoadConfig(const nlohmann::json& config) {
     model = new TimerComponentModel();
     view = new TimerComponentView(model);
 
-    model->AddTime(std::stod(config.at("initialTime").get<std::string>()));
+    initialTime = std::stod(config.at("initialTime").get<std::string>());
+
     view->LoadConfig(config.at("view"));
 }
 
 void TimerComponent::Update() {
-    levelTimer->Stop();
+    if (model->GetTimeLeft() <= 0) {
+        GameManager::Instance()->GetSceneManager()->LoadNextScene();
+    }
+
+    levelTimer.Stop();
     
-    model->SubstractTime(levelTimer->GetElapsedTime());
+    model->SubstractTime(levelTimer.GetElapsedTime());
     view->UpdateScoreText();
 
-    levelTimer->Reset();
+    levelTimer.Reset();
 }
 
 void TimerComponent::Render() {
     view->Render();
 }
 
-void TimerComponent::AddGamePlayTime() {
-    model->AddTime(15);
+void TimerComponent::AddGamePlayTime(int amountOfTime) {
+    model->AddTime(amountOfTime);
 }

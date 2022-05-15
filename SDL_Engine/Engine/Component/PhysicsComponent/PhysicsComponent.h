@@ -14,6 +14,7 @@ public:
     void Update() override;
 
     void SetVelocity(Vector2::Vector2<int> newVelocity);
+
 private:
     void Move(const Vector2::Vector2<int>& movementVector);
     void CheckCollisionsRecursively(GameObject::GameObject* collisionCheckWith);

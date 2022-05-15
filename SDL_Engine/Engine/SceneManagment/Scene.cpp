@@ -2,13 +2,11 @@
 
 Scene::Scene(int newID, const std::string& newName,
     const std::string& inputConfigFile,
-    const std::string& audioConfigFile,
     const std::string& texturesPath,
     const std::string& animationConfigFile) : ID(newID), name(newName) {
 
     gameLoop = new GameLoop();
     inputConfigurator = new InputConfigurator(inputConfigFile);
-    audioConfigurator = new AudioConfigurator(audioConfigFile);
     textureConfigurator = new TextureConfigurator(texturesPath);
     animatorConfigurator = new AnimatorConfigurator(animationConfigFile);
 }
@@ -19,9 +17,6 @@ Scene::~Scene() {
 
     delete inputConfigurator;
     inputConfigurator = nullptr;
-
-    delete audioConfigurator;
-    audioConfigurator = nullptr;
 
     delete textureConfigurator;
     textureConfigurator = nullptr;
@@ -70,11 +65,11 @@ GameObject::GameObject* Scene::GetSceneObjectByName(std::string objectName) {
     return nullptr;
 }
 
-const int Scene::GetID() {
+const int Scene::GetID() const {
     return ID;
 }
 
-const std::string& Scene::GetName() {
+const std::string& Scene::GetName() const {
     return name;
 }
 
@@ -112,7 +107,6 @@ void Scene::DeleteMarkedObjects() {
 void Scene::Initialize() {
     // Load configurations
     inputConfigurator->LoadConfiguration();
-    audioConfigurator->LoadConfiguration();
     textureConfigurator->LoadConfiguration();
     animatorConfigurator->LoadConfiguration();
 
@@ -129,10 +123,33 @@ void Scene::Initialize() {
     initialized = true;
 }
 
+void Scene::Reset() {
+    // Reset keyboard state
+    inputConfigurator->Reset();
+
+    /* TODO: implement Reset for each component to avoid memory leak on initialization
+
+    // Reset scene objects with components
+    for (GameObject::GameObject* sceneObject : sceneObjects) {
+        ResetRecursively(sceneObject);
+    }
+
+    initialized = false;
+    */
+}
+
 void Scene::InitializeRecursively(GameObject::GameObject* rootObject) {
     rootObject->Initialize();
 
     for (auto& childObject : rootObject->GetChildObjects()) {
         InitializeRecursively(childObject);
+    }
+}
+
+void Scene::ResetRecursively(GameObject::GameObject* rootObject) {
+    rootObject->Reset();
+
+    for (auto& childObject : rootObject->GetChildObjects()) {
+        ResetRecursively(childObject);
     }
 }

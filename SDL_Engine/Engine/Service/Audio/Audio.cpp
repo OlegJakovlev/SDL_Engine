@@ -95,6 +95,7 @@ void Audio::ToggleSoundEffects() {
 
 void Audio::ToggleMusicEffects() {
 	musicEffectsStatus = !musicEffectsStatus;
+	Mix_VolumeMusic((musicEffectsStatus) ? currentMusicLevel : 0);
 
 	std::string textStatus = (musicEffectsStatus) ? "ON" : "OFF";
 	AudioLogger::Instance().LogMessage("Music Effects Status: " + textStatus);

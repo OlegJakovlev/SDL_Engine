@@ -11,6 +11,7 @@ class PlayerMovement : public AbstractComponent {
 public:
 	void Init() override;
 	void LoadConfig(const nlohmann::json& config) override;
+	void Update() override;
 
 	void MoveLeft();
 	void MoveRight();
@@ -22,6 +23,8 @@ private:
 	AnimationComponent* animationComponent;
 
 	std::string controllerAgentName;
+
+	Vector2::Vector2<int> movementDirection;
 };
 
 #endif

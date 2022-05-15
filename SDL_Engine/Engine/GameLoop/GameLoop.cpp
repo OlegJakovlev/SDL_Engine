@@ -65,6 +65,8 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
 
         Graphics::Instance()->RenderPresent();
     }
+
+    SDL_Delay(10);
 }
 
 const Timer& GameLoop::GetTimer() {

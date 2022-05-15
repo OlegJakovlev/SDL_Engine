@@ -24,8 +24,8 @@ public:
 	virtual void StopAllSound() = 0;
 	virtual void StopAllMusic() = 0;
 
-	void AddMusic(const std::string& musicName, const std::string& path);
-	void AddSound(const std::string& soundName, const std::string& path);
+	virtual void AddMusic(const std::string& musicName, const std::string& path);
+	virtual void AddSound(const std::string& soundName, const std::string& path);
 
 	virtual void IncreaseSoundVolume();
 	virtual void IncreaseMusicVolume();

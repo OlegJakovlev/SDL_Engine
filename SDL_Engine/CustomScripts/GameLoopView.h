@@ -11,7 +11,6 @@ public:
 	~GameLoopView();
 
 	void Init() override;
-	void Render() override;
 
 	void SetInputTextPointer(TextComponent* source);
 	void SetUpdateTextPointer(TextComponent* source);

@@ -19,7 +19,6 @@ void SceneConfigurator::LoadConfiguration() {
             sceneToConfigure.at("ID").get<int>(),
             sceneToConfigure.at("name").get<std::string>(),
             sceneToConfigure.value("inputConfigurationFilePath", ""),
-            sceneToConfigure.value("audioConfigurationFilePath", ""),
             sceneToConfigure.value("texturesFolder", ""),
             sceneToConfigure.value("animatorConfigurationFilePath", "")
         );
@@ -32,6 +31,8 @@ void SceneConfigurator::LoadConfiguration() {
         // Add all objects to scene
         newCreatedScene->AddSceneObject(rootElement);
     }
+
+    sceneManager->SetCurrentSceneByID(0);
 }
 
 SceneManager* SceneConfigurator::GetSceneManager() {

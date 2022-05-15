@@ -1,12 +1,14 @@
 {
     "sounds": {
+        "SoundTest": "Resources/Audio/Sounds/select.wav",
         "explosion": "Resources/Audio/Sounds/explosion.wav",
         "coin": "Resources/Audio/Sounds/coin.wav",
         "select": "Resources/Audio/Sounds/select.wav",
         "timer": "Resources/Audio/Sounds/timer.wav"
     },
 
-  "music": {
-    "background": "Resouces/Audio/Music/background.mp3"
-  }
+    "music": {
+        "MusicTest": "Resources/Audio/Music/musicTest.mp3",
+        "background": "Resources/Audio/Music/background.mp3"
+    }
 }

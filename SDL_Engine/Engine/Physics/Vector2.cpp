@@ -94,15 +94,20 @@ namespace Vector2 {
     }
 
     template<>
+    bool Vector2<float>::operator==(const Vector2<float>& rhs) {
+        return x == rhs.x && y == rhs.y;
+    }
+
+    template<>
+    bool Vector2<int>::operator==(const Vector2<int>& rhs) {
+        return x == rhs.x && y == rhs.y;
+    }
+
+    template<>
     Vector2<float>& Vector2<float>::operator-=(const Vector2<float>& rhs) {
         x -= rhs.x;
         y -= rhs.y;
         return *this;
-    }
-
-    template<class T>
-    bool Vector2<T>::operator==(const Vector2<T> rhs) {
-        return x == rhs.x && y == rhs.y;
     }
 
     template<>

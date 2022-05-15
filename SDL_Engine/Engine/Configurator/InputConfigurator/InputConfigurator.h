@@ -16,6 +16,7 @@ public:
     
     void LoadConfiguration() override;
     void Initialize();
+    void Reset();
 
     InputController* GetInputController();
 

@@ -13,6 +13,7 @@ namespace GameObject {
 class AbstractComponent : public IComponent {
 public:
     void Init() override;
+    void Reset() override;
     void LoadConfig(const nlohmann::json& config) override;
     void Update() override;
     void Render() override;

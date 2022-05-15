@@ -9,12 +9,11 @@ ImageComponent::~ImageComponent() {
 void ImageComponent::Init() {
     AbstractComponent::Init();
 
-    // Load texture
-    SetTexture(TextureLocator::GetTextureManager()->GetTexture(pathToImage.c_str()));
+    SetTexture(TextureLocator::GetTextureManager()->GetTexture(texturePath));
 }
 
 void ImageComponent::LoadConfig(const nlohmann::json& config) {
-    pathToImage = config.at("imagePath");
+    texturePath = config.value("imagePath", "");
 }
 
 void ImageComponent::Render() {

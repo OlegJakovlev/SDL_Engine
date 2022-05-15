@@ -53,6 +53,10 @@ void InputConfigurator::Initialize() {
 	inputController->LinkAction("loadNextScene", std::bind(&SceneManager::LoadNextScene, GameManager::Instance()->GetSceneManager()));
 }
 
+void InputConfigurator::Reset() {
+	if (inputController != nullptr) inputController->Reset();
+}
+
 InputController* InputConfigurator::GetInputController() {
 	return inputController;
 }

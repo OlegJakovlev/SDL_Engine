@@ -1,4 +1,4 @@
-#include "PCAudio.h"
+﻿#include "PCAudio.h"
 
 PCAudio::PCAudio() : Audio::Audio() {
 }
@@ -18,7 +18,7 @@ void PCAudio::PlayMusic(const std::string& musicName) {
     if (music.find(musicName) == music.end()) return;
 
     Mix_Music* musicEntry = music.at(musicName);
-    int activeChannel = Mix_PlayMusic(musicEntry, 0);
+    int activeChannel = Mix_PlayMusic(musicEntry, -1);
 
     activeMusicChannel.emplace(musicEntry, activeChannel);
 }
@@ -45,4 +45,31 @@ void PCAudio::StopAllSound() {
 
 void PCAudio::StopAllMusic() {
     Mix_HaltMusic();
+}
+
+void PCAudio::IncreaseSoundVolume() {
+    Audio::IncreaseSoundVolume();
+    PlaySound("SoundTest");
+}
+
+void PCAudio::IncreaseMusicVolume() {
+    Audio::IncreaseMusicVolume();
+}
+
+void PCAudio::DecreaseSoundVolume() {
+    Audio::DecreaseSoundVolume();
+    PlaySound("SoundTest");
+}
+
+void PCAudio::DecreaseMusicVolume() {
+    Audio::DecreaseMusicVolume();
+}
+
+void PCAudio::ToggleSoundEffects() {
+    Audio::ToggleSoundEffects();
+    if (soundEffectsStatus) PlaySound("SoundTest");
+}
+
+void PCAudio::ToggleMusicEffects() {
+    Audio::ToggleMusicEffects();
 }

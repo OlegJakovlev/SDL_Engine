@@ -23,6 +23,7 @@
 #include "../../../CustomScripts/PickableComponent/PickableComponent.h"
 #include "../../../CustomScripts/TimerPowerUp/TimerPowerUp.h"
 #include "../../../CustomScripts/CoinPickUp/CoinPickUp.h"
+#include "../../../CustomScripts/MenuView/MenuView.h"
 
 class ComponentFactory {
 public:

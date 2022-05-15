@@ -23,6 +23,8 @@ public:
     void AddFrameEvent(std::function<void()> functionEvent);
     int GetAnimationFramesAmount();
 
+    bool IsPlaying();
+
 private:
     AnimationData animationData;
     int currentFrameIndex;

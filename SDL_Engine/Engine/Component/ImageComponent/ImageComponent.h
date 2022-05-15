@@ -21,7 +21,7 @@ public:
     void SetTextureFrame(SDL_Rect* newFrame);
 
 private:
-    std::string pathToImage;
+    std::string texturePath;
     SDL_Texture* texture;
     SDL_Rect* textureFrame;
 };

@@ -5,6 +5,9 @@ void AbstractComponent::Init() {
     SyncWithObject();
 }
 
+void AbstractComponent::Reset() {
+}
+
 void AbstractComponent::LoadConfig(const nlohmann::json& config) {
 }
 

@@ -159,6 +159,12 @@ namespace GameObject {
         }
     }
 
+    void GameObject::Reset() {
+        for (auto& it : components) {
+            it.second->Reset();
+        }
+    }
+
     void GameObject::Update() {
         if (!active) return;
 

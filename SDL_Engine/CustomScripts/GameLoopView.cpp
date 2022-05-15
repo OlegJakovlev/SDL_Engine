@@ -23,12 +23,6 @@ void GameLoopView::Init() {
 	);
 }
 
-void GameLoopView::Render() {
-	inputPerformanceText->Render();
-	updatePerformanceText->Render();
-	renderPerformanceText->Render();
-}
-
 void GameLoopView::SetInputTextPointer(TextComponent* source) {
 	inputPerformanceText = source;
 }
