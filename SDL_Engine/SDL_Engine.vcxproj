@@ -157,6 +157,7 @@
     <ClCompile Include="CustomScripts\TimerComponent\TimerComponentModel\TimerComponentModel.cpp" />
     <ClCompile Include="CustomScripts\TimerComponent\TimerComponentView\TimerComponentView.cpp" />
     <ClCompile Include="CustomScripts\TimerPowerUp\TimerPowerUp.cpp" />
+    <ClCompile Include="CustomScripts\WinnerView\WinnerView.cpp" />
     <ClCompile Include="Engine\Component\AnimationComponent\AnimationData\AnimationData.cpp" />
     <ClCompile Include="Engine\Component\AnimationComponent\AnimationComponent.cpp" />
     <ClCompile Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="CustomScripts\TimerComponent\TimerComponentModel\TimerComponentModel.h" />
     <ClInclude Include="CustomScripts\TimerComponent\TimerComponentView\TimerComponentView.h" />
     <ClInclude Include="CustomScripts\TimerPowerUp\TimerPowerUp.h" />
+    <ClInclude Include="CustomScripts\WinnerView\WinnerView.h" />
     <ClInclude Include="Engine\Component\AnimationComponent\AnimationData\AnimationData.h" />
     <ClInclude Include="Engine\Component\AnimationComponent\AnimationComponent.h" />
     <ClInclude Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.h" />

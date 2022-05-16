@@ -1,5 +1,4 @@
 #include "MenuView.h"
-#include "../../Engine/GameObject/GameObject.h"
 #include "../../Engine/GameManager.h"
 
 void MenuView::Init() {

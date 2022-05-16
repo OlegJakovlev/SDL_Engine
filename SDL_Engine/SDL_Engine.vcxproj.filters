@@ -210,6 +210,9 @@
     <ClCompile Include="CustomScripts\MenuView\MenuView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CustomScripts\WinnerView\WinnerView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -405,6 +408,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CustomScripts\MenuView\MenuView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\WinnerView\WinnerView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
