@@ -9,6 +9,8 @@ ScoreComponent::~ScoreComponent() {
 void ScoreComponent::Init() {
     AbstractComponent::Init();
     view->Init();
+
+    GameData::Instance()->AddDataEntry(objectLinkedTo->GetName(), std::to_string(model->GetScore()));
 }
 
 void ScoreComponent::LoadConfig(const nlohmann::json& config) {
@@ -32,16 +34,9 @@ void ScoreComponent::AdjustScore(int scoreAdjustment) {
     }
 
     // Update game data
-    std::string playerName = objectLinkedTo->GetName();
-    std::unordered_map<std::string, std::string>::iterator it = GameData::Instance()->data.find(playerName);
+    GameData::Instance()->ReplaceDataEntry(objectLinkedTo->GetName(), std::to_string(model->GetScore()));
 
-    if (GameData::Instance()->data.empty() || it == GameData::Instance()->data.end()) {
-        GameData::Instance()->data.emplace(std::make_pair(playerName, std::to_string(model->GetScore())));
-    }
-    else {
-        GameData::Instance()->data[playerName] = std::to_string(model->GetScore());
-    }
-
+    // Log update
     Logger::Instance().LogMessage(objectLinkedTo->GetName() + " new score is : " + std::to_string(model->GetScore()));
 
     // Update view
