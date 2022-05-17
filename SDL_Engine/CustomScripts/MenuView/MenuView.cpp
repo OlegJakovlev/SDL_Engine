@@ -42,12 +42,14 @@ void MenuView::Init() {
         "Move Up : " + inGameControls->GetEventBindedKeyName("player1MoveUp") + "\n" +
         "Move Down: " + inGameControls->GetEventBindedKeyName("player1MoveDown") + "\n" +
         "Move Left: " + inGameControls->GetEventBindedKeyName("player1MoveLeft") + "\n" +
-        "Move Right: " + inGameControls->GetEventBindedKeyName("player1MoveRight") + "\n\n" +
+        "Move Right: " + inGameControls->GetEventBindedKeyName("player1MoveRight") + "\n" +
+        "Place Bomb: " + inGameControls->GetEventBindedKeyName("player1PlantBomb") + "\n\n" +
         "Player 2:\n" +
         "Move Up: " + inGameControls->GetEventBindedKeyName("player2MoveUp") + "\n" +
         "Move Down: " + inGameControls->GetEventBindedKeyName("player2MoveDown") + "\n" +
         "Move Left: " + inGameControls->GetEventBindedKeyName("player2MoveLeft") + "\n" +
-        "Move Right: " + inGameControls->GetEventBindedKeyName("player2MoveRight") + "\n";
+        "Move Right: " + inGameControls->GetEventBindedKeyName("player2MoveRight") + "\n" +
+        "Place Bomb: " + inGameControls->GetEventBindedKeyName("player2PlantBomb") + "\n";
     
     delete inGameInputConfigurator;
 
