@@ -42,17 +42,17 @@ void PlayerMovement::MoveLeft() {
 void PlayerMovement::MoveRight() {
 	movementDirection = Vector2::Vector2(1, 0) * 32;
 	physicsComponent->SetVelocity(movementDirection);
-	animationComponent->PlayAnimation((controllerAgentName == "Player1") ? "player1GoRight" : "player2GoLeft");
+	animationComponent->PlayAnimation((controllerAgentName == "Player1") ? "player1GoRight" : "player2GoRight");
 }
 
 void PlayerMovement::MoveUp() {
 	movementDirection = Vector2::Vector2(0, -1) * 32;
 	physicsComponent->SetVelocity(movementDirection);
-	animationComponent->PlayAnimation((controllerAgentName == "Player1") ? "player1GoUp" : "player2GoLeft");
+	animationComponent->PlayAnimation((controllerAgentName == "Player1") ? "player1GoUp" : "player2GoUp");
 }
 
 void PlayerMovement::MoveDown() {
 	movementDirection = Vector2::Vector2(0, 1) * 32;
 	physicsComponent->SetVelocity(movementDirection);
-	animationComponent->PlayAnimation((controllerAgentName == "Player1") ? "player1GoDown" : "player2GoLeft");
+	animationComponent->PlayAnimation((controllerAgentName == "Player1") ? "player1GoDown" : "player2GoDown");
 }
