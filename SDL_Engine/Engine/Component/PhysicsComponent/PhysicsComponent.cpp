@@ -113,41 +113,31 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
             float shortestTime = 0;
 
             if (!physics->isTrigger) {
-                
-                // Edit main object speed
-                if (!physics->isMovable) {
-                    if (velocity.x != 0 && velocity.y == 0) {
-                        // Collision on X-axis only
-                        shortestTime = xAxisTimeToCollide;
-                        movementDirection.x = shortestTime * velocity.x;
-                    }
-                    else if (velocity.x == 0 && velocity.y != 0) {
-                        // Collision on Y-axis only
-                        shortestTime = yAxisTimeToCollide;
-                        movementDirection.y = shortestTime * velocity.y;
-                    }
-                    else {
-                        // Collision on X and Y axis (eg. slide up against a wall)
-                        shortestTime = std::min(abs(xAxisTimeToCollide), abs(yAxisTimeToCollide));
 
-                        movementDirection.x = shortestTime * velocity.x;
-                        movementDirection.y = shortestTime * velocity.y;
-                    }
+                // Collision on X-axis only
+                if (velocity.x != 0 && velocity.y == 0) {
+                    shortestTime = xAxisTimeToCollide;
+                    movementDirection.x = shortestTime * velocity.x;
+
+                    if (physics->isMovable && !isTrigger) physics->SetVelocity(Vector2::Vector2(velocity.x, 0));
                 }
 
-                // Edit second object speed
-                else {
-                    if (isTrigger) return;
+                // Collision on Y-axis only
+                else if (velocity.x == 0 && velocity.y != 0) {
+                    shortestTime = yAxisTimeToCollide;
+                    movementDirection.y = shortestTime * velocity.y;
 
-                    if (velocity.x != 0 && velocity.y == 0) {
-                        physics->SetVelocity(Vector2::Vector2(velocity.x, 0));
-                    }
-                    else if (velocity.x == 0 && velocity.y != 0) {
-                        physics->SetVelocity(Vector2::Vector2(0, velocity.y));
-                    }
-                    else {
-                        physics->SetVelocity(velocity);
-                    }
+                    if (physics->isMovable && !isTrigger) physics->SetVelocity(Vector2::Vector2(0, velocity.y));
+                }
+
+                // Collision on X and Y axis (eg. slide up against a wall)
+                else {
+                    shortestTime = std::min(abs(xAxisTimeToCollide), abs(yAxisTimeToCollide));
+
+                    movementDirection.x = shortestTime * velocity.x;
+                    movementDirection.y = shortestTime * velocity.y;
+
+                    if (physics->isMovable && !isTrigger) physics->SetVelocity(velocity);
                 }
             }
             else {

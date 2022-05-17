@@ -30,17 +30,19 @@ public:
 private:
     void DeleteMarkedObjects(std::vector<GameObject::GameObject*>& sceneObjects);
 
-    const double SECONDS_PER_UPDATE = 0.03333333; // 30 FPS
+    const double SECONDS_PER_INPUT = 0.03333;
+    const double SECONDS_PER_UPDATE = 0.03333; // 60 FPS
     const int MAX_PHYSICS_UPDATES = 60; // FPS * 2
 
     Timer* timer;
     double previousTime = 0;
-    double timeLag = 0; // how far games' clock is behind real world
+    double updateLag = 0;
+    double inputLag = 0;
 
     // Performance
-    double inputTime;
-    double updateTime;
-    double renderTime;
+    double inputTime = 0;
+    double updateTime = 0;
+    double renderTime = 0;
 
     GameLoopView* gameStatsView;
 

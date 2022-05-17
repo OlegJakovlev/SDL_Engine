@@ -29,24 +29,29 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
     previousTime = currentTime;
 
     // Accumulate time difference
-    timeLag += frameTime;
+    updateLag += frameTime;
+    inputLag += frameTime;
 
-    if (timeLag >= SECONDS_PER_UPDATE) {
-        // Input
+    // Input
+    if (inputLag >= SECONDS_PER_INPUT) {
         if (inputActive) {
             Input(input);
+
+            inputLag -= SECONDS_PER_INPUT;
 
             // Measure input performance
             inputTime = timer->GetCurrentTime() - previousTime;
             if (gameStatsView != nullptr) gameStatsView->SetInputPerformaceText(std::to_string(inputTime * 1000));
         }
+    }
 
-        // Physics Update
+    // Physics Update
+    if (updateLag >= SECONDS_PER_UPDATE) {
         if (updateActive) {
-            while (timeLag >= SECONDS_PER_UPDATE && physicsUpdates < MAX_PHYSICS_UPDATES) {
+            while (updateLag >= SECONDS_PER_UPDATE && physicsUpdates < MAX_PHYSICS_UPDATES) {
                 physicsUpdates++;
                 Update(sceneObjects);
-                timeLag -= SECONDS_PER_UPDATE;
+                updateLag -= SECONDS_PER_UPDATE;
                 currentTime += SECONDS_PER_UPDATE;
             }
 
@@ -59,7 +64,7 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
     // Render
     if (renderActive) {
         Graphics::Instance()->RenderClear();
-        Graphics::Instance()->Render(sceneObjects, timeLag / SECONDS_PER_UPDATE);
+        Graphics::Instance()->Render(sceneObjects, updateLag / SECONDS_PER_UPDATE);
 
         // Measure render performance
         renderTime = timer->GetCurrentTime() - updateTime - previousTime;
