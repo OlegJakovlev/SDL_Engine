@@ -7,10 +7,18 @@ void WinnerView::Init() {
         objectLinkedTo->FindChildGameObjectByName("Winner Text")->GetComponent("Text")
     );
 
-    int player1Score = stoi(GameData::Instance()->data.at("Player1"));
-    int player2Score = stoi(GameData::Instance()->data.at("Player2"));
+    int player1Score = stoi(GameData::Instance()->GetDataEntry("Player1"));
+    int player2Score = stoi(GameData::Instance()->GetDataEntry("Player2"));
+
+    std::string text;
+    if (player1Score != player2Score) {
+        text = std::string() + ((player1Score > player2Score) ? "Player 1" : "Player 2") + " WON!";
+    }
+    else {
+        text = "DRAW!";
+    }
 
     // Set static text
-    winnerText->SetText("");
-    AudioLocator::GetAudio()->PlayMusic("background");
+    winnerText->SetText(text);
+    AudioLocator::GetAudio()->PlayMusic("winnerMusic");
 }
