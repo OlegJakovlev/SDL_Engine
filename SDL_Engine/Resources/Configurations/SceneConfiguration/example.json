@@ -780,6 +780,48 @@
 					},
 					{
 						"ID": 16,
+						"name": "Score Multiplier",
+						"position": {
+							"x": 200,
+							"y": 200
+						},
+						"scale": {
+							"x": 32,
+							"y": 32
+						},
+						"components": [
+							{
+								"name": "Physics",
+								"config": {
+									"IsTrigger": true
+								}
+							},
+							{
+								"name": "Image",
+								"config": {
+									"imagePath": "Resources/Images/WorldScene/Sprite/ScorePowerUp/PowerUp.png"
+								}
+							},
+							{
+								"name": "Animation",
+								"config": {}
+							},
+							{
+								"name": "Pickable",
+								"config": {
+									"soundName": "scorePickUp",
+									"idleAnimation": "scoreMultiplicationIdle"
+								}
+							},
+							{
+								"name": "ScoreMultiplier",
+								"config": {}
+							}
+						],
+						"childObjects": []
+					},
+					{
+						"ID": 17,
 						"name": "Map",
 						"position": {
 							"x": 0,
@@ -793,7 +835,7 @@
 						"components": [],
 						"childObjects": [
 							{
-								"ID": 17,
+								"ID": 18,
 								"name": "MapRow1",
 								"position": {
 									"x": 0,

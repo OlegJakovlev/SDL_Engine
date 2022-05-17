@@ -14,6 +14,8 @@ void ExplosionComponent::Update() {
 }
 
 void ExplosionComponent::Explode() {
+    AudioLocator::GetAudio()->PlaySound("explosion");
+
     for (auto& child : objectLinkedTo->GetChildObjects()) {
         child->UpdateGlobalTransform();
 

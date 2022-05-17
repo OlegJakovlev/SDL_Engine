@@ -22,6 +22,12 @@
         "loop": "LOOP"
     },
 
+    "scoreMultiplicationIdle": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/ScorePowerUp/PowerUpAnimation.png",
+        "frameDelays": [ 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05 ],
+        "loop": "LOOP"
+    },
+
     "player1GoUp": {
         "animationSheet": "Resources/Images/WorldScene/Sprite/Player1/Hero_GoUp.png",
         "frameDelays": [ 0.00, 0.05, 0.05 ],

@@ -225,6 +225,9 @@
     <ClCompile Include="CustomScripts\Damageable\DamageableComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CustomScripts\ScoreMultiplier\ScoreMultiplier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -435,6 +438,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CustomScripts\Damageable\DamageableComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\ScoreMultiplier\ScoreMultiplier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

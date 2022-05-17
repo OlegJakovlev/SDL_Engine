@@ -29,6 +29,7 @@
 #include "../../../CustomScripts/BombComponent/BombComponent.h"
 #include "../../../CustomScripts/ExplosionComponent/ExplosionComponent.h"
 #include "../../../CustomScripts/Damageable/DamageableComponent.h"
+#include "../../../CustomScripts/ScoreMultiplier/ScoreMultiplier.h"
 
 class ComponentFactory {
 public:

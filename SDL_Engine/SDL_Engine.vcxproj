@@ -154,6 +154,7 @@
     <ClCompile Include="CustomScripts\HealthComponent\HealthComponentView\HealthComponentView.cpp" />
     <ClCompile Include="CustomScripts\PickableComponent\PickableComponent.cpp" />
     <ClCompile Include="CustomScripts\ScoreComponent\ScoreComponent.cpp" />
+    <ClCompile Include="CustomScripts\ScoreMultiplier\ScoreMultiplier.cpp" />
     <ClCompile Include="CustomScripts\TimerComponent\TimerComponent.cpp" />
     <ClCompile Include="CustomScripts\TimerComponent\TimerComponentModel\TimerComponentModel.cpp" />
     <ClCompile Include="CustomScripts\TimerComponent\TimerComponentView\TimerComponentView.cpp" />
@@ -224,6 +225,7 @@
     <ClInclude Include="CustomScripts\HealthComponent\HealthComponentView\HealthComponentView.h" />
     <ClInclude Include="CustomScripts\PickableComponent\PickableComponent.h" />
     <ClInclude Include="CustomScripts\ScoreComponent\ScoreComponent.h" />
+    <ClInclude Include="CustomScripts\ScoreMultiplier\ScoreMultiplier.h" />
     <ClInclude Include="CustomScripts\TimerComponent\TimerComponent.h" />
     <ClInclude Include="CustomScripts\TimerComponent\TimerComponentModel\TimerComponentModel.h" />
     <ClInclude Include="CustomScripts\TimerComponent\TimerComponentView\TimerComponentView.h" />

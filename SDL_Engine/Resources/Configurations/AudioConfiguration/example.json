@@ -4,7 +4,8 @@
         "explosion": "Resources/Audio/Sounds/explosion.wav",
         "coin": "Resources/Audio/Sounds/coin.wav",
         "select": "Resources/Audio/Sounds/select.wav",
-        "timerPickUp": "Resources/Audio/Sounds/timer.wav"
+        "timerPickUp": "Resources/Audio/Sounds/timer.wav",
+        "scorePickUp": "Resources/Audio/Sounds/score.wav"
     },
 
     "music": {

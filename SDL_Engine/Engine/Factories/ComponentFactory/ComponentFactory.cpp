@@ -95,5 +95,9 @@ AbstractComponent* ComponentFactory::CreateComponent(const std::string& componen
         return new DamageableComponent();
     }
 
+    if (componentName == "ScoreMultiplier") {
+        return new ScoreMultiplier();
+    }
+
     return nullptr;
 }
