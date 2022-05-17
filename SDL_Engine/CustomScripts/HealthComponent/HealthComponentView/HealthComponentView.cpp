@@ -1,7 +1,7 @@
 #include "HealthComponentView.h"
 #include "../../../Engine/Factories/GameObjectFactory/GameObjectFactory.h"
 
-HealthComponentView::HealthComponentView(const HealthComponentModel& newModel) : model(newModel) {
+HealthComponentView::HealthComponentView(const HealthComponentModel* newModel) : model(newModel) {
     scoreText = new TextComponent();
 }
 
@@ -33,5 +33,5 @@ void HealthComponentView::Render() {
 }
 
 void HealthComponentView::UpdateHealthText() {
-    scoreText->SetText(std::to_string(model.GetHealth()));
+    scoreText->SetText(std::to_string(model->GetHealth()));
 }

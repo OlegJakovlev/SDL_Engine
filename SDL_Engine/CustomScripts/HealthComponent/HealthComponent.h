@@ -6,6 +6,7 @@
 #include "../../Engine/Component/AbstractComponent.h"
 #include "HealthComponentModel/HealthComponentModel.h"
 #include "HealthComponentView/HealthComponentView.h"
+#include "../../Engine/Timer/Timer.h"
 
 class HealthComponent : public AbstractComponent {
 public:
@@ -20,6 +21,10 @@ public:
 private:
 	HealthComponentModel* model;
 	HealthComponentView* view;
+
+	Timer timer;
+	double lastTimeDamaged;
+	double invincibilityTime;
 };
 
 #endif

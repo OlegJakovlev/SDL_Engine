@@ -9,7 +9,7 @@
 
 class HealthComponentView : public AbstractComponent {
 public:
-    HealthComponentView(const HealthComponentModel& newModel);
+    HealthComponentView(const HealthComponentModel* newModel);
     ~HealthComponentView();
 
     void Init() override;
@@ -19,7 +19,7 @@ public:
     void UpdateHealthText();
 
 private:
-    const HealthComponentModel model;
+    const HealthComponentModel* model;
 
     TextComponent* scoreText;
     GameObject::GameObject* fakeParent;
