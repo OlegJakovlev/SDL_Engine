@@ -6,6 +6,9 @@ PhysicsComponent::~PhysicsComponent() {
 
 void PhysicsComponent::LoadConfig(const nlohmann::json& config) {
     isTrigger = config.value("IsTrigger", false);
+    isKinematic = config.value("IsKinematic", false);
+    isSliding = config.value("IsSliding", false);
+    isMovable = config.value("IsMovable", false);
 }
 
 void PhysicsComponent::Update() {
@@ -18,7 +21,7 @@ void PhysicsComponent::Update() {
     // Move object
     Move(Vector2::Vector2<int>(movementDirection.x, movementDirection.y));
 
-    if (!isKinematic && !isTrigger) {
+    if (!isKinematic && !isTrigger && !isSliding) {
         // Reset object velocity
         velocity = Vector2::Vector2(0, 0);
     }
@@ -34,6 +37,14 @@ void PhysicsComponent::SetTeleportBehavior(bool newValue) {
 
 void PhysicsComponent::SetKinematic(bool newValue) {
     isKinematic = newValue;
+}
+
+void PhysicsComponent::SetSliding(bool newValue) {
+    isSliding = newValue;
+}
+
+void PhysicsComponent::SetMovable(bool newValue) {
+    isMovable = newValue;
 }
 
 void PhysicsComponent::Move(const Vector2::Vector2<int>& movementVector) {
@@ -77,10 +88,14 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
 
         // Thanks to nightblade for this article
         // https://www.deengames.com/blog/2020/a-primer-on-aabb-collision-resolution.html
+        // General AABB (broad phase)
         if (IsAabbCollision(
             firstPosition.x + velocity.x, firstPosition.y + velocity.y, firstScale.x, firstScale.y,
             secondPosition.x, secondPosition.y, secondScale.x, secondScale.y)) {
 
+            PhysicsLogger::Instance().LogMessage("Collision detected: " + objectLinkedTo->GetName() + " + " + collisionCheckWith->GetName());
+
+            // Sweep AABB (narrow phase)
             float dx, dy;
 
             dx = (firstPosition.x < secondPosition.x) ?
@@ -98,24 +113,41 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
             float shortestTime = 0;
 
             if (!physics->isTrigger) {
-                if (velocity.x != 0 && velocity.y == 0)
-                {
-                    // Collision on X-axis only
-                    shortestTime = xAxisTimeToCollide;
-                    movementDirection.x = shortestTime * velocity.x;
-                }
-                else if (velocity.x == 0 && velocity.y != 0)
-                {
-                    // Collision on Y-axis only
-                    shortestTime = yAxisTimeToCollide;
-                    movementDirection.y = shortestTime * velocity.y;
-                }
-                else {
-                    // Collision on X and Y axis (eg. slide up against a wall)
-                    shortestTime = std::min(abs(xAxisTimeToCollide), abs(yAxisTimeToCollide));
+                
+                // Edit main object speed
+                if (!physics->isMovable) {
+                    if (velocity.x != 0 && velocity.y == 0) {
+                        // Collision on X-axis only
+                        shortestTime = xAxisTimeToCollide;
+                        movementDirection.x = shortestTime * velocity.x;
+                    }
+                    else if (velocity.x == 0 && velocity.y != 0) {
+                        // Collision on Y-axis only
+                        shortestTime = yAxisTimeToCollide;
+                        movementDirection.y = shortestTime * velocity.y;
+                    }
+                    else {
+                        // Collision on X and Y axis (eg. slide up against a wall)
+                        shortestTime = std::min(abs(xAxisTimeToCollide), abs(yAxisTimeToCollide));
 
-                    movementDirection.x = shortestTime * velocity.x;
-                    movementDirection.y = shortestTime * velocity.y;
+                        movementDirection.x = shortestTime * velocity.x;
+                        movementDirection.y = shortestTime * velocity.y;
+                    }
+                }
+
+                // Edit second object speed
+                else {
+                    if (isTrigger) return;
+
+                    if (velocity.x != 0 && velocity.y == 0) {
+                        physics->SetVelocity(Vector2::Vector2(velocity.x, 0));
+                    }
+                    else if (velocity.x == 0 && velocity.y != 0) {
+                        physics->SetVelocity(Vector2::Vector2(0, velocity.y));
+                    }
+                    else {
+                        physics->SetVelocity(velocity);
+                    }
                 }
             }
             else {

@@ -16,6 +16,8 @@ public:
     void SetVelocity(Vector2::Vector2<int> newVelocity);
     void SetTeleportBehavior(bool newValue);
     void SetKinematic(bool newValue);
+    void SetSliding(bool newValue);
+    void SetMovable(bool newValue);
 
 private:
     void Move(const Vector2::Vector2<int>& movementVector);
@@ -27,6 +29,8 @@ private:
 
     bool isTrigger;
     bool isKinematic;
+    bool isSliding;
+    bool isMovable = false;
     bool teleportOnBoundaries = false;
 };
 

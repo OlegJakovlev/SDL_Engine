@@ -34,6 +34,7 @@ void PickableComponent::PickUp() {
 }
 
 void PickableComponent::PickUp(GameObject::GameObject* newPickerObject) {
+    if (newPickerObject->GetName() != "Player1" && newPickerObject->GetName() != "Player2") return;
     pickerObject = newPickerObject;
     PickUp();
 }
