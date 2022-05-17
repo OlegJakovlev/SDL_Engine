@@ -62,8 +62,6 @@ void AnimationComponent::Update() {
         // Increment frame
         else {
             currentFrameIndex += step;
-
-            imageComponent->SetTexture(animationData.fullTexture);
             imageComponent->SetTextureFrame(&animationData.animationFrames.at(currentFrameIndex));
         }
     }
@@ -81,6 +79,12 @@ void AnimationComponent::PlayAnimation(const std::string& animationName) {
     isPaused = false;
     currentFrameIndex = 0;
     step = 1;
+
+    if (animationData.fullTexture != nullptr) {
+        // Reset image component
+        imageComponent->SetTexture(animationData.fullTexture);
+        imageComponent->SetTextureFrame(&animationData.animationFrames.at(currentFrameIndex));
+    }
 
     // Start the timer
     previosFrameTime = timer.GetCurrentTime();
