@@ -213,6 +213,18 @@
     <ClCompile Include="CustomScripts\WinnerView\WinnerView.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CustomScripts\FlyingBird\FlyingBird.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScripts\BombComponent\BombComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScripts\ExplosionComponent\ExplosionComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScripts\Damageable\DamageableComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -411,6 +423,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CustomScripts\WinnerView\WinnerView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\FlyingBird\FlyingBird.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\BombComponent\BombComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\ExplosionComponent\ExplosionComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\Damageable\DamageableComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

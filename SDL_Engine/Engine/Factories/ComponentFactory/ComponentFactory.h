@@ -24,6 +24,11 @@
 #include "../../../CustomScripts/TimerPowerUp/TimerPowerUp.h"
 #include "../../../CustomScripts/CoinPickUp/CoinPickUp.h"
 #include "../../../CustomScripts/MenuView/MenuView.h"
+#include "../../../CustomScripts/WinnerView/WinnerView.h"
+#include "../../../CustomScripts/FlyingBird/FlyingBird.h"
+#include "../../../CustomScripts/BombComponent/BombComponent.h"
+#include "../../../CustomScripts/ExplosionComponent/ExplosionComponent.h"
+#include "../../../CustomScripts/Damageable/DamageableComponent.h"
 
 class ComponentFactory {
 public:

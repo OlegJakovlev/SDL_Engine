@@ -5,6 +5,7 @@
 
 #include "../../Engine/Component/AbstractComponent.h"
 #include "../../Engine/Timer/Timer.h"
+#include "../BombComponent/BombComponent.h"
 
 class ObjectPoolComponent;
 

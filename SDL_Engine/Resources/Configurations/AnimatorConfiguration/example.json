@@ -1,17 +1,24 @@
 {
-    "bombExplosion": {
+    "bombTicking": {
         "animationSheet": "Resources/Images/WorldScene/Sprite/Bomb/bomb_animation.png",
         "frameDelays": [ 0.25, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25 ],
         "loop": "ONE_OFF"
     },
+    "bombExplosion": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Explosion/explosion_animation.png",
+        "frameDelays": [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ],
+        "loop": "ONE_OFF"
+    },
+
     "coinIdle": {
         "animationSheet": "Resources/Images/WorldScene/Sprite/Coin/Coin_Animation.png",
         "frameDelays": [ 0.25, 0.25, 0.25, 0.25 ],
         "loop": "LOOP"
     },
+
     "timerIdle": {
         "animationSheet": "Resources/Images/WorldScene/Sprite/TimerPowerUp/Timer_Animation.png",
-        "frameDelays": [ 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05 ],
+        "frameDelays": [ 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05 ],
         "loop": "LOOP"
     },
 
@@ -40,6 +47,7 @@
         "frameDelays": [ 0.1, 0.1, 0.1, 0.1 ],
         "loop": "LOOP"
     },
+
     "player2GoUp": {
         "animationSheet": "Resources/Images/WorldScene/Sprite/Player2/Hero_GoUp.png",
         "frameDelays": [ 0.00, 0.05, 0.05 ],
@@ -63,6 +71,17 @@
     "player2Idle": {
         "animationSheet": "Resources/Images/WorldScene/Sprite/Player2/Hero_IdleAnimation.png",
         "frameDelays": [ 0.1, 0.1, 0.1, 0.1 ],
+        "loop": "LOOP"
+    },
+
+    "flyingBirdLeft": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Bird/Bird_FlyLeft.png",
+        "frameDelays": [ 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075 ],
+        "loop": "LOOP"
+    },
+    "flyingBirdRight": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Bird/Bird_FlyRight.png",
+        "frameDelays": [ 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075, 0.075 ],
         "loop": "LOOP"
     }
 }

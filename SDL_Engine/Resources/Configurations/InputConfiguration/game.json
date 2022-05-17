@@ -16,6 +16,6 @@
         "player2MoveDown": "DOWN",
         "player2MoveLeft": "LEFT",
         "player2MoveRight": "RIGHT",
-        "player2PlantBomb": "Keypad 0"
+        "player2PlantBomb": "/"
     }
 }

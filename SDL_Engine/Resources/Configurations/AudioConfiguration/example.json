@@ -4,11 +4,12 @@
         "explosion": "Resources/Audio/Sounds/explosion.wav",
         "coin": "Resources/Audio/Sounds/coin.wav",
         "select": "Resources/Audio/Sounds/select.wav",
-        "timer": "Resources/Audio/Sounds/timer.wav"
+        "timerPickUp": "Resources/Audio/Sounds/timer.wav"
     },
 
     "music": {
         "MusicTest": "Resources/Audio/Music/musicTest.mp3",
-        "background": "Resources/Audio/Music/background.mp3"
+        "background": "Resources/Audio/Music/background.mp3",
+        "winnerMusic": "Resources/Audio/Music/winnerMusic.mp3"
     }
 }

@@ -75,5 +75,25 @@ AbstractComponent* ComponentFactory::CreateComponent(const std::string& componen
         return new MenuView();
     }
 
+    if (componentName == "WinnerView") {
+        return new WinnerView();
+    }
+
+    if (componentName == "FlyingBird") {
+        return new FlyingBird();
+    }
+
+    if (componentName == "Bomb") {
+        return new BombComponent();
+    }
+
+    if (componentName == "Explosion") {
+        return new ExplosionComponent();
+    }
+
+    if (componentName == "Damageable") {
+        return new DamageableComponent();
+    }
+
     return nullptr;
 }

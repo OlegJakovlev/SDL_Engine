@@ -54,10 +54,16 @@ void BombSpawnerComponent::PlaceBomb() {
     Logger::Instance().LogMessage(controllerAgentName + " placed a bomb!");
 
     AnimationComponent* animationComponent = static_cast<AnimationComponent*>(bombObject->GetComponent("Animation"));
-    animationComponent->PlayAnimation("bombExplosion");
+    animationComponent->PlayAnimation("bombTicking");
+
+    BombComponent* bombComponent = static_cast<BombComponent*>(bombObject->GetComponent("Bomb"));
 
     // Last frame events
-    // Decrease amount of currently placed bombs for player    
+    animationComponent->AddFrameEvent(
+        std::bind(&BombComponent::Explode, bombComponent)
+    );
+
+    // Decrease amount of currently placed bombs for player
     animationComponent->AddFrameEvent(
         std::bind(&BombSpawnerComponent::DecreaseActiveBombs, this)
     );

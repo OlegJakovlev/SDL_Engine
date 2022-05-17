@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CustomScripts\BombComponent\BombComponent.cpp" />
     <ClCompile Include="CustomScripts\CoinPickUp\CoinPickUp.cpp" />
     <ClCompile Include="CustomScripts\BombSpawner\BombSpawnerComponent.cpp" />
     <ClCompile Include="CustomScripts\HealthComponent\HealthComponent.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="CustomScripts\TimerComponent\TimerComponentView\TimerComponentView.cpp" />
     <ClCompile Include="CustomScripts\TimerPowerUp\TimerPowerUp.cpp" />
     <ClCompile Include="CustomScripts\WinnerView\WinnerView.cpp" />
+    <ClCompile Include="CustomScripts\Damageable\DamageableComponent.cpp" />
     <ClCompile Include="Engine\Component\AnimationComponent\AnimationData\AnimationData.cpp" />
     <ClCompile Include="Engine\Component\AnimationComponent\AnimationComponent.cpp" />
     <ClCompile Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.cpp" />
@@ -204,6 +206,8 @@
     <ClCompile Include="CustomScripts\ScoreComponent\ScoreComponentView\ScoreComponentView.cpp" />
     <ClCompile Include="Engine\GameData\GameData.cpp" />
     <ClCompile Include="CustomScripts\MenuView\MenuView.cpp" />
+    <ClCompile Include="CustomScripts\FlyingBird\FlyingBird.cpp" />
+    <ClCompile Include="CustomScripts\ExplosionComponent\ExplosionComponent.cpp" />
     <ClCompile Include="SDL_Engine.cpp" />
     <ClCompile Include="Engine\Physics\Vector2.cpp" />
     <ClCompile Include="Engine\Component\TextComponent\TextComponent.cpp" />
@@ -212,6 +216,7 @@
     <ClCompile Include="Engine\Configurator\TextureConfigurator\TextureConfigurator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CustomScripts\BombComponent\BombComponent.h" />
     <ClInclude Include="CustomScripts\CoinPickUp\CoinPickUp.h" />
     <ClInclude Include="CustomScripts\BombSpawner\BombSpawnerComponent.h" />
     <ClInclude Include="CustomScripts\HealthComponent\HealthComponent.h" />
@@ -224,6 +229,7 @@
     <ClInclude Include="CustomScripts\TimerComponent\TimerComponentView\TimerComponentView.h" />
     <ClInclude Include="CustomScripts\TimerPowerUp\TimerPowerUp.h" />
     <ClInclude Include="CustomScripts\WinnerView\WinnerView.h" />
+    <ClInclude Include="CustomScripts\Damageable\DamageableComponent.h" />
     <ClInclude Include="Engine\Component\AnimationComponent\AnimationData\AnimationData.h" />
     <ClInclude Include="Engine\Component\AnimationComponent\AnimationComponent.h" />
     <ClInclude Include="Engine\Component\ObjectPoolComponent\ObjectPoolComponent.h" />
@@ -275,6 +281,8 @@
     <ClInclude Include="CustomScripts\ScoreComponent\ScoreComponentView\ScoreComponentView.h" />
     <ClInclude Include="Engine\GameData\GameData.h" />
     <ClInclude Include="CustomScripts\MenuView\MenuView.h" />
+    <ClInclude Include="CustomScripts\FlyingBird\FlyingBird.h" />
+    <ClInclude Include="CustomScripts\ExplosionComponent\ExplosionComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
