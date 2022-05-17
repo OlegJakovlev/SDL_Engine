@@ -14,6 +14,8 @@ public:
     void Update() override;
 
     void SetVelocity(Vector2::Vector2<int> newVelocity);
+    void SetTeleportBehavior(bool newValue);
+    void SetKinematic(bool newValue);
 
 private:
     void Move(const Vector2::Vector2<int>& movementVector);
@@ -24,5 +26,7 @@ private:
     Vector2::Vector2<float> movementDirection;
 
     bool isTrigger;
+    bool isKinematic;
+    bool teleportOnBoundaries = false;
 };
 

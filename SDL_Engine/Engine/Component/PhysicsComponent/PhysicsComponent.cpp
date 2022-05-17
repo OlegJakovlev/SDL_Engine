@@ -18,12 +18,22 @@ void PhysicsComponent::Update() {
     // Move object
     Move(Vector2::Vector2<int>(movementDirection.x, movementDirection.y));
 
-    // Reset object velocity
-    velocity = Vector2::Vector2(0, 0);
+    if (!isKinematic && !isTrigger) {
+        // Reset object velocity
+        velocity = Vector2::Vector2(0, 0);
+    }
 }
 
 void PhysicsComponent::SetVelocity(Vector2::Vector2<int> newVelocity) {
-    velocity = newVelocity * 32;
+    velocity = newVelocity;
+}
+
+void PhysicsComponent::SetTeleportBehavior(bool newValue) {
+    teleportOnBoundaries = newValue;
+}
+
+void PhysicsComponent::SetKinematic(bool newValue) {
+    isKinematic = newValue;
 }
 
 void PhysicsComponent::Move(const Vector2::Vector2<int>& movementVector) {
@@ -32,11 +42,19 @@ void PhysicsComponent::Move(const Vector2::Vector2<int>& movementVector) {
 
     Vector2::Vector2<int> objectDimensions = *objectLinkedTo->GetScale();
 
-    // Check window boundaries
-    if (currentPosition.x < 0) currentPosition.x = 0;
-    if (currentPosition.x + objectDimensions.x > Graphics::SCREEN_WIDTH) currentPosition.x = Graphics::SCREEN_WIDTH - objectDimensions.x;
-    if (currentPosition.y < 0) currentPosition.y = 0;
-    if (currentPosition.y + objectDimensions.y > Graphics::SCREEN_HEIGHT) currentPosition.y = Graphics::SCREEN_HEIGHT - objectDimensions.y;
+    if (teleportOnBoundaries) {
+        if (currentPosition.x < 0) currentPosition.x = Graphics::SCREEN_WIDTH - objectDimensions.x;
+        if (currentPosition.x + objectDimensions.x > Graphics::SCREEN_WIDTH) currentPosition.x = 0;
+        if (currentPosition.y < 0) currentPosition.x = Graphics::SCREEN_HEIGHT - objectDimensions.y;
+        if (currentPosition.y + objectDimensions.y > Graphics::SCREEN_HEIGHT) currentPosition.y = 0;
+    }
+    else {
+        // Check window boundaries
+        if (currentPosition.x < 0) currentPosition.x = 0;
+        if (currentPosition.x + objectDimensions.x > Graphics::SCREEN_WIDTH) currentPosition.x = Graphics::SCREEN_WIDTH - objectDimensions.x;
+        if (currentPosition.y < 0) currentPosition.y = 0;
+        if (currentPosition.y + objectDimensions.y > Graphics::SCREEN_HEIGHT) currentPosition.y = Graphics::SCREEN_HEIGHT - objectDimensions.y;
+    }
 
     objectLinkedTo->SetGlobalPosition(currentPosition);
 }
@@ -44,6 +62,7 @@ void PhysicsComponent::Move(const Vector2::Vector2<int>& movementVector) {
 void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collisionCheckWith) {
     if (!collisionCheckWith->IsActive()) return;
     if (collisionCheckWith == objectLinkedTo) return;
+    if (isKinematic) return;
 
     PhysicsComponent* physics = static_cast<PhysicsComponent*>(collisionCheckWith->GetComponent("Physics"));
 
@@ -100,10 +119,24 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
                 }
             }
             else {
-                PickableComponent* pickable = static_cast<PickableComponent*>(collisionCheckWith->GetComponent("Pickable"));
-                if (pickable == nullptr) return;
+                AbstractComponent* component;
+                
+                // Try to pick the object
+                component = collisionCheckWith->GetComponent("Pickable");
+                PickableComponent* pickable = static_cast<PickableComponent*>(component);
+                if (pickable != nullptr) pickable->PickUp(objectLinkedTo);
 
-                pickable->PickUp(objectLinkedTo);
+                // Try to damage the object
+                component = collisionCheckWith->GetComponent("Damageable");
+                DamageableComponent* damageComponent = static_cast<DamageableComponent*>(component);
+                
+                AbstractComponent* secondComponent = objectLinkedTo->GetComponent("PlayerHealth");
+                HealthComponent* health = static_cast<HealthComponent*>(secondComponent);
+
+                if (damageComponent != nullptr && health != nullptr && damageComponent->IsActive()) {
+                    health->AdjustHealth(-1);
+                    damageComponent->SetActive(false);
+                }
             }
         }
 
