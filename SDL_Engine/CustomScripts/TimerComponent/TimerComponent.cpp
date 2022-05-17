@@ -29,9 +29,7 @@ void TimerComponent::LoadConfig(const nlohmann::json& config) {
 }
 
 void TimerComponent::Update() {
-    if (model->GetTimeLeft() <= 0) {
-        GameManager::Instance()->GetSceneManager()->LoadNextScene();
-    }
+    if (model->GetTimeLeft() <= 0) GameManager::Instance()->GetSceneManager()->LoadNextScene();
 
     levelTimer.Stop();
     
@@ -46,5 +44,6 @@ void TimerComponent::Render() {
 }
 
 void TimerComponent::AddGamePlayTime(int amountOfTime) {
+    if (amountOfTime <= 0) return;
     model->AddTime(amountOfTime);
 }
