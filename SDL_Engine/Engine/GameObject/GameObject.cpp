@@ -188,8 +188,12 @@ namespace GameObject {
         }
 
         // Render child objects
-        for (auto& child : childObjects) {
-            child->Render();
+        for (int i = 15; i >= 0; i--) {
+            std::for_each(childObjects.begin(), childObjects.end(), [&i](GameObject* child) {
+                if (child->GetLayer() == i) {
+                    child->Render();
+                }
+            });
         }
     }
 

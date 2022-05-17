@@ -21,7 +21,7 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
     double currentTime = timer->GetCurrentTime();
     double frameTime = currentTime - previousTime;
 
-    if (frameTime > 1) frameTime = 1;
+    if (frameTime > 0.25) frameTime = 0.25;
     
     int physicsUpdates = 0;
 

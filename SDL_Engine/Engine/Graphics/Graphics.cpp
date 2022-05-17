@@ -48,7 +48,7 @@ void Graphics::RenderClear() {
 
 void Graphics::Render(std::vector<GameObject::GameObject*>& sceneObjects, double normalizedStepBetweenUpdates){
     // Layer rendering
-    for (int i = 16; i >= 0; i--) {
+    for (int i = 15; i >= 0; i--) {
         std::for_each(sceneObjects.begin(), sceneObjects.end(), [&i](GameObject::GameObject* sceneObject) {
             if (sceneObject->GetLayer() == i) {
                 sceneObject->Render();
