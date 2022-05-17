@@ -30,7 +30,7 @@ public:
 private:
     void DeleteMarkedObjects(std::vector<GameObject::GameObject*>& sceneObjects);
 
-    const double SECONDS_PER_INPUT = 0.03333;
+    const double SECONDS_PER_INPUT = 0.05;
     const double SECONDS_PER_UPDATE = 0.03333; // 60 FPS
     const int MAX_PHYSICS_UPDATES = 60; // FPS * 2
 
