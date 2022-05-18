@@ -22,6 +22,14 @@ void AbstractComponent::LinkWithObject(GameObject::GameObject* componentHolder) 
     objectLinkedTo = componentHolder;
 }
 
+void AbstractComponent::SetActive(bool newValue) {
+    isActive = newValue;
+}
+
+bool AbstractComponent::IsActive() const {
+    return isActive;
+}
+
 void AbstractComponent::SyncWithObject() {
     const Vector2::Vector2<int>* renderPosition = objectLinkedTo->GetGlobalPosition();
     renderHolder.x = renderPosition->x;

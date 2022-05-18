@@ -146,6 +146,11 @@ namespace GameObject {
         components.insert(std::pair<std::string, AbstractComponent*>(componentName, newComponent));
     }
 
+    void GameObject::SetComponentStatus(const std::string& componentName, bool newStatus) {
+        if (components.find(componentName) == components.end()) return;
+        components.at(componentName)->SetActive(newStatus);
+    }
+
     AbstractComponent* GameObject::GetComponent(const std::string& componentName) const {
         if (components.find(componentName) == components.end()) return nullptr;
         return components.at(componentName);
@@ -170,7 +175,9 @@ namespace GameObject {
 
         // Update current object
         for (auto& component : components) {
-            component.second->Update();
+            if (component.second->IsActive()) {
+                component.second->Update();
+            }
         }
 
         // Update child objects
@@ -184,7 +191,9 @@ namespace GameObject {
 
         // Render current object
         for (auto& component : components) {
-            component.second->Render();
+            if (component.second->IsActive()) {
+                component.second->Render();
+            }
         }
 
         // Render child objects

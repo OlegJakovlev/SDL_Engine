@@ -53,6 +53,7 @@ namespace GameObject {
         void UpdateGlobalTransform();
 
         void AddComponent(const std::string& componentName, const nlohmann::json& componentConfig);
+        void SetComponentStatus(const std::string& componentName, bool newStatus);
         AbstractComponent* GetComponent(const std::string& componentName) const;
 
         void Print(int tabLevel = 0);

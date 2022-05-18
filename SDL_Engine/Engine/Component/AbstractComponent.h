@@ -19,10 +19,13 @@ public:
     void Render() override;
 
     void LinkWithObject(GameObject::GameObject* componentHolder);
+    void SetActive(bool newValue);
+    bool IsActive() const;
 
 protected:
     void SyncWithObject();
 
+    bool isActive = true;
     GameObject::GameObject* objectLinkedTo;
     SDL_Rect renderHolder;
 };
