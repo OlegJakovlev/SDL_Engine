@@ -67,7 +67,7 @@ void GameLoop::Run(InputController* input, std::vector<GameObject::GameObject*>&
         Graphics::Instance()->Render(sceneObjects, updateLag / SECONDS_PER_UPDATE);
 
         // Measure render performance
-        renderTime = timer->GetCurrentTime() - updateTime - previousTime;
+        renderTime = timer->GetCurrentTime() - inputTime - updateTime - previousTime;
         if (gameStatsView != nullptr) gameStatsView->SetRenderPerformaceText(std::to_string(renderTime * 1000));
 
         Graphics::Instance()->RenderPresent();
