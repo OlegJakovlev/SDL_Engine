@@ -3,10 +3,10 @@
 #ifndef TextureConfigurator_H
 #define TextureConfigurator_H
 
+#include <filesystem>
 #include "../Configurator.h"
 #include "../../Locator/TextureLocator/TextureLocator.h"
 #include "../../Service/TextureManager/RegularTextureManager/TextureManager.h"
-#include <filesystem>
 
 class TextureConfigurator : public Configurator {
 public:

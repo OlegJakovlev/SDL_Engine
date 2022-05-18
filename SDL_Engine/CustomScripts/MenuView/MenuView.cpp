@@ -26,7 +26,8 @@ void MenuView::Init() {
 
     // Get text for componenets
     engineControls = std::string() + 
-        "Toggle Full Screen: " + menuControls->GetEventBindedKeyName("toggleFullScreenMode") + "\n\n" +
+        "Toggle Full Screen: " + menuControls->GetEventBindedKeyName("toggleFullScreenMode") + "\n" +
+        "Start the game: " + menuControls->GetEventBindedKeyName("loadNextScene") + "\n\n" +
         "Toggle Input: " + menuControls->GetEventBindedKeyName("toggleInput") + "\n" +
         "Toggle Update: " + menuControls->GetEventBindedKeyName("toggleUpdate") + "\n" +
         "Toggle Render: " + menuControls->GetEventBindedKeyName("toggleRender") + "\n\n" +

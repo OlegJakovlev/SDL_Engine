@@ -23,7 +23,7 @@ void HealthComponentView::LoadConfig(const nlohmann::json& config) {
 
     // Create fake parent to have global position controls over the text
     fakeParent = GameObjectFactory::Instance()->CreateGameObject("FakeParent");
-    fakeParent->SetGlobalPosition(config.value("position", Vector2::Vector2(0,0)));
+    fakeParent->SetGlobalPosition(config.value("position", Vector2::Vector2<int>(0,0)));
 
     scoreText->LinkWithObject(fakeParent);
 }

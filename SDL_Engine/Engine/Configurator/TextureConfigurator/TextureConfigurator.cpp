@@ -1,5 +1,4 @@
 #include "TextureConfigurator.h"
-#include <iostream>
 
 TextureConfigurator::TextureConfigurator(const std::string& texturesPath) : Configurator(texturesPath) {
 }

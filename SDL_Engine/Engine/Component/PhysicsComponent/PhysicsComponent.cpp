@@ -12,7 +12,7 @@ void PhysicsComponent::LoadConfig(const nlohmann::json& config) {
 }
 
 void PhysicsComponent::Update() {
-    movementDirection = Vector2::Vector2(velocity.x * 1.0f, velocity.y * 1.0f);
+    movementDirection = Vector2::Vector2<float>(velocity.x * 1.0f, velocity.y * 1.0f);
 
     for (auto& gameobject : GameManager::Instance()->GetSceneManager()->GetCurrentScene()->GetSceneObjectList()) {
         CheckCollisionsRecursively(gameobject);
@@ -23,7 +23,7 @@ void PhysicsComponent::Update() {
 
     if (!isKinematic && !isTrigger && !isSliding) {
         // Reset object velocity
-        velocity = Vector2::Vector2(0, 0);
+        velocity = Vector2::Vector2<int>(0, 0);
     }
 }
 
@@ -122,7 +122,7 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
                 // Both objects move around the level and collide with each other
                 if (isMovable && physics->isMovable) {
                     movementDirection = Vector2::Vector2<float>(0, 0);
-                    physics->SetVelocity(Vector2::Vector2(0, 0));
+                    physics->SetVelocity(Vector2::Vector2<int>(0, 0));
                 }
 
                 // One of the objects move around the level
@@ -132,7 +132,7 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
                         shortestTime = xAxisTimeToCollide;
                         movementDirection.x = shortestTime * velocity.x;
 
-                        if (physics->isMovable && !isTrigger) physics->SetVelocity(Vector2::Vector2(velocity.x, 0));
+                        if (physics->isMovable && !isTrigger) physics->SetVelocity(Vector2::Vector2<int>(velocity.x, 0));
                     }
 
                     // Collision on Y-axis only
@@ -140,7 +140,7 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
                         shortestTime = yAxisTimeToCollide;
                         movementDirection.y = shortestTime * velocity.y;
 
-                        if (physics->isMovable && !isTrigger) physics->SetVelocity(Vector2::Vector2(0, velocity.y));
+                        if (physics->isMovable && !isTrigger) physics->SetVelocity(Vector2::Vector2<int>(0, velocity.y));
                     }
 
                     // Collision on X and Y axis (eg. slide up against a wall)
