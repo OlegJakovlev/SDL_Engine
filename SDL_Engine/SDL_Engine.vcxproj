@@ -149,6 +149,7 @@
     <ClCompile Include="CustomScripts\BombComponent\BombComponent.cpp" />
     <ClCompile Include="CustomScripts\CoinPickUp\CoinPickUp.cpp" />
     <ClCompile Include="CustomScripts\BombSpawner\BombSpawnerComponent.cpp" />
+    <ClCompile Include="CustomScripts\HealthComponent\DestructibleObjectHealth\DestructibleHealthComponent.cpp" />
     <ClCompile Include="CustomScripts\HealthComponent\HealthComponent.cpp" />
     <ClCompile Include="CustomScripts\HealthComponent\HealthComponentModel\HealthComponentModel.cpp" />
     <ClCompile Include="CustomScripts\HealthComponent\HealthComponentView\HealthComponentView.cpp" />
@@ -209,6 +210,7 @@
     <ClCompile Include="CustomScripts\MenuView\MenuView.cpp" />
     <ClCompile Include="CustomScripts\FlyingBird\FlyingBird.cpp" />
     <ClCompile Include="CustomScripts\ExplosionComponent\ExplosionComponent.cpp" />
+    <ClCompile Include="CustomScripts\HealthComponent\PlayerHealth\PlayerHealthComponent.cpp" />
     <ClCompile Include="SDL_Engine.cpp" />
     <ClCompile Include="Engine\Physics\Vector2.cpp" />
     <ClCompile Include="Engine\Component\TextComponent\TextComponent.cpp" />
@@ -220,6 +222,7 @@
     <ClInclude Include="CustomScripts\BombComponent\BombComponent.h" />
     <ClInclude Include="CustomScripts\CoinPickUp\CoinPickUp.h" />
     <ClInclude Include="CustomScripts\BombSpawner\BombSpawnerComponent.h" />
+    <ClInclude Include="CustomScripts\HealthComponent\DestructibleObjectHealth\DestructibleHealthComponent.h" />
     <ClInclude Include="CustomScripts\HealthComponent\HealthComponent.h" />
     <ClInclude Include="CustomScripts\HealthComponent\HealthComponentModel\HealthComponentModel.h" />
     <ClInclude Include="CustomScripts\HealthComponent\HealthComponentView\HealthComponentView.h" />
@@ -285,6 +288,7 @@
     <ClInclude Include="CustomScripts\MenuView\MenuView.h" />
     <ClInclude Include="CustomScripts\FlyingBird\FlyingBird.h" />
     <ClInclude Include="CustomScripts\ExplosionComponent\ExplosionComponent.h" />
+    <ClInclude Include="CustomScripts\HealthComponent\PlayerHealth\PlayerHealthComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

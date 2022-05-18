@@ -228,6 +228,12 @@
     <ClCompile Include="CustomScripts\ScoreMultiplier\ScoreMultiplier.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CustomScripts\HealthComponent\PlayerHealth\PlayerHealthComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScripts\HealthComponent\DestructibleObjectHealth\DestructibleHealthComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Logger\Logger.h">
@@ -441,6 +447,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CustomScripts\ScoreMultiplier\ScoreMultiplier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\HealthComponent\PlayerHealth\PlayerHealthComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomScripts\HealthComponent\DestructibleObjectHealth\DestructibleHealthComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

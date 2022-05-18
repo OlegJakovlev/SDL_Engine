@@ -21,7 +21,7 @@
 						},
 						"scale": {
 							"x": 800,
-							"y": 600
+							"y": 608
 						},
 						"layer": 8,
 						"components": [
@@ -159,7 +159,7 @@
 								"config": {
 									"view": {
 										"position": {
-											"x": 768,
+											"x": 700,
 											"y": 0
 										},
 										"textConfig": {
@@ -170,9 +170,10 @@
 							{
 								"name": "PlayerHealth",
 								"config": {
+									"viewNeeded": true,
 									"view": {
 										"position": {
-											"x": 768,
+											"x": 700,
 											"y": 16
 										},
 										"textConfig": {
@@ -193,7 +194,7 @@
 									"playerName": "Player1",
 									"objectPoolName": "BombPool",
 									"placeDelay": 0.25,
-									"maxBombs": 1
+									"maxBombs": 2
 								}
 							}
 						],
@@ -204,7 +205,7 @@
 						"name": "Player2",
 						"position": {
 							"x": 768,
-							"y": 568
+							"y": 576
 						},
 						"rotation": 0,
 						"scale": {
@@ -238,8 +239,8 @@
 								"config": {
 									"view": {
 										"position": {
-											"x": 768,
-											"y": 536
+											"x": 700,
+											"y": 560
 										},
 										"textConfig": {
 										}
@@ -249,10 +250,11 @@
 							{
 								"name": "PlayerHealth",
 								"config": {
+									"viewNeeded": true,
 									"view": {
 										"position": {
-											"x": 768,
-											"y": 552
+											"x": 700,
+											"y": 576
 										},
 										"textConfig": {
 											"color": {
@@ -270,7 +272,9 @@
 								"name": "BombSpawner",
 								"config": {
 									"playerName": "Player2",
-									"objectPoolName": "BombPool"
+									"objectPoolName": "BombPool",
+									"placeDelay": 0.25,
+									"maxBombs": 2
 								}
 							}
 						],
@@ -280,8 +284,8 @@
 						"ID": 4,
 						"name": "Timer Perk",
 						"position": {
-							"x": 400,
-							"y": 600
+							"x": 384,
+							"y": 288
 						},
 						"scale": {
 							"x": 32,
@@ -698,45 +702,1270 @@
 					},
 					{
 						"ID": 14,
-						"name": "Pickable Coin",
-						"position": {
-							"x": 300,
-							"y": 400
-						},
-						"scale": {
-							"x": 32,
-							"y": 32
-						},
-						"components": [
+						"name": "Pickable Coins",
+						"components": [],
+						"childObjects": [
 							{
-								"name": "Physics",
-								"config": {
-									"IsTrigger": true
-								}
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 352,
+									"y": 0
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
 							},
 							{
-								"name": "Image",
-								"config": {
-									"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
-								}
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 384,
+									"y": 0
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
 							},
 							{
-								"name": "Animation",
-								"config": {}
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 416,
+									"y": 0
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
 							},
 							{
-								"name": "Pickable",
-								"config": {
-									"soundName": "coin",
-									"idleAnimation": "coinIdle"
-								}
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 224,
+									"y": 96
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
 							},
 							{
-								"name": "CoinPickUp",
-								"config": {}
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 288,
+									"y": 96
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 384,
+									"y": 96
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 480,
+									"y": 96
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 544,
+									"y": 96
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 224,
+									"y": 192
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 544,
+									"y": 192
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 0,
+									"y": 256
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 768,
+									"y": 256
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 0,
+									"y": 288
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 128,
+									"y": 288
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 224,
+									"y": 288
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 576,
+									"y": 288
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 672,
+									"y": 288
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 768,
+									"y": 288
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 0,
+									"y": 320
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 768,
+									"y": 320
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 224,
+									"y": 384
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 544,
+									"y": 384
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 224,
+									"y": 480
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 288,
+									"y": 480
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 384,
+									"y": 480
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 480,
+									"y": 480
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 544,
+									"y": 480
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 352,
+									"y": 576
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 384,
+									"y": 576
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
+							},
+							{
+								"ID": 14,
+								"name": "Pickable Coin",
+								"position": {
+									"x": 416,
+									"y": 576
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/Coin/Coin.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "coin",
+											"idleAnimation": "coinIdle"
+										}
+									},
+									{
+										"name": "CoinPickUp",
+										"config": {}
+									}
+								],
+								"childObjects": []
 							}
-						],
-						"childObjects": []
+						]
 					},
 					{
 						"ID": 15,
@@ -780,45 +2009,94 @@
 					},
 					{
 						"ID": 16,
-						"name": "Score Multiplier",
-						"position": {
-							"x": 200,
-							"y": 200
-						},
-						"scale": {
-							"x": 32,
-							"y": 32
-						},
-						"components": [
+						"name": "Score Multipliers",
+						"components": [],
+						"childObjects": [
 							{
-								"name": "Physics",
-								"config": {
-									"IsTrigger": true
-								}
+								"ID": 16,
+								"name": "Score Multiplier",
+								"position": {
+									"x": 0,
+									"y": 576
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/ScorePowerUp/PowerUp.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "scorePickUp",
+											"idleAnimation": "scoreMultiplicationIdle"
+										}
+									},
+									{
+										"name": "ScoreMultiplier",
+										"config": {}
+									}
+								],
+								"childObjects": []
 							},
 							{
-								"name": "Image",
-								"config": {
-									"imagePath": "Resources/Images/WorldScene/Sprite/ScorePowerUp/PowerUp.png"
-								}
-							},
-							{
-								"name": "Animation",
-								"config": {}
-							},
-							{
-								"name": "Pickable",
-								"config": {
-									"soundName": "scorePickUp",
-									"idleAnimation": "scoreMultiplicationIdle"
-								}
-							},
-							{
-								"name": "ScoreMultiplier",
-								"config": {}
+								"ID": 16,
+								"name": "Score Multiplier",
+								"position": {
+									"x": 768,
+									"y": 0
+								},
+								"scale": {
+									"x": 32,
+									"y": 32
+								},
+								"components": [
+									{
+										"name": "Physics",
+										"config": {
+											"IsTrigger": true
+										}
+									},
+									{
+										"name": "Image",
+										"config": {
+											"imagePath": "Resources/Images/WorldScene/Sprite/ScorePowerUp/PowerUp.png"
+										}
+									},
+									{
+										"name": "Animation",
+										"config": {}
+									},
+									{
+										"name": "Pickable",
+										"config": {
+											"soundName": "scorePickUp",
+											"idleAnimation": "scoreMultiplicationIdle"
+										}
+									},
+									{
+										"name": "ScoreMultiplier",
+										"config": {}
+									}
+								],
+								"childObjects": []
 							}
-						],
-						"childObjects": []
+						]
 					},
 					{
 						"ID": 17,
@@ -904,8 +2182,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -1072,8 +2360,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -1156,8 +2454,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -1324,8 +2632,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -1423,8 +2741,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -1444,8 +2766,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -1633,8 +2965,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -1675,8 +3011,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -1864,8 +3204,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -1885,8 +3235,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -1942,8 +3296,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -1963,8 +3327,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -1984,8 +3358,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -2089,8 +3473,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -2299,8 +3687,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -2404,8 +3796,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -2425,8 +3827,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -2446,8 +3858,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -2608,8 +4030,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -2860,8 +4286,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -3022,12 +4452,8 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
 												}
-											},
-											{
-												"name": "Physics",
-												"config": {}
 											}
 										],
 										"childObjects": []
@@ -3068,8 +4494,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -3488,8 +4924,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -3608,8 +5054,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -3713,8 +5169,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -3923,8 +5389,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -4028,8 +5504,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -4646,8 +6132,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -4667,8 +6157,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -4688,8 +6182,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -4709,8 +6207,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -4877,8 +6379,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -4898,8 +6410,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -4919,8 +6435,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5087,8 +6613,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5108,8 +6638,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5129,8 +6663,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5150,8 +6688,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5207,8 +6749,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5291,8 +6837,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5396,8 +6946,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5438,8 +6998,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5480,8 +7050,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5585,8 +7165,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5669,8 +7253,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5936,8 +7524,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5957,8 +7549,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -5999,8 +7601,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -6020,8 +7632,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -6287,8 +7903,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -6371,8 +7991,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -6476,8 +8100,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -6518,8 +8152,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -6560,8 +8204,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -6665,8 +8319,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -6749,8 +8407,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -6806,8 +8468,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -6827,8 +8493,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -6848,8 +8518,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -6869,8 +8543,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -7037,8 +8715,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -7058,8 +8746,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -7079,8 +8771,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -7247,8 +8949,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -7268,8 +8974,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -7289,8 +8999,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -7310,8 +9024,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -7928,8 +9646,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -8033,8 +9761,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -8243,8 +9981,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -8348,8 +10096,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -8468,8 +10226,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -8888,8 +10656,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -9092,8 +10870,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -9344,8 +11126,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -9506,8 +11292,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -9527,8 +11323,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -9548,8 +11354,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -9653,8 +11469,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -9863,8 +11683,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -9968,8 +11792,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -9989,8 +11823,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -10010,8 +11854,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -10067,8 +11921,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -10088,8 +11946,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -10277,8 +12145,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -10319,8 +12191,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -10508,8 +12384,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -10529,8 +12415,12 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/BrickWall/Wall.png"
 												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -10628,8 +12518,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -10796,8 +12696,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -10880,8 +12790,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -11048,8 +12968,18 @@
 											{
 												"name": "Image",
 												"config": {
-													"imagePath": "Resources/Images/WorldScene/Sprite/Grass/grass.png"
+													"imagePath": "Resources/Images/WorldScene/Sprite/Wood/Wood.png"
 												}
+											},
+											{
+												"name": "DestructibleHealth",
+												"config": {
+													"initialHealth": 1
+												}
+											},
+											{
+												"name": "Physics",
+												"config": {}
 											}
 										],
 										"childObjects": []
@@ -11126,7 +13056,7 @@
 						"rotation": 0,
 						"scale": {
 							"x": 800,
-							"y": 600
+							"y": 608
 						},
 						"layer": 8,
 						"components": [
