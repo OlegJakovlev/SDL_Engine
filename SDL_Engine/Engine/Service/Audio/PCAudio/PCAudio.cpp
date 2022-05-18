@@ -11,6 +11,8 @@ void PCAudio::PlaySound(const std::string& soundName) {
     int activeChannel = Mix_PlayChannel(-1, sound, 0);
 
     activeSoundChannel.emplace(sound, activeChannel);
+
+    AudioLogger::Instance().LogMessage("Playing sound: " + soundName);
 }
 
 void PCAudio::PlayMusic(const std::string& musicName) {
@@ -21,6 +23,8 @@ void PCAudio::PlayMusic(const std::string& musicName) {
     int activeChannel = Mix_PlayMusic(musicEntry, -1);
 
     activeMusicChannel.emplace(musicEntry, activeChannel);
+
+    AudioLogger::Instance().LogMessage("Playing music: " + musicName);
 }
 
 void PCAudio::PauseSound(const std::string& soundName) {

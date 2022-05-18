@@ -86,6 +86,8 @@ void AnimationComponent::PlayAnimation(const std::string& animationName) {
         imageComponent->SetTextureFrame(&animationData.animationFrames.at(currentFrameIndex));
     }
 
+    GraphicsLogger::Instance().LogMessage("Starting animation: " + animationName);
+
     // Start the timer
     previosFrameTime = timer.GetCurrentTime();
 }

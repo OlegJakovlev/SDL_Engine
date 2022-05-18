@@ -33,5 +33,5 @@ void ScoreComponentView::Render() {
 }
 
 void ScoreComponentView::UpdateScoreText() {
-    scoreText->SetText(std::to_string(model->GetScore()));
+    scoreText->SetText("Score: " + std::to_string(model->GetScore()));
 }
