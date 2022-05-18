@@ -8,31 +8,27 @@ HealthComponent::~HealthComponent() {
 
 void HealthComponent::Init() {
     AbstractComponent::Init();
-    view->Init();
-
-    timer = GameManager::Instance()->GetSceneManager()->GetCurrentScene()->GetGameLoop()->GetTimer();
-    lastTimeDamaged = timer.GetCurrentTime() - invincibilityTime;
+    if (viewNeeded) view->Init();
 }
 
 void HealthComponent::LoadConfig(const nlohmann::json& config) {
+    viewNeeded = config.value("viewNeeded", false);
+
     model = new HealthComponentModel();
-    view = new HealthComponentView(model);
-
-    view->LoadConfig(config.at("view"));
     model->AddHealth(config.value("initialHealth", 0));
-    invincibilityTime = config.value("invincibilityTime", 1.00);
 
-    view->UpdateHealthText();
+    if (viewNeeded) {
+        view = new HealthComponentView(model);
+        view->LoadConfig(config.at("view"));
+        view->UpdateHealthText();
+    }
 }
 
 void HealthComponent::Render() {
-    view->Render();
+    if (viewNeeded) view->Render();
 }
 
 void HealthComponent::AdjustHealth(int healthAdjustment) {
-    if (timer.GetCurrentTime() < lastTimeDamaged + invincibilityTime) return;
-    lastTimeDamaged = timer.GetCurrentTime();
-
     // Update model
     if (healthAdjustment < 0) {
         model->SubstractHealth(healthAdjustment * -1);
@@ -42,11 +38,5 @@ void HealthComponent::AdjustHealth(int healthAdjustment) {
     }
 
     // Update view
-    view->UpdateHealthText();
-
-    // If player is dead, reset score and end the game
-    if (model->GetHealth() <= 0) {
-        GameData::Instance()->ReplaceDataEntry(objectLinkedTo->GetName(), std::to_string(-1000));
-        GameManager::Instance()->GetSceneManager()->LoadNextScene();
-    }
+    if (viewNeeded) view->UpdateHealthText();
 }

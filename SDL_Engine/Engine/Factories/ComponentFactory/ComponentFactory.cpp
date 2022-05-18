@@ -48,7 +48,11 @@ AbstractComponent* ComponentFactory::CreateComponent(const std::string& componen
     }
 
     if (componentName == "PlayerHealth") {
-        return new HealthComponent();
+        return new PlayerHealthComponent();
+    }
+
+    if (componentName == "DestructibleHealth") {
+        return new DestructibleHealthComponent();
     }
 
     if (componentName == "BombSpawner") {

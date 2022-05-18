@@ -16,15 +16,13 @@ public:
 	void LoadConfig(const nlohmann::json& config) override;
 	void Render() override;
 
-	void AdjustHealth(int healthAdjustment);
+	virtual void AdjustHealth(int healthAdjustment);
 
-private:
+protected:
 	HealthComponentModel* model;
 	HealthComponentView* view;
 
-	Timer timer;
-	double lastTimeDamaged;
-	double invincibilityTime;
+	bool viewNeeded;
 };
 
 #endif
