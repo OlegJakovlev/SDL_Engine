@@ -75,10 +75,15 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
     if (collisionCheckWith == objectLinkedTo) return;
     if (isKinematic) return;
 
+    // Temporal fix, TODO: Collision mask
+    if (collisionCheckWith->GetName().find("MapRow") != std::string::npos && objectLinkedTo->GetName().find("MapRow") != std::string::npos) return;
+
     PhysicsComponent* physics = static_cast<PhysicsComponent*>(collisionCheckWith->GetComponent("Physics"));
 
     // Perform collision detection
     if (physics != nullptr) {
+        if (!physics->IsActive() || physics->isKinematic) return;
+        if (physics->isTrigger && isTrigger) return;
 
         // Get objects info
         Vector2::Vector2<int> firstPosition = *objectLinkedTo->GetGlobalPosition();
@@ -114,30 +119,39 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
 
             if (!physics->isTrigger) {
 
-                // Collision on X-axis only
-                if (velocity.x != 0 && velocity.y == 0) {
-                    shortestTime = xAxisTimeToCollide;
-                    movementDirection.x = shortestTime * velocity.x;
-
-                    if (physics->isMovable && !isTrigger) physics->SetVelocity(Vector2::Vector2(velocity.x, 0));
+                // Both objects move around the level and collide with each other
+                if (isMovable && physics->isMovable) {
+                    movementDirection = Vector2::Vector2<float>(0, 0);
+                    physics->SetVelocity(Vector2::Vector2(0, 0));
                 }
 
-                // Collision on Y-axis only
-                else if (velocity.x == 0 && velocity.y != 0) {
-                    shortestTime = yAxisTimeToCollide;
-                    movementDirection.y = shortestTime * velocity.y;
-
-                    if (physics->isMovable && !isTrigger) physics->SetVelocity(Vector2::Vector2(0, velocity.y));
-                }
-
-                // Collision on X and Y axis (eg. slide up against a wall)
+                // One of the objects move around the level
                 else {
-                    shortestTime = std::min(abs(xAxisTimeToCollide), abs(yAxisTimeToCollide));
+                    // Collision on X-axis only
+                    if (velocity.x != 0 && velocity.y == 0) {
+                        shortestTime = xAxisTimeToCollide;
+                        movementDirection.x = shortestTime * velocity.x;
 
-                    movementDirection.x = shortestTime * velocity.x;
-                    movementDirection.y = shortestTime * velocity.y;
+                        if (physics->isMovable && !isTrigger) physics->SetVelocity(Vector2::Vector2(velocity.x, 0));
+                    }
 
-                    if (physics->isMovable && !isTrigger) physics->SetVelocity(velocity);
+                    // Collision on Y-axis only
+                    else if (velocity.x == 0 && velocity.y != 0) {
+                        shortestTime = yAxisTimeToCollide;
+                        movementDirection.y = shortestTime * velocity.y;
+
+                        if (physics->isMovable && !isTrigger) physics->SetVelocity(Vector2::Vector2(0, velocity.y));
+                    }
+
+                    // Collision on X and Y axis (eg. slide up against a wall)
+                    else {
+                        shortestTime = std::min(abs(xAxisTimeToCollide), abs(yAxisTimeToCollide));
+
+                        movementDirection.x = shortestTime * velocity.x;
+                        movementDirection.y = shortestTime * velocity.y;
+
+                        if (physics->isMovable && !isTrigger) physics->SetVelocity(velocity);
+                    }
                 }
             }
             else {
@@ -153,6 +167,8 @@ void PhysicsComponent::CheckCollisionsRecursively(GameObject::GameObject* collis
                 DamageableComponent* damageComponent = static_cast<DamageableComponent*>(component);
                 
                 AbstractComponent* secondComponent = objectLinkedTo->GetComponent("PlayerHealth");
+                if (secondComponent == nullptr) secondComponent = objectLinkedTo->GetComponent("DestructibleHealth");
+
                 HealthComponent* health = static_cast<HealthComponent*>(secondComponent);
 
                 if (damageComponent != nullptr && health != nullptr && damageComponent->IsActive()) {
