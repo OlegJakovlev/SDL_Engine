@@ -5,7 +5,8 @@
         "coin": "Resources/Audio/Sounds/coin.wav",
         "select": "Resources/Audio/Sounds/select.wav",
         "timerPickUp": "Resources/Audio/Sounds/timer.wav",
-        "scorePickUp": "Resources/Audio/Sounds/score.wav"
+        "scorePickUp": "Resources/Audio/Sounds/score.wav",
+        "playerHurt": "Resources/Audio/Sounds/playerHurt.wav"
     },
 
     "music": {

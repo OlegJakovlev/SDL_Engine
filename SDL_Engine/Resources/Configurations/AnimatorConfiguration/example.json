@@ -53,6 +53,11 @@
         "frameDelays": [ 0.1, 0.1, 0.1, 0.1 ],
         "loop": "LOOP"
     },
+    "player1Damaged": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Player1/Hero_Damaged.png",
+        "frameDelays": [ 0.15, 0.15, 0.15, 0.15, 0.15, 0.15 ],
+        "loop": "ONE_OFF"
+    },
 
     "player2GoUp": {
         "animationSheet": "Resources/Images/WorldScene/Sprite/Player2/Hero_GoUp.png",
@@ -78,6 +83,11 @@
         "animationSheet": "Resources/Images/WorldScene/Sprite/Player2/Hero_IdleAnimation.png",
         "frameDelays": [ 0.1, 0.1, 0.1, 0.1 ],
         "loop": "LOOP"
+    },
+    "player2Damaged": {
+        "animationSheet": "Resources/Images/WorldScene/Sprite/Player2/Hero_Damaged.png",
+        "frameDelays": [ 0.15, 0.15, 0.15, 0.15, 0.15, 0.15 ],
+        "loop": "ONE_OFF"
     },
 
     "flyingBirdLeft": {
